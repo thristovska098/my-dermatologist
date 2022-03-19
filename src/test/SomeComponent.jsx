@@ -1,7 +1,8 @@
+// @flow
 import * as React from 'react';
 /* eslint-disable */
 
-const SomeComponent = () => {
+const SomeComponent = (): React.Node => {
   const blabla = 'jskaj';
   const blablaaa = 'blabla';
 
