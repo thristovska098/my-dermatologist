@@ -4,7 +4,7 @@ import * as React from 'react';
 
 // Components
 import { Form } from 'react-final-form';
-import AddressComponent from '../common/address-component/AddressComponent';
+import ContactInformationComponent from '../common/contact-information-component/ContactInformationComponent';
 
 const RegisterClientPage = () => (
   <Form
@@ -12,8 +12,7 @@ const RegisterClientPage = () => (
     validate={() => {}}
     subscription={{ values: true }}
     render={({ handleSubmit, values }) => {
-      console.log(values);
-      return <AddressComponent fieldNamePrefix="client" />;
+      return <ContactInformationComponent fieldNamePrefix="client" />;
     }}
   />
 );

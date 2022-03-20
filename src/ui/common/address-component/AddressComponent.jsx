@@ -2,13 +2,15 @@
 import * as React from 'react';
 
 // Components
-import { ColumnsContainer, RowsContainer } from './styles';
+import { ColumnsContainer } from './styles';
+import { RowsContainer } from '../styles';
 import DropdownField from '../../../components/final-form/DropdownField';
 import TextInputField from '../../../components/final-form/TextInputField';
 
 // Constants
 import { CITY_LABEL, COUNTRY_LABEL, STREET_LABEL, STREET_NUMBER_LABEL, ZIPCODE_LABEL } from './labels';
 import { MANDATORY_FIELD_MESSAGE } from '../messages';
+import { FIELD_WIDTH_MIN, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MAX } from '../constants';
 
 // Utils
 import { required } from '../../../components/validators';
@@ -39,12 +41,17 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
   return (
     <RowsContainer>
       <ColumnsContainer>
-        <TextInputField validate={requiredValidator} name={`${fieldNamePrefix}.city`} label={CITY_LABEL} width={150} />
+        <TextInputField
+          validate={requiredValidator}
+          name={`${fieldNamePrefix}.city`}
+          label={CITY_LABEL}
+          width={FIELD_WIDTH_MEDIUM}
+        />
         <TextInputField
           validate={requiredValidator}
           name={`${fieldNamePrefix}.zipCode`}
           label={ZIPCODE_LABEL}
-          width={120}
+          width={FIELD_WIDTH_MIN}
         />
       </ColumnsContainer>
       <ColumnsContainer>
@@ -52,20 +59,20 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
           validate={requiredValidator}
           name={`${fieldNamePrefix}.street`}
           label={STREET_LABEL}
-          width={150}
+          width={FIELD_WIDTH_MEDIUM}
         />
         <TextInputField
           validate={requiredValidator}
           name={`${fieldNamePrefix}.streetNumber`}
           label={STREET_NUMBER_LABEL}
-          width={120}
+          width={FIELD_WIDTH_MIN}
         />
       </ColumnsContainer>
       <DropdownField
-        width={296}
+        width={FIELD_WIDTH_MAX}
         validate={requiredValidator}
         name={`${fieldNamePrefix}.country`}
-        value={CountryList[0]?.name}
+        defaultValue="Macedonia"
         label={COUNTRY_LABEL}
         options={preparedOptions}
       />

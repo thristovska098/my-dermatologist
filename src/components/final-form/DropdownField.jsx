@@ -1,7 +1,11 @@
 // @flow
 import * as React from 'react';
+
+// Utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
+
+// Components
 import { FormSelectField } from 'mui-form-fields';
 
 const InputWrapper: React.Component<*> = styled.div`
@@ -10,7 +14,7 @@ const InputWrapper: React.Component<*> = styled.div`
   }
   .MuiListItem-gutters {
     padding: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
   }
   .MuiListItemIcon-root {
     min-width: 0px;

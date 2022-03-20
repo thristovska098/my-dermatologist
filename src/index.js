@@ -1,10 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+// TODO: Check if I can resolve the warning in Address component and add the <React.StrictMode> wrapper around the App.
+ReactDOM.render(<App />, document.getElementById('root'));
