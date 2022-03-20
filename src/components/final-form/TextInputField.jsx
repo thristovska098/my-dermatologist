@@ -13,8 +13,7 @@ const InputWrapper: React.Component<*> = styled.div`
     padding: 0px;
   }
   .MuiListItem-gutters {
-    padding: 0px;
-    padding-bottom: 20px;
+    padding: 0 0 20px 0;
   }
   .MuiListItemIcon-root {
     min-width: 0px;

@@ -5,7 +5,6 @@ export const isPhoneNumber =
     const validPhoneNumber = /^\d+$/;
     return value.match(validPhoneNumber) ? undefined : message;
   };
-// Number.isNaN(value) ? message : undefined;
 
 export const isEmail =
   (message: string): Function =>
@@ -13,6 +12,11 @@ export const isEmail =
     const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     return value.match(validEmailRegex) ? undefined : message;
   };
+
+export const validateLength =
+  (message: string, desiredLength: number): Function =>
+  (value: ?(string | number)): ?string =>
+    value?.length === desiredLength ? undefined : message;
 
 export const isValueBlank = (value: ?(string | number)): boolean => value !== 0 && !value;
 

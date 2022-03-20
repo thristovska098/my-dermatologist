@@ -29,12 +29,10 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
   const preparedOptions = CountryList.map((country: Object): Array<Object> => {
     const label = country.name;
     const value = country.name;
-    const key = country.numericCode;
 
     return {
       label,
       value,
-      key,
     };
   });
 

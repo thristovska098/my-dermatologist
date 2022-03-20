@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { prop } from 'styled-tools';
 
 // Components
-import { FormSelectField } from 'mui-form-fields';
+import { FormDateField } from 'mui-form-fields';
 
 const InputWrapper: React.Component<*> = styled.div`
   .MuiFormControl-root {
@@ -19,8 +19,17 @@ const InputWrapper: React.Component<*> = styled.div`
     min-width: 0px;
     width: 0px;
   }
-  .MuiInputBase-root {
-    width: 100%;
+  .MuiIcon-root {
+    visibility: hidden;
+  }
+
+  .MuiListItem-root {
+    padding: 0 0 20px 0;
+    font-size: 1rem;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.00938em;
   }
 `;
 
@@ -28,10 +37,10 @@ type Props = {
   width: number,
 };
 
-const DropdownField = ({ width, ...rest }: Props): React.Node => (
+const DatePickerField = ({ width, ...rest }: Props): React.Node => (
   <InputWrapper width={width}>
-    <FormSelectField {...rest} />
+    <FormDateField {...rest} />
   </InputWrapper>
 );
 
-export default DropdownField;
+export default DatePickerField;
