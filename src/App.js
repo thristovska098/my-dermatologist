@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import SomeComponent from './test/SomeComponent';
+import RegisterClientPage from './ui/client-ui/RegisterClientPage';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <div>SOme text</div>
-        <SomeComponent />
+        <RegisterClientPage />
       </header>
     </div>
   );
