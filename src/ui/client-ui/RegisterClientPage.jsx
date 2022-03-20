@@ -1,9 +1,10 @@
 // @flow
 /* eslint-disable */
 import * as React from 'react';
+
+// Components
 import { Form } from 'react-final-form';
 import AddressComponent from '../common/address-component/AddressComponent';
-import { AddressMock } from '../dummyData';
 
 const RegisterClientPage = () => (
   <Form
@@ -12,7 +13,7 @@ const RegisterClientPage = () => (
     subscription={{ values: true }}
     render={({ handleSubmit, values }) => {
       console.log(values);
-      return <AddressComponent address={AddressMock} />;
+      return <AddressComponent fieldNamePrefix="client" />;
     }}
   />
 );
