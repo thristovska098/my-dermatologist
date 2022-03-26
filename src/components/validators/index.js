@@ -1,4 +1,6 @@
 // @flow
+import { now, Moment } from 'moment';
+
 export const isPhoneNumber =
   (message: string): Function =>
   (value: ?string): ?string => {
@@ -29,3 +31,12 @@ export const composeValidators =
   (validators: Array<Function>): Function =>
   (value: string | number, allValues: Object): any =>
     validators.reduce((error, validator: Function) => error || validator(value, allValues), undefined);
+
+export const dateInThePast =
+  (message: string): Function =>
+  (value: Moment): ?string => {
+    if (isValueBlank(value)) {
+      return undefined;
+    }
+    return value.isBefore(now()) ? undefined : message;
+  };

@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Utils
+import { composeValidators, dateInThePast, required, validateLength } from '../../../components/validators';
+
 // Components
 import { RowsContainer } from '../styles';
 import DatePickerField from '../../../components/final-form/DatePickerField';
@@ -10,7 +13,7 @@ import TextInputField from '../../../components/final-form/TextInputField';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../constants';
-import { INVALID_SSN_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../messages';
+import { INVALID_DATE, INVALID_SSN_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../messages';
 import {
   DATE_OF_BIRTH_LABEL,
   NAME_LABEL,
@@ -21,9 +24,6 @@ import {
   LENGTH_OF_SSN,
 } from './constants';
 
-// Utils
-import { composeValidators, required, validateLength } from '../../../components/validators';
-
 type Props = {
   fieldNamePrefix: string,
 };
@@ -31,6 +31,7 @@ type Props = {
 const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const ssnValidator = validateLength(INVALID_SSN_MESSAGE, LENGTH_OF_SSN);
+  const dateValidator = dateInThePast(INVALID_DATE);
 
   const combinedSsnValidator = React.useCallback(
     (fieldValue) => composeValidators([requiredValidator, ssnValidator])(fieldValue),
@@ -62,7 +63,7 @@ const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
           name={`${fieldNamePrefix}.dateOfBirth`}
           label={DATE_OF_BIRTH_LABEL}
           width={FIELD_WIDTH_MAX}
-          validate={requiredValidator}
+          validate={dateValidator}
         />
         <DropdownField
           name={`${fieldNamePrefix}.gender`}

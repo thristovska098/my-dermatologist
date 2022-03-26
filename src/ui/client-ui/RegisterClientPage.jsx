@@ -6,12 +6,15 @@ import * as React from 'react';
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../common/personal-data-component/PersonalDataComponent';
 import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
+import { Link } from '@mui/material';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
 import { CANCEL_FIELD_LABEL, REGISTER_FIELD_LABEL, SIGN_IN_MESSAGE } from './constants';
-import { Link } from '@mui/material';
 import { StyledLinkContainer } from './styles';
+
+// Utils
+import { mutators } from '../../components/final-form/mutators';
 
 const RegisterClientPage = () => {
   const handlingSubmit = (values: Object) => {
@@ -28,13 +31,15 @@ const RegisterClientPage = () => {
     const month = dateOfBirth._d.getMonth() + 1;
     const year = dateOfBirth._d.getFullYear();
 
-    return { dateOfBirth: `${day}/${month}/${year}`, ...rest };
+    return { dateOfBirth: `${year}-${month}-${day}`, ...rest };
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
     // TODO: Implement this method when the BE is done, this method should return the user tot he previous page.
     resetForm();
   }, []);
+
+  // TODO: Implement the logic for the link "Already have an account.. sign in".
 
   return (
     <Form
