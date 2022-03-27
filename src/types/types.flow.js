@@ -24,11 +24,11 @@ export type PersonalData = {
 };
 
 export type Patient = {
-  personalData: PersonalData,
+  patient: PersonalData,
 };
 
 export type Doctor = {
   code: string,
-  personalData: PersonalData,
+  doctor: PersonalData,
   officeInformation: ContactInformation,
 };

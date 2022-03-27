@@ -1,4 +1,5 @@
 // @flow
+/* eslint-disable */
 import * as React from 'react';
 
 // Components
@@ -10,40 +11,42 @@ import TextInputField from '../../../components/final-form/TextInputField';
 // Constants
 import { CITY_LABEL, COUNTRY_LABEL, STREET_LABEL, STREET_NUMBER_LABEL, ZIPCODE_LABEL } from './labels';
 import { MANDATORY_FIELD_MESSAGE } from '../messages';
-import { FIELD_WIDTH_MIN, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MAX } from '../constants';
+import { FIELD_WIDTH_MAX, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MIN } from '../constants';
 
 // Utils
 import { required } from '../../../components/validators';
-import { CountryList } from '../../dummyData';
+import { useSelector } from 'react-redux';
+import { getCitiesList } from '../../../redux/selectors';
 
 type Props = {
   fieldNamePrefix: string,
 };
 
 const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
+  const countriesList = useSelector(getCitiesList);
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
 
   // TODO: Check if the validation of the dropdown field works as expected
 
-  // TODO: Change the mocked list with real data from API
-  const preparedOptions = CountryList.map((country: Object): Array<Object> => {
-    const label = country.name;
-    const value = country.name;
-
-    return {
-      label,
-      value,
-    };
-  });
+  const preparedOptions = React.useMemo(() =>
+    countriesList?.map(
+      (country: string): Array<string> => ({
+        label: country,
+        value: country,
+      }),
+      countriesList,
+    ),
+  );
 
   return (
     <RowsContainer>
       <ColumnsContainer>
-        <TextInputField
-          validate={requiredValidator}
-          name={`${fieldNamePrefix}.city`}
-          label={CITY_LABEL}
+        <DropdownField
           width={FIELD_WIDTH_MEDIUM}
+          name={`${fieldNamePrefix}.city`}
+          defaultValue="Skopje"
+          label={CITY_LABEL}
+          options={preparedOptions}
         />
         <TextInputField
           validate={requiredValidator}
@@ -66,12 +69,12 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
           width={FIELD_WIDTH_MIN}
         />
       </ColumnsContainer>
-      <DropdownField
-        width={FIELD_WIDTH_MAX}
+      <TextInputField
         name={`${fieldNamePrefix}.country`}
-        defaultValue="Macedonia"
+        value="North Macedonia"
         label={COUNTRY_LABEL}
-        options={preparedOptions}
+        width={FIELD_WIDTH_MAX}
+        disabled
       />
     </RowsContainer>
   );
