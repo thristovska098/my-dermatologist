@@ -1,15 +1,15 @@
 import * as React from 'react';
 
+import RegisterDoctorPage from './ui/doctor-ui/RegisterDoctorPage';
 import RegisterClientPage from './ui/client-ui/RegisterClientPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <RegisterClientPage />
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <header className="App-header">
+      <RegisterDoctorPage />
+      <RegisterClientPage />
+    </header>
+  </div>
+);
 
 export default App;

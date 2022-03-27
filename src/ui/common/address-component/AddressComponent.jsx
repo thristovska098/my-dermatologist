@@ -68,7 +68,6 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
       </ColumnsContainer>
       <DropdownField
         width={FIELD_WIDTH_MAX}
-        validate={requiredValidator}
         name={`${fieldNamePrefix}.country`}
         defaultValue="Macedonia"
         label={COUNTRY_LABEL}

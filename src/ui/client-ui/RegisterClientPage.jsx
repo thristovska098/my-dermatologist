@@ -13,25 +13,28 @@ import { FIELD_WIDTH_MAX } from '../common/constants';
 import { CANCEL_FIELD_LABEL, REGISTER_FIELD_LABEL, SIGN_IN_MESSAGE } from './constants';
 import { StyledLinkContainer } from './styles';
 
-// Utils
-import { mutators } from '../../components/final-form/mutators';
-
 const RegisterClientPage = () => {
   const handlingSubmit = (values: Object) => {
     // TODO: Implement this method when the BE is done.
-    console.log('The following data is sent to BE.', values);
     const preparedData = prepareData(values);
-    console.log('prepared data', preparedData);
+    console.log(preparedData);
   };
 
   const prepareData = React.useCallback((values: Object) => {
-    const { dateOfBirth, ...rest } = values?.client;
+    const { dateOfBirth, ...rest } = values?.patient;
+
+    if (dateOfBirth === undefined) {
+      return { ...rest };
+    }
 
     const day = dateOfBirth._d.getDate();
     const month = dateOfBirth._d.getMonth() + 1;
     const year = dateOfBirth._d.getFullYear();
 
-    return { dateOfBirth: `${year}-${month}-${day}`, ...rest };
+    const preparedMonth = month < 10 ? `0${month}` : month;
+    const preparedDay = day < 10 ? `0${day}` : day;
+
+    return { dateOfBirth: `${year}-${preparedMonth}-${preparedDay}`, ...rest };
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
@@ -44,13 +47,13 @@ const RegisterClientPage = () => {
   return (
     <Form
       onSubmit={handlingSubmit}
-      subscription={{ values: true, form: true, hasValidationErrors: true }}
-      render={({ values, form, hasValidationErrors }) => (
+      subscription={{ values: true, form: true }}
+      render={({ form, handleSubmit }) => (
         <>
-          <PersonalDataComponent fieldNamePrefix="client" />
+          <PersonalDataComponent fieldNamePrefix="patient" />
           <SubmitAndCancelFooter
             width={FIELD_WIDTH_MAX}
-            handleSubmit={() => handlingSubmit(values)}
+            handleSubmit={handleSubmit}
             submitLabel={REGISTER_FIELD_LABEL}
             handleCancel={() => handlingCancel(form.reset)}
             cancelLabel={CANCEL_FIELD_LABEL}

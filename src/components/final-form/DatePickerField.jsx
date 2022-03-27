@@ -11,19 +11,19 @@ import { useForm } from 'react-final-form';
 
 const InputWrapper: React.Component<*> = styled.div`
   input {
-    border-bottom-color: ${ifProp('hasErrors', 'red !important')};
+    border-bottom-color: ${ifProp('hasErrors', '#f44336 !important')};
   }
   span {
-    color: ${ifProp('hasErrors', 'red !important')};
+    color: ${ifProp('hasErrors', '#f44336 !important')};
   }
   .MuiInput-root {
-    color: ${ifProp('hasErrors', 'red')};
+    color: ${ifProp('hasErrors', '#f44336')};
   }
   .MuiInput-underline:before {
-    border-bottom-color: ${ifProp('hasErrors', 'red')};
+    border-bottom-color: ${ifProp('hasErrors', '#f44336')};
   }
   .MuiInput-underline:after {
-    border-bottom-color: ${ifProp('hasErrors', 'red')};
+    border-bottom-color: ${ifProp('hasErrors', '#f44336')};
   }
   .MuiFormControl-root {
     width: ${prop('width', '300')}px !important;
