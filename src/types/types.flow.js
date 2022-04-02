@@ -32,3 +32,10 @@ export type Doctor = {
   doctor: PersonalData,
   officeInformation: ContactInformation,
 };
+
+export type Action = {
+  type: string,
+  [x: string]: any,
+};
+
+export type Reducer<S = any, A = Action> = (state: S, action: A) => S;

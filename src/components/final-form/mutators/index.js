@@ -1,3 +1,3 @@
 // @flow
 
-export const mutators = {};
+export const mutators: Object = {};

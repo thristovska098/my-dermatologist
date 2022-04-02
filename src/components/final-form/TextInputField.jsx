@@ -8,7 +8,7 @@ import { FormTextField } from 'mui-form-fields';
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
 
-const InputWrapper: React.Component<*> = styled.div`
+const InputWrapper: React.ComponentType<*> = styled.div`
   i:first-child {
     padding: 0px;
   }

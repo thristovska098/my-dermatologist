@@ -28,14 +28,13 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
 
   // TODO: Check if the validation of the dropdown field works as expected
 
-  const preparedOptions = React.useMemo(() =>
-    countriesList?.map(
-      (country: string): Array<string> => ({
+  const preparedOptions = React.useMemo(
+    () =>
+      countriesList?.map((country: string): Object => ({
         label: country,
         value: country,
-      }),
-      countriesList,
-    ),
+      })),
+    [countriesList],
   );
 
   return (

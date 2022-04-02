@@ -1,9 +1,6 @@
 // @flow
 
-// Utils
-import { Moment } from 'moment';
-
-export const prepareDate = (dateOfBirth: Moment): string => {
+export const prepareDate = (dateOfBirth: Object): string => {
   const day = dateOfBirth._d.getDate();
   const month = dateOfBirth._d.getMonth() + 1;
   const year = dateOfBirth._d.getFullYear();

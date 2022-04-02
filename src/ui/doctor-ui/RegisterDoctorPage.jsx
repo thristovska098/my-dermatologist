@@ -15,7 +15,7 @@ import { INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../common/
 import { CODE_LABEL, LENGTH_OF_DOCTOR_CODE } from './constants';
 
 // Types
-import type { Doctor } from '../../types/types.flow';
+import type { Doctor, PersonalData } from '../../types/types.flow';
 
 // Utils
 import { prepareDate } from '../common/utils';
@@ -35,9 +35,9 @@ const RegisterDoctorPage = (): React.Node => {
     console.log(preparedData);
   };
 
-  const prepareData = React.useCallback((values: Doctor) => {
+  const prepareData = React.useCallback((values: Doctor): Object => {
     const doctorData = values?.doctor;
-    const { dateOfBirth, ...rest } = doctorData;
+    const { dateOfBirth, ...rest }: PersonalData = doctorData;
 
     if (dateOfBirth === undefined) {
       return { ...rest };
@@ -45,7 +45,7 @@ const RegisterDoctorPage = (): React.Node => {
 
     const preparedDateOfBirth = prepareDate(dateOfBirth);
 
-    return { dateOfBirth: preparedDateOfBirth, ...rest };
+    return { ...rest, dateOfBirth: preparedDateOfBirth };
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {

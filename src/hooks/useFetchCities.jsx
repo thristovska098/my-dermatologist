@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setCountries } from '../redux/actions';
 
-const prepareData = (cities: Array<Object>): Array<Object> => {
+const prepareData = (cities: Array<Object>): ?Array<Object> => {
   // TODO: Ask the professor should I use this API? Because sometimes is not available, and maybe it will be
   //  better approach to have all the cities on the BE and get them as config data
   const preparedCities = cities.find((countryObj) => countryObj.country === 'Macedonia')?.cities;

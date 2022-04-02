@@ -9,7 +9,7 @@ import { ifProp, prop } from 'styled-tools';
 import { FormDateField } from 'mui-form-fields';
 import { useForm } from 'react-final-form';
 
-const InputWrapper: React.Component<*> = styled.div`
+const InputWrapper: React.ComponentType<*> = styled.div`
   input {
     border-bottom-color: ${ifProp('hasErrors', '#f44336 !important')};
   }
@@ -53,7 +53,7 @@ const InputWrapper: React.Component<*> = styled.div`
   }
 `;
 
-const ErrorWrapper: React.Component<*> = styled.div`
+const ErrorWrapper: React.ComponentType<*> = styled.div`
   color: red;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-size: 0.75rem;

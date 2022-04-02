@@ -2,8 +2,9 @@
 
 // Utils
 import { connectRouter } from 'connected-react-router';
-import { Reducer, combineReducers } from 'redux';
+import { combineReducers } from 'redux';
 import { citiesReducer } from './citiesReducer';
+import type { Reducer } from '../../types/types.flow';
 
 /**
  * The root reducer.

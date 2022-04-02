@@ -5,13 +5,13 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
 
-export const ColumnsContainer: React.Component<*> = styled.div`
+export const ColumnsContainer: React.ComponentType<*> = styled.div`
   display: flex;
   flex-direction: row;
   column-gap: 0px;
 `;
 
-export const InputWrapper: React.Component<*> = styled.div`
+export const InputWrapper: React.ComponentType<*> = styled.div`
   i:first-child {
     padding: 0px;
   }

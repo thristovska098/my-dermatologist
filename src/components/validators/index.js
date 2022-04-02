@@ -1,28 +1,28 @@
 // @flow
-import { now, Moment } from 'moment';
+import { now } from 'moment';
 
 export const isPhoneNumber =
   (message: string): Function =>
-  (value: ?string): ?string => {
+  (value: string): ?string => {
     const validPhoneNumber = /^\d+$/;
     return value.match(validPhoneNumber) ? undefined : message;
   };
 
 export const isEmail =
   (message: string): Function =>
-  (value: ?(string | number)): ?string => {
+  (value: string): ?string => {
     const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     return value.match(validEmailRegex) ? undefined : message;
   };
 
 export const validateLength =
   (message: string, desiredLength: number): Function =>
-  (value: ?(string | number)): ?string =>
+  (value: ?string): ?string =>
     value?.length === desiredLength ? undefined : message;
 
 export const validateMinimumLength =
   (message: string, desiredLength: number): Function =>
-  (value: ?(string | number)): ?string =>
+  (value: string): ?string =>
     value?.length >= desiredLength ? undefined : message;
 
 export const validatePassword =
@@ -52,7 +52,7 @@ export const composeValidators =
 
 export const dateInThePast =
   (message: string): Function =>
-  (value: Moment): ?string => {
+  (value: Object): ?string => {
     if (isValueBlank(value)) {
       return undefined;
     }

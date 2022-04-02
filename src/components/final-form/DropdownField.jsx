@@ -8,7 +8,7 @@ import { prop } from 'styled-tools';
 // Components
 import { FormSelectField } from 'mui-form-fields';
 
-const InputWrapper: React.Component<*> = styled.div`
+const InputWrapper: React.ComponentType<*> = styled.div`
   .MuiFormControl-root {
     width: ${prop('width', '300')}px !important;
   }

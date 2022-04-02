@@ -33,7 +33,7 @@ const RegisterClientPage = (): React.Node => {
 
     const preparedDateOfBirth = prepareDate(dateOfBirth);
 
-    return { dateOfBirth: preparedDateOfBirth, ...rest };
+    return { ...rest, dateOfBirth: preparedDateOfBirth };
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
