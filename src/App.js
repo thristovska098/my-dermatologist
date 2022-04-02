@@ -8,9 +8,8 @@ import { rootReducer } from './redux/reducers';
 import browserHistory from './redux/browserHistory';
 
 // Components
-import RegisterDoctorPage from './ui/doctor-ui/RegisterDoctorPage';
-import RegisterClientPage from './ui/client-ui/RegisterClientPage';
 import Bootstrapper from './Bootstrapper';
+import UsernameAndPasswordComponent from './ui/common/username-and-password-component/UsernameAndPasswordComponent';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -18,8 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Bootstrapper>
-        <RegisterDoctorPage />
-        <RegisterClientPage />
+        <UsernameAndPasswordComponent creatingAccount />
       </Bootstrapper>
     </Provider>
   );

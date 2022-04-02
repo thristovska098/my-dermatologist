@@ -6,16 +6,14 @@ import { Button, Link } from '@mui/material';
 import { StyledFooter } from './styles';
 import { StyledLinkContainer } from '../../client-ui/styles';
 
-// Constants
-import { SIGN_IN_MESSAGE } from '../../client-ui/constants';
-
 type Props = {
   handleSubmit: Function,
   submitLabel: string,
-  cancelLabel: string,
-  signUpLink?: string,
+  cancelLabel?: string,
+  link?: string,
   width?: number,
   handleCancel?: Function,
+  linkLabel?: string,
 };
 
 const SubmitAndCancelFooter = ({
@@ -24,25 +22,28 @@ const SubmitAndCancelFooter = ({
   submitLabel,
   cancelLabel,
   width,
-  signUpLink,
+  link,
+  linkLabel,
 }: Props): React.Node => (
-  <>
+  <div>
     <StyledFooter width={width}>
       <Button onClick={handleSubmit} variant="contained" color="success">
         {submitLabel}
       </Button>
-      <Button onClick={handleCancel} variant="outlined">
-        {cancelLabel}
-      </Button>
+      {cancelLabel && (
+        <Button onClick={handleCancel} variant="outlined">
+          {cancelLabel}
+        </Button>
+      )}
     </StyledFooter>
-    {signUpLink && (
+    {link && (
       <StyledLinkContainer>
-        <Link href={signUpLink} underline="hover">
-          {SIGN_IN_MESSAGE}
+        <Link href={link} underline="hover">
+          {linkLabel}
         </Link>
       </StyledLinkContainer>
     )}
-  </>
+  </div>
 );
 
 export default SubmitAndCancelFooter;

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 export const StyledLinkContainer: React.ComponentType<*> = styled.div`
   display: flex;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 297px;
   justify-content: center;
 `;

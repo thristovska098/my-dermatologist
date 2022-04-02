@@ -8,7 +8,7 @@ import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCance
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { CANCEL_FIELD_LABEL, REGISTER_FIELD_LABEL } from './constants';
+import { CANCEL_FIELD_LABEL, SUBMIT_FIELD_LABEL } from './constants';
 
 // Types
 import type { Patient } from '../../types/types.flow';
@@ -16,7 +16,7 @@ import type { Patient } from '../../types/types.flow';
 // Utils
 import { prepareDate } from '../common/utils';
 
-const RegisterClientPage = () => {
+const RegisterClientPage = (): React.Node => {
   const handlingSubmit = (values: Patient) => {
     // TODO: Implement this method when the BE is done.
     const preparedData = prepareData(values);
@@ -53,7 +53,7 @@ const RegisterClientPage = () => {
           <SubmitAndCancelFooter
             width={FIELD_WIDTH_MAX}
             handleSubmit={handleSubmit}
-            submitLabel={REGISTER_FIELD_LABEL}
+            submitLabel={SUBMIT_FIELD_LABEL}
             handleCancel={() => handlingCancel(form.reset)}
             cancelLabel={CANCEL_FIELD_LABEL}
             signUpLink="#"
