@@ -9,7 +9,7 @@ import browserHistory from './redux/browserHistory';
 
 // Components
 import Bootstrapper from './Bootstrapper';
-import UsernameAndPasswordComponent from './ui/common/username-and-password-component/UsernameAndPasswordComponent';
+import MainPage from './ui/basic-ui/MainPage';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Bootstrapper>
-        <UsernameAndPasswordComponent creatingAccount />
+        <MainPage />
       </Bootstrapper>
     </Provider>
   );
