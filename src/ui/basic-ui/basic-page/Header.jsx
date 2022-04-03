@@ -10,12 +10,13 @@ import type { PageType } from '../../common/navigation/Navigation';
 
 type Props = {
   pages?: Array<PageType>,
+  initialPage?: number,
 };
 
-const Header = ({ pages }: Props): React.Node => (
+const Header = ({ pages, initialPage = 0 }: Props): React.Node => (
   <>
     <StyledLogo />
-    {pages && <Navigation pages={pages} />}
+    {pages && <Navigation pages={pages} initialPage={initialPage} />}
   </>
 );
 

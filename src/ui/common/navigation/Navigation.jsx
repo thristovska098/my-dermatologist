@@ -3,6 +3,7 @@ import * as React from 'react';
 
 // Utils
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Components
 import { Box, Tab, Tabs } from '@mui/material';
@@ -14,10 +15,12 @@ export type PageType = {
 
 type Props = {
   pages: Array<string>,
+  initialPage: number,
 };
 
-const Navigation = ({ pages }: Props): React.Node => {
-  const [currentPage, setCurrentPage] = useState(0);
+const Navigation = ({ pages, initialPage }: Props): React.Node => {
+  const [currentPage, setCurrentPage] = useState(initialPage);
+  const history = useHistory();
 
   const renderTabs = pages.map((page: PageType, index: number): React.Node => (
     <Tab label={page.title} value={index} key={page.title} />
@@ -28,6 +31,7 @@ const Navigation = ({ pages }: Props): React.Node => {
 
     setCurrentPage(newValue);
     // TODO: Implement the changing of the navigation
+    history.push(pages[newValue]?.path);
     // dispatch(push(pages[newValue].path));
   };
 
