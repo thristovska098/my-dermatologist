@@ -21,6 +21,7 @@ import type { Patient } from '../../types/types.flow';
 
 // Utils
 import { prepareDate } from '../common/utils';
+import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
 const RegisterClientPage = (): React.Node => {
   const history = useHistory();
@@ -29,6 +30,7 @@ const RegisterClientPage = (): React.Node => {
     // TODO: Implement this method when the BE is done.
     const preparedData = prepareData(values);
     console.log(preparedData);
+    history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
   };
 
   const prepareData = React.useCallback((values: Patient) => {
@@ -45,7 +47,6 @@ const RegisterClientPage = (): React.Node => {
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
-    history.push('/');
     resetForm();
   }, []);
 

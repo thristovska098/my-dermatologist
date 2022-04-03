@@ -1,15 +1,19 @@
 // @flow
 import * as React from 'react';
 
+// Utils
+import { useDispatch } from 'react-redux';
+
 // Components
 import { Box, Modal } from '@mui/material';
 import UsernameAndPasswordComponent from '../../common/username-and-password-component/UsernameAndPasswordComponent';
 
-type Props = {
-  setIsModalOpen: Function,
-};
+// Actions
+import { setIsModalOpen } from '../../../redux/actions';
 
-const SignInSignUpModal = ({ setIsModalOpen }: Props): React.Node => {
+const SignInSignUpModal = (): React.Node => {
+  const dispatch = useDispatch();
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -23,7 +27,7 @@ const SignInSignUpModal = ({ setIsModalOpen }: Props): React.Node => {
     borderRadius: '25px',
   };
   return (
-    <Modal open onClose={() => setIsModalOpen(false)}>
+    <Modal open onClose={() => dispatch(setIsModalOpen(false))}>
       <Box sx={style}>
         <UsernameAndPasswordComponent />
       </Box>

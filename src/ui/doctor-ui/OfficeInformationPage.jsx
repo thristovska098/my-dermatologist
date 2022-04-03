@@ -21,6 +21,7 @@ import { INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../common/
 
 // Validators
 import { composeValidators, required, validateLength } from '../../components/validators';
+import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
 const OfficeInformationPage = () => {
   const history = useHistory();
@@ -34,11 +35,11 @@ const OfficeInformationPage = () => {
   const handlingSubmit = (values: Object) => {
     // TODO: Implement this method when the BE is done.
     console.log(values);
+    history.push(PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE);
   };
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
     resetForm();
-    history.push('/');
   }, []);
 
   return (

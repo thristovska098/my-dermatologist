@@ -52,7 +52,9 @@ const UsernameAndPasswordComponent = (): React.Node => {
   const handlingSubmit = () => {
     // TODO: Implement this method when the be is done
     const redirectTo =
-      userType === USER_TYPE.PATIENT ? PAGES_FULL_ROUTES.REGISTER_CLIENT : PAGES_FULL_ROUTES.REGISTER_DOCTOR;
+      userType === USER_TYPE.PATIENT
+        ? PAGES_FULL_ROUTES.REGISTER_CLIENT
+        : PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA;
 
     dispatch(setIsModalOpen(false));
     dispatch(setIsUserLoggedIn(true));
