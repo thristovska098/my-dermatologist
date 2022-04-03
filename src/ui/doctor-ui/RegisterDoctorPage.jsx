@@ -5,30 +5,22 @@ import * as React from 'react';
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../common/personal-data-component/PersonalDataComponent';
 import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
-import { RowsContainer } from '../common/styles';
-import TextInputField from '../../components/final-form/TextInputField';
+import Header from '../basic-ui/basic-page/Header';
+import { PageWrapper } from '../basic-ui/basic-page/styles';
+import { FormContainer } from '../common/styles';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { CANCEL_FIELD_LABEL, REGISTER_FIELD_LABEL } from '../client-ui/constants';
-import { INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../common/messages';
-import { CODE_LABEL, LENGTH_OF_DOCTOR_CODE } from './constants';
+import { CANCEL_FIELD_LABEL, SUBMIT_FIELD_LABEL } from '../client-ui/constants';
+import { pages } from './constants';
 
 // Types
 import type { Doctor, PersonalData } from '../../types/types.flow';
 
 // Utils
 import { prepareDate } from '../common/utils';
-import { composeValidators, required, validateLength } from '../../components/validators';
 
 const RegisterDoctorPage = (): React.Node => {
-  const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
-  const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
-
-  const combinedCodeValidator = React.useCallback(
-    (fieldValue) => composeValidators([requiredValidator, codeValidator])(fieldValue),
-    [codeValidator, requiredValidator],
-  );
   const handlingSubmit = (values: Object) => {
     // TODO: Implement this method when the BE is done.
     const preparedData = prepareData(values);
@@ -53,34 +45,27 @@ const RegisterDoctorPage = (): React.Node => {
     resetForm();
   }, []);
 
-  // TODO: Implement the logic for the link "Already have an account.. sign in".
-
   return (
-    <Form
-      onSubmit={handlingSubmit}
-      subscription={{ values: true, form: true }}
-      render={({ form, handleSubmit }) => (
-        <>
-          <RowsContainer>
-            <TextInputField
-              validate={combinedCodeValidator}
-              name="doctor.code"
-              label={CODE_LABEL}
-              width={FIELD_WIDTH_MAX}
-            />
+    <PageWrapper>
+      <Header pages={pages} />
+      <Form
+        onSubmit={handlingSubmit}
+        subscription={{ values: true, form: true }}
+        render={({ form, handleSubmit }) => (
+          <FormContainer>
             <PersonalDataComponent fieldNamePrefix="doctor" />
-          </RowsContainer>
-          <SubmitAndCancelFooter
-            width={FIELD_WIDTH_MAX}
-            handleSubmit={handleSubmit}
-            submitLabel={REGISTER_FIELD_LABEL}
-            handleCancel={() => handlingCancel(form.reset)}
-            cancelLabel={CANCEL_FIELD_LABEL}
-            signUpLink="#"
-          />
-        </>
-      )}
-    />
+            <SubmitAndCancelFooter
+              width={FIELD_WIDTH_MAX}
+              handleSubmit={handleSubmit}
+              submitLabel={SUBMIT_FIELD_LABEL}
+              handleCancel={() => handlingCancel(form.reset)}
+              cancelLabel={CANCEL_FIELD_LABEL}
+              hasMargin
+            />
+          </FormContainer>
+        )}
+      />
+    </PageWrapper>
   );
 };
 

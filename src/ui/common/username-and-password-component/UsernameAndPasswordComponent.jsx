@@ -13,7 +13,7 @@ import { StyledTitle, Container } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
 
 // Actions
-import { setIsModalOpen } from '../../../redux/actions';
+import { setIsModalOpen, setIsUserLoggedIn } from '../../../redux/actions';
 import { composeValidators, required, validateMinimumLength } from '../../../components/validators';
 
 // Selectors
@@ -50,10 +50,12 @@ const UsernameAndPasswordComponent = (): React.Node => {
   };
 
   const handlingSubmit = () => {
+    // TODO: Implement this method when the be is done
     const redirectTo =
       userType === USER_TYPE.PATIENT ? PAGES_FULL_ROUTES.REGISTER_CLIENT : PAGES_FULL_ROUTES.REGISTER_DOCTOR;
 
     dispatch(setIsModalOpen(false));
+    dispatch(setIsUserLoggedIn(true));
     history.push(redirectTo);
   };
 

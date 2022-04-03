@@ -8,6 +8,12 @@ export const RowsContainer: React.ComponentType<*> = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 0px;
+  margin-left: 45px;
+`;
+
+export const FormContainer: React.ComponentType<*> = styled.div`
+  padding-top: 45px;
+  background-color: #e3dfdc;
 `;
 
 export const PageNotFoundContainer: React.ComponentType<*> = styled.div`

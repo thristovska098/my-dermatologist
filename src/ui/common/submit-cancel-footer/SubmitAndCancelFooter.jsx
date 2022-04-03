@@ -14,6 +14,7 @@ type Props = {
   width?: number,
   handleCancel?: Function,
   additionalButtonLabel?: string,
+  hasMargin?: boolean,
 };
 
 const SubmitAndCancelFooter = ({
@@ -24,9 +25,10 @@ const SubmitAndCancelFooter = ({
   width,
   additionalButtonOnClick,
   additionalButtonLabel,
+  hasMargin = false,
 }: Props): React.Node => (
   <ButtonsContainer>
-    <StyledFooter width={width}>
+    <StyledFooter width={width} hasMargin={hasMargin}>
       <Button onClick={handleSubmit} variant="contained" color="success">
         {submitLabel}
       </Button>
