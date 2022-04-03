@@ -25,12 +25,16 @@ export const LogoContainer = styled.div`
   background: url(${logo});
   margin-left: 30px;
   height: 100px;
-  width: 500px;
+  width: 62%;
+  min-width: 590px;
   background-size: cover;
   background-size: 500px 100px;
   background-repeat: no-repeat;
   margin-bottom: 100px;
   opacity: 0.35;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
 `;
 
 export const MainBodyPageWrapper = styled.div`
@@ -54,4 +58,8 @@ export const CardsContainer = styled.div`
   min-width: 800px;
   justify-content: space-evenly;
   align-items: center;
+`;
+
+export const ButtonContainer = styled.div`
+  margin-top: 30px;
 `;

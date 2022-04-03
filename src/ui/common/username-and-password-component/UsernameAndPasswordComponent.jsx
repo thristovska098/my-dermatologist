@@ -39,6 +39,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
   const history = useHistory();
   const [isSignUpMode, setIsSignUpMode] = React.useState(false);
   const userType = useSelector(getUserType);
+  const hasUserType = userType !== undefined;
   const dispatch = useDispatch();
 
   const title = isSignUpMode ? TITLE_REGISTER : TITLE_SIGN_IN;
@@ -75,8 +76,8 @@ const UsernameAndPasswordComponent = (): React.Node => {
           <SubmitAndCancelFooter
             handleSubmit={handleSubmit}
             submitLabel={buttonLabel}
-            additionalButtonLabel={additionalButtonLabel}
-            additionalButtonOnClick={handleAdditionalButtonClick}
+            additionalButtonLabel={hasUserType && additionalButtonLabel}
+            additionalButtonOnClick={hasUserType && handleAdditionalButtonClick}
           />
         </Container>
       )}

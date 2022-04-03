@@ -15,9 +15,17 @@ export const PageWrapper: React.ComponentType<*> = styled(MainBodyPageWrapper)`
 `;
 
 export const StyledLogo: React.ComponentType<*> = styled(LogoContainer)`
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
   margin-left: 30px;
   height: 100px;
-  width: 500px;
+  width: 95%;
   margin-bottom: 30px;
   height: 80px;
+  min-width: 590px;
+`;
+
+export const ButtonContainer: React.ComponentType<*> = styled.div`
+  margin-top: 25px;
 `;

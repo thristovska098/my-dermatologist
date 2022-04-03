@@ -8,8 +8,8 @@ import { useHistory } from 'react-router-dom';
 import { Form } from 'react-final-form';
 import { FormContainer, RowsContainer } from '../common/styles';
 import TextInputField from '../../components/final-form/TextInputField';
-import { PageWrapper } from '../basic-ui/basic-page/styles';
-import Header from '../basic-ui/basic-page/Header';
+import { PageWrapper } from '../basic-ui/header/styles';
+import Header from '../basic-ui/header/Header';
 import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
 import ContactInformationComponent from '../common/contact-information-component/ContactInformationComponent';
 
