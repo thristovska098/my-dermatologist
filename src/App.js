@@ -15,7 +15,7 @@ import MainPage from './ui/basic-ui/MainPage';
 import RegisterClientPage from './ui/client-ui/RegisterClientPage';
 import RegisterDoctorPage from './ui/doctor-ui/RegisterDoctorPage';
 import PageNotFound from './ui/common/page-not-found/PageNotFound';
-import ProfessionalInformationPage from './ui/doctor-ui/ProfessionalInformationPage';
+import OfficeInformationPage from './ui/doctor-ui/OfficeInformationPage';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -28,7 +28,7 @@ const App = () => {
             <Route path="/" exact component={MainPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_CLIENT} component={RegisterClientPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} component={RegisterDoctorPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={ProfessionalInformationPage} />
+            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
             <Route component={PageNotFound} />
           </Switch>
         </BrowserRouter>

@@ -9,7 +9,7 @@ export const pages = [
     path: PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA,
   },
   {
-    title: 'Professional information',
+    title: 'Office information',
     path: PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA,
   },
 ];

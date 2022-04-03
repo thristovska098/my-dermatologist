@@ -22,7 +22,7 @@ import { INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../common/
 // Validators
 import { composeValidators, required, validateLength } from '../../components/validators';
 
-const ProfessionalInformationPage = () => {
+const OfficeInformationPage = () => {
   const history = useHistory();
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
@@ -73,4 +73,4 @@ const ProfessionalInformationPage = () => {
   );
 };
 
-export default ProfessionalInformationPage;
+export default OfficeInformationPage;
