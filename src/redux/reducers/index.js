@@ -3,9 +3,14 @@
 // Utils
 import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
+
+// Reducers
 import { citiesReducer } from './citiesReducer';
-import type { Reducer } from '../../types/types.flow';
 import { userInformationReducer } from './userInformationReducer';
+import { commonReducer } from './commonReducer';
+
+// Types
+import type { Reducer } from '../../types/types.flow';
 
 /**
  * The root reducer.
@@ -16,4 +21,5 @@ export const rootReducer: Reducer<Object> = (history) =>
     router: connectRouter(history),
     citiesList: citiesReducer,
     userInformation: userInformationReducer,
+    common: commonReducer,
   });

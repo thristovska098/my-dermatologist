@@ -9,7 +9,7 @@ import browserHistory from './redux/browserHistory';
 
 // Components
 import Bootstrapper from './Bootstrapper';
-import BasicPage from './ui/basic-ui/basic-page/BasicPage';
+import MainPage from './ui/basic-ui/MainPage';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -17,7 +17,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Bootstrapper>
-        <BasicPage />
+        <MainPage />
       </Bootstrapper>
     </Provider>
   );

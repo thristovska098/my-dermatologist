@@ -16,7 +16,7 @@ import doctor from '../../assets/icons/doctor.png';
 import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from './constants';
 
 // Actions
-import { setUserType } from '../../redux/actions';
+import { setIsModalOpen, setUserType } from '../../redux/actions';
 
 type Props = {
   isPatient?: boolean,
@@ -29,8 +29,7 @@ const CardComponent = ({ isPatient = false }: Props): React.Node => {
   const userType = isPatient ? USER_TYPE.PATIENT : USER_TYPE.DOCTOR;
 
   const handleButtonClick = () => {
-    // TODO: Implement this method.
-    console.log('Clicked');
+    dispatch(setIsModalOpen(true));
     dispatch(setUserType(userType));
   };
 

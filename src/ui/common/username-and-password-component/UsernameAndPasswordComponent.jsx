@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Utils
+import { useDispatch } from 'react-redux';
+
 // Components
 import { Form } from 'react-final-form';
 import TextInputField from '../../../components/final-form/TextInputField';
@@ -8,7 +11,8 @@ import PasswordField from '../../../components/final-form/password-field/Passwor
 import { StyledTitle, Container } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
 
-// Utils
+// Actions
+import { setIsModalOpen } from '../../../redux/actions';
 import { composeValidators, required, validateMinimumLength } from '../../../components/validators';
 
 // Constants
@@ -22,14 +26,13 @@ import {
   USERNAME_LABEL,
 } from './constants';
 
-// TODO: Implement the submit logic with redirecting to the page, also update the hard coded link value.
-
 const UsernameAndPasswordComponent = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const usernameValidator = validateMinimumLength(INVALID_USERNAME_MESSAGE, 5);
   const composedValidators = composeValidators([requiredValidator, usernameValidator]);
 
   const [isSignUpMode, setIsSignUpMode] = React.useState(false);
+  const dispatch = useDispatch();
 
   const title = isSignUpMode ? TITLE_REGISTER : TITLE_SIGN_IN;
   const additionalButtonLabel = isSignUpMode ? SIGN_IN_MESSAGE : SIGN_UP_MESSAGE;
@@ -39,7 +42,9 @@ const UsernameAndPasswordComponent = (): React.Node => {
     setIsSignUpMode(!isSignUpMode);
   };
 
-  const handlingSubmit = () => {};
+  const handlingSubmit = () => {
+    dispatch(setIsModalOpen(false));
+  };
   return (
     <Form
       onSubmit={handlingSubmit}
