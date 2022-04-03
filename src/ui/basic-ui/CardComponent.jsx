@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Utils
+import { useDispatch } from 'react-redux';
+
 // Components
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { CardContainer, CardItemsContainer } from './styles';
@@ -10,19 +13,25 @@ import patient from '../../assets/icons/patient-photo.jpeg';
 import doctor from '../../assets/icons/doctor.png';
 
 // Constants
-import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT } from './constants';
+import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from './constants';
+
+// Actions
+import { setUserType } from '../../redux/actions';
 
 type Props = {
   isPatient?: boolean,
 };
 
 const CardComponent = ({ isPatient = false }: Props): React.Node => {
+  const dispatch = useDispatch();
   const { firstLine, content, buttonText, alternativeText } = isPatient ? PATIENT_ENTRY_CONTENT : DOCTOR_ENTRY_CONTENT;
   const image = isPatient ? patient : doctor;
+  const userType = isPatient ? USER_TYPE.PATIENT : USER_TYPE.DOCTOR;
 
   const handleButtonClick = () => {
     // TODO: Implement this method.
     console.log('Clicked');
+    dispatch(setUserType(userType));
   };
 
   return (

@@ -11,3 +11,8 @@ export const DOCTOR_ENTRY_CONTENT = {
   buttonText: 'Continue as doctor...',
   alternativeText: 'Doctor working',
 };
+
+export const USER_TYPE = {
+  DOCTOR: 'doctor',
+  PATIENT: 'patient',
+};
