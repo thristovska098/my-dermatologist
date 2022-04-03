@@ -4,12 +4,17 @@ import * as React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { rootReducer } from './redux/reducers';
 import browserHistory from './redux/browserHistory';
+import { PAGES_FULL_ROUTES } from './routing/pages';
 
 // Components
 import Bootstrapper from './Bootstrapper';
 import MainPage from './ui/basic-ui/MainPage';
+import RegisterClientPage from './ui/client-ui/RegisterClientPage';
+import RegisterDoctorPage from './ui/doctor-ui/RegisterDoctorPage';
+import PageNotFound from './ui/common/page-not-found/PageNotFound';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -17,7 +22,14 @@ const App = () => {
   return (
     <Provider store={store}>
       <Bootstrapper>
-        <MainPage />
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={MainPage} />
+            <Route path={PAGES_FULL_ROUTES.REGISTER_CLIENT} component={RegisterClientPage} />
+            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR} component={RegisterDoctorPage} />
+            <Route component={PageNotFound} />
+          </Switch>
+        </BrowserRouter>
       </Bootstrapper>
     </Provider>
   );
