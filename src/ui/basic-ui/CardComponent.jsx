@@ -5,7 +5,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 
 // Components
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { CardContainer, CardItemsContainer } from './styles';
 
 // Images
@@ -37,21 +37,19 @@ const CardComponent = ({ isPatient = false }: Props): React.Node => {
   return (
     <CardContainer>
       <Card style={{ height: '520px' }} onClick={handleButtonClick}>
-        <CardActionArea>
-          <CardContent>
-            <CardItemsContainer isPatient={isPatient}>
-              <Typography sx={{ fontSize: 18 }} color="text.primary">
-                <b>{firstLine}</b>
-                <br />
-                {content}
-              </Typography>
-              <CardMedia component="img" width="150" image={image} alt={alternativeText} />
-            </CardItemsContainer>
-          </CardContent>
-          <CardActions>
-            <Button size="large">{buttonText}</Button>
-          </CardActions>
-        </CardActionArea>
+        <CardContent>
+          <CardItemsContainer isPatient={isPatient}>
+            <Typography sx={{ fontSize: 18 }} color="text.primary">
+              <b>{firstLine}</b>
+              <br />
+              {content}
+            </Typography>
+            <CardMedia component="img" width="150" image={image} alt={alternativeText} />
+          </CardItemsContainer>
+        </CardContent>
+        <CardActions>
+          <Button size="large">{buttonText}</Button>
+        </CardActions>
       </Card>
     </CardContainer>
   );
