@@ -22,11 +22,12 @@ const CardComponent = ({ isPatient = false }: Props): React.Node => {
 
   const handleButtonClick = () => {
     // TODO: Implement this method.
+    console.log('Clicked');
   };
 
   return (
     <CardContainer>
-      <Card style={{ height: '520px' }}>
+      <Card style={{ height: '520px' }} onClick={handleButtonClick}>
         <CardActionArea>
           <CardContent>
             <CardItemsContainer isPatient={isPatient}>
@@ -39,9 +40,7 @@ const CardComponent = ({ isPatient = false }: Props): React.Node => {
             </CardItemsContainer>
           </CardContent>
           <CardActions>
-            <Button size="large" onClick={handleButtonClick}>
-              {buttonText}
-            </Button>
+            <Button size="large">{buttonText}</Button>
           </CardActions>
         </CardActionArea>
       </Card>

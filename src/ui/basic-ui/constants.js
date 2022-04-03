@@ -1,5 +1,3 @@
-export const MAIN_PAGE_HEADER = 'MY DERMATOLOGIST';
-
 export const PATIENT_ENTRY_CONTENT = {
   firstLine: 'Are you planning dermatologist appointment?',
   content: 'Consult our online dermatologists anytime, anywhere in minutes.',

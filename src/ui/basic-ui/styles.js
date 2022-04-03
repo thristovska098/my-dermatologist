@@ -4,7 +4,7 @@ import * as React from 'react';
 // Utils
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
-import logo from '../../assets/icons/logo-my-dermatologist-1.png';
+import logo from '../../assets/icons/logo-3.png';
 import background from '../../assets/icons/background.png';
 
 export const CardContainer: React.ComponentType<*> = styled.div`
@@ -23,26 +23,30 @@ export const CardItemsContainer: React.ComponentType<*> = styled.div`
 export const LogoContainer = styled.div`
   background-repeat: no-repeat;
   background: url(${logo});
-  margin-left: 20px;
+  margin-left: 30px;
   height: 100px;
-  width: 450px;
+  width: 500px;
   background-size: cover;
-  background-size: 400px 100px;
+  background-size: 500px 100px;
   background-repeat: no-repeat;
+  margin-bottom: 100px;
+  opacity: 0.35;
 `;
 
 export const MainBodyPageWrapper = styled.div`
   height: 100vh;
   width: 100vw;
   margin: -10px;
+  padding-top: 30px;
   background-color: #e3dfdc;
   background-repeat: no-repeat;
   background: url(${background});
   background-size: cover;
+  min-height: 600px;
 `;
 
 export const CardsContainer = styled.div`
-  height: 85%;
+  height: calc(80%-190px);
   width: 60%;
   display: flex;
   margin-left: 25px;
