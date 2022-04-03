@@ -17,4 +17,5 @@ export const Container: React.ComponentType<*> = styled.div`
   flex-direction: column;
   justify-content: space-around;
   width: 400px;
+  margin-left: 25px;
 `;

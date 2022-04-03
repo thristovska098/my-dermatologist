@@ -2,18 +2,18 @@
 import * as React from 'react';
 
 // Components
-import { Button, Link } from '@mui/material';
+import { Button } from '@mui/material';
 import { StyledFooter } from './styles';
-import { StyledLinkContainer } from '../../client-ui/styles';
+import { AlignedButton, ButtonsContainer, StyledButtonContainer } from '../../client-ui/styles';
 
 type Props = {
   handleSubmit: Function,
   submitLabel: string,
   cancelLabel?: string,
-  link?: string,
+  additionalButtonOnClick?: Function,
   width?: number,
   handleCancel?: Function,
-  linkLabel?: string,
+  additionalButtonLabel?: string,
 };
 
 const SubmitAndCancelFooter = ({
@@ -22,10 +22,10 @@ const SubmitAndCancelFooter = ({
   submitLabel,
   cancelLabel,
   width,
-  link,
-  linkLabel,
+  additionalButtonOnClick,
+  additionalButtonLabel,
 }: Props): React.Node => (
-  <div>
+  <ButtonsContainer>
     <StyledFooter width={width}>
       <Button onClick={handleSubmit} variant="contained" color="success">
         {submitLabel}
@@ -36,14 +36,14 @@ const SubmitAndCancelFooter = ({
         </Button>
       )}
     </StyledFooter>
-    {link && (
-      <StyledLinkContainer>
-        <Link href={link} underline="hover">
-          {linkLabel}
-        </Link>
-      </StyledLinkContainer>
+    {additionalButtonLabel && (
+      <AlignedButton>
+        <StyledButtonContainer>
+          <Button onClick={additionalButtonOnClick}>{additionalButtonLabel}</Button>
+        </StyledButtonContainer>
+      </AlignedButton>
     )}
-  </div>
+  </ButtonsContainer>
 );
 
 export default SubmitAndCancelFooter;

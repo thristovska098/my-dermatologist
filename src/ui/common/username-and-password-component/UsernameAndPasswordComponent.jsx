@@ -22,21 +22,22 @@ import {
   USERNAME_LABEL,
 } from './constants';
 
-type Props = {
-  creatingAccount?: boolean,
-};
-
 // TODO: Implement the submit logic with redirecting to the page, also update the hard coded link value.
 
-const UsernameAndPasswordComponent = ({ creatingAccount = false }: Props): React.Node => {
+const UsernameAndPasswordComponent = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const usernameValidator = validateMinimumLength(INVALID_USERNAME_MESSAGE, 5);
   const composedValidators = composeValidators([requiredValidator, usernameValidator]);
 
-  const title = creatingAccount ? TITLE_REGISTER : TITLE_SIGN_IN;
-  const linkText = creatingAccount ? SIGN_IN_MESSAGE : SIGN_UP_MESSAGE;
-  const buttonLabel = creatingAccount ? BUTTON_REGISTER : BUTTON_SIGN_IN;
-  const linkValue = '#';
+  const [isSignUpMode, setIsSignUpMode] = React.useState(false);
+
+  const title = isSignUpMode ? TITLE_REGISTER : TITLE_SIGN_IN;
+  const additionalButtonLabel = isSignUpMode ? SIGN_IN_MESSAGE : SIGN_UP_MESSAGE;
+  const buttonLabel = isSignUpMode ? BUTTON_REGISTER : BUTTON_SIGN_IN;
+
+  const handleAdditionalButtonClick = () => {
+    setIsSignUpMode(!isSignUpMode);
+  };
 
   const handlingSubmit = () => {};
   return (
@@ -53,8 +54,8 @@ const UsernameAndPasswordComponent = ({ creatingAccount = false }: Props): React
           <SubmitAndCancelFooter
             handleSubmit={handleSubmit}
             submitLabel={buttonLabel}
-            link={linkValue}
-            linkLabel={linkText}
+            additionalButtonLabel={additionalButtonLabel}
+            additionalButtonOnClick={handleAdditionalButtonClick}
           />
         </Container>
       )}

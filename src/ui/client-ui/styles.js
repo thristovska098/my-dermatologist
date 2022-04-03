@@ -4,9 +4,19 @@ import * as React from 'react';
 // Utils
 import styled from 'styled-components';
 
-export const StyledLinkContainer: React.ComponentType<*> = styled.div`
+export const StyledButtonContainer: React.ComponentType<*> = styled.div`
+  width: 240px;
+`;
+
+export const AlignedButton: React.ComponentType<*> = styled.div`
   display: flex;
-  margin-top: 20px;
-  width: 297px;
+  width: 100%;
+  justify-content: space-evenly;
+`;
+
+export const ButtonsContainer: React.ComponentType<*> = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  row-gap: 20px;
 `;

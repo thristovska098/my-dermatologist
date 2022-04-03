@@ -7,5 +7,5 @@ export const INVALID_DOCTOR_CODE_MESSAGE = 'Invalid code length. The code should
 export const INVALID_USERNAME_MESSAGE = 'The username should contain minimum 5 characters.';
 export const INVALID_PASSWORD_MESSAGE =
   'The password should contain minimum 8 characters including digits, letters and special characters.';
-export const SIGN_IN_MESSAGE = 'Already have an account? Sign in...';
+export const SIGN_IN_MESSAGE = 'Already have an account? Sign In...';
 export const SIGN_UP_MESSAGE = 'Create new account...';

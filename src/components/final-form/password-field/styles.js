@@ -14,6 +14,7 @@ export const StyledPasswordInput: React.ComponentType<*> = styled.input`
   height: 1.1876em;
   font-size: 16px;
   padding-bottom: 5px;
+  background-color: #e3dfdc;
 
   :focus {
     outline: none;
