@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Routing
+import { useHistory } from 'react-router-dom';
+
 // Components
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../common/personal-data-component/PersonalDataComponent';
@@ -20,6 +23,8 @@ import type { Patient } from '../../types/types.flow';
 import { prepareDate } from '../common/utils';
 
 const RegisterClientPage = (): React.Node => {
+  const history = useHistory();
+
   const handlingSubmit = (values: Patient) => {
     // TODO: Implement this method when the BE is done.
     const preparedData = prepareData(values);
@@ -40,11 +45,9 @@ const RegisterClientPage = (): React.Node => {
   }, []);
 
   const handlingCancel = React.useCallback((resetForm: Function) => {
-    // TODO: Implement this method when the BE is done, this method should return the user tot he previous page.
+    history.push('/');
     resetForm();
   }, []);
-
-  // TODO: Implement the logic for the link "Already have an account.. sign in".
 
   return (
     <PageWrapper>
