@@ -63,3 +63,11 @@ export const CardsContainer = styled.div`
 export const ButtonContainer = styled.div`
   margin-top: 30px;
 `;
+
+export const CardItemsWrapperContainer: React.ComponentType<*> = styled(CardItemsContainer)`
+  height: 270px;
+`;
+
+export const StyledButtonContainerForCard: React.ComponentType<*> = styled.div`
+  margin-left: 20px;
+`;

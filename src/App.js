@@ -36,7 +36,7 @@ const App = () => {
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
             <Route path={PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE} component={DoctorHomePage} />
             <Route path={PAGES_FULL_ROUTES.PATIENT_HOME_PAGE} component={PatientHomePage} />
-            <Route path={PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_FORM} component={CreateVirtualVisitPage} />
+            <Route path={PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT} component={CreateVirtualVisitPage} />
             <Route component={PageNotFound} />
           </Switch>
         </BrowserRouter>
