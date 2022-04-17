@@ -6,19 +6,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
-import { CardContainer, CardItemsContainer } from './styles';
-import SignInSignUpModal from './sign-in-sign-up-modal/SignInSignUpModal';
+import { CardContainer, CardItemsContainer } from '../styles';
+import SignInSignUpModal from '../sign-in-sign-up-modal/SignInSignUpModal';
 
 // Images
-import patient from '../../assets/icons/patient-photo.jpeg';
-import doctor from '../../assets/icons/doctor.png';
+import patient from '../../../assets/icons/patient-photo.jpeg';
+import doctor from '../../../assets/icons/doctor.png';
 
 // Constants
-import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from './constants';
+import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from '../constants';
 
 // Actions
-import { setIsModalOpen, setUserType } from '../../redux/actions';
-import { getIsModalOpen } from '../../redux/selectors';
+import { setIsModalOpen, setUserType } from '../../../redux/actions';
+import { getIsModalOpen } from '../../../redux/selectors';
 
 type Props = {
   isPatient?: boolean,
