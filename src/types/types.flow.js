@@ -33,6 +33,13 @@ export type Doctor = {
   officeInformation: ContactInformation,
 };
 
+export type PatientVirtualVisitForm = {
+  title: string,
+  description: string,
+  date: string,
+  images: Array<Object>,
+};
+
 export type Action = {
   type: string,
   [x: string]: any,

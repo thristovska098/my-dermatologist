@@ -50,12 +50,16 @@ const UsernameAndPasswordComponent = (): React.Node => {
     setIsSignUpMode(!isSignUpMode);
   };
 
+  const getRedirectPath = (): string => {
+    if (userType === USER_TYPE.PATIENT) {
+      return isSignUpMode ? PAGES_FULL_ROUTES.REGISTER_CLIENT : PAGES_FULL_ROUTES.PATIENT_HOME_PAGE;
+    }
+    return isSignUpMode ? PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA : PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE;
+  };
+
   const handlingSubmit = () => {
     // TODO: Implement this method when the be is done
-    const redirectTo =
-      userType === USER_TYPE.PATIENT
-        ? PAGES_FULL_ROUTES.REGISTER_CLIENT
-        : PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA;
+    const redirectTo = getRedirectPath();
 
     dispatch(setIsModalOpen(false));
     dispatch(setIsUserLoggedIn(true));

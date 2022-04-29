@@ -15,6 +15,11 @@ export const isEmail =
     return value.match(validEmailRegex) ? undefined : message;
   };
 
+export const minLength =
+  (message: string, minimumLength: number): Function =>
+  (value: ?string): ?string =>
+    value?.length >= minimumLength ? undefined : message;
+
 export const validateLength =
   (message: string, desiredLength: number): Function =>
   (value: ?string): ?string =>

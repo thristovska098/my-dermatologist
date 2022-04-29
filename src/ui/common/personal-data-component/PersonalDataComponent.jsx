@@ -71,7 +71,6 @@ const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
           options={GENDER_OPTIONS}
           label={GENDER_LABEL}
           defaultValue={GENDER_OPTIONS[0].value}
-          validate={requiredValidator}
         />
       </RowsContainer>
       <ContactInformationComponent fieldNamePrefix={fieldNamePrefix} />
