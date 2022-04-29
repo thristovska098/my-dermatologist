@@ -14,7 +14,7 @@ import { FormContainer } from '../common/styles';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { CANCEL_FIELD_LABEL, SUBMIT_FIELD_LABEL } from '../client-ui/constants';
+import { SUBMIT_FIELD_LABEL } from '../client-ui/constants';
 import { pages } from './constants';
 
 // Types
@@ -47,28 +47,29 @@ const RegisterDoctorPage = (): React.Node => {
     return { ...rest, dateOfBirth: preparedDateOfBirth };
   }, []);
 
-  const handlingCancel = React.useCallback((resetForm: Function) => {
-    resetForm();
-  }, []);
-
   return (
     <PageWrapper>
-      <Header pages={pages} />
       <Form
         onSubmit={handlingSubmit}
-        subscription={{ values: true, form: true }}
-        render={({ form, handleSubmit }) => (
-          <FormContainer>
-            <PersonalDataComponent fieldNamePrefix="doctor" />
-            <SubmitAndCancelFooter
-              width={FIELD_WIDTH_MAX}
-              handleSubmit={handleSubmit}
-              submitLabel={SUBMIT_FIELD_LABEL}
-              handleCancel={() => handlingCancel(form.reset)}
-              cancelLabel={CANCEL_FIELD_LABEL}
-              hasMargin
+        subscription={{ values: true, hasValidationErrors: true }}
+        render={({ handleSubmit, hasValidationErrors }) => (
+          <>
+            <Header
+              pages={pages}
+              onChangeFunction={handleSubmit}
+              hasValidationErrors={hasValidationErrors}
+              shouldLetLogOut={false}
             />
-          </FormContainer>
+            <FormContainer>
+              <PersonalDataComponent fieldNamePrefix="doctor" />
+              <SubmitAndCancelFooter
+                width={FIELD_WIDTH_MAX}
+                handleSubmit={handleSubmit}
+                submitLabel={SUBMIT_FIELD_LABEL}
+                hasMargin
+              />
+            </FormContainer>
+          </>
         )}
       />
     </PageWrapper>
