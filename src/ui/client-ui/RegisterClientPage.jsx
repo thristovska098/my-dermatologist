@@ -14,7 +14,7 @@ import { FormContainer } from '../common/styles';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { CANCEL_FIELD_LABEL, SUBMIT_FIELD_LABEL, pages } from './constants';
+import { pages, SUBMIT_FIELD_LABEL } from './constants';
 
 // Types
 import type { Patient } from '../../types/types.flow';
@@ -46,28 +46,24 @@ const RegisterClientPage = (): React.Node => {
     return { ...rest, dateOfBirth: preparedDateOfBirth };
   }, []);
 
-  const handlingCancel = React.useCallback((resetForm: Function) => {
-    resetForm();
-  }, []);
-
   return (
     <PageWrapper>
-      <Header pages={pages} />
       <Form
         onSubmit={handlingSubmit}
-        subscription={{ values: true, form: true }}
-        render={({ form, handleSubmit }) => (
-          <FormContainer>
-            <PersonalDataComponent fieldNamePrefix="patient" />
-            <SubmitAndCancelFooter
-              width={FIELD_WIDTH_MAX}
-              handleSubmit={handleSubmit}
-              submitLabel={SUBMIT_FIELD_LABEL}
-              handleCancel={() => handlingCancel(form.reset)}
-              cancelLabel={CANCEL_FIELD_LABEL}
-              hasMargin
-            />
-          </FormContainer>
+        subscription={{ values: true }}
+        render={({ handleSubmit }) => (
+          <>
+            <Header pages={pages} onChangeFunction={handleSubmit} shouldLetLogOut={false} />
+            <FormContainer>
+              <PersonalDataComponent fieldNamePrefix="patient" />
+              <SubmitAndCancelFooter
+                width={FIELD_WIDTH_MAX}
+                handleSubmit={handleSubmit}
+                submitLabel={SUBMIT_FIELD_LABEL}
+                hasMargin
+              />
+            </FormContainer>
+          </>
         )}
       />
     </PageWrapper>
