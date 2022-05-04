@@ -3,7 +3,7 @@ import * as React from 'react';
 
 // Components
 import { Field } from 'react-final-form';
-import { StyledPasswordErrorMessage, StyledPasswordInput, StyledPasswordLabel } from './styles';
+import { ErrorMessage, StyledPasswordInput, StyledPasswordLabel } from './styles';
 
 // Validators
 import { composeValidators, required, validatePassword } from '../../validators';
@@ -25,7 +25,7 @@ const PasswordField = ({ name, label = '' }: Props): React.Node => {
     <Field
       name={name}
       validate={combinedValidators}
-      render={({ input, meta, ...rest }) => {
+      render={({ input, meta, ...rest }): React.Node => {
         const { value, onChange } = input;
         const { error, touched } = meta;
 
@@ -47,7 +47,7 @@ const PasswordField = ({ name, label = '' }: Props): React.Node => {
               onChange={onChangeHandler}
               onBlur={(event) => input.onBlur(event)}
             />
-            {hasError && <StyledPasswordErrorMessage>{errorMessage}</StyledPasswordErrorMessage>}
+            {hasError && <ErrorMessage>{errorMessage}</ErrorMessage>}
           </div>
         );
       }}

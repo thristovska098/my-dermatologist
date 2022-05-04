@@ -4,6 +4,7 @@ import * as React from 'react';
 // Utils
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Components
 import { Box, Tab, Tabs } from '@mui/material';
@@ -12,6 +13,12 @@ export type PageType = {
   title: string,
   path: string,
 };
+
+const StyledNavigation: React.ComponentType<*> = styled.div`
+  button.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    margin-right: 10px;
+  }
+`;
 
 type Props = {
   pages: Array<string>,
@@ -28,7 +35,7 @@ const Navigation = ({ pages, initialPage, onChangeFunction, hasValidationErrors 
     <Tab label={page.title} value={index} key={page.title} />
   ));
 
-  const handleOnChange = (event, newValue) => {
+  const handleOnChange = (event: Object, newValue: string) => {
     if (newValue === currentPage) return;
 
     if (hasValidationErrors) {
@@ -44,13 +51,15 @@ const Navigation = ({ pages, initialPage, onChangeFunction, hasValidationErrors 
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderTop: 1, paddingLeft: '30px', borderColor: 'divider' }}>
-        <Tabs value={currentPage} onChange={handleOnChange}>
-          {renderTabs}
-        </Tabs>
+    <StyledNavigation>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderTop: 1, paddingLeft: '30px', borderColor: 'divider' }}>
+          <Tabs value={currentPage} onChange={handleOnChange}>
+            {renderTabs}
+          </Tabs>
+        </Box>
       </Box>
-    </Box>
+    </StyledNavigation>
   );
 };
 

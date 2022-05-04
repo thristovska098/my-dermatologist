@@ -11,5 +11,6 @@ export const StyledFooter: React.ComponentType<*> = styled.div`
   padding-bottom: ${ifProp('hasMargin', '45', '0')}px;
   display: flex;
   width: ${prop('width', '300')}px;
-  justify-content: space-evenly;
+  justify-content: center;
+  column-gap: 10px;
 `;

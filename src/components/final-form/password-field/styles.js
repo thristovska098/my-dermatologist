@@ -30,7 +30,7 @@ export const StyledPasswordLabel: React.ComponentType<*> = styled.div`
   margin-bottom: 8px;
 `;
 
-export const StyledPasswordErrorMessage: React.ComponentType<*> = styled.div`
+export const ErrorMessage: React.ComponentType<*> = styled.div`
   color: #f44639;
   font-size: 13px;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;

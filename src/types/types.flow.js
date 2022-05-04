@@ -19,7 +19,6 @@ export type PersonalData = {
   ssn: number,
   dateOfBirth: string,
   gender: string,
-  address: Address,
   contactInformation: ContactInformation,
 };
 
