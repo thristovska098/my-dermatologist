@@ -7,6 +7,8 @@ export const MIN_WIDTH = 500;
 export const MIN_CHARACTERS = 50;
 export const MAX_CHARACTERS = 1000;
 
+export const SELECT_DOCTOR_LABEL = 'Please select doctor';
+
 export const pages = [
   {
     title: 'Virtual appointment',
@@ -42,5 +44,47 @@ const dummyDoctor = {
   },
   officeInformation: dummyContact,
 };
+
+export const dummyDoctorsList = [
+  {
+    code: 'ABCD1',
+    doctor: {
+      name: 'Petar',
+      lastName: 'Petrovski',
+    },
+    officeInformation: {
+      address: {
+        city: 'Prilep',
+        country: 'NMK',
+      },
+    },
+  },
+  {
+    code: 'ABCD2',
+    doctor: {
+      name: 'Mila',
+      lastName: 'Milovska',
+    },
+    officeInformation: {
+      address: {
+        city: 'Ohrid',
+        country: 'NMK',
+      },
+    },
+  },
+  {
+    code: 'ABCD3',
+    doctor: {
+      name: 'Andrea',
+      lastName: 'Andreevska',
+    },
+    officeInformation: {
+      address: {
+        city: 'Debar',
+        country: 'NMK',
+      },
+    },
+  },
+];
 
 export const dummyData = [dummyDoctor, dummyDoctor, dummyDoctor, dummyDoctor];

@@ -14,18 +14,43 @@ import { FormContainer, RowsContainer } from '../../common/styles';
 import TextInputField from '../../../components/final-form/TextInputField';
 import TextAreaField from '../../../components/final-form/text-area-field/TextAreaField';
 import ImageAddingComponent from './ImageAddingComponent';
+import DropdownField from '../../../components/final-form/DropdownField';
 
 // Utils
 import { composeValidators, minLength, required } from '../../../components/validators';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
-import { DESCRIPTION_LABEL, MAX_CHARACTERS, MIN_CHARACTERS, MIN_WIDTH, pages, SUBJECT_LABEL } from './constants';
+import {
+  DESCRIPTION_LABEL,
+  dummyDoctorsList,
+  MAX_CHARACTERS,
+  MIN_CHARACTERS,
+  MIN_WIDTH,
+  pages,
+  SELECT_DOCTOR_LABEL,
+  SUBJECT_LABEL,
+} from './constants';
 import { MANDATORY_FIELD_MESSAGE } from '../../common/messages';
 import { SUBMIT_FIELD_LABEL, CANCEL_FIELD_LABEL } from '../constants';
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
+
+  // TODO: Replace the dummy data for the doctors with data from the BE
+  const doctorsOptions = dummyDoctorsList.map((doctor: Object): Array<Object> => {
+    const code = doctor?.code;
+    const nameAndLastName = `${doctor?.doctor?.name} ${doctor?.doctor?.lastName}`;
+    const city = doctor?.officeInformation?.address?.city;
+    const country = doctor?.officeInformation?.address?.country;
+    const cityAndCountry = `${city}, ${country}`;
+    const nameAndAddress = `${nameAndLastName} (${cityAndCountry})`;
+
+    return {
+      label: nameAndAddress,
+      value: code,
+    };
+  });
 
   const width = MIN_WIDTH - 20;
 
@@ -57,6 +82,13 @@ const VirtualVisitForm = (): React.Node => {
         render={({ handleSubmit }) => (
           <FormContainer>
             <RowsContainer>
+              <DropdownField
+                width={width + 15}
+                name="virtualVisit.doctor"
+                options={doctorsOptions}
+                label={SELECT_DOCTOR_LABEL}
+                defaultValue={doctorsOptions[0]?.value}
+              />
               <TextInputField
                 name="virtualVisit.subject"
                 width={MIN_WIDTH}

@@ -9,6 +9,8 @@ import background from '../../assets/icons/background.png';
 
 export const CardContainer: React.ComponentType<*> = styled.div`
   width: 400px;
+  min-height: 500px;
+  max-height: 500px;
   height: 500px;
 `;
 
