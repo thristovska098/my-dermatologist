@@ -13,3 +13,6 @@ export const pages = [
     path: PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA,
   },
 ];
+
+export const REVIEW_NEW_VIRTUAL_VISITS = 'Review new virtual visits';
+export const REVIEW_COMPLETED_VIRTUAL_VISITS = 'Review completed virtual visits';

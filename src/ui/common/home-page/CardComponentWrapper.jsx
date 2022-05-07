@@ -3,7 +3,7 @@ import * as React from 'react';
 
 // Components
 import { Button, Card, CardActions, CardContent, CardMedia } from '@mui/material';
-import { CardContainer, CardItemsWrapperContainer, StyledButtonContainerForCard } from '../../basic-ui/styles';
+import { CardContainer, CardItemsWrapperContainer } from '../../basic-ui/styles';
 
 type Props = {
   onButtonClick: Function,
@@ -21,9 +21,7 @@ const CardComponentWrapper = ({ onButtonClick, buttonLabel, image, alternativeIm
         </CardItemsWrapperContainer>
       </CardContent>
       <CardActions>
-        <StyledButtonContainerForCard>
-          <Button size="large">{buttonLabel}</Button>
-        </StyledButtonContainerForCard>
+        <Button size="large">{buttonLabel}</Button>
       </CardActions>
     </Card>
   </CardContainer>

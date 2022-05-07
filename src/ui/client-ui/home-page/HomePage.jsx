@@ -9,11 +9,11 @@ import { CardsContainer } from '../../basic-ui/styles';
 import HomePageWrapper from '../../common/home-page/HomePageWrapper';
 import virtualVisitImage from '../../../assets/icons/create-appointment.jpeg';
 import resultsImage from '../../../assets/icons/doctor-results.jpeg';
+import CardComponentWrapper from '../../common/home-page/CardComponentWrapper';
 
 // Constants
 import { BUTTON_LOG_OUT } from '../../common/username-and-password-component/constants';
 import { BASE_ROUTE, PAGES_FULL_ROUTES } from '../../../routing/pages';
-import CardComponentWrapper from './CardComponentWrapper';
 import {
   CHECK_RESULTS_LABEL,
   CREATE_VIRTUAL_VISIT_BUTTON_LABEL,
@@ -29,8 +29,6 @@ const HomePage = (): React.Node => {
 
     // TODO: Make call to the BE when implemented.
   };
-
-  // Create virtual visit
 
   const handleCreateVirtualVisit = () => {
     history.push(PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_FORM);
