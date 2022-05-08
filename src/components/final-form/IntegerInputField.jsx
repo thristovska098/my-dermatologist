@@ -4,12 +4,12 @@ import * as React from 'react';
 // Components
 import { FormTextField } from 'mui-form-fields';
 
-// Styled utils
+// Utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
-import { parseTextWithMaxLength } from '../parsers';
+import { parseIntegerInputWithMaxLength } from '../parsers';
 
-// Components
+// Constants
 import { MAX_CHARACTERS } from '../../ui/client-ui/create-virtual-visit/constants';
 
 const InputWrapper: React.ComponentType<*> = styled.div`
@@ -34,9 +34,8 @@ type Props = {
   width: number,
   length?: number,
 };
-
-const TextInputField = ({ width, length = MAX_CHARACTERS, ...rest }: Props): React.Node => {
-  const parser = parseTextWithMaxLength(length);
+const IntegerInputField = ({ width, length = MAX_CHARACTERS, ...rest }: Props): React.Node => {
+  const parser = parseIntegerInputWithMaxLength(length);
 
   return (
     <InputWrapper width={width}>
@@ -45,4 +44,4 @@ const TextInputField = ({ width, length = MAX_CHARACTERS, ...rest }: Props): Rea
   );
 };
 
-export default TextInputField;
+export default IntegerInputField;

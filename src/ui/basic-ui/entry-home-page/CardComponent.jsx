@@ -17,8 +17,8 @@ import doctor from '../../../assets/icons/doctor.png';
 import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from '../constants';
 
 // Actions
-import { setIsModalOpen, setUserType } from '../../../redux/actions';
-import { getIsModalOpen } from '../../../redux/selectors';
+import { setIsSignInSignUpModalOpen, setUserType } from '../../../redux/actions';
+import { getIsSignInSignUpModalOpen } from '../../../redux/selectors';
 
 type Props = {
   isPatient?: boolean,
@@ -27,7 +27,7 @@ type Props = {
 const CardComponent = ({ isPatient = false }: Props): React.Node => {
   const dispatch = useDispatch();
 
-  const isModalOpen = useSelector(getIsModalOpen);
+  const isModalOpen = useSelector(getIsSignInSignUpModalOpen);
 
   const { firstLine, content, buttonText, alternativeText } = isPatient ? PATIENT_ENTRY_CONTENT : DOCTOR_ENTRY_CONTENT;
   const image = isPatient ? patient : doctor;
@@ -35,7 +35,7 @@ const CardComponent = ({ isPatient = false }: Props): React.Node => {
 
   const handleButtonClick = () => {
     dispatch(setUserType(userType));
-    dispatch(setIsModalOpen(true));
+    dispatch(setIsSignInSignUpModalOpen(true));
   };
 
   return (

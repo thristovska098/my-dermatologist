@@ -13,13 +13,13 @@ import HomePageWrapper from '../../common/home-page/HomePageWrapper';
 import { BUTTON_SIGN_IN } from '../../common/username-and-password-component/constants';
 
 // Actions
-import { setIsModalOpen } from '../../../redux/actions';
+import { setIsSignInSignUpModalOpen } from '../../../redux/actions';
 
 const MainPage = (): React.Node => {
   const dispatch = useDispatch();
 
   const handleLogInClick = () => {
-    dispatch(setIsModalOpen(true));
+    dispatch(setIsSignInSignUpModalOpen(true));
   };
 
   return (

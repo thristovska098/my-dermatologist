@@ -14,10 +14,6 @@ export const pages = [
     title: 'Virtual appointment',
     path: PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_FORM,
   },
-  {
-    title: 'Payment information',
-    path: PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_PAY_FORM,
-  },
 ];
 
 const dummyContact = {

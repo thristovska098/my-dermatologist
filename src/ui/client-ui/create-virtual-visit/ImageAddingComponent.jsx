@@ -60,7 +60,7 @@ const ImageAddingComponent = (): React.Node => {
           name="images"
           label="Please add photos of the skin problem. You can maximum add 5 photos."
           hasIcon={false}
-          accept=".jpg,.jpeg,.png"
+          accept="image/*"
           multiple
           disabled={images.length === 5}
           validate={requiredValidator}

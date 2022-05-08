@@ -13,7 +13,7 @@ import { StyledTitle, Container } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
 
 // Actions
-import { setIsModalOpen, setIsUserLoggedIn } from '../../../redux/actions';
+import { setIsSignInSignUpModalOpen, setIsUserLoggedIn } from '../../../redux/actions';
 import { composeValidators, required, validateMinimumLength } from '../../../components/validators';
 
 // Selectors
@@ -61,7 +61,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
     // TODO: Implement this method when the be is done
     const redirectTo = getRedirectPath();
 
-    dispatch(setIsModalOpen(false));
+    dispatch(setIsSignInSignUpModalOpen(false));
     dispatch(setIsUserLoggedIn(true));
     history.push(redirectTo);
   };
@@ -74,7 +74,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
         <Container>
           <StyledTitle>{title}</StyledTitle>
           <div>
-            <TextInputField validate={composedValidators} name="username" label={USERNAME_LABEL} />
+            <TextInputField validate={composedValidators} width={301} name="username" label={USERNAME_LABEL} />
             <PasswordField name="password" label={PASSWORD_LABEL} />
           </div>
           <SubmitAndCancelFooter
