@@ -63,3 +63,25 @@ export const dateInThePast =
     }
     return value.isBefore(now()) ? undefined : message;
   };
+
+export const validateExpiringDate =
+  (): Function =>
+  (value: Object): ?string => {
+    if (isValueBlank(value)) {
+      return undefined;
+    }
+
+    const result = value.split('/');
+    const date = new Date();
+    const year = date.getUTCFullYear().toString().substring(2, 4);
+    const month = date.getMonth() + 1;
+
+    const isInvalid =
+      result[0] === '00' ||
+      result[0] > 12 ||
+      result[1] < year ||
+      (result[1] === year && month >= result[0]) ||
+      value.toString().length !== 5;
+
+    return isInvalid ? 'The expiration date is not valid.' : undefined;
+  };

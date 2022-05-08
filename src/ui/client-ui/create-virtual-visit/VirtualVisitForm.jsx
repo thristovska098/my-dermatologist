@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 // Components
 import { Form } from 'react-final-form';
+import { useDispatch, useSelector } from 'react-redux';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
@@ -15,9 +16,12 @@ import TextInputField from '../../../components/final-form/TextInputField';
 import TextAreaField from '../../../components/final-form/text-area-field/TextAreaField';
 import ImageAddingComponent from './ImageAddingComponent';
 import DropdownField from '../../../components/final-form/DropdownField';
+import PaymentModal from './paying-form/PaymentModal';
 
 // Utils
 import { composeValidators, minLength, required } from '../../../components/validators';
+import { setIsPaymentModalOpen } from '../../../redux/actions';
+import { getIsPaymentModalOpen } from '../../../redux/selectors';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
@@ -32,10 +36,12 @@ import {
   SUBJECT_LABEL,
 } from './constants';
 import { MANDATORY_FIELD_MESSAGE } from '../../common/messages';
-import { SUBMIT_FIELD_LABEL, CANCEL_FIELD_LABEL } from '../constants';
+import { CONTINUE_FIELD_LABEL, CANCEL_FIELD_LABEL } from '../constants';
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
 
   // TODO: Replace the dummy data for the doctors with data from the BE
   const doctorsOptions = dummyDoctorsList.map((doctor: Object): Array<Object> => {
@@ -61,8 +67,7 @@ const VirtualVisitForm = (): React.Node => {
   // TODO: Replace the dummy data with data from the BE
 
   const handlingSubmit = () => {
-    history.push(PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_PAY_FORM);
-    // TODO: Implement this method.
+    dispatch(setIsPaymentModalOpen(true));
   };
 
   const handleCancel = () => {
@@ -84,7 +89,8 @@ const VirtualVisitForm = (): React.Node => {
                   name="virtualVisit.doctor"
                   options={doctorsOptions}
                   label={SELECT_DOCTOR_LABEL}
-                  defaultValue={doctorsOptions[0]?.value}
+                  isRequired
+                  validate={requiredValidator}
                 />
                 <TextInputField
                   name="virtualVisit.subject"
@@ -112,7 +118,7 @@ const VirtualVisitForm = (): React.Node => {
               <SubmitAndCancelFooter
                 width={MIN_WIDTH}
                 handleSubmit={handleSubmit}
-                submitLabel={SUBMIT_FIELD_LABEL}
+                submitLabel={CONTINUE_FIELD_LABEL}
                 handleCancel={handleCancel}
                 cancelLabel={CANCEL_FIELD_LABEL}
                 hasMargin
@@ -122,6 +128,7 @@ const VirtualVisitForm = (): React.Node => {
           </>
         )}
       />
+      {isPaymentModalOpen && <PaymentModal />}
     </PageWrapper>
   );
 };
