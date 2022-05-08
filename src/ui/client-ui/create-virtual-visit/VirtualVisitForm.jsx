@@ -60,11 +60,7 @@ const VirtualVisitForm = (): React.Node => {
 
   // TODO: Replace the dummy data with data from the BE
 
-  const handleNavigationButtonClick = () => {
-    // TODO: Implement this method.
-  };
-
-  const onSubmit = () => {
+  const handlingSubmit = () => {
     history.push(PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_PAY_FORM);
     // TODO: Implement this method.
   };
@@ -75,53 +71,55 @@ const VirtualVisitForm = (): React.Node => {
 
   return (
     <PageWrapper>
-      <Header pages={pages} onChangeFunction={handleNavigationButtonClick} />
       <Form
-        onSubmit={onSubmit}
-        subscription={{ values: true, form: true, errors: true }}
-        render={({ handleSubmit }) => (
-          <FormContainer>
-            <RowsContainer>
-              <DropdownField
-                width={width + 15}
-                name="virtualVisit.doctor"
-                options={doctorsOptions}
-                label={SELECT_DOCTOR_LABEL}
-                defaultValue={doctorsOptions[0]?.value}
-              />
-              <TextInputField
-                name="virtualVisit.subject"
+        onSubmit={handlingSubmit}
+        subscription={{ values: true, form: true, errors: true, hasValidationErrors: true }}
+        render={({ handleSubmit, hasValidationErrors }) => (
+          <>
+            <Header pages={pages} onChangeFunction={handleSubmit} hasValidationErrors={hasValidationErrors} />
+            <FormContainer>
+              <RowsContainer>
+                <DropdownField
+                  width={width + 15}
+                  name="virtualVisit.doctor"
+                  options={doctorsOptions}
+                  label={SELECT_DOCTOR_LABEL}
+                  defaultValue={doctorsOptions[0]?.value}
+                />
+                <TextInputField
+                  name="virtualVisit.subject"
+                  width={MIN_WIDTH}
+                  label={SUBJECT_LABEL}
+                  validate={requiredValidator}
+                />
+                <TextAreaField
+                  name="virtualVisit.description"
+                  placeholder={DESCRIPTION_LABEL}
+                  minRows={1}
+                  maxRows={7}
+                  fieldLabel="Description"
+                  maxCharacters={MAX_CHARACTERS}
+                  validate={descriptionValidators}
+                  style={{
+                    minWidth: width,
+                    maxWidth: width,
+                    minHeight: '200px',
+                    maxHeight: '200px',
+                  }}
+                />
+                <ImageAddingComponent />
+              </RowsContainer>
+              <SubmitAndCancelFooter
                 width={MIN_WIDTH}
-                label={SUBJECT_LABEL}
-                validate={requiredValidator}
+                handleSubmit={handleSubmit}
+                submitLabel={SUBMIT_FIELD_LABEL}
+                handleCancel={handleCancel}
+                cancelLabel={CANCEL_FIELD_LABEL}
+                hasMargin
+                max={5}
               />
-              <TextAreaField
-                name="virtualVisit.description"
-                placeholder={DESCRIPTION_LABEL}
-                minRows={1}
-                maxRows={7}
-                fieldLabel="Description"
-                maxCharacters={MAX_CHARACTERS}
-                validate={descriptionValidators}
-                style={{
-                  minWidth: width,
-                  maxWidth: width,
-                  minHeight: '200px',
-                  maxHeight: '200px',
-                }}
-              />
-              <ImageAddingComponent />
-            </RowsContainer>
-            <SubmitAndCancelFooter
-              width={MIN_WIDTH}
-              handleSubmit={handleSubmit}
-              submitLabel={SUBMIT_FIELD_LABEL}
-              handleCancel={handleCancel}
-              cancelLabel={CANCEL_FIELD_LABEL}
-              hasMargin
-              max={5}
-            />
-          </FormContainer>
+            </FormContainer>
+          </>
         )}
       />
     </PageWrapper>

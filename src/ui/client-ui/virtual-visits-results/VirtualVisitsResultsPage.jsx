@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 const VirtualVisitsResultsPage = (): React.Node => {
-  return <div>virtual visits</div>;
+  return <div>virtual visits results</div>;
 };
 
 export default VirtualVisitsResultsPage;

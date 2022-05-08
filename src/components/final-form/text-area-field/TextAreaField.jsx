@@ -24,7 +24,7 @@ const StyledTextArea = styled.div`
   textArea {
     padding: 10px;
     background-color: #e3dfdc;
-    font-size: 12px;
+    font-size: 16px;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-weight: 400;
     border-color: ${ifProp('hasError', '#f44639')};
@@ -52,7 +52,8 @@ const TextAreaField = ({
     parse={parseTextWithMaxLength(maxCharacters)}
     validate={validate}
     {...restProps}
-    render={({ input, meta, ...rest }) => {
+    /* eslint-disable-next-line flowtype/require-parameter-type */
+    render={({ input, meta, ...rest }): React.Node => {
       const { value, onChange } = input;
       const { error, touched } = meta;
 
