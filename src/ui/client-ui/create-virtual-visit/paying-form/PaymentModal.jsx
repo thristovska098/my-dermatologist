@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 // Hooks
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import { Form } from 'react-final-form';
@@ -19,9 +19,10 @@ import {
   TotalPaymentContainer,
   PageContentContainer,
 } from './styles';
+import PaymentOutcomeModal from './PaymentOutcomeModal';
 
 // Actions
-import { setIsPaymentModalOpen } from '../../../../redux/actions';
+import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
 import { CARD_NUMBER_LABEL, CVC_LABEL, EXPIRING_DATE_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from './constants';
@@ -30,9 +31,14 @@ import { CARD_NUMBER_LABEL, CVC_LABEL, EXPIRING_DATE_LABEL, MAKE_PAYMENT_LABEL, 
 import { formatCreditCardNumber, formatExpirationDate } from '../../../../components/formatters';
 import { composeValidators, required, validateExpiringDate } from '../../../../components/validators';
 import { MANDATORY_FIELD_MESSAGE } from '../../../common/messages';
+import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
 const PaymentModal = (): React.Node => {
   const dispatch = useDispatch();
+
+  // eslint-disable-next-line no-unused-vars
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(true);
+  const isPaymentOutcomeModalOpen = useSelector(getIsPaymentOutcomeModalOpen);
 
   // Stripe accepts the price in cents, price * 100;
 
@@ -60,10 +66,15 @@ const PaymentModal = (): React.Node => {
   const handlePaying = () => {
     // TODO: implement this
     // structure the data for BE
+
+    if (isPaymentSuccessful === true) {
+      dispatch(setIsPaymentModalOpen(false));
+    }
+    dispatch(setIsPaymentOutcomeModalOpen(true));
   };
 
-  return (
-    <Modal open onClose={() => dispatch(setIsPaymentModalOpen(false))}>
+  return !isPaymentOutcomeModalOpen ? (
+    <Modal open>
       <Box sx={style}>
         <Form
           onSubmit={handlePaying}
@@ -115,6 +126,8 @@ const PaymentModal = (): React.Node => {
         />
       </Box>
     </Modal>
+  ) : (
+    <PaymentOutcomeModal isPaymentSuccessful={isPaymentSuccessful} />
   );
 };
 

@@ -28,6 +28,9 @@ const InputWrapper: React.ComponentType<*> = styled.div`
   .MuiIcon-root {
     visibility: hidden;
   }
+  .MuiInputAdornment-root.MuiInputAdornment-positionEnd {
+    width: 0;
+  }
 `;
 
 type Props = {

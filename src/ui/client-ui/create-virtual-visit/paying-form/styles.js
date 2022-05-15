@@ -32,3 +32,24 @@ export const FieldsContainer: React.ComponentType<*> = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+
+export const PaymentOutcomeContainer: React.ComponentType<*> = styled(FieldsContainer)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  row-gap: 10px;
+  width: 100%;
+`;
+
+export const StyledIconWrapper: React.ComponentType<*> = styled.div`
+  margin-left: 115px;
+  .MuiSvgIcon-root {
+    font-size: 4.5rem !important;
+  }
+`;
+
+export const PaymentOutcomeTextContainer: React.ComponentType<*> = styled.div`
+  font-size: 20px;
+  margin-left: 65px;
+`;
