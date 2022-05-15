@@ -82,6 +82,32 @@ export const dummyDoctorsList = [
       },
     },
   },
+  {
+    code: 'ABCD3',
+    doctor: {
+      name: 'Andrea',
+      lastName: 'Andreevska',
+    },
+    officeInformation: {
+      address: {
+        city: 'Debar',
+        country: 'NMK',
+      },
+    },
+  },
+  {
+    code: 'ABCD3',
+    doctor: {
+      name: 'Andrea',
+      lastName: 'Andreevska',
+    },
+    officeInformation: {
+      address: {
+        city: 'Debar',
+        country: 'NMK',
+      },
+    },
+  },
 ];
 
 export const dummyData = [dummyDoctor, dummyDoctor, dummyDoctor, dummyDoctor];
