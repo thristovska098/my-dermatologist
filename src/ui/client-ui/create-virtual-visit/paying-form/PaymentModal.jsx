@@ -22,7 +22,7 @@ import {
 import PaymentOutcomeModal from './PaymentOutcomeModal';
 
 // Actions
-import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
+import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
 import { CARD_NUMBER_LABEL, CVC_LABEL, EXPIRING_DATE_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from './constants';
@@ -37,7 +37,7 @@ const PaymentModal = (): React.Node => {
   const dispatch = useDispatch();
 
   // eslint-disable-next-line no-unused-vars
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(true);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
   const isPaymentOutcomeModalOpen = useSelector(getIsPaymentOutcomeModalOpen);
 
   // Stripe accepts the price in cents, price * 100;
@@ -67,9 +67,7 @@ const PaymentModal = (): React.Node => {
     // TODO: implement this
     // structure the data for BE
 
-    if (isPaymentSuccessful === true) {
-      dispatch(setIsPaymentModalOpen(false));
-    }
+    console.log('Is payment successful', isPaymentSuccessful);
     dispatch(setIsPaymentOutcomeModalOpen(true));
   };
 

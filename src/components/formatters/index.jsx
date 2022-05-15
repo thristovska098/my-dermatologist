@@ -6,7 +6,7 @@ function clearNumber(value: string = ''): any {
 
 export function formatCreditCardNumber(value: string): string {
   if (!value) {
-    return value;
+    return '';
   }
 
   const clearValue = clearNumber(value);

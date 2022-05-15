@@ -4,14 +4,16 @@ import * as React from 'react';
 
 // Hooks
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import { Form } from 'react-final-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { Tooltip } from '@mui/material';
+import InfoIcon from '@mui/icons-material/Info';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
-import { FormContainer, RowsContainer } from '../../common/styles';
+import { FormContainer, RowContainer, RowsContainer, TooltipContainer } from '../../common/styles';
 import TextInputField from '../../../components/final-form/TextInputField';
 import TextAreaField from '../../../components/final-form/text-area-field/TextAreaField';
 import ImageAddingComponent from './ImageAddingComponent';
@@ -34,6 +36,7 @@ import {
   pages,
   SELECT_DOCTOR_LABEL,
   SUBJECT_LABEL,
+  TOOLTIP_LABEL,
 } from './constants';
 import { MANDATORY_FIELD_MESSAGE } from '../../common/messages';
 import { CONTINUE_FIELD_LABEL, CANCEL_FIELD_LABEL } from '../constants';
@@ -98,21 +101,28 @@ const VirtualVisitForm = (): React.Node => {
                   label={SUBJECT_LABEL}
                   validate={requiredValidator}
                 />
-                <TextAreaField
-                  name="virtualVisit.description"
-                  placeholder={DESCRIPTION_LABEL}
-                  minRows={1}
-                  maxRows={7}
-                  fieldLabel="Description"
-                  maxCharacters={MAX_CHARACTERS}
-                  validate={descriptionValidators}
-                  style={{
-                    minWidth: width,
-                    maxWidth: width,
-                    minHeight: '200px',
-                    maxHeight: '200px',
-                  }}
-                />
+                <RowContainer>
+                  <TextAreaField
+                    name="virtualVisit.description"
+                    placeholder={DESCRIPTION_LABEL}
+                    minRows={1}
+                    maxRows={7}
+                    fieldLabel="Description"
+                    maxCharacters={MAX_CHARACTERS}
+                    validate={descriptionValidators}
+                    style={{
+                      minWidth: width,
+                      maxWidth: width,
+                      minHeight: '200px',
+                      maxHeight: '200px',
+                    }}
+                  />
+                  <Tooltip title={TOOLTIP_LABEL}>
+                    <TooltipContainer>
+                      <InfoIcon color="primary" />
+                    </TooltipContainer>
+                  </Tooltip>
+                </RowContainer>
                 <ImageAddingComponent />
               </RowsContainer>
               <SubmitAndCancelFooter

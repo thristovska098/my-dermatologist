@@ -32,11 +32,17 @@ export type Doctor = {
   officeInformation: ContactInformation,
 };
 
+export type AppointmentStatus = 'Completed' | 'Waiting for review';
+
 export type PatientVirtualVisitForm = {
+  doctorCode: string,
   title: string,
   description: string,
   date: string,
   images: Array<Object>,
+  createdOnDate: string,
+  appointmentStatus: AppointmentStatus, // WAITING FOR REVIEW, COMPLETED
+  patientSsn: string,
 };
 
 export type Action = {

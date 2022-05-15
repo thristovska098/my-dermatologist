@@ -8,6 +8,7 @@ export const MIN_CHARACTERS = 50;
 export const MAX_CHARACTERS = 1000;
 
 export const SELECT_DOCTOR_LABEL = 'Please select doctor';
+export const TOOLTIP_LABEL = 'Please mention if you have any other diseases or allergies.';
 
 export const pages = [
   {

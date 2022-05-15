@@ -26,3 +26,14 @@ export const PageNotFoundContainer: React.ComponentType<*> = styled.div`
   margin-top: -30px;
   opacity: 0.5;
 `;
+
+export const RowContainer: React.ComponentType<*> = styled.div`
+  display: flex;
+  column-gap: 10px;
+  align-content: flex-start;
+`;
+
+export const TooltipContainer: React.ComponentType<*> = styled.div`
+  margin-top: 18px;
+  height: 20px;
+`;
