@@ -9,6 +9,5 @@ export const PAGES_FULL_ROUTES = {
   PATIENT_CREATE_VIRTUAL_VISIT: `${BASE_ROUTE}/patient/virtual-visit`,
   PATIENT_CREATE_VIRTUAL_VISIT_FORM: `${BASE_ROUTE}/patient/virtual-visit/form`,
   PATIENT_CHECK_VIRTUAL_VISITS_RESULTS: `${BASE_ROUTE}/patient/virtual-visit/results`,
-  DOCTOR_REVIEW_NEW_VIRTUAL_VISITS: `${BASE_ROUTE}/doctor/virtual-visit/review-new-appointments`,
-  DOCTOR_REVIEW_COMPLETED_VIRTUAL_VISITS: `${BASE_ROUTE}/doctor/virtual-visit/review-completed-appointments`,
+  DOCTOR_REVIEW_VIRTUAL_VISITS: `${BASE_ROUTE}/doctor/virtual-visit/review-appointments`,
 };

@@ -28,7 +28,7 @@ export const listOfAppointments = [
   {
     appointmentId: 'sadadasdas',
     title: 'Akni na grb -test',
-    appointmentStatus: APPOINTMENT_STATUSES.COMPLETED,
+    appointmentStatus: APPOINTMENT_STATUSES.WAITING_FOR_REVIEW,
     createdOnDate: '12-11-2022',
     medicinePrescription: 'Lek1, Lek2',
     medicalDiagnosis: 'Acne test',
@@ -52,7 +52,7 @@ export const listOfAppointments = [
   {
     appointmentId: 'sadadasdas',
     title: 'Akni na grb -test',
-    appointmentStatus: APPOINTMENT_STATUSES.WAITING_FOR_REVIEW,
+    appointmentStatus: APPOINTMENT_STATUSES.COMPLETED,
     createdOnDate: '12-11-2022',
     medicinePrescription: 'Lek1, Lek2',
     medicalDiagnosis: 'Acne test',

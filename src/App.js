@@ -21,8 +21,7 @@ import DoctorHomePage from './ui/doctor-ui/home-page/HomePage';
 import PatientHomePage from './ui/client-ui/home-page/HomePage';
 import MainPage from './ui/basic-ui/entry-home-page/MainPage';
 import CreateVirtualVisitPage from './ui/client-ui/create-virtual-visit/CreateVirtualVisitPage';
-import ReviewNewVirtualVisitsPage from './ui/doctor-ui/ReviewNewVirtualVisitsPage';
-import ReviewCompletedVirtualVisitsPage from './ui/doctor-ui/ReviewCompletedVirtualVisitsPage';
+import ReviewVirtualVisitsPage from './ui/doctor-ui/ReviewVirtualVisitsPage';
 
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
@@ -39,11 +38,7 @@ const App = () => {
             <Route path={PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE} component={DoctorHomePage} />
             <Route path={PAGES_FULL_ROUTES.PATIENT_HOME_PAGE} component={PatientHomePage} />
             <Route path={PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT} component={CreateVirtualVisitPage} />
-            <Route path={PAGES_FULL_ROUTES.DOCTOR_REVIEW_NEW_VIRTUAL_VISITS} component={ReviewNewVirtualVisitsPage} />
-            <Route
-              path={PAGES_FULL_ROUTES.DOCTOR_REVIEW_COMPLETED_VIRTUAL_VISITS}
-              component={ReviewCompletedVirtualVisitsPage}
-            />
+            <Route path={PAGES_FULL_ROUTES.DOCTOR_REVIEW_VIRTUAL_VISITS} component={ReviewVirtualVisitsPage} />
             <Route component={PageNotFound} />
           </Switch>
         </BrowserRouter>
