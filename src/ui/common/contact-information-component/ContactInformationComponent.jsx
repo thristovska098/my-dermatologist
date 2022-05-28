@@ -4,7 +4,7 @@ import * as React from 'react';
 // Components
 import AddressComponent from '../address-component/AddressComponent';
 import { RowsContainer } from '../styles';
-import TextInputField from '../../../components/final-form/TextInputField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
 
 // Constants
 import { EMAIL_LABEL, PHONE_LABEL } from './labels';

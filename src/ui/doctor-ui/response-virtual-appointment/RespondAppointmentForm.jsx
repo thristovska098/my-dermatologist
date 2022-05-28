@@ -6,8 +6,8 @@ import { Form } from 'react-final-form';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { RespondModalContainer, RespondModalFieldsContainer, RespondModalHeaderContainer } from './styles';
-import TextInputField from '../../../components/final-form/TextInputField';
-import TextAreaField from '../../../components/final-form/text-area-field/TextAreaField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
+import TextAreaField from '../../../components/final-form/field-components/text-area-field/TextAreaField';
 
 // Constants
 import { MAX_CHARACTERS, MIN_CHARACTERS, MODAL_FIELD_WIDTH } from '../../client-ui/create-virtual-visit/constants';

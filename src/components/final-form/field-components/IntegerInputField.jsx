@@ -7,10 +7,10 @@ import { FormTextField } from 'mui-form-fields';
 // Utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
-import { parseIntegerInputWithMaxLength } from '../parsers';
+import { parseIntegerInputWithMaxLength } from '../../parsers';
 
 // Constants
-import { MAX_CHARACTERS } from '../../ui/client-ui/create-virtual-visit/constants';
+import { MAX_CHARACTERS } from '../../../ui/client-ui/create-virtual-visit/constants';
 
 const InputWrapper: React.ComponentType<*> = styled.div`
   i:first-child {
@@ -37,6 +37,7 @@ type Props = {
   width: number,
   length?: number,
 };
+
 const IntegerInputField = ({ width, length = MAX_CHARACTERS, ...rest }: Props): React.Node => {
   const parser = parseIntegerInputWithMaxLength(length);
 

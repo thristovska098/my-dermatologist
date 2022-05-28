@@ -7,10 +7,10 @@ import { FormTextField } from 'mui-form-fields';
 // Styled utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
-import { parseTextWithMaxLength } from '../parsers';
+import { parseTextWithMaxLength } from '../../parsers';
 
 // Components
-import { MAX_CHARACTERS } from '../../ui/client-ui/create-virtual-visit/constants';
+import { MAX_CHARACTERS } from '../../../ui/client-ui/create-virtual-visit/constants';
 
 const InputWrapper: React.ComponentType<*> = styled.div`
   i:first-child {

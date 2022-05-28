@@ -11,7 +11,7 @@ import { TextareaAutosize } from '@mui/material';
 import { ErrorMessage } from '../password-field/styles';
 
 // Parsers
-import { parseTextWithMaxLength } from '../../parsers';
+import { parseTextWithMaxLength } from '../../../parsers';
 
 type Props = {
   name: string,

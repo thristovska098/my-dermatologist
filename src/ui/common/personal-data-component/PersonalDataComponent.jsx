@@ -6,10 +6,10 @@ import { composeValidators, dateInThePast, required, validateLength } from '../.
 
 // Components
 import { RowsContainer } from '../styles';
-import DatePickerField from '../../../components/final-form/DatePickerField';
-import DropdownField from '../../../components/final-form/DropdownField';
+import DatePickerField from '../../../components/final-form/field-components/DatePickerField';
+import DropdownField from '../../../components/final-form/field-components/DropdownField';
 import ContactInformationComponent from '../contact-information-component/ContactInformationComponent';
-import TextInputField from '../../../components/final-form/TextInputField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../constants';

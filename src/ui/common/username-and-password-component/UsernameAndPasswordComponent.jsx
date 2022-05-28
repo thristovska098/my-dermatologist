@@ -7,8 +7,8 @@ import { useHistory } from 'react-router-dom';
 
 // Components
 import { Form } from 'react-final-form';
-import TextInputField from '../../../components/final-form/TextInputField';
-import PasswordField from '../../../components/final-form/password-field/PasswordField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
+import PasswordField from '../../../components/final-form/field-components/password-field/PasswordField';
 import { StyledTitle, Container } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
 

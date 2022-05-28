@@ -6,10 +6,10 @@ import { Field } from 'react-final-form';
 import { ErrorMessage, StyledPasswordInput, StyledPasswordLabel } from './styles';
 
 // Validators
-import { composeValidators, required, validatePassword } from '../../validators';
+import { composeValidators, required, validatePassword } from '../../../validators';
 
 // Constants
-import { INVALID_PASSWORD_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../../../ui/common/messages';
+import { INVALID_PASSWORD_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../../../../ui/common/messages';
 
 type Props = {
   name: string,
@@ -25,7 +25,10 @@ const PasswordField = ({ name, label = '' }: Props): React.Node => {
     <Field
       name={name}
       validate={combinedValidators}
-      render={({ input, meta, ...rest }): React.Node => {
+      render={(
+        /* eslint-disable-next-line flowtype/require-parameter-type */
+        { input, meta, ...rest },
+      ): React.Node => {
         const { value, onChange } = input;
         const { error, touched } = meta;
 

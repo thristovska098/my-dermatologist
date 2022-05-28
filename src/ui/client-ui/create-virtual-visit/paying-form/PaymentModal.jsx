@@ -10,8 +10,8 @@ import { Box, Button, Modal } from '@mui/material';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import IntegerInputField from '../../../../components/final-form/IntegerInputField';
-import TextInputField from '../../../../components/final-form/TextInputField';
+import IntegerInputField from '../../../../components/final-form/field-components/IntegerInputField';
+import TextInputField from '../../../../components/final-form/field-components/TextInputField';
 import {
   FieldsContainer,
   ButtonContainer,

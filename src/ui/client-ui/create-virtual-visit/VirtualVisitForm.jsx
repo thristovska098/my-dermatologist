@@ -14,10 +14,10 @@ import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCa
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
 import { FormContainer, RowContainer, RowsContainer, TooltipContainer } from '../../common/styles';
-import TextInputField from '../../../components/final-form/TextInputField';
-import TextAreaField from '../../../components/final-form/text-area-field/TextAreaField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
+import TextAreaField from '../../../components/final-form/field-components/text-area-field/TextAreaField';
 import ImageAddingComponent from './ImageAddingComponent';
-import DropdownField from '../../../components/final-form/DropdownField';
+import DropdownField from '../../../components/final-form/field-components/DropdownField';
 import PaymentModal from './paying-form/PaymentModal';
 
 // Utils

@@ -5,8 +5,8 @@ import * as React from 'react';
 // Components
 import { ColumnsContainer } from './styles';
 import { RowsContainer } from '../styles';
-import DropdownField from '../../../components/final-form/DropdownField';
-import TextInputField from '../../../components/final-form/TextInputField';
+import DropdownField from '../../../components/final-form/field-components/DropdownField';
+import TextInputField from '../../../components/final-form/field-components/TextInputField';
 
 // Constants
 import { CITY_LABEL, COUNTRY_LABEL, STREET_LABEL, STREET_NUMBER_LABEL, ZIPCODE_LABEL } from './labels';

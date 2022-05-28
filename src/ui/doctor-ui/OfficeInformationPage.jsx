@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 // Components
 import { Form } from 'react-final-form';
 import { FormContainer, RowsContainer } from '../common/styles';
-import TextInputField from '../../components/final-form/TextInputField';
+import TextInputField from '../../components/final-form/field-components/TextInputField';
 import { PageWrapper } from '../basic-ui/header/styles';
 import Header from '../basic-ui/header/Header';
 import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
@@ -23,7 +23,7 @@ import { INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../common/
 import { composeValidators, required, validateLength } from '../../components/validators';
 import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
-const OfficeInformationPage = () => {
+const OfficeInformationPage = (): React.Node => {
   const history = useHistory();
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
