@@ -5,6 +5,9 @@ import * as React from 'react';
 // Utils
 import { v4 as uuid } from 'uuid';
 
+// Hooks
+import { useDispatch } from 'react-redux';
+
 // Components
 import {
   Box,
@@ -43,8 +46,13 @@ import {
   DESCRIPTION_LABEL,
 } from './home-page/constants';
 
+// Actions
+import { setResponseModalOpenedForAppointmentId } from '../../redux/actions';
+
 const ReviewVirtualVisitsPage = (): React.Node => {
   const [openedModal, setOpenedModal] = React.useState(null);
+  const [openedAccordionId, setOpenedAccordionId] = React.useState(null);
+  const dispatch = useDispatch();
 
   const handleShowPopover = (image: string) => {
     setOpenedModal(image);
@@ -80,9 +88,14 @@ const ReviewVirtualVisitsPage = (): React.Node => {
     })
     .map((appointment: Object): Array<React.Node> => {
       const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED ? 'green' : 'auto';
+      const isExpanded = openedAccordionId === appointment?.appointmentId;
 
       return (
-        <Accordion key={appointment?.appointmentId}>
+        <Accordion
+          key={appointment?.appointmentId}
+          onClick={() => setOpenedAccordionId(appointment?.appointmentId)}
+          expanded={isExpanded}
+        >
           <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
             <AccordionSummaryContainer>
               {appointment?.title}
@@ -127,7 +140,9 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             <br />
             {renderedImages(appointment)}
             {appointment?.appointmentStatus === APPOINTMENT_STATUSES.WAITING_FOR_REVIEW && (
-              <Button>{RESPOND_LABEL}</Button>
+              <Button onClick={() => dispatch(setResponseModalOpenedForAppointmentId(appointment?.appointmentId))}>
+                {RESPOND_LABEL}
+              </Button>
             )}
           </AccordionDetails>
         </Accordion>

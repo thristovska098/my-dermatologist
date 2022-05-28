@@ -4,3 +4,4 @@ export const getIsUserLoggedIn = (state) => state?.userInformation?.isUserLogged
 export const getIsSignInSignUpModalOpen = (state) => state?.common?.isSignInSignUpModalOpen;
 export const getIsPaymentModalOpen = (state) => state?.common?.isPaymentModalOpen;
 export const getIsPaymentOutcomeModalOpen = (state) => state?.common?.isPaymentOutcomeModalOpen;
+export const getModalOpenedForAppointmentId = (state) => state?.common?.modalOpenedForAppointmentId;
