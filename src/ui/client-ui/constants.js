@@ -8,6 +8,6 @@ export const CANCEL_FIELD_LABEL = 'Cancel';
 export const pages = [
   {
     title: 'Personal data',
-    path: PAGES_FULL_ROUTES.REGISTER_CLIENT,
+    path: PAGES_FULL_ROUTES.REGISTER_PATIENT,
   },
 ];

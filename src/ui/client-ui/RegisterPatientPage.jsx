@@ -23,7 +23,7 @@ import type { Patient } from '../../types/types.flow';
 import { prepareDate } from '../common/utils';
 import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
-const RegisterClientPage = (): React.Node => {
+const RegisterPatientPage = (): React.Node => {
   const history = useHistory();
 
   const handlingSubmit = (values: Patient) => {
@@ -33,7 +33,7 @@ const RegisterClientPage = (): React.Node => {
     history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
   };
 
-  const prepareData = React.useCallback((values: Patient) => {
+  const prepareData = React.useCallback((values: Patient): Object => {
     const patientData = values?.patient;
     const { dateOfBirth, ...rest } = patientData;
 
@@ -70,4 +70,4 @@ const RegisterClientPage = (): React.Node => {
   );
 };
 
-export default RegisterClientPage;
+export default RegisterPatientPage;

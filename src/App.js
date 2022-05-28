@@ -13,7 +13,7 @@ import { BASE_ROUTE, PAGES_FULL_ROUTES } from './routing/pages';
 
 // Components
 import Bootstrapper from './Bootstrapper';
-import RegisterClientPage from './ui/client-ui/RegisterClientPage';
+import RegisterPatientPage from './ui/client-ui/RegisterPatientPage';
 import RegisterDoctorPage from './ui/doctor-ui/RegisterDoctorPage';
 import PageNotFound from './ui/common/page-not-found/PageNotFound';
 import OfficeInformationPage from './ui/doctor-ui/OfficeInformationPage';
@@ -32,7 +32,7 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <Route path={BASE_ROUTE} exact component={MainPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_CLIENT} component={RegisterClientPage} />
+            <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT} component={RegisterPatientPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} component={RegisterDoctorPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
             <Route path={PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE} component={DoctorHomePage} />
