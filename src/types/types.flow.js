@@ -34,15 +34,18 @@ export type Doctor = {
 
 export type AppointmentStatus = 'Completed' | 'Waiting for review';
 
-export type PatientVirtualVisitForm = {
+export type Appointment = {
   appointmentId: string,
   doctorCode: string,
+  patientSsn: number,
   title: string,
   description: string,
   images: Array<Object>,
   createdOnDate: string,
   appointmentStatus: AppointmentStatus, // WAITING FOR REVIEW, COMPLETED
-  patientSsn: string,
+  medicalDiagnosis: string,
+  medicalPrescription: string,
+  treatment: string,
 };
 
 export type Action = {
