@@ -14,7 +14,8 @@ import patient from '../../../assets/icons/patient-photo.jpeg';
 import doctor from '../../../assets/icons/doctor.png';
 
 // Constants
-import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT, USER_TYPE } from '../constants';
+import { USER_TYPE } from '../../constants';
+import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT } from '../../labels';
 
 // Actions
 import { setIsSignInSignUpModalOpen, setUserType } from '../../../redux/actions';

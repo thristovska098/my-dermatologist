@@ -10,7 +10,7 @@ import CardComponent from './CardComponent';
 import HomePageWrapper from '../../common/home-page/HomePageWrapper';
 
 // Constants
-import { BUTTON_SIGN_IN } from '../../common/username-and-password-component/constants';
+import { LOG_IN_LABEL } from '../../labels';
 
 // Actions
 import { setIsSignInSignUpModalOpen } from '../../../redux/actions';
@@ -23,7 +23,7 @@ const MainPage = (): React.Node => {
   };
 
   return (
-    <HomePageWrapper navigationButtonLabel={BUTTON_SIGN_IN} handleNavigationButtonClick={handleLogInClick}>
+    <HomePageWrapper navigationButtonLabel={LOG_IN_LABEL} handleNavigationButtonClick={handleLogInClick}>
       <CardsContainer>
         <CardComponent isPatient />
         <CardComponent />
