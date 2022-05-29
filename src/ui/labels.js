@@ -24,6 +24,15 @@ export const TOTAL_COST_LABEL = 'Your total is';
 export const SUCCESSFUL_PAYMENT_LABEL = 'Payment successful';
 export const UNSUCCESSFUL_PAYMENT_LABEL = 'Payment unsuccessful';
 
+export const DOCTOR_NAME_LABEL = 'Doctor';
+export const EMAIL_LABEL = 'E-mail';
+export const PHONE_LABEL = 'Phone number';
+export const ADDRESS_LABEL = 'Office address';
+
+export const MEDICAL_DIAGNOSIS_LABEL = 'Medical diagnosis';
+export const PRESCRIPTION_LABEL = 'Prescription';
+export const TREATMENT_LABEL = 'Treatment';
+
 export const SELECT_DOCTOR_LABEL = 'Please select doctor';
 export const DISEASES_AND_ALLERGIES_TOOLTIP_LABEL = 'Please mention if you have any other diseases or allergies.';
 export const ADD_PHOTOS_LABEL ='Please add photos of the skin problem. You can maximum add 5 photos.';

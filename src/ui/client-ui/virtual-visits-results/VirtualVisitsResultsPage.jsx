@@ -21,16 +21,17 @@ import {
 
 // Constants
 import { listOfAppointments } from '../home-page/dummyData';
-import { APPOINTMENT_STATUSES, CREATE_VIRTUAL_VISIT_LABEL } from '../../labels';
 import {
+  APPOINTMENT_STATUSES,
+  CREATE_VIRTUAL_VISIT_LABEL,
   ADDRESS_LABEL,
-  DOCTOR_NAME_LABEL,
   EMAIL_LABEL,
-  MEDICAL_DIAGNOSIS_LABEL,
   PHONE_LABEL,
-  PRESCRIPTION_LABEL,
+  MEDICAL_DIAGNOSIS_LABEL,
   TREATMENT_LABEL,
-} from './constants';
+  DOCTOR_NAME_LABEL,
+  PRESCRIPTION_LABEL,
+} from '../../labels';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const VirtualVisitsResultsPage = (): React.Node => {
