@@ -109,32 +109,32 @@ const ReviewVirtualVisitsPage = (): React.Node => {
           </AccordionSummary>
           <AccordionDetails>
             <LabelAndInfoWrapper>
-              <Label>{PATIENT_NAME_LABEL}</Label>
+              <Label>{PATIENT_NAME_LABEL}:</Label>
               {`${appointment?.patient?.name} ${appointment?.patient?.lastName}`}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{SSN_LABEL}</Label>
+              <Label>{SSN_LABEL}:</Label>
               {appointment?.patient?.ssn}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{GENDER_LABEL}</Label>
+              <Label>{GENDER_LABEL}:</Label>
               {appointment?.patient?.gender}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{DATE_OF_BIRTH_LABEL}</Label>
+              <Label>{DATE_OF_BIRTH_LABEL}:</Label>
               {appointment?.patient?.dateOfBirth}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{EMAIL_LABEL}</Label>
+              <Label>{EMAIL_LABEL}:</Label>
               {appointment?.patient?.contactInformation?.email}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{PHONE_LABEL}</Label>
+              <Label>{PHONE_LABEL}:</Label>
               {appointment?.patient?.contactInformation?.phone}
             </LabelAndInfoWrapper>
             <br />
             <LabelAndInfoWrapper>
-              <Label>{DESCRIPTION_OF_ISSUE_LABEL}</Label>
+              <Label>{DESCRIPTION_OF_ISSUE_LABEL}:</Label>
               {appointment?.description}
             </LabelAndInfoWrapper>
             <br />

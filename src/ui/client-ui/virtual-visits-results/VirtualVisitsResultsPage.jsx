@@ -68,32 +68,32 @@ const VirtualVisitsResultsPage = (): React.Node => {
           </AccordionSummary>
           <AccordionDetails>
             <LabelAndInfoWrapper>
-              <Label>{DOCTOR_NAME_LABEL}</Label>
+              <Label>{DOCTOR_NAME_LABEL}:</Label>
               {`${appointment?.doctor?.name} ${appointment?.doctor?.lastName}`}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{EMAIL_LABEL}</Label>
+              <Label>{EMAIL_LABEL}:</Label>
               {appointment?.doctor?.officeInformation?.email}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{PHONE_LABEL}</Label>
+              <Label>{PHONE_LABEL}:</Label>
               {appointment?.doctor?.officeInformation?.phone}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{ADDRESS_LABEL}</Label>
+              <Label>{ADDRESS_LABEL}:</Label>
               {addressInfo}
             </LabelAndInfoWrapper>
             <br />
             <LabelAndInfoWrapper>
-              <Label>{MEDICAL_DIAGNOSIS_LABEL}</Label>
+              <Label>{MEDICAL_DIAGNOSIS_LABEL}:</Label>
               {appointment?.medicalDiagnosis}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{PRESCRIPTION_LABEL}</Label>
+              <Label>{PRESCRIPTION_LABEL}:</Label>
               {appointment?.medicinePrescription}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
-              <Label>{TREATMENT_LABEL}</Label>
+              <Label>{TREATMENT_LABEL}:</Label>
               {appointment?.treatment}
             </LabelAndInfoWrapper>
           </AccordionDetails>
