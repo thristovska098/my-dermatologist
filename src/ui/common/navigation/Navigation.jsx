@@ -23,13 +23,13 @@ const StyledNavigation: React.ComponentType<*> = styled.div`
 `;
 
 type Props = {
-  pages: Array<string>,
+  pages: Array<Object>,
   initialPage: number,
   onChangeFunction?: Function,
   hasValidationErrors?: boolean,
 };
 
-const Navigation = ({ pages, initialPage, onChangeFunction, hasValidationErrors }: Props): React.Node => {
+const Navigation = ({ pages, initialPage, onChangeFunction = () => {}, hasValidationErrors }: Props): React.Node => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const history = useHistory();
 
@@ -37,7 +37,7 @@ const Navigation = ({ pages, initialPage, onChangeFunction, hasValidationErrors 
     <Tab label={page.title} value={index} key={page.title} />
   ));
 
-  const handleOnChange = (event: Object, newValue: string) => {
+  const handleOnChange = (event: Object, newValue: number) => {
     if (newValue === currentPage) return;
 
     if (hasValidationErrors) {

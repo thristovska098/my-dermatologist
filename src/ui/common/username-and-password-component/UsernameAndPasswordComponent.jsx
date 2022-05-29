@@ -81,7 +81,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
           <SubmitAndCancelFooter
             handleSubmit={handleSubmit}
             submitLabel={buttonLabel}
-            additionalButtonLabel={hasUserType && additionalButtonLabel}
+            additionalButtonLabel={hasUserType ? additionalButtonLabel : undefined}
             additionalButtonOnClick={hasUserType && handleAdditionalButtonClick}
           />
         </Container>
