@@ -40,18 +40,19 @@ const InputWrapper: React.ComponentType<*> = styled.div`
 
 type Props = {
   width: number,
+  name: string,
 };
 
-const DropdownField = ({ width, ...rest }: Props): React.Node => {
-  const { meta, input } = useField(rest?.name);
+const DropdownField = ({ width, name, ...rest }: Props): React.Node => {
+  const { meta, input } = useField(name);
 
-  const value = _get(input?.value, rest?.name);
+  const value = _get(input?.value, name);
   const hasError = value === undefined || value === '';
   const isTouched = meta?.touched;
 
   return (
     <InputWrapper width={width} hasErrors={hasError && isTouched}>
-      <FormSelectField {...rest} />
+      <FormSelectField {...rest} name={name} />
     </InputWrapper>
   );
 };

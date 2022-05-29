@@ -18,6 +18,7 @@ type Props = {
   maxCharacters?: number,
   minCharacters?: number,
   validate?: Function,
+  fieldLabel?: string,
 };
 
 const StyledTextArea = styled.div`
@@ -44,16 +45,16 @@ const TextAreaField = ({
   name,
   maxCharacters = 100,
   validate = undefined,
-  fieldLabel = undefined,
-  ...restProps
+  fieldLabel = '',
+  ...rest
 }: Props): React.Node => (
   <Field
+    {...rest}
     name={name}
     parse={parseTextWithMaxLength(maxCharacters)}
     validate={validate}
-    {...restProps}
     /* eslint-disable-next-line flowtype/require-parameter-type */
-    render={({ input, meta, ...rest }): React.Node => {
+    render={({ input, meta, ...restProps }): React.Node => {
       const { value, onChange } = input;
       const { error, touched } = meta;
 
@@ -68,7 +69,7 @@ const TextAreaField = ({
         <div>
           <StyledLabel hasError={hasError}>{fieldLabel}</StyledLabel>
           <StyledTextArea hasError={hasError}>
-            <TextareaAutosize {...rest} onChange={onChangeHandler} value={value} />
+            <TextareaAutosize {...restProps} onChange={onChangeHandler} value={value} />
           </StyledTextArea>
           {hasError && <ErrorMessage>{errorMessage}</ErrorMessage>}
         </div>

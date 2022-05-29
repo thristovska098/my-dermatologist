@@ -40,7 +40,7 @@ const TextInputField = ({ width, length = MAX_CHARACTERS, ...rest }: Props): Rea
 
   return (
     <InputWrapper width={width}>
-      <FormTextField parse={parser} placeholder=" " {...rest} />
+      <FormTextField {...rest} parse={parser} placeholder=" " />
     </InputWrapper>
   );
 };

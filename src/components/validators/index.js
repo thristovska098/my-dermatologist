@@ -17,8 +17,10 @@ export const isEmail =
 
 export const minLength =
   (message: string, minimumLength: number): Function =>
-  (value: ?string): ?string =>
-    value?.length >= minimumLength ? undefined : message;
+  (value: ?string): ?string => {
+    const currentLength = value ? value?.length : 0;
+    return currentLength >= minimumLength ? undefined : message;
+  };
 
 export const validateLength =
   (message: string, desiredLength: number): Function =>
