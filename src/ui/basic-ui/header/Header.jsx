@@ -31,7 +31,7 @@ type Props = {
 const Header = ({
   pages,
   initialPage = 0,
-  onChangeFunction,
+  onChangeFunction = () => {},
   hasValidationErrors,
   shouldLetLogOut = true,
 }: Props): React.Node => {

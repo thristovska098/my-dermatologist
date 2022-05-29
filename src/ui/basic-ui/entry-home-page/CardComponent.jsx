@@ -10,7 +10,9 @@ import { CardContainer, CardItemsContainer } from '../styles';
 import SignInSignUpModal from '../sign-in-sign-up-modal/SignInSignUpModal';
 
 // Images
+/* $FlowIgnore */
 import patient from '../../../assets/icons/patient-photo.jpeg';
+/* $FlowIgnore */
 import doctor from '../../../assets/icons/doctor.png';
 
 // Constants

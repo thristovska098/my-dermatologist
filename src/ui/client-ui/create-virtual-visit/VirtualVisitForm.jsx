@@ -44,7 +44,7 @@ const VirtualVisitForm = (): React.Node => {
   const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
 
   // TODO: Replace the dummy data for the doctors with data from the BE
-  const doctorsOptions = dummyDoctorsList.map((doctor: Object): Array<Object> => {
+  const doctorsOptions = dummyDoctorsList.map((doctor: Object): Object => {
     const code = doctor?.code;
     const nameAndLastName = `${doctor?.doctor?.name} ${doctor?.doctor?.lastName}`;
     const city = doctor?.officeInformation?.address?.city;

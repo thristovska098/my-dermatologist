@@ -22,7 +22,7 @@ export const CardItemsContainer: React.ComponentType<*> = styled.div`
   align-content: space-between;
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer: React.ComponentType<*> = styled.div`
   background-repeat: no-repeat;
   background: url(${logo});
   margin-left: 30px;
@@ -39,7 +39,7 @@ export const LogoContainer = styled.div`
   align-content: center;
 `;
 
-export const MainBodyPageWrapper = styled.div`
+export const MainBodyPageWrapper: React.ComponentType<*> = styled.div`
   height: 100vh;
   width: 100vw;
   margin: -10px;
@@ -51,7 +51,7 @@ export const MainBodyPageWrapper = styled.div`
   min-height: 600px;
 `;
 
-export const CardsContainer = styled.div`
+export const CardsContainer: React.ComponentType<*> = styled.div`
   height: calc(80%-190px);
   width: 60%;
   display: flex;
@@ -62,7 +62,7 @@ export const CardsContainer = styled.div`
   align-items: center;
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer: React.ComponentType<*> = styled.div`
   margin-top: 30px;
 `;
 
