@@ -154,7 +154,8 @@ const ReviewVirtualVisitsPage = (): React.Node => {
       <AccordionAndButtonContainer>
         <RowsContainer>{renderedAccordions}</RowsContainer>
       </AccordionAndButtonContainer>
-      <Modal open={openedModal !== null} onBackdropClick={() => setOpenedModal(null)}>
+      {/* eslint-disable-next-line no-unused-vars */}
+      <Modal open={openedModal !== null} onClose={(event, reason = 'backdropClick') => setOpenedModal(null)}>
         <Box sx={style}>
           <ImageContainerForModal src={openedModal} />
         </Box>

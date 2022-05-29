@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/my-dermatologist.iml" filepath="$PROJECT_DIR$/my-dermatologist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-dermatologist-ui.iml" filepath="$PROJECT_DIR$/my-dermatologist-ui.iml" />
     </modules>
   </component>
 </project>

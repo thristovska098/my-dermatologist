@@ -26,7 +26,7 @@ export const listOfAppointments = [
     },
   },
   {
-    appointmentId: 'sadadasdas',
+    appointmentId: '2313',
     title: 'Akni na grb -test',
     appointmentStatus: APPOINTMENT_STATUSES.WAITING_FOR_REVIEW,
     createdOnDate: '12-11-2022',
@@ -50,7 +50,7 @@ export const listOfAppointments = [
     },
   },
   {
-    appointmentId: 'sadadasdas',
+    appointmentId: '213121123',
     title: 'Akni na grb -test',
     appointmentStatus: APPOINTMENT_STATUSES.COMPLETED,
     createdOnDate: '12-11-2022',
@@ -74,7 +74,7 @@ export const listOfAppointments = [
     },
   },
   {
-    appointmentId: 'sadadasdas',
+    appointmentId: '213123123',
     title: 'Akni na grb -test',
     appointmentStatus: APPOINTMENT_STATUSES.WAITING_FOR_REVIEW,
     createdOnDate: '12-11-2022',

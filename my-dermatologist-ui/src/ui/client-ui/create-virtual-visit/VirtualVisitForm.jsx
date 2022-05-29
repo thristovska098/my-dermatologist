@@ -103,7 +103,6 @@ const VirtualVisitForm = (): React.Node => {
                     name="virtualVisit.description"
                     placeholder={DESCRIPTION_LABEL}
                     minRows={1}
-                    maxRows={7}
                     fieldLabel="Description"
                     maxCharacters={MAX_CHARACTERS}
                     validate={descriptionValidators}
