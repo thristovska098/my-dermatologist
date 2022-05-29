@@ -12,12 +12,13 @@ import TextAreaField from '../../../components/final-form/field-components/text-
 // Constants
 import { MAX_CHARACTERS, MIN_CHARACTERS, MODAL_FIELD_WIDTH } from '../../client-ui/create-virtual-visit/constants';
 import {
+  MINIMUM_LENGTH_MESSAGE,
+  MANDATORY_FIELD_MESSAGE,
   MEDICAL_DIAGNOSIS_LABEL,
   TREATMENT_LABEL,
   MEDICAL_PRESCRIPTION_LABEL,
   MEDICAL_REPORT_LABEL,
-} from './constants';
-import { MANDATORY_FIELD_MESSAGE } from '../../common/messages';
+} from '../../labels';
 
 // Hooks
 
@@ -35,7 +36,7 @@ const RespondAppointmentForm = (): React.Node => {
   };
 
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
-  const minLengthValidator = minLength(`The length must be minimum ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
+  const minLengthValidator = minLength(`${MINIMUM_LENGTH_MESSAGE} ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
   const treatmentValidator = composeValidators([requiredValidator, minLengthValidator]);
 
   return (

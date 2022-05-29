@@ -1,9 +1,11 @@
 // @flow
 import * as React from 'react';
 
-// Utils
+// Hooks
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+
+// Utils
 import styled from 'styled-components';
 
 // Components

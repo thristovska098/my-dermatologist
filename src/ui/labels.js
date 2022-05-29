@@ -29,9 +29,23 @@ export const EMAIL_LABEL = 'E-mail';
 export const PHONE_LABEL = 'Phone number';
 export const ADDRESS_LABEL = 'Office address';
 
+export const CITY_LABEL = 'City';
+export const ZIPCODE_LABEL = 'Zipcode';
+export const COUNTRY_LABEL = 'Country';
+export const STREET_NUMBER_LABEL = 'Street number';
+export const STREET_LABEL = 'Street';
+
+export const NAME_LABEL = 'First name';
+export const SURNAME_LABEL = 'Last name';
+export const SSN_LABEL = 'SSN';
+export const DATE_OF_BIRTH_LABEL = 'Date of birth';
+export const GENDER_LABEL = 'Gender';
+
 export const MEDICAL_DIAGNOSIS_LABEL = 'Medical diagnosis';
 export const PRESCRIPTION_LABEL = 'Prescription';
 export const TREATMENT_LABEL = 'Treatment';
+export const MEDICAL_PRESCRIPTION_LABEL = 'Medical prescription';
+export const MEDICAL_REPORT_LABEL = 'Medical report';
 
 export const SELECT_DOCTOR_LABEL = 'Please select doctor';
 export const DISEASES_AND_ALLERGIES_TOOLTIP_LABEL = 'Please mention if you have any other diseases or allergies.';
@@ -70,3 +84,4 @@ export const INVALID_USERNAME_MESSAGE = 'The username should contain minimum 5 c
 export const INVALID_PASSWORD_MESSAGE =
     'The password should contain minimum 8 characters including digits, letters and special characters.';
 export const REQUIRED_IMAGES_MESSAGE = 'You must upload pictures of the skin problem.';
+export const MINIMUM_LENGTH_MESSAGE = 'The length must be minimum';

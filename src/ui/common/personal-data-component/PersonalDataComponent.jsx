@@ -13,16 +13,17 @@ import TextInputField from '../../../components/final-form/field-components/Text
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../constants';
-import { INVALID_DATE, INVALID_SSN_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../messages';
 import {
-  DATE_OF_BIRTH_LABEL,
+  INVALID_DATE,
+  INVALID_SSN_MESSAGE,
+  MANDATORY_FIELD_MESSAGE,
   NAME_LABEL,
-  SSN_LABEL,
   SURNAME_LABEL,
-  GENDER_OPTIONS,
+  SSN_LABEL,
+  DATE_OF_BIRTH_LABEL,
   GENDER_LABEL,
-  LENGTH_OF_SSN,
-} from './constants';
+} from '../../labels';
+import { GENDER_OPTIONS, LENGTH_OF_SSN } from './constants';
 
 type Props = {
   fieldNamePrefix: string,

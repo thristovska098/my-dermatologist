@@ -20,15 +20,16 @@ import { composeValidators, required, validateMinimumLength } from '../../../com
 import { getUserType } from '../../../redux/selectors';
 
 // Constants
-import { INVALID_USERNAME_MESSAGE, MANDATORY_FIELD_MESSAGE, SIGN_IN_MESSAGE, SIGN_UP_MESSAGE } from '../messages';
 import {
-  BUTTON_REGISTER,
-  BUTTON_SIGN_IN,
+  INVALID_USERNAME_MESSAGE,
+  MANDATORY_FIELD_MESSAGE,
+  SIGN_IN_MESSAGE,
+  SIGN_UP_MESSAGE,
+  REGISTER_LABEL,
   PASSWORD_LABEL,
-  TITLE_REGISTER,
-  TITLE_SIGN_IN,
+  SIGN_IN_LABEL,
   USERNAME_LABEL,
-} from './constants';
+} from '../../labels';
 import { USER_TYPE } from '../../constants';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
@@ -42,9 +43,9 @@ const UsernameAndPasswordComponent = (): React.Node => {
   const hasUserType = userType !== undefined;
   const dispatch = useDispatch();
 
-  const title = isSignUpMode ? TITLE_REGISTER : TITLE_SIGN_IN;
+  const title = isSignUpMode ? REGISTER_LABEL : SIGN_IN_LABEL;
   const additionalButtonLabel = isSignUpMode ? SIGN_IN_MESSAGE : SIGN_UP_MESSAGE;
-  const buttonLabel = isSignUpMode ? BUTTON_REGISTER : BUTTON_SIGN_IN;
+  const buttonLabel = isSignUpMode ? REGISTER_LABEL : SIGN_IN_LABEL;
 
   const handleAdditionalButtonClick = () => {
     setIsSignUpMode(!isSignUpMode);

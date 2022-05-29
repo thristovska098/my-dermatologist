@@ -9,7 +9,7 @@ import { ErrorMessage, StyledPasswordInput, StyledPasswordLabel } from './styles
 import { composeValidators, required, validatePassword } from '../../../validators';
 
 // Constants
-import { INVALID_PASSWORD_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../../../../ui/common/messages';
+import { INVALID_PASSWORD_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../../../../ui/labels';
 
 type Props = {
   name: string,

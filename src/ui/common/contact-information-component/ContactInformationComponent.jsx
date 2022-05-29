@@ -7,8 +7,13 @@ import { RowsContainer } from '../styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 
 // Constants
-import { EMAIL_LABEL, PHONE_LABEL } from './labels';
-import { INVALID_EMAIL_MESSAGE, INVALID_PHONE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../messages';
+import {
+  EMAIL_LABEL,
+  PHONE_LABEL,
+  INVALID_EMAIL_MESSAGE,
+  INVALID_PHONE_MESSAGE,
+  MANDATORY_FIELD_MESSAGE,
+} from '../../labels';
 import { FIELD_WIDTH_MAX } from '../constants';
 
 // Utils

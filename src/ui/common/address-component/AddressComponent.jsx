@@ -1,6 +1,8 @@
 // @flow
-/* eslint-disable */
 import * as React from 'react';
+
+// Hooks
+import { useSelector } from 'react-redux';
 
 // Components
 import { ColumnsContainer } from './styles';
@@ -9,13 +11,18 @@ import DropdownField from '../../../components/final-form/field-components/Dropd
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 
 // Constants
-import { CITY_LABEL, COUNTRY_LABEL, STREET_LABEL, STREET_NUMBER_LABEL, ZIPCODE_LABEL } from './labels';
-import { MANDATORY_FIELD_MESSAGE } from '../messages';
+import {
+  CITY_LABEL,
+  COUNTRY_LABEL,
+  STREET_LABEL,
+  STREET_NUMBER_LABEL,
+  ZIPCODE_LABEL,
+  MANDATORY_FIELD_MESSAGE,
+} from '../../labels';
 import { FIELD_WIDTH_MAX, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MIN } from '../constants';
 
 // Utils
 import { required } from '../../../components/validators';
-import { useSelector } from 'react-redux';
 import { getCitiesList } from '../../../redux/selectors';
 
 type Props = {
