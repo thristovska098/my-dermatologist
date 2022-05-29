@@ -29,7 +29,7 @@ import {
   TITLE_SIGN_IN,
   USERNAME_LABEL,
 } from './constants';
-import { USER_TYPE } from '../../basic-ui/constants';
+import { USER_TYPE } from '../../constants';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const UsernameAndPasswordComponent = (): React.Node => {
@@ -52,7 +52,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
 
   const getRedirectPath = (): string => {
     if (userType === USER_TYPE.PATIENT) {
-      return isSignUpMode ? PAGES_FULL_ROUTES.REGISTER_CLIENT : PAGES_FULL_ROUTES.PATIENT_HOME_PAGE;
+      return isSignUpMode ? PAGES_FULL_ROUTES.REGISTER_PATIENT : PAGES_FULL_ROUTES.PATIENT_HOME_PAGE;
     }
     return isSignUpMode ? PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA : PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE;
   };

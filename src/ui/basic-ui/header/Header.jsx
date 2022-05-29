@@ -14,7 +14,7 @@ import Navigation from '../../common/navigation/Navigation';
 import type { PageType } from '../../common/navigation/Navigation';
 
 // Constants
-import { LOG_OUT_LABEL } from '../../common/constants';
+import { LOG_OUT_LABEL } from '../../labels';
 import { BASE_ROUTE } from '../../../routing/pages';
 
 // Action
