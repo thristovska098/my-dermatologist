@@ -34,8 +34,8 @@ import { RowsContainer } from '../common/styles';
 
 // Constants
 import { listOfAppointments } from './home-page/dummyData';
-import { APPOINTMENT_STATUSES } from '../labels';
 import {
+  APPOINTMENT_STATUSES,
   DATE_OF_BIRTH_LABEL,
   GENDER_LABEL,
   PATIENT_NAME_LABEL,
@@ -43,8 +43,8 @@ import {
   PHONE_LABEL,
   EMAIL_LABEL,
   RESPOND_LABEL,
-  DESCRIPTION_LABEL,
-} from './home-page/constants';
+  DESCRIPTION_OF_ISSUE_LABEL,
+} from '../labels';
 
 // Actions
 import { setResponseModalOpenedForAppointmentId } from '../../redux/actions';
@@ -134,7 +134,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             </LabelAndInfoWrapper>
             <br />
             <LabelAndInfoWrapper>
-              <Label>{DESCRIPTION_LABEL}</Label>
+              <Label>{DESCRIPTION_OF_ISSUE_LABEL}</Label>
               {appointment?.description}
             </LabelAndInfoWrapper>
             <br />

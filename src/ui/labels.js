@@ -41,6 +41,12 @@ export const SSN_LABEL = 'SSN';
 export const DATE_OF_BIRTH_LABEL = 'Date of birth';
 export const GENDER_LABEL = 'Gender';
 
+export const PATIENT_NAME_LABEL = 'Patient';
+export const DESCRIPTION_OF_ISSUE_LABEL = 'Description';
+export const CODE_LABEL = 'Doctor ID';
+
+export const RESPOND_LABEL = 'Respond';
+
 export const MEDICAL_DIAGNOSIS_LABEL = 'Medical diagnosis';
 export const PRESCRIPTION_LABEL = 'Prescription';
 export const TREATMENT_LABEL = 'Treatment';

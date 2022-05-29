@@ -14,9 +14,9 @@ import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCance
 import ContactInformationComponent from '../common/contact-information-component/ContactInformationComponent';
 
 // Constants
-import { CODE_LABEL, LENGTH_OF_DOCTOR_CODE, pages } from './constants';
+import { LENGTH_OF_DOCTOR_CODE, pages } from './constants';
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { SUBMIT_FIELD_LABEL, INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../labels';
+import { SUBMIT_FIELD_LABEL, INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE, CODE_LABEL } from '../labels';
 
 // Validators
 import { composeValidators, required, validateLength } from '../../components/validators';

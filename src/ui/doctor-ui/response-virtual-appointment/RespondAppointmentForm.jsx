@@ -20,8 +20,6 @@ import {
   MEDICAL_REPORT_LABEL,
 } from '../../labels';
 
-// Hooks
-
 // Actions
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
 
