@@ -15,12 +15,13 @@ import { PaymentOutcomeContainer, PaymentOutcomeTextContainer, StyledIconWrapper
 import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
+
 import {
-  CONTINUE_BUTTON_LABEL,
-  SUCCESSFUL_PAYMENT_LABEL,
+  CONTINUE_FIELD_LABEL,
   TRY_AGAIN_BUTTON_LABEL,
   UNSUCCESSFUL_PAYMENT_LABEL,
-} from './constants';
+  SUCCESSFUL_PAYMENT_LABEL,
+} from '../../../labels';
 import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
 
 type Props = {
@@ -55,7 +56,7 @@ const PaymentOutcomeModal = ({ isPaymentSuccessful }: Props): React.Node => {
   };
 
   const button = (
-    <Button onClick={handleButtonClick}>{isPaymentSuccessful ? CONTINUE_BUTTON_LABEL : TRY_AGAIN_BUTTON_LABEL}</Button>
+    <Button onClick={handleButtonClick}>{isPaymentSuccessful ? CONTINUE_FIELD_LABEL : TRY_AGAIN_BUTTON_LABEL}</Button>
   );
 
   const icon = (

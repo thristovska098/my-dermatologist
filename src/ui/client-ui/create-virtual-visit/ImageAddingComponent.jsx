@@ -14,6 +14,7 @@ import { required } from '../../../components/validators';
 
 // Constants
 import { MIN_WIDTH } from './constants';
+import { ADD_PHOTOS_LABEL, REQUIRED_IMAGES_MESSAGE } from '../../labels';
 
 const StyledFileUpload = styled.div`
   li.MuiListItem-root.MuiListItem-gutters {
@@ -49,7 +50,7 @@ const ImageAddingComponent = (): React.Node => {
   const { touched } = meta;
   const images = input?.value;
 
-  const requiredValidator = required('You must upload pictures of the skin problem.');
+  const requiredValidator = required(REQUIRED_IMAGES_MESSAGE);
 
   const hasError = images.length === 0 && touched;
 
@@ -58,7 +59,7 @@ const ImageAddingComponent = (): React.Node => {
       <StyledFileUpload hasError={hasError}>
         <FormFileUploadField
           name="images"
-          label="Please add photos of the skin problem. You can maximum add 5 photos."
+          label={ADD_PHOTOS_LABEL}
           hasIcon={false}
           accept="image/*"
           multiple

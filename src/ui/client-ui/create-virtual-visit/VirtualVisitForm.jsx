@@ -27,19 +27,16 @@ import { getIsPaymentModalOpen } from '../../../redux/selectors';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
+import { dummyDoctorsList, MAX_CHARACTERS, MIN_CHARACTERS, MIN_WIDTH, pages } from './constants';
 import {
   DESCRIPTION_LABEL,
-  dummyDoctorsList,
-  MAX_CHARACTERS,
-  MIN_CHARACTERS,
-  MIN_WIDTH,
-  pages,
-  SELECT_DOCTOR_LABEL,
+  MANDATORY_FIELD_MESSAGE,
+  CONTINUE_FIELD_LABEL,
+  CANCEL_FIELD_LABEL,
   SUBJECT_LABEL,
-  TOOLTIP_LABEL,
-} from './constants';
-import { MANDATORY_FIELD_MESSAGE } from '../../common/messages';
-import { CONTINUE_FIELD_LABEL, CANCEL_FIELD_LABEL } from '../constants';
+  SELECT_DOCTOR_LABEL,
+  DISEASES_AND_ALLERGIES_TOOLTIP_LABEL,
+} from '../../labels';
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
@@ -117,7 +114,7 @@ const VirtualVisitForm = (): React.Node => {
                       maxHeight: '200px',
                     }}
                   />
-                  <Tooltip title={TOOLTIP_LABEL}>
+                  <Tooltip title={DISEASES_AND_ALLERGIES_TOOLTIP_LABEL}>
                     <TooltipContainer>
                       <InfoIcon color="primary" />
                     </TooltipContainer>

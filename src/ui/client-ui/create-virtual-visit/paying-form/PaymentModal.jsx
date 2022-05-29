@@ -25,12 +25,18 @@ import PaymentOutcomeModal from './PaymentOutcomeModal';
 import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
-import { CARD_NUMBER_LABEL, CVC_LABEL, EXPIRING_DATE_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from './constants';
+import {
+  CARD_NUMBER_LABEL,
+  CVC_LABEL,
+  EXPIRING_DATE_LABEL,
+  MAKE_PAYMENT_LABEL,
+  TOTAL_COST_LABEL,
+  MANDATORY_FIELD_MESSAGE,
+} from '../../../labels';
 
 // Utils
 import { formatCreditCardNumber, formatExpirationDate } from '../../../../components/formatters';
 import { composeValidators, required, validateExpiringDate } from '../../../../components/validators';
-import { MANDATORY_FIELD_MESSAGE } from '../../../common/messages';
 import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
 const PaymentModal = (): React.Node => {

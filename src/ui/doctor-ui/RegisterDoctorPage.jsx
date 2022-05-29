@@ -14,7 +14,7 @@ import { FormContainer } from '../common/styles';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { SUBMIT_FIELD_LABEL } from '../client-ui/constants';
+import { SUBMIT_FIELD_LABEL } from '../labels';
 import { pages } from './constants';
 
 // Types

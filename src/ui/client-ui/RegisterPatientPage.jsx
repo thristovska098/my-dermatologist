@@ -14,14 +14,15 @@ import { FormContainer } from '../common/styles';
 
 // Constants
 import { FIELD_WIDTH_MAX } from '../common/constants';
-import { pages, SUBMIT_FIELD_LABEL } from './constants';
+import { pages } from './constants';
+import { SUBMIT_FIELD_LABEL } from '../labels';
+import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
 // Types
 import type { Patient } from '../../types/types.flow';
 
 // Utils
 import { prepareDate } from '../common/utils';
-import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
 const RegisterPatientPage = (): React.Node => {
   const history = useHistory();
