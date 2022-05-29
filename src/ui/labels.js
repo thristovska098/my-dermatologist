@@ -27,6 +27,7 @@ export const UNSUCCESSFUL_PAYMENT_LABEL = 'Payment unsuccessful';
 export const SELECT_DOCTOR_LABEL = 'Please select doctor';
 export const DISEASES_AND_ALLERGIES_TOOLTIP_LABEL = 'Please mention if you have any other diseases or allergies.';
 export const ADD_PHOTOS_LABEL ='Please add photos of the skin problem. You can maximum add 5 photos.';
+export const CREATE_VIRTUAL_VISIT_LABEL = 'Create virtual dermatologist visit';
 
 
 export const PATIENT_ENTRY_CONTENT = {
@@ -42,6 +43,12 @@ export const DOCTOR_ENTRY_CONTENT = {
     buttonText: 'Continue as doctor...',
     alternativeText: 'Doctor working',
 };
+
+export const APPOINTMENT_STATUSES = {
+    COMPLETED: 'Reviewed',
+    WAITING_FOR_REVIEW: 'Waiting...',
+};
+
 
 // Messages for validation
 export const MANDATORY_FIELD_MESSAGE = 'This field is mandatory.';

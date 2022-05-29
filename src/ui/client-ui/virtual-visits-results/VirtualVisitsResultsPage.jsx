@@ -21,7 +21,7 @@ import {
 
 // Constants
 import { listOfAppointments } from '../home-page/dummyData';
-import { APPOINTMENT_STATUSES, CREATE_VIRTUAL_VISIT_BUTTON_LABEL } from '../home-page/constants';
+import { APPOINTMENT_STATUSES, CREATE_VIRTUAL_VISIT_LABEL } from '../../labels';
 import {
   ADDRESS_LABEL,
   DOCTOR_NAME_LABEL,
@@ -106,7 +106,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
         <RowsContainer>{renderedAccordions}</RowsContainer>
         <ButtonWrapper>
           <Button variant="contained" onClick={handleButtonClick}>
-            {CREATE_VIRTUAL_VISIT_BUTTON_LABEL}
+            {CREATE_VIRTUAL_VISIT_LABEL}
           </Button>
         </ButtonWrapper>
       </AccordionAndButtonContainer>

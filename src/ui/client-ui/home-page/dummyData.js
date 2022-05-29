@@ -1,4 +1,4 @@
-import { APPOINTMENT_STATUSES } from './constants';
+import { APPOINTMENT_STATUSES } from '../../labels';
 
 export const listOfAppointments = [
   {

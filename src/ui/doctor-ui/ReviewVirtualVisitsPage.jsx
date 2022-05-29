@@ -34,7 +34,7 @@ import { RowsContainer } from '../common/styles';
 
 // Constants
 import { listOfAppointments } from './home-page/dummyData';
-import { APPOINTMENT_STATUSES } from '../client-ui/home-page/constants';
+import { APPOINTMENT_STATUSES } from '../labels';
 import {
   DATE_OF_BIRTH_LABEL,
   GENDER_LABEL,

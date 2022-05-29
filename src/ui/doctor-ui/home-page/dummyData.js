@@ -1,4 +1,4 @@
-import { APPOINTMENT_STATUSES } from '../../client-ui/home-page/constants';
+import { APPOINTMENT_STATUSES } from '../../labels';
 import doctor from '../../../assets/icons/doctor.png';
 import patient from '../../../assets/icons/patient-photo.jpeg';
 
