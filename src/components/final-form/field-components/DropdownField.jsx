@@ -43,7 +43,7 @@ type Props = {
 };
 
 const DropdownField = ({ width, ...rest }: Props): React.Node => {
-  const { meta, input } = useField();
+  const { meta, input } = useField(rest?.name);
 
   const value = _get(input?.value, rest?.name);
   const hasError = value === undefined || value === '';

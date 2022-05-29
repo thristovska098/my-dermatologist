@@ -78,7 +78,7 @@ export const dummyDoctorsList = [
     },
   },
   {
-    code: 'ABCD3',
+    code: 'ABCD4',
     doctor: {
       name: 'Andrea',
       lastName: 'Andreevska',
@@ -91,7 +91,7 @@ export const dummyDoctorsList = [
     },
   },
   {
-    code: 'ABCD3',
+    code: 'ABCD5',
     doctor: {
       name: 'Andrea',
       lastName: 'Andreevska',
