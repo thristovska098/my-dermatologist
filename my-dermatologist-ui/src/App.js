@@ -4,7 +4,7 @@ import * as React from 'react';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import { rootReducer } from './redux/reducers';
 import browserHistory from './redux/browserHistory';
 
@@ -31,6 +31,9 @@ const App = () => {
       <Bootstrapper>
         <BrowserRouter>
           <Switch>
+            <Route exact path="/">
+              <Redirect to={BASE_ROUTE} />
+            </Route>
             <Route path={BASE_ROUTE} exact component={MainPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT} component={RegisterPatientPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} component={RegisterDoctorPage} />
