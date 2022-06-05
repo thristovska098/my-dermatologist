@@ -34,7 +34,7 @@ const RegisterPatientPage = (): React.Node => {
     history.push(PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD);
   };
 
-  const prepareData = React.useCallback((values: Patient): Object => {
+  const prepareData = React.useCallback((values: Object): Object => {
     const patientData = values?.patient;
     const { dateOfBirth, ...rest } = patientData;
 
