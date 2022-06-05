@@ -6,23 +6,23 @@ import { useHistory } from 'react-router-dom';
 
 // Components
 import { Form } from 'react-final-form';
-import PersonalDataComponent from '../common/personal-data-component/PersonalDataComponent';
-import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
-import { PageWrapper } from '../basic-ui/header/styles';
-import Header from '../basic-ui/header/Header';
-import { FormContainer } from '../common/styles';
+import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
+import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
+import { PageWrapper } from '../../basic-ui/header/styles';
+import Header from '../../basic-ui/header/Header';
+import { FormContainer } from '../../common/styles';
 
 // Constants
-import { FIELD_WIDTH_MAX } from '../common/constants';
-import { pages } from './constants';
-import { SUBMIT_FIELD_LABEL } from '../labels';
-import { PAGES_FULL_ROUTES } from '../../routing/pages';
+import { FIELD_WIDTH_MAX } from '../../common/constants';
+import { pages } from '../constants';
+import { SUBMIT_FIELD_LABEL } from '../../labels';
+import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 // Types
-import type { Patient } from '../../types/types.flow';
+import type { Patient } from '../../../types/types.flow';
 
 // Utils
-import { prepareDate } from '../common/utils';
+import { prepareDate } from '../../common/utils';
 
 const RegisterPatientPage = (): React.Node => {
   const history = useHistory();
@@ -31,7 +31,7 @@ const RegisterPatientPage = (): React.Node => {
     // TODO: Implement this method when the BE is done.
     const preparedData = prepareData(values);
     console.log(preparedData);
-    history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
+    history.push(PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD);
   };
 
   const prepareData = React.useCallback((values: Patient): Object => {

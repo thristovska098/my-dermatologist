@@ -23,7 +23,8 @@ export type PersonalData = {
 };
 
 export type Patient = {
-  patient: PersonalData,
+  ssn: number,
+  personalData: PersonalData,
 };
 
 export type Doctor = {
