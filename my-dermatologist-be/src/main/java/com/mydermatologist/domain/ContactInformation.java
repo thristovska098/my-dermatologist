@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -17,8 +18,8 @@ import javax.persistence.OneToOne;
 @AllArgsConstructor
 public class ContactInformation {
 
-  // The id represents identifier for the person/office that the address belongs to.
   @Id
+  @GeneratedValue
   private String id;
 
   private String phone;

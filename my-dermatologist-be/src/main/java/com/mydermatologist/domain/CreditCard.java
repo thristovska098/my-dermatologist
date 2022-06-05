@@ -5,29 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Address model.
+ * Credit card model.
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Address {
+public class CreditCard {
 
   @Id
-  @GeneratedValue
-  private String id;
+  private String cardNumber;
 
-  private String city;
+  private String expirationDate;
 
-  private String zipCode;
-
-  private String street;
-
-  private String streetNumber;
-
-  private String country;
+  private String cvc;
 }

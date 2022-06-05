@@ -32,6 +32,9 @@ public class Doctor {
   @OneToOne
   private Office office;
 
+  @OneToOne
+  private CreditCard creditCard;
+
   @OneToMany(mappedBy = "doctor", cascade = {CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
   private List<Appointment> appointments;
 }

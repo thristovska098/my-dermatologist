@@ -1,6 +1,7 @@
 package com.mydermatologist.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,10 +25,14 @@ import java.util.List;
 public class Patient {
 
   @Id
-  private long ssn;
+  @Generated
+  private String code;
 
   @OneToOne
   private PersonalData personalData;
+
+  @OneToOne
+  private CreditCard creditCard;
 
   @OneToMany(mappedBy = "patient", cascade = {CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)
   private List<Appointment> appointments;

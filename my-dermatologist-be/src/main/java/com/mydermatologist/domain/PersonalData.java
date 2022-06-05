@@ -18,9 +18,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class PersonalData {
 
-  // The id (ssn) represents identifier for the person.
   @Id
-  private String id;
+  private String ssn;
 
   private String name;
 
