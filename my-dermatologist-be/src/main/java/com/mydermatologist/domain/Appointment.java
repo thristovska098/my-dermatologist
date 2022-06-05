@@ -40,7 +40,7 @@ public class Appointment {
 
   private String medicalDiagnosis;
 
-  private String prescription;
+  private String medicalPrescription;
 
   private String treatment;
 
