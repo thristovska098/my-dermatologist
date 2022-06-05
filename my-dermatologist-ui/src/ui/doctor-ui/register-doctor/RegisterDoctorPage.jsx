@@ -6,23 +6,23 @@ import { useHistory } from 'react-router-dom';
 
 // Components
 import { Form } from 'react-final-form';
-import PersonalDataComponent from '../common/personal-data-component/PersonalDataComponent';
-import SubmitAndCancelFooter from '../common/submit-cancel-footer/SubmitAndCancelFooter';
-import Header from '../basic-ui/header/Header';
-import { PageWrapper } from '../basic-ui/header/styles';
-import { FormContainer } from '../common/styles';
+import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
+import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
+import Header from '../../basic-ui/header/Header';
+import { PageWrapper } from '../../basic-ui/header/styles';
+import { FormContainer } from '../../common/styles';
 
 // Constants
-import { FIELD_WIDTH_MAX } from '../common/constants';
-import { SUBMIT_FIELD_LABEL } from '../labels';
+import { FIELD_WIDTH_MAX } from '../../common/constants';
+import { SUBMIT_FIELD_LABEL } from '../../labels';
 import { pages } from './constants';
 
 // Types
-import type { Doctor, PersonalData } from '../../types/types.flow';
+import type { Doctor, PersonalData } from '../../../types/types.flow';
 
 // Utils
-import { prepareDate } from '../common/utils';
-import { PAGES_FULL_ROUTES } from '../../routing/pages';
+import { prepareDate } from '../../common/utils';
+import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const RegisterDoctorPage = (): React.Node => {
   const history = useHistory();

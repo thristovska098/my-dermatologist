@@ -28,12 +28,12 @@ import {
   DateAndStatusContainer,
   Label,
   LabelAndInfoWrapper,
-} from '../client-ui/virtual-visits-results/styles';
+} from '../../client-ui/virtual-visits-results/styles';
 import { ImageContainer, ImageContainerForModal } from './styles';
-import { RowsContainer } from '../common/styles';
+import { RowsContainer } from '../../common/styles';
 
 // Constants
-import { listOfAppointments } from './home-page/dummyData';
+import { listOfAppointments } from './dummyData';
 import {
   APPOINTMENT_STATUSES,
   DATE_OF_BIRTH_LABEL,
@@ -44,10 +44,10 @@ import {
   EMAIL_LABEL,
   RESPOND_LABEL,
   DESCRIPTION_OF_ISSUE_LABEL,
-} from '../labels';
+} from '../../labels';
 
 // Actions
-import { setResponseModalOpenedForAppointmentId } from '../../redux/actions';
+import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
 
 const ReviewVirtualVisitsPage = (): React.Node => {
   const [openedModal, setOpenedModal] = React.useState(null);
