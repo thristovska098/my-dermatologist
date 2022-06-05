@@ -26,6 +26,15 @@ import ReviewVirtualVisitsPage from './ui/doctor-ui/ReviewVirtualVisitsPage';
 const App = () => {
   const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
 
+  // TODO: replace the deprecated version
+  /*
+    import { Reducer } from '@reduxjs/toolkit'
+    
+    const store = configureStore({
+      reducer: rootReducer(browserHistory),
+      devTools: true,
+    }); */
+
   return (
     <Provider store={store}>
       <Bootstrapper>
