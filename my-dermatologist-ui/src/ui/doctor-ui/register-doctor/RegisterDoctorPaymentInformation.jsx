@@ -30,10 +30,16 @@ const RegisterDoctorPaymentInformation = (): React.Node => {
     <PageWrapper>
       <Form
         onSubmit={handlingSubmit}
-        subscription={{ values: true }}
-        render={({ handleSubmit }) => (
+        subscription={{ values: true, hasValidationErrors: true }}
+        render={({ handleSubmit, hasValidationErrors }) => (
           <>
-            <Header pages={pages} onChangeFunction={handleSubmit} shouldLetLogOut={false} initialPage={2} />
+            <Header
+              pages={pages}
+              onChangeFunction={handleSubmit}
+              shouldLetLogOut={false}
+              initialPage={2}
+              hasValidationErrors={hasValidationErrors}
+            />
             <StyledFormContainer>
               <RegisterCreditCard />
               <SubmitAndCancelFooter
