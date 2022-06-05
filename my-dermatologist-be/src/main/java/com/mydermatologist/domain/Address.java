@@ -4,16 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
  * Address model.
  */
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@MappedSuperclass
 public class Address {
+
+  // The id represents identifier for the person/office that the address belongs to.
+  @Id
+  private String id;
 
   private String city;
 

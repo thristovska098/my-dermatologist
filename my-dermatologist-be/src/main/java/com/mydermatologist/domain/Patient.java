@@ -7,7 +7,10 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import java.util.Date;
 
 /**
  * Patient model.
@@ -22,6 +25,12 @@ public class Patient {
   @Id
   private long ssn;
 
-  @Transient
+  @OneToOne
   private PersonalData personalData;
+
+  @OneToOne
+  private ContactInformation contactInformation;
+
+  @OneToOne
+  private Address address;
 }
