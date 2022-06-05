@@ -4,7 +4,6 @@ import * as React from 'react';
 // Utils
 import styled from 'styled-components';
 import { ifProp, prop } from 'styled-tools';
-import _get from 'lodash/get';
 
 // Components
 import { FormSelectField } from 'mui-form-fields';
@@ -46,7 +45,7 @@ type Props = {
 const DropdownField = ({ width, name, ...rest }: Props): React.Node => {
   const { meta, input } = useField(name);
 
-  const value = _get(input?.value, name);
+  const { value } = input;
   const hasError = value === undefined || value === '';
   const isTouched = meta?.touched;
 
