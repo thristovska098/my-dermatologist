@@ -71,7 +71,6 @@ const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
           width={FIELD_WIDTH_MAX}
           options={GENDER_OPTIONS}
           label={GENDER_LABEL}
-          defaultValue={GENDER_OPTIONS[0].value}
         />
       </RowsContainer>
       <ContactInformationComponent fieldNamePrefix={fieldNamePrefix} />

@@ -50,7 +50,6 @@ const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
         <DropdownField
           width={FIELD_WIDTH_MEDIUM}
           name={`${fieldNamePrefix}.city`}
-          defaultValue="Skopje"
           label={CITY_LABEL}
           options={preparedOptions}
         />
