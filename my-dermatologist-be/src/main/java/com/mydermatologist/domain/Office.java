@@ -1,30 +1,32 @@
 package com.mydermatologist.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 /**
- * Contact information model.
+ * Office model.
  */
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactInformation {
+public class Office {
 
-  // The id represents identifier for the person/office that the address belongs to.
   @Id
+  @GeneratedValue
   private String id;
 
-  private String phone;
-
-  private String email;
+  @OneToOne
+  private ContactInformation officeContact;
 
   @OneToOne
-  private Address address;
+  private Address officeAddress;
 }

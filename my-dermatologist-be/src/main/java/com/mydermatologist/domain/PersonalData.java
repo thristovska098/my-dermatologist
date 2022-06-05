@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 /**
@@ -29,4 +29,7 @@ public class PersonalData {
   private Date dateOfBirth;
 
   private Gender gender;
+
+  @OneToOne
+  private ContactInformation contactInformation;
 }
