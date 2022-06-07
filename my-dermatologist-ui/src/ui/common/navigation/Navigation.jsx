@@ -18,7 +18,11 @@ export type PageType = {
 
 const StyledNavigation: React.ComponentType<*> = styled.div`
   button.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-    margin-right: 10px;
+    width: 100%;
+  }
+
+  .MuiBox-root {
+    padding: 0px;
   }
 `;
 
