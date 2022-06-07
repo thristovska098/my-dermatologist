@@ -4,6 +4,7 @@ package com.mydermatologist.controller;
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
+import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
@@ -22,6 +23,7 @@ import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_APPO
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_OFFICE_INFORMATION_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
 
 /**
  * Doctor REST controller.
@@ -117,5 +119,20 @@ public class DoctorController {
     Doctor doctor = doctorService.createMedicalReport(appointmentId, medicalReport);
 
     return doctor;
+  }
+
+  /**
+   * Returns all available doctors.
+   *
+   * @return the {@link List<DoctorDtoForPatientSelection>}.
+   */
+  @RequestMapping(
+    value = FETCH_DOCTORS_ENDPOINT,
+    method = RequestMethod.GET)
+  public List<DoctorDtoForPatientSelection> getDoctors() {
+
+    List<DoctorDtoForPatientSelection> doctors = doctorService.getDoctors();
+
+    return doctors;
   }
 }

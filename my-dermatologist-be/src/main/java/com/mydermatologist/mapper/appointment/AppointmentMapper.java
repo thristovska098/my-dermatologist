@@ -8,6 +8,7 @@ import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
+import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.dto.PatientDtoForDoctorReview;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
@@ -104,6 +105,12 @@ public class AppointmentMapper {
     return appointmentDtoForDoctorReview;
   }
 
+  /**
+   * Maps the medical report to appointment domain model.
+   *
+   * @param appointment the appointment data.
+   * @param medicalReportDto the medical report.
+   */
   public void  mapMedicalReportToAppointmentDomain(Appointment appointment, MedicalReportDto medicalReportDto) {
 
     appointment.setMedicalDiagnosis(medicalReportDto.getMedicalDiagnosis());

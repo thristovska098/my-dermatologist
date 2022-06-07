@@ -1,7 +1,9 @@
 package com.mydermatologist.mapper.doctor;
 
+import com.mydermatologist.domain.AppointmentStatus;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
+import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import lombok.NoArgsConstructor;
@@ -56,5 +58,23 @@ public class DoctorMapper {
     doctor.setOffice(officeInformationDto.getOffice());
 
     return doctor;
+  }
+
+  /**
+   * Maps the doctor domain model to dto shown in the patient dropdown selections.
+   *
+   * @param doctor the doctor domain data.
+   * @return the {@link DoctorDtoForPatientSelection}.
+   */
+  public DoctorDtoForPatientSelection mapDoctorToModelForPatientSelection(Doctor doctor) {
+
+    DoctorDtoForPatientSelection doctorDtoForPatientSelection = new DoctorDtoForPatientSelection();
+    doctorDtoForPatientSelection.setId(doctor.getId());
+    doctorDtoForPatientSelection.setName(doctor.getPersonalData().getName());
+    doctorDtoForPatientSelection.setLastName(doctor.getPersonalData().getLastName());
+    doctorDtoForPatientSelection.setCity(doctor.getOffice().getOfficeContact().getAddress().getCity());
+    doctorDtoForPatientSelection.setCountry(doctor.getOffice().getOfficeContact().getAddress().getCountry());
+
+    return doctorDtoForPatientSelection;
   }
 }

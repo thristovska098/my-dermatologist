@@ -4,6 +4,7 @@ import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
+import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
@@ -13,9 +14,13 @@ import com.mydermatologist.repository.AppointmentRepository;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
 
 /**
  * Doctor service.
@@ -116,5 +121,20 @@ public class DoctorService {
     appointmentRepository.save(appointment);
 
     return appointment.getDoctor();
+  }
+
+  /**
+   * Returns all available doctors.
+   *
+   * @return the {@link List<DoctorDtoForPatientSelection>}.
+   */
+
+  public List<DoctorDtoForPatientSelection> getDoctors() {
+
+    List<Doctor> doctors = doctorRepository.findAll();
+    List<DoctorDtoForPatientSelection> doctorDtoForPatientSelections = doctors.stream()
+      .map(doctor -> doctorMapper.mapDoctorToModelForPatientSelection(doctor)).collect(Collectors.toList());
+
+    return doctorDtoForPatientSelections;
   }
 }
