@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 export const PageContentContainer: React.ComponentType<*> = styled.div`
-  margin: 45px;
+  margin: 50px 0;
 `;
 
 export const TotalPaymentContainer: React.ComponentType<*> = styled.div`
@@ -23,7 +23,7 @@ export const IconAndInputContainer: React.ComponentType<*> = styled.div`
 export const ButtonContainer: React.ComponentType<*> = styled.div`
   display: flex;
   justify-content: center;
-  width: 230px;
+  width: 210px;
   margin-top: 30px;
 `;
 

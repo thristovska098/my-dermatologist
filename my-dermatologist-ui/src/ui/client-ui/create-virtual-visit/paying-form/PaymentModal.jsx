@@ -7,36 +7,16 @@ import { useDispatch, useSelector } from 'react-redux';
 // Components
 import { Form } from 'react-final-form';
 import { Box, Button, Modal } from '@mui/material';
-import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import IntegerInputField from '../../../../components/final-form/field-components/IntegerInputField';
-import TextInputField from '../../../../components/final-form/field-components/TextInputField';
-import {
-  FieldsContainer,
-  ButtonContainer,
-  IconAndInputContainer,
-  TotalPaymentContainer,
-  PageContentContainer,
-} from './styles';
+import { FieldsContainer, ButtonContainer, TotalPaymentContainer, PageContentContainer } from './styles';
 import PaymentOutcomeModal from './PaymentOutcomeModal';
 
 // Actions
 import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
-import {
-  CARD_NUMBER_LABEL,
-  CVC_LABEL,
-  EXPIRING_DATE_LABEL,
-  MAKE_PAYMENT_LABEL,
-  TOTAL_COST_LABEL,
-  MANDATORY_FIELD_MESSAGE,
-} from '../../../labels';
+import { MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
 
 // Utils
-import { formatCreditCardNumber, formatExpirationDate } from '../../../../components/formatters';
-import { composeValidators, required, validateExpiringDate } from '../../../../components/validators';
 import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
 const PaymentModal = (): React.Node => {
@@ -57,17 +37,13 @@ const PaymentModal = (): React.Node => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: 200,
     backgroundColor: '#e3dfdc',
     boxShadow: 24,
     p: 4,
     display: 'flex',
     borderRadius: '25px',
   };
-
-  const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
-  const validateExpirationDate = validateExpiringDate();
-  const combinedExpirationDateValidators = composeValidators([requiredValidator, validateExpirationDate]);
 
   const handlePaying = () => {
     // TODO: implement this
@@ -87,38 +63,6 @@ const PaymentModal = (): React.Node => {
             <PageContentContainer>
               <FieldsContainer>
                 <TotalPaymentContainer>{totalLabel}</TotalPaymentContainer>
-                <IconAndInputContainer>
-                  <CreditCardOutlinedIcon />
-                  <IntegerInputField
-                    name="creditCard.number"
-                    length={19}
-                    width={180}
-                    format={formatCreditCardNumber}
-                    label={CARD_NUMBER_LABEL}
-                    validate={requiredValidator}
-                  />
-                </IconAndInputContainer>
-                <IconAndInputContainer>
-                  <CalendarMonthOutlinedIcon />
-                  <TextInputField
-                    width={180}
-                    name="creditCard.expirationDate"
-                    length={5}
-                    format={formatExpirationDate}
-                    label={EXPIRING_DATE_LABEL}
-                    validate={combinedExpirationDateValidators}
-                  />
-                </IconAndInputContainer>
-                <IconAndInputContainer>
-                  <LockOutlinedIcon />
-                  <IntegerInputField
-                    width={180}
-                    name="creditCard.cvc"
-                    length={3}
-                    label={CVC_LABEL}
-                    validate={requiredValidator}
-                  />
-                </IconAndInputContainer>
                 <ButtonContainer>
                   <Button variant="contained" onClick={handleSubmit}>
                     {MAKE_PAYMENT_LABEL}
