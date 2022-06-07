@@ -36,6 +36,7 @@ import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const VirtualVisitsResultsPage = (): React.Node => {
   const history = useHistory();
+  const [accountIdOpened, setAccountAccordionOpened] = React.useState(undefined);
 
   const handleButtonClick = () => {
     history.push(PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_FORM);
@@ -52,9 +53,13 @@ const VirtualVisitsResultsPage = (): React.Node => {
       const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED ? 'green' : 'auto';
       const address = appointment?.doctor?.officeInformation?.address;
       const addressInfo = `${address?.street} ${address?.streetNumber}, ${address?.zipCode} ${address.city}`;
-
+      const isExpanded = appointment?.appointmentId === accountIdOpened;
       return (
-        <Accordion key={appointment?.appointmentId}>
+        <Accordion
+          key={appointment?.appointmentId}
+          expanded={isExpanded}
+          onClick={() => setAccountAccordionOpened(isExpanded ? undefined : appointment?.appointmentId)}
+        >
           <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
             <AccordionSummaryContainer>
               {appointment?.title}

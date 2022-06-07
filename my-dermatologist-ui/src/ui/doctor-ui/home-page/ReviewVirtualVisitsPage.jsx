@@ -93,7 +93,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
       return (
         <Accordion
           key={appointment?.appointmentId}
-          onClick={() => setOpenedAccordionId(appointment?.appointmentId)}
+          onClick={() => setOpenedAccordionId(isExpanded ? undefined : appointment?.appointmentId)}
           expanded={isExpanded}
         >
           <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
