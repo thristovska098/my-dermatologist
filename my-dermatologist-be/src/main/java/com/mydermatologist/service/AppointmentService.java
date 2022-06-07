@@ -13,6 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
+/**
+ * Appointment service.
+ */
 @Service
 public class AppointmentService {
 
@@ -28,20 +32,28 @@ public class AppointmentService {
   @Autowired
   private PatientRepository patientRepository;
 
-  public Patient createAppointment(@RequestParam Long patientId,
+
+  /**
+   * Creates new appointment.
+   *
+   * @param patientId the doctor data.
+   * @param createAppointmentDto the appointment data.
+   * @return the {@link Appointment}.
+   */
+  public Appointment createAppointment(@RequestParam Long patientId,
                                    @RequestBody CreateAppointmentDto createAppointmentDto) {
 
     // TODO: throw exceptions
     Patient patient = patientRepository.findById(patientId).orElse(null);
-   //  Doctor doctor = doctorRepository.findById(createAppointmentDto.getDoctorCode()).orElse(null);
+    Doctor doctor = doctorRepository.findById(createAppointmentDto.getDoctorId()).orElse(null);
 
     Appointment appointment = appointmentMapper.mapCreateAppointmentDtoToAppointment(
       createAppointmentDto,
       patient,
-      null);
+      doctor);
 
     appointmentRepository.save(appointment);
 
-    return patient;
+    return appointment;
   }
 }

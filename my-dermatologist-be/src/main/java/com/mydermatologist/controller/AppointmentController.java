@@ -1,6 +1,6 @@
 package com.mydermatologist.controller;
 
-import com.mydermatologist.domain.Patient;
+import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.service.AppointmentService;
 import lombok.RequiredArgsConstructor;
@@ -26,16 +26,16 @@ public class AppointmentController {
    *
    * @param patientId the patient id.
    * @param createAppointmentDto the patient credit card data.
-   * @return the {@link Patient}.
+   * @return the {@link Appointment}.
    */
   @RequestMapping(
     value = CREATE_APPOINTMENT_ENDPOINT,
     method = RequestMethod.POST)
-  public Patient createAppointment(@RequestParam Long patientId,
+  public Appointment createAppointment(@RequestParam Long patientId,
                                    @RequestBody CreateAppointmentDto createAppointmentDto) {
 
-    Patient patient = appointmentService.createAppointment(patientId, createAppointmentDto);
+    Appointment appointment = appointmentService.createAppointment(patientId, createAppointmentDto);
 
-    return patient;
+    return appointment;
   }
 }

@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+/**
+ * Appointment mapper.
+ */
 @Component
 @NoArgsConstructor
 public class AppointmentMapper {
@@ -21,6 +24,14 @@ public class AppointmentMapper {
   @Autowired
   private DoctorMapper doctorMapper;
 
+  /**
+   * Maps the data for creating appointment to appointment domain model.
+   *
+   * @param createAppointmentDto the appointment form data.
+   * @param patient the patient data.
+   * @param doctor the doctor data.
+   * @return the {@link Appointment}.
+   */
   public Appointment mapCreateAppointmentDtoToAppointment(CreateAppointmentDto createAppointmentDto, Patient patient, Doctor doctor) {
     Appointment appointment = new Appointment();
 
@@ -35,6 +46,12 @@ public class AppointmentMapper {
     return appointment;
   }
 
+  /**
+   * Maps the domain model for appointment to data for appointment for client review.
+   *
+   * @param appointment the appointment data.
+   * @return the {@link AppointmentDtoForClientReview}.
+   */
   public AppointmentDtoForClientReview mapAppointmentToAppointmentForClientReview(Appointment appointment) {
     AppointmentDtoForClientReview appointmentForClientReviewDto = new AppointmentDtoForClientReview();
 

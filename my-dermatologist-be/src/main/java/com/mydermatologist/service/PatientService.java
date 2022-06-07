@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Patient service.
+ */
 @Service
 public class PatientService {
 
@@ -30,7 +33,12 @@ public class PatientService {
   @Autowired
   private CreditCardRepository creditCardRepository;
 
-
+  /**
+   * Saves form data for patient.
+   *
+   * @param patientRegisterDto the patient data.
+   * @return the {@link Patient}.
+   */
   public Patient savePatient(PatientRegisterDto patientRegisterDto) {
 
     Patient patient = patientMapper.mapPatientFormDataToPatientDomain(patientRegisterDto);
@@ -39,6 +47,13 @@ public class PatientService {
     return savedPatient;
   }
 
+  /**
+   * Saves credit card for patient.
+   *
+   * @param creditCard the credit card data.
+   * @param patientId the patient id.
+   * @return the {@link Patient}.
+   */
   public Patient saveCreditCard(CreditCard creditCard, Long patientId) {
     CreditCard savedCreditCard = creditCardRepository.save(creditCard);
 
@@ -51,6 +66,12 @@ public class PatientService {
     } else return null;
   }
 
+  /**
+   * Returns appointments for patient.
+   *
+   * @param patientId the patient id.
+   * @return the {@link List<AppointmentDtoForClientReview>}.
+   */
   public List<AppointmentDtoForClientReview> getAppointments(Long patientId) {
     Patient patient = patientRepository.findById(patientId).orElse(null);
 
