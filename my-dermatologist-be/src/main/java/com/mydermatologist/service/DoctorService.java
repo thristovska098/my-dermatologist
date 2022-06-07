@@ -1,6 +1,6 @@
 package com.mydermatologist.service;
 
-import com.mydermatologist.domain.Appointment;
+import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
@@ -28,6 +28,23 @@ public class DoctorService {
    */
   public Doctor saveDoctor(DoctorPersonalDataDto doctorPersonalDataDto){
     Doctor doctor = doctorMapper.mapDoctorFormDataToDomain(doctorPersonalDataDto);
+
+    doctorRepository.save(doctor);
+
+    return doctor;
+  }
+
+  /**
+   * Saves credit card data for doctor.
+   *
+   * @param doctorId the doctor id.
+   * @param creditCard the credit card data.
+   * @return the {@link Doctor}.
+   */
+  public Doctor saveCreditCard(Long doctorId, CreditCard creditCard){
+    // TODO: add exceptions
+    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+    doctor.setCreditCard(creditCard);
 
     doctorRepository.save(doctor);
 

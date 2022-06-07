@@ -21,7 +21,7 @@ public class CreateAppointmentDto {
 
    private String description;
 
-   private String doctorId;
+   private Long doctorId;
 
    private List<Avatar> images;
 }
