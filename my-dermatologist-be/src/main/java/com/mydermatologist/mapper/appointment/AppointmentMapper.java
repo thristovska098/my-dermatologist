@@ -5,9 +5,12 @@ import com.mydermatologist.domain.AppointmentStatus;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
+import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
+import com.mydermatologist.dto.PatientDtoForDoctorReview;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
+import com.mydermatologist.mapper.patient.PatientMapper;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +27,9 @@ public class AppointmentMapper {
   @Autowired
   private DoctorMapper doctorMapper;
 
+  @Autowired
+  private PatientMapper patientMapper;
+
   /**
    * Maps the data for creating appointment to appointment domain model.
    *
@@ -32,7 +38,10 @@ public class AppointmentMapper {
    * @param doctor the doctor data.
    * @return the {@link Appointment}.
    */
-  public Appointment mapCreateAppointmentDtoToAppointment(CreateAppointmentDto createAppointmentDto, Patient patient, Doctor doctor) {
+  public Appointment mapCreateAppointmentDtoToAppointment(
+    CreateAppointmentDto createAppointmentDto,
+    Patient patient,
+    Doctor doctor) {
     Appointment appointment = new Appointment();
 
     appointment.setAppointmentStatus(AppointmentStatus.WAITING);
@@ -68,5 +77,29 @@ public class AppointmentMapper {
     appointmentForClientReviewDto.setDoctor(doctorDtoForClientReview);
 
     return appointmentForClientReviewDto;
+  }
+
+  /**
+   * Maps the domain model for appointment to data for appointment for doctor review.
+   *
+   * @param appointment the appointment data.
+   * @return the {@link AppointmentDtoForDoctorReview}.
+   */
+  public AppointmentDtoForDoctorReview mapAppointmentToAppointmentForDoctorReview(Appointment appointment) {
+    AppointmentDtoForDoctorReview appointmentDtoForDoctorReview = new AppointmentDtoForDoctorReview();
+
+    Patient patient = appointment.getPatient();
+    PatientDtoForDoctorReview patientDtoForDoctorReview =
+      patientMapper.mapPatientDomainToPatientDtoForDoctorReview(patient);
+
+    appointmentDtoForDoctorReview.setId(appointment.getId());
+    appointmentDtoForDoctorReview.setTitle(appointment.getTitle());
+    appointmentDtoForDoctorReview.setDescription(appointment.getDescription());
+    appointmentDtoForDoctorReview.setAppointmentStatus(appointment.getAppointmentStatus());
+    appointmentDtoForDoctorReview.setCreatedOn(appointment.getCreatedOn());
+    appointmentDtoForDoctorReview.setPatient(patientDtoForDoctorReview);
+    appointmentDtoForDoctorReview.setImages(appointment.getImages());
+
+    return appointmentDtoForDoctorReview;
   }
 }

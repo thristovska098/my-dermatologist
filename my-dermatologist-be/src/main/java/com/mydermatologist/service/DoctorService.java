@@ -2,12 +2,17 @@ package com.mydermatologist.service;
 
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
+import com.mydermatologist.mapper.appointment.AppointmentMapper;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Doctor service.
@@ -17,6 +22,9 @@ public class DoctorService {
 
   @Autowired
   private DoctorMapper doctorMapper;
+
+  @Autowired
+  private AppointmentMapper appointmentMapper;
 
   @Autowired
   private DoctorRepository doctorRepository;
@@ -67,5 +75,22 @@ public class DoctorService {
     doctorRepository.save(doctor);
 
     return doctor;
+  }
+
+  /**
+   * Returns appointments for the doctor.
+   *
+   * @param doctorId the doctor id.
+   * @return the {@link List<AppointmentDtoForDoctorReview>}.
+   */
+  public List<AppointmentDtoForDoctorReview> getAppointments(Long doctorId){
+    // TODO: add exceptions
+    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+
+    List<AppointmentDtoForDoctorReview> appointmentsDtoForDoctorReview = doctor.getAppointments()
+      .stream().map(appointment -> appointmentMapper.mapAppointmentToAppointmentForDoctorReview(appointment))
+      .collect(Collectors.toList());
+
+    return appointmentsDtoForDoctorReview;
   }
 }

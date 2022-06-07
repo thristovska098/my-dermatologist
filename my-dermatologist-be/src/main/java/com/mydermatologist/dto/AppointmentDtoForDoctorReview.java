@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AppointmentDtoForDoctorReview {
 
-  private String id;
+  private Long id;
 
   private String title;
 

@@ -3,6 +3,7 @@ package com.mydermatologist.controller;
 
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.service.DoctorService;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
+import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_APPOINTMENTS_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_OFFICE_INFORMATION_ENDPOINT;
@@ -77,5 +81,22 @@ public class DoctorController {
     Doctor doctor = doctorService.saveOfficeInformation(doctorId, officeInformationDto);
 
     return doctor;
+  }
+
+  /**
+   * Returns appointments for the doctor.
+   *
+   * @param doctorId the doctor id.
+   * @return the {@link List<AppointmentDtoForDoctorReview>}.
+   */
+  @RequestMapping(
+    value = DOCTOR_APPOINTMENTS_ENDPOINT,
+    method = RequestMethod.GET)
+  public List<AppointmentDtoForDoctorReview> getAppointments(
+    @RequestParam Long doctorId) {
+
+    List<AppointmentDtoForDoctorReview> appointments = doctorService.getAppointments(doctorId);
+
+    return appointments;
   }
 }
