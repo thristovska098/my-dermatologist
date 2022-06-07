@@ -1,5 +1,6 @@
 package com.mydermatologist.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,7 @@ public class Appointment {
 
   @Id
   @GeneratedValue
-  private String id;
+  private Long id;
 
   private String title;
 
@@ -48,10 +49,12 @@ public class Appointment {
   @JoinColumn
   private List<Avatar> images;
 
+  @JsonIgnore
   @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
   @JoinColumn
   private  Doctor doctor;
 
+  @JsonIgnore
   @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)
   @JoinColumn
   private Patient patient;

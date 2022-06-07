@@ -35,6 +35,7 @@ public class PatientService {
   public Patient saveCreditCard(CreditCard creditCard, Long patientId) {
     CreditCard savedCreditCard = creditCardRepository.save(creditCard);
 
+    // TODO: throw exceptions
     Optional<Patient> patient = patientRepository.findById(patientId);
 
     if (patient.isPresent()) {
