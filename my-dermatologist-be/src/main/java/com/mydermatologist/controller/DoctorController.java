@@ -3,6 +3,7 @@ package com.mydermatologist.controller;
 
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.service.DoctorService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_OFFICE_INFORMATION_ENDPOINT;
 
 /**
  * Doctor REST controller.
@@ -42,9 +44,10 @@ public class DoctorController {
   }
 
   /**
-   * Saves the credit cardit data of the doctor.
+   * Saves the credit card data of the doctor.
    *
    * @param doctorId the doctor id.
+   *  @param creditCard thecredit card data.
    * @return the {@link Doctor}.
    */
   @RequestMapping(
@@ -54,6 +57,24 @@ public class DoctorController {
     @RequestParam Long doctorId, @RequestBody CreditCard creditCard) {
 
     Doctor doctor = doctorService.saveCreditCard(doctorId, creditCard);
+
+    return doctor;
+  }
+
+  /**
+   * Saves the professional - office information for the doctor.
+   *
+   * @param doctorId the doctor id.
+   * @param officeInformationDto the doctor office information.
+   * @return the {@link Doctor}.
+   */
+  @RequestMapping(
+    value = DOCTOR_OFFICE_INFORMATION_ENDPOINT,
+    method = RequestMethod.POST)
+  public Doctor saveOfficeInformation(
+    @RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
+
+    Doctor doctor = doctorService.saveOfficeInformation(doctorId, officeInformationDto);
 
     return doctor;
   }

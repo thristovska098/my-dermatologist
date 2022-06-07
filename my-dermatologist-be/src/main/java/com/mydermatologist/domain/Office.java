@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,11 +23,8 @@ public class Office {
 
   @Id
   @GeneratedValue
-  private String id;
+  private Long id;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   private ContactInformation officeContact;
-
-  @OneToOne
-  private Address officeAddress;
 }

@@ -2,6 +2,7 @@ package com.mydermatologist.mapper.doctor;
 
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
+import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,20 @@ public class DoctorMapper {
     Doctor doctor = new Doctor();
 
     doctor.setPersonalData(doctorPersonalDataDto.getDoctor());
+
+    return doctor;
+  }
+
+  /**
+   * Maps the office information form data to doctor domain data.
+   *
+   * @param doctor the doctor domain data.
+   * @param officeInformationDto the doctors office data.
+   * @return the {@link Doctor}.
+   */
+  public Doctor mapOfficeInformationToDoctorDomain(Doctor doctor,DoctorOfficeInformationDto officeInformationDto) {
+    doctor.setCode(officeInformationDto.getCode());
+    doctor.setOffice(officeInformationDto.getOffice());
 
     return doctor;
   }

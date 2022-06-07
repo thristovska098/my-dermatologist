@@ -19,7 +19,7 @@ public class Address {
 
   @Id
   @GeneratedValue
-  private String id;
+  private Long id;
 
   private String city;
 

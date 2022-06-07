@@ -2,6 +2,7 @@ package com.mydermatologist.service;
 
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
 import com.mydermatologist.repository.DoctorRepository;
@@ -51,4 +52,20 @@ public class DoctorService {
     return doctor;
   }
 
+  /**
+   * Saves office information data for doctor.
+   *
+   * @param doctorId the doctor id.
+   * @param officeInformationDto the office data.
+   * @return the {@link Doctor}.
+   */
+  public Doctor saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto){
+    // TODO: add exceptions
+    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+    doctor = doctorMapper.mapOfficeInformationToDoctorDomain(doctor, officeInformationDto);
+
+    doctorRepository.save(doctor);
+
+    return doctor;
+  }
 }

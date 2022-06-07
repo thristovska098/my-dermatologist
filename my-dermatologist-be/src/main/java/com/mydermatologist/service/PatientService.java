@@ -6,7 +6,6 @@ import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.PatientRegisterDto;
 import com.mydermatologist.mapper.appointment.AppointmentMapper;
 import com.mydermatologist.mapper.patient.PatientMapper;
-import com.mydermatologist.repository.CreditCardRepository;
 import com.mydermatologist.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,6 @@ public class PatientService {
   @Autowired
   private PatientRepository patientRepository;
 
-  @Autowired
-  private CreditCardRepository creditCardRepository;
-
   /**
    * Saves form data for patient.
    *
@@ -55,13 +51,12 @@ public class PatientService {
    * @return the {@link Patient}.
    */
   public Patient saveCreditCard(CreditCard creditCard, Long patientId) {
-    CreditCard savedCreditCard = creditCardRepository.save(creditCard);
 
     // TODO: throw exceptions
     Optional<Patient> patient = patientRepository.findById(patientId);
 
     if (patient.isPresent()) {
-      patient.get().setCreditCard(savedCreditCard);
+      patient.get().setCreditCard(creditCard);
       return patientRepository.save(patient.get());
     } else return null;
   }
