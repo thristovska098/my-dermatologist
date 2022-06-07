@@ -8,6 +8,7 @@ import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
+import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.dto.PatientDtoForDoctorReview;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
 import com.mydermatologist.mapper.patient.PatientMapper;
@@ -101,5 +102,13 @@ public class AppointmentMapper {
     appointmentDtoForDoctorReview.setImages(appointment.getImages());
 
     return appointmentDtoForDoctorReview;
+  }
+
+  public void  mapMedicalReportToAppointmentDomain(Appointment appointment, MedicalReportDto medicalReportDto) {
+
+    appointment.setMedicalDiagnosis(medicalReportDto.getMedicalDiagnosis());
+    appointment.setMedicalPrescription(medicalReportDto.getMedicalPrescription());
+    appointment.setTreatment(medicalReportDto.getTreatment());
+    appointment.setAppointmentStatus(AppointmentStatus.COMPLETED);
   }
 }

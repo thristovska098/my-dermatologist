@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Appointment repository.
  */
 @Repository
-public interface AppointmentRepository extends JpaRepository<Appointment, String> {
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 }

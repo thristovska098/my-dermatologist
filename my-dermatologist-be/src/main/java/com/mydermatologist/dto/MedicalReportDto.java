@@ -13,8 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MedicalReportDto {
-  private String id;
-
   private String medicalDiagnosis;
 
   private String medicalPrescription;

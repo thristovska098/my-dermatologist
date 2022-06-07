@@ -6,6 +6,7 @@ import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
+import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.service.DoctorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import static com.mydermatologist.controller.RestControllerConstants.CREATE_MEDICAL_REPORT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_APPOINTMENTS_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_ENDPOINT;
@@ -98,5 +100,22 @@ public class DoctorController {
     List<AppointmentDtoForDoctorReview> appointments = doctorService.getAppointments(doctorId);
 
     return appointments;
+  }
+
+  /**
+   * Creates medical report.
+   *
+   * @param appointmentId the appointment id.
+   * @return the {@link Doctor}.
+   */
+  @RequestMapping(
+    value = CREATE_MEDICAL_REPORT_ENDPOINT,
+    method = RequestMethod.POST)
+  public Doctor createMedicalReport(
+    @RequestParam Long appointmentId, @RequestBody MedicalReportDto medicalReport) {
+
+    Doctor doctor = doctorService.createMedicalReport(appointmentId, medicalReport);
+
+    return doctor;
   }
 }

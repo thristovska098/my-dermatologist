@@ -1,12 +1,15 @@
 package com.mydermatologist.service;
 
+import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
+import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.mapper.appointment.AppointmentMapper;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
+import com.mydermatologist.repository.AppointmentRepository;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,9 @@ public class DoctorService {
 
   @Autowired
   private DoctorRepository doctorRepository;
+
+  @Autowired
+  private AppointmentRepository appointmentRepository;
 
   /**
    * Saves form data for doctor.
@@ -92,5 +98,23 @@ public class DoctorService {
       .collect(Collectors.toList());
 
     return appointmentsDtoForDoctorReview;
+  }
+
+  /**
+   * Creates medical report.
+   *
+   * @param appointmentId the appointment id.
+   * @return the {@link Doctor}.
+   */
+  public Doctor createMedicalReport(
+    Long appointmentId, MedicalReportDto medicalReport) {
+    // TODO: Add exceptions
+    Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
+
+    appointmentMapper.mapMedicalReportToAppointmentDomain(appointment, medicalReport);
+
+    appointmentRepository.save(appointment);
+
+    return appointment.getDoctor();
   }
 }

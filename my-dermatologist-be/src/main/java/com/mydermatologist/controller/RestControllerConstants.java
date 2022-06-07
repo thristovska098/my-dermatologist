@@ -59,5 +59,15 @@ public final class RestControllerConstants {
    */
   public static final String DOCTOR_OFFICE_INFORMATION_ENDPOINT = DOCTOR_ENDPOINT + "/office-information";
 
+  /**
+   * Create medical report .
+   */
+  public static final String CREATE_MEDICAL_REPORT_ENDPOINT = DOCTOR_ENDPOINT + "/medical-report";
+
+  /**
+   * Fetch doctors.
+   */
+  public static final String FETCH_DOCTORS_ENDPOINT = API_REST_ENDPOINT + "/doctors";
+
 
 }
