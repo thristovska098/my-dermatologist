@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class AppointmentDtoForClientReview {
 
-  private String id;
+  private Long id;
 
   private String title;
 
