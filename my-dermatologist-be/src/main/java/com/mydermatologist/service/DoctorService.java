@@ -14,13 +14,9 @@ import com.mydermatologist.repository.AppointmentRepository;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
 
 /**
  * Doctor service.
@@ -62,8 +58,10 @@ public class DoctorService {
    * @return the {@link Doctor}.
    */
   public Doctor saveCreditCard(Long doctorId, CreditCard creditCard){
-    // TODO: add exceptions
-    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+
+    Doctor doctor = doctorRepository.findById(doctorId)
+        .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
+
     doctor.setCreditCard(creditCard);
 
     doctorRepository.save(doctor);
@@ -79,8 +77,10 @@ public class DoctorService {
    * @return the {@link Doctor}.
    */
   public Doctor saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto){
-    // TODO: add exceptions
-    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+
+    Doctor doctor = doctorRepository.findById(doctorId)
+      .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
+
     doctor = doctorMapper.mapOfficeInformationToDoctorDomain(doctor, officeInformationDto);
 
     doctorRepository.save(doctor);
@@ -95,8 +95,9 @@ public class DoctorService {
    * @return the {@link List<AppointmentDtoForDoctorReview>}.
    */
   public List<AppointmentDtoForDoctorReview> getAppointments(Long doctorId){
-    // TODO: add exceptions
-    Doctor doctor = doctorRepository.findById(doctorId).orElse(null);
+
+    Doctor doctor = doctorRepository.findById(doctorId)
+      .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
 
     List<AppointmentDtoForDoctorReview> appointmentsDtoForDoctorReview = doctor.getAppointments()
       .stream().map(appointment -> appointmentMapper.mapAppointmentToAppointmentForDoctorReview(appointment))
@@ -113,8 +114,9 @@ public class DoctorService {
    */
   public Doctor createMedicalReport(
     Long appointmentId, MedicalReportDto medicalReport) {
-    // TODO: Add exceptions
-    Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
+
+    Appointment appointment = appointmentRepository.findById(appointmentId)
+      .orElseThrow(()-> new RuntimeException("Appointment with id "+ appointmentId+ " doesn't exist."));
 
     appointmentMapper.mapMedicalReportToAppointmentDomain(appointment, medicalReport);
 

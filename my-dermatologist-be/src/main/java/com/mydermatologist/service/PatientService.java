@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -65,13 +65,12 @@ public class PatientService {
    */
   public Patient saveCreditCard(CreditCard creditCard, Long patientId) {
 
-    // TODO: throw exceptions
-    Optional<Patient> patient = patientRepository.findById(patientId);
+   Patient patient = patientRepository.findById(patientId)
+      .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
 
-    if (patient.isPresent()) {
-      patient.get().setCreditCard(creditCard);
-      return patientRepository.save(patient.get());
-    } else return null;
+      patient.setCreditCard(creditCard);
+      return patientRepository.save(patient);
+
   }
 
   /**
@@ -81,10 +80,11 @@ public class PatientService {
    * @return the {@link List<AppointmentDtoForClientReview>}.
    */
   public List<AppointmentDtoForClientReview> getAppointments(Long patientId) {
-    Patient patient = patientRepository.findById(patientId).orElse(null);
+    Patient patient = patientRepository.findById(patientId)
+      .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
 
-    if (patient == null || patient.getAppointments().size() == 0) {
-      return null;
+    if (patient.getAppointments().size() == 0) {
+      return new LinkedList<>();
     }
 
     List<AppointmentDtoForClientReview> appointments = patient.getAppointments().stream()
@@ -105,9 +105,11 @@ public class PatientService {
   public Patient createAppointment(@RequestParam Long patientId,
                                        @RequestBody CreateAppointmentDto createAppointmentDto) {
 
-    // TODO: throw exceptions
-    Patient patient = patientRepository.findById(patientId).orElse(null);
-    Doctor doctor = doctorRepository.findById(createAppointmentDto.getDoctorId()).orElse(null);
+    Patient patient = patientRepository.findById(patientId)
+      .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
+
+    Doctor doctor = doctorRepository.findById(createAppointmentDto.getDoctorId())
+      .orElseThrow(() -> new RuntimeException("The doctor with id " + createAppointmentDto.getDoctorId() + " doesn't exist"));
 
     Appointment appointment = appointmentMapper.mapCreateAppointmentDtoToAppointment(
       createAppointmentDto,
