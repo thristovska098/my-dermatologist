@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
 
-// Routing
-import { useHistory } from 'react-router-dom';
-
 // Components
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
@@ -16,36 +13,17 @@ import { FormContainer } from '../../common/styles';
 import { FIELD_WIDTH_MAX } from '../../common/constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
 import { pages } from './constants';
+import { USER_TYPE } from '../../constants';
 
-// Types
-import type { Doctor, PersonalData } from '../../../types/types.flow';
-
-// Utils
-import { prepareDate } from '../../common/utils';
-import { PAGES_FULL_ROUTES } from '../../../routing/pages';
+// Hooks
+import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 
 const RegisterDoctorPage = (): React.Node => {
-  const history = useHistory();
+  const saveDoctor = useSavePersonalData(USER_TYPE.DOCTOR);
 
   const handlingSubmit = (values: Object) => {
-    // TODO: Implement this method when the BE is done.
-    const preparedData = prepareData(values);
-    console.log(preparedData);
-    history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA);
+    saveDoctor(values);
   };
-
-  const prepareData = React.useCallback((values: Doctor): Object => {
-    const doctorData = values?.doctor;
-    const { dateOfBirth, ...rest }: PersonalData = doctorData;
-
-    if (dateOfBirth === undefined) {
-      return { ...rest };
-    }
-
-    const preparedDateOfBirth = prepareDate(dateOfBirth);
-
-    return { ...rest, dateOfBirth: preparedDateOfBirth };
-  }, []);
 
   return (
     <PageWrapper>

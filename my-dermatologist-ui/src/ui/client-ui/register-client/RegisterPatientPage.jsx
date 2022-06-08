@@ -13,15 +13,16 @@ import { FormContainer } from '../../common/styles';
 import { FIELD_WIDTH_MAX } from '../../common/constants';
 import { pages } from '../constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
+import { USER_TYPE } from '../../constants';
 
 // Types
 import type { Patient } from '../../../types/types.flow';
 
 // Hooks
-import { useSavePersonalDataForPatient } from '../../../hooks/useSavePersonalDataForPatient';
+import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 
 const RegisterPatientPage = (): React.Node => {
-  const savePatient = useSavePersonalDataForPatient();
+  const savePatient = useSavePersonalData(USER_TYPE.PATIENT);
 
   const handlingSubmit = (values: Patient) => {
     savePatient(values);
