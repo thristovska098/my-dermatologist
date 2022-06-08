@@ -1,29 +1,17 @@
 // @flow
 
+// Hooks
+import { useDispatch } from 'react-redux';
+
 // Utils
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setCountries } from '../redux/actions';
-
-const prepareData = (cities: Array<Object>): ?Array<Object> => {
-  // TODO: Ask the professor should I use this API? Because sometimes is not available, and maybe it will be
-  //  better approach to have all the cities on the BE and get them as config data
-  const preparedCities = cities.find((countryObj) => countryObj.country === 'Macedonia')?.cities;
-
-  return preparedCities;
-};
+import { BASE_URL, FETCH_CITIES_URL } from './endpoints';
+import { setCities } from '../redux/actions';
 
 export const useFetchCities = () => {
   const dispatch = useDispatch();
 
-  axios
-    .get('https://countriesnow.space/api/v0.1/countries', {
-      headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-      },
-    })
-    .then((response) => {
-      const prepareCities = prepareData(response.data.data);
-      dispatch(setCountries(prepareCities));
-    });
+  axios.get(`${BASE_URL}${FETCH_CITIES_URL}`).then((response: Object) => {
+    dispatch(setCities(response?.data));
+  });
 };

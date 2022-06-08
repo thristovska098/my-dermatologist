@@ -30,18 +30,16 @@ type Props = {
 };
 
 const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
-  const countriesList = useSelector(getCitiesList);
+  const citiesList = useSelector(getCitiesList);
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
-
-  // TODO: Check if the validation of the dropdown field works as expected
 
   const preparedOptions = React.useMemo(
     () =>
-      countriesList?.map((country: string): Object => ({
-        label: country,
-        value: country,
+      citiesList?.map((city: string): Object => ({
+        label: city,
+        value: city,
       })),
-    [countriesList],
+    [citiesList],
   );
 
   return (

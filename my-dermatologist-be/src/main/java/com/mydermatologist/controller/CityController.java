@@ -1,16 +1,20 @@
 package com.mydermatologist.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.FETCH_CITIES_ENDPOINT;
 
 /**
  * City REST controller.
  */
+@RestController
+@CrossOrigin
 public class CityController {
 
   private final List<String> cities = Arrays.asList(
@@ -55,7 +59,7 @@ public class CityController {
    * @return the {@link List<String>}.
    */
   @RequestMapping(
-    value = FETCH_DOCTORS_ENDPOINT,
+    value = FETCH_CITIES_ENDPOINT,
     method = RequestMethod.GET)
   public List<String> getCities() {
 
