@@ -24,7 +24,7 @@ const RegisterCreditCard = (): React.Node => {
       <IconAndInputContainer>
         <CreditCardOutlinedIcon />
         <IntegerInputField
-          name="creditCard.number"
+          name="cardNumber"
           length={19}
           width={180}
           format={formatCreditCardNumber}
@@ -36,7 +36,7 @@ const RegisterCreditCard = (): React.Node => {
         <CalendarMonthOutlinedIcon />
         <TextInputField
           width={180}
-          name="creditCard.expirationDate"
+          name="expirationDate"
           length={5}
           format={formatExpirationDate}
           label={EXPIRING_DATE_LABEL}
@@ -45,13 +45,7 @@ const RegisterCreditCard = (): React.Node => {
       </IconAndInputContainer>
       <IconAndInputContainer>
         <LockOutlinedIcon />
-        <IntegerInputField
-          width={180}
-          name="creditCard.cvc"
-          length={3}
-          label={CVC_LABEL}
-          validate={requiredValidator}
-        />
+        <IntegerInputField width={180} name="cvc" length={3} label={CVC_LABEL} validate={requiredValidator} />
       </IconAndInputContainer>
     </>
   );

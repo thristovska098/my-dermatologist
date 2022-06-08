@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
 
-// Hooks
-import { useHistory } from 'react-router-dom';
-
 // Components
 import { Form } from 'react-final-form';
 import { PageWrapper } from '../../basic-ui/header/styles';
@@ -15,15 +12,16 @@ import { StyledFormContainer } from './styles';
 // Utils
 import { pages } from '../constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-import { PAGES_FULL_ROUTES } from '../../../routing/pages';
+import { USER_TYPE } from '../../constants';
+
+// Hooks
+import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
 
 const AddPaymentInfo = (): React.Node => {
-  const history = useHistory();
+  const saveCreditCard = useSaveCreditCard(USER_TYPE.PATIENT);
 
   const handlingSubmit = (values: Object) => {
-    // TODO: Implement this method when the BE is done.
-    console.log('Submited', values);
-    history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
+    saveCreditCard(values);
   };
 
   return (

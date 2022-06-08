@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
 
-// Hooks
-import { useHistory } from 'react-router-dom';
-
 // Components
 import { Form } from 'react-final-form';
 import { PageWrapper } from '../../basic-ui/header/styles';
@@ -12,18 +9,19 @@ import { StyledFormContainer } from '../../client-ui/register-client/styles';
 import RegisterCreditCard from '../../common/register-credit-card/RegisterCreditCard';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 
+// Hooks
+import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
+
 // Constants
 import { pages } from './constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-import { PAGES_FULL_ROUTES } from '../../../routing/pages';
+import { USER_TYPE } from '../../constants';
 
 const RegisterDoctorPaymentInformation = (): React.Node => {
-  const history = useHistory();
+  const saveCreditCard = useSaveCreditCard(USER_TYPE.DOCTOR);
 
   const handlingSubmit = (values: Object) => {
-    // TODO: Implement this method when the BE is done.
-    console.log('Submited', values);
-    history.push(PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE);
+    saveCreditCard(values);
   };
 
   return (
