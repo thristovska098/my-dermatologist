@@ -69,5 +69,10 @@ public final class RestControllerConstants {
    */
   public static final String FETCH_DOCTORS_ENDPOINT = API_REST_ENDPOINT + "/doctors";
 
+  /**
+   * Fetch cities.
+   */
+  public static final String FETCH_CITIES_ENDPOINT = API_REST_ENDPOINT + "/cities";
+
 
 }
