@@ -31,7 +31,7 @@ public class Patient {
   @OneToOne(cascade = CascadeType.ALL)
   private PersonalData personalData;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   private CreditCard creditCard;
 
   @OneToMany(mappedBy = "patient", cascade = {CascadeType.REFRESH, CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.LAZY)

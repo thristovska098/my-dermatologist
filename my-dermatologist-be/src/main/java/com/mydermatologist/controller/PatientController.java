@@ -7,6 +7,7 @@ import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.PatientRegisterDto;
 import com.mydermatologist.service.PatientService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,7 @@ import static com.mydermatologist.controller.RestControllerConstants.PATIENT_END
  * Patient REST controller.
  */
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
 public class PatientController {
 

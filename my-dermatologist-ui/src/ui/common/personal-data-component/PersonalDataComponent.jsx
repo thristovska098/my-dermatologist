@@ -25,11 +25,7 @@ import {
 } from '../../labels';
 import { GENDER_OPTIONS, LENGTH_OF_SSN } from './constants';
 
-type Props = {
-  fieldNamePrefix: string,
-};
-
-const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
+const PersonalDataComponent = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const ssnValidator = validateLength(INVALID_SSN_MESSAGE, LENGTH_OF_SSN);
   const dateValidator = dateInThePast(INVALID_DATE);
@@ -44,36 +40,36 @@ const PersonalDataComponent = ({ fieldNamePrefix }: Props): React.Node => {
       <RowsContainer>
         <TextInputField
           validate={requiredValidator}
-          name={`${fieldNamePrefix}.firstName`}
+          name="personalData.firstName"
           label={NAME_LABEL}
           width={FIELD_WIDTH_MAX}
         />
         <TextInputField
           validate={requiredValidator}
-          name={`${fieldNamePrefix}.lastName`}
+          name="personalData.lastName"
           label={SURNAME_LABEL}
           width={FIELD_WIDTH_MAX}
         />
         <TextInputField
           validate={combinedSsnValidator}
-          name={`${fieldNamePrefix}.ssn`}
+          name="personalData.ssn"
           label={SSN_LABEL}
           width={FIELD_WIDTH_MAX}
         />
         <DatePickerField
-          name={`${fieldNamePrefix}.dateOfBirth`}
+          name="personalData.dateOfBirth"
           label={DATE_OF_BIRTH_LABEL}
           width={FIELD_WIDTH_MAX}
           validate={dateValidator}
         />
         <DropdownField
-          name={`${fieldNamePrefix}.gender`}
+          name="personalData.gender"
           width={FIELD_WIDTH_MAX}
           options={GENDER_OPTIONS}
           label={GENDER_LABEL}
         />
       </RowsContainer>
-      <ContactInformationComponent fieldNamePrefix={fieldNamePrefix} />
+      <ContactInformationComponent />
     </>
   );
 };

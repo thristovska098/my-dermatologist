@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -29,6 +30,6 @@ public class PersonalData {
 
   private Gender gender;
 
-  @OneToOne
+ @OneToOne(cascade = CascadeType.ALL)
   private ContactInformation contactInformation;
 }

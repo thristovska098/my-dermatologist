@@ -10,6 +10,7 @@ import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.service.DoctorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,7 @@ import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTO
  * Doctor REST controller.
  */
 @RestController
+@CrossOrigin
 @RequiredArgsConstructor
 public class DoctorController {
 

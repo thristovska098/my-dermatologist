@@ -19,11 +19,7 @@ import { FIELD_WIDTH_MAX } from '../constants';
 // Utils
 import { composeValidators, isEmail, isPhoneNumber, required } from '../../../components/validators';
 
-type Props = {
-  fieldNamePrefix: string,
-};
-
-const ContactInformationComponent = ({ fieldNamePrefix }: Props): React.Node => {
+const ContactInformationComponent = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const emailValidator = isEmail(INVALID_EMAIL_MESSAGE);
   const phoneNumberValidator = isPhoneNumber(INVALID_PHONE_MESSAGE);
@@ -40,17 +36,17 @@ const ContactInformationComponent = ({ fieldNamePrefix }: Props): React.Node => 
 
   return (
     <>
-      <AddressComponent fieldNamePrefix={fieldNamePrefix} />
+      <AddressComponent />
       <RowsContainer>
         <TextInputField
           validate={combinedValidatorsPhoneField}
-          name={`${fieldNamePrefix}.phone`}
+          name="personalData.contactInformation.phone"
           label={PHONE_LABEL}
           width={FIELD_WIDTH_MAX}
         />
         <TextInputField
           validate={combinedValidatorsEmailField}
-          name={`${fieldNamePrefix}.email`}
+          name="personalData.contactInformation.email"
           label={EMAIL_LABEL}
           width={FIELD_WIDTH_MAX}
         />

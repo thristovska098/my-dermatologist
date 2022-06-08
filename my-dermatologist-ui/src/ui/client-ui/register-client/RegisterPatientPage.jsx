@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
 
-// Routing
-import { useHistory } from 'react-router-dom';
-
 // Components
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
@@ -16,36 +13,19 @@ import { FormContainer } from '../../common/styles';
 import { FIELD_WIDTH_MAX } from '../../common/constants';
 import { pages } from '../constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 // Types
 import type { Patient } from '../../../types/types.flow';
 
-// Utils
-import { prepareDate } from '../../common/utils';
+// Hooks
+import { useSavePersonalDataForPatient } from '../../../hooks/useSavePersonalDataForPatient';
 
 const RegisterPatientPage = (): React.Node => {
-  const history = useHistory();
+  const savePatient = useSavePersonalDataForPatient();
 
   const handlingSubmit = (values: Patient) => {
-    // TODO: Implement this method when the BE is done.
-    const preparedData = prepareData(values);
-    console.log(preparedData);
-    history.push(PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD);
+    savePatient(values);
   };
-
-  const prepareData = React.useCallback((values: Object): Object => {
-    const patientData = values?.patient;
-    const { dateOfBirth, ...rest } = patientData;
-
-    if (dateOfBirth === undefined) {
-      return { ...rest };
-    }
-
-    const preparedDateOfBirth = prepareDate(dateOfBirth);
-
-    return { ...rest, dateOfBirth: preparedDateOfBirth };
-  }, []);
 
   return (
     <PageWrapper>
@@ -56,7 +36,7 @@ const RegisterPatientPage = (): React.Node => {
           <>
             <Header pages={pages} onChangeFunction={handleSubmit} shouldLetLogOut={false} />
             <FormContainer>
-              <PersonalDataComponent fieldNamePrefix="patient" />
+              <PersonalDataComponent />
               <SubmitAndCancelFooter
                 width={FIELD_WIDTH_MAX}
                 handleSubmit={handleSubmit}
