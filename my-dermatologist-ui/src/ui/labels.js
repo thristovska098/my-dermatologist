@@ -71,7 +71,7 @@ export const DOCTOR_ENTRY_CONTENT = {
 
 export const APPOINTMENT_STATUSES = {
   COMPLETED: 'Reviewed',
-  WAITING_FOR_REVIEW: 'Waiting...',
+  WAITING: 'Waiting...',
 };
 
 // Messages for validation

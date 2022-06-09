@@ -44,6 +44,7 @@ import {
   RESPOND_LABEL,
   DESCRIPTION_OF_ISSUE_LABEL,
 } from '../../labels';
+import { APPOINTMENT_STATUS } from './constants';
 
 // Actions
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
@@ -94,11 +95,11 @@ const ReviewVirtualVisitsPage = (): React.Node => {
   const renderedAccordions = appointments
     ?.sort((appointment1: Object, appointment2: Object): number => {
       if (appointment1?.appointmentStatus === appointment2?.appointmentStatus) return 0;
-      if (appointment1?.appointmentStatus === APPOINTMENT_STATUSES.WAITING_FOR_REVIEW) return -1;
+      if (appointment1?.appointmentStatus === APPOINTMENT_STATUS.WAITING) return -1;
       return 1;
     })
     .map((appointment: Object): React.Node => {
-      const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED ? 'green' : 'auto';
+      const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUS.COMPLETED ? 'green' : 'auto';
       const isExpanded = openedAccordionId === appointment?.id;
 
       return (
@@ -112,7 +113,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
               {appointment?.title}
               <DateAndStatusContainer>
                 <AppointmentStatusWrapper color={statusColor}>
-                  {appointment?.appointmentStatus}
+                  {APPOINTMENT_STATUSES[appointment?.appointmentStatus]}
                 </AppointmentStatusWrapper>
                 <div>{appointment?.createdOnDate}</div>
               </DateAndStatusContainer>
@@ -150,7 +151,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             </LabelAndInfoWrapper>
             <br />
             {renderedImages(appointment)}
-            {appointment?.appointmentStatus === APPOINTMENT_STATUSES.WAITING_FOR_REVIEW && (
+            {appointment?.appointmentStatus === APPOINTMENT_STATUS.WAITING && (
               <Button onClick={() => dispatch(setResponseModalOpenedForAppointmentId(appointment?.id))}>
                 {RESPOND_LABEL}
               </Button>
