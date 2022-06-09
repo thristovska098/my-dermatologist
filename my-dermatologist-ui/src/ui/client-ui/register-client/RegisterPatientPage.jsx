@@ -21,11 +21,16 @@ import type { Patient } from '../../../types/types.flow';
 // Hooks
 import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 
+// Utils
+import { preparePersonalData } from '../../common/utils';
+
 const RegisterPatientPage = (): React.Node => {
   const savePatient = useSavePersonalData(USER_TYPE.PATIENT);
 
   const handlingSubmit = (values: Patient) => {
-    savePatient(values);
+    const preparedValues = preparePersonalData(values);
+
+    savePatient(preparedValues);
   };
 
   return (

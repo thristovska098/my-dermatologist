@@ -15,5 +15,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DoctorPersonalDataDto {
 
-  private PersonalData doctor;
+  private PersonalData personalData;
 }

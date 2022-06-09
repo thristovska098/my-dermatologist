@@ -40,7 +40,7 @@ const PersonalDataComponent = (): React.Node => {
       <RowsContainer>
         <TextInputField
           validate={requiredValidator}
-          name="personalData.firstName"
+          name="personalData.name"
           label={NAME_LABEL}
           width={FIELD_WIDTH_MAX}
         />
@@ -69,7 +69,7 @@ const PersonalDataComponent = (): React.Node => {
           label={GENDER_LABEL}
         />
       </RowsContainer>
-      <ContactInformationComponent />
+      <ContactInformationComponent fieldNamePrefix="personalData.contactInformation" />
     </>
   );
 };

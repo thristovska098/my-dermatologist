@@ -1,9 +1,6 @@
 // @flow
 import * as React from 'react';
 
-// Utils
-import { useHistory } from 'react-router-dom';
-
 // Components
 import { Form } from 'react-final-form';
 import { FormContainer, RowsContainer } from '../../common/styles';
@@ -13,28 +10,45 @@ import Header from '../../basic-ui/header/Header';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import ContactInformationComponent from '../../common/contact-information-component/ContactInformationComponent';
 
+// Utils
+import { useSaveOfficeData } from '../../../hooks/useSaveOfficeData';
+
 // Constants
 import { LENGTH_OF_DOCTOR_CODE, pages } from './constants';
-import { FIELD_WIDTH_MAX } from '../../common/constants';
+import { DEFAULT_COUNTRY, FIELD_WIDTH_MAX } from '../../common/constants';
 import { SUBMIT_FIELD_LABEL, INVALID_DOCTOR_CODE_MESSAGE, MANDATORY_FIELD_MESSAGE, CODE_LABEL } from '../../labels';
 
 // Validators
 import { composeValidators, required, validateLength } from '../../../components/validators';
-import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const OfficeInformationPage = (): React.Node => {
-  const history = useHistory();
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
+  const saveOfficeData = useSaveOfficeData();
 
   const combinedCodeValidator = React.useCallback(
     (fieldValue) => composeValidators([requiredValidator, codeValidator])(fieldValue),
     [codeValidator, requiredValidator],
   );
   const handlingSubmit = (values: Object) => {
-    // TODO: Implement this method when the BE is done.
-    console.log(values);
-    history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD);
+    const { office, ...rest } = values;
+    const { officeContact } = office;
+    const { address, ...restOfContactInfo } = officeContact;
+
+    const preparedValues = {
+      office: {
+        officeContact: {
+          address: {
+            country: DEFAULT_COUNTRY,
+            ...address,
+          },
+          ...restOfContactInfo,
+        },
+      },
+      ...rest,
+    };
+
+    saveOfficeData(preparedValues);
   };
 
   return (
@@ -55,12 +69,12 @@ const OfficeInformationPage = (): React.Node => {
               <RowsContainer>
                 <TextInputField
                   validate={combinedCodeValidator}
-                  name="doctor.id"
+                  name="code"
                   label={CODE_LABEL}
                   width={FIELD_WIDTH_MAX}
                 />
               </RowsContainer>
-              <ContactInformationComponent fieldNamePrefix="doctor.office" />
+              <ContactInformationComponent fieldNamePrefix="office.officeContact" />
               <SubmitAndCancelFooter
                 width={FIELD_WIDTH_MAX}
                 handleSubmit={handleSubmit}

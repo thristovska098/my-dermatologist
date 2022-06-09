@@ -18,11 +18,16 @@ import { USER_TYPE } from '../../constants';
 // Hooks
 import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 
+// Utils
+import { preparePersonalData } from '../../common/utils';
+
 const RegisterDoctorPage = (): React.Node => {
   const saveDoctor = useSavePersonalData(USER_TYPE.DOCTOR);
 
   const handlingSubmit = (values: Object) => {
-    saveDoctor(values);
+    const preparedValues = preparePersonalData(values);
+
+    saveDoctor(preparedValues);
   };
 
   return (

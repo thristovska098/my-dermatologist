@@ -1,6 +1,5 @@
 package com.mydermatologist.mapper.doctor;
 
-import com.mydermatologist.domain.AppointmentStatus;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
 import com.mydermatologist.dto.DoctorDtoForPatientSelection;
@@ -41,7 +40,7 @@ public class DoctorMapper {
   public Doctor mapDoctorFormDataToDomain(DoctorPersonalDataDto doctorPersonalDataDto) {
     Doctor doctor = new Doctor();
 
-    doctor.setPersonalData(doctorPersonalDataDto.getDoctor());
+    doctor.setPersonalData(doctorPersonalDataDto.getPersonalData());
 
     return doctor;
   }

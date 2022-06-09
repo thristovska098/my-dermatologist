@@ -19,13 +19,17 @@ import {
   ZIPCODE_LABEL,
   MANDATORY_FIELD_MESSAGE,
 } from '../../labels';
-import { FIELD_WIDTH_MAX, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MIN } from '../constants';
+import { DEFAULT_COUNTRY, FIELD_WIDTH_MAX, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MIN } from '../constants';
 
 // Utils
 import { required } from '../../../components/validators';
 import { getCitiesList } from '../../../redux/selectors';
 
-const AddressComponent = (): React.Node => {
+type Props = {
+  fieldNamePrefix: string,
+};
+
+const AddressComponent = ({ fieldNamePrefix }: Props): React.Node => {
   const citiesList = useSelector(getCitiesList);
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
 
@@ -43,13 +47,13 @@ const AddressComponent = (): React.Node => {
       <ColumnsContainer>
         <DropdownField
           width={FIELD_WIDTH_MEDIUM}
-          name="personalData.contactInformation.address.city"
+          name={`${fieldNamePrefix}.address.city`}
           label={CITY_LABEL}
           options={preparedOptions}
         />
         <TextInputField
           validate={requiredValidator}
-          name="personalData.contactInformation.address.zipCode"
+          name={`${fieldNamePrefix}.address.zipCode`}
           label={ZIPCODE_LABEL}
           width={FIELD_WIDTH_MIN}
         />
@@ -57,20 +61,20 @@ const AddressComponent = (): React.Node => {
       <ColumnsContainer>
         <TextInputField
           validate={requiredValidator}
-          name="personalData.contactInformation.address.street"
+          name={`${fieldNamePrefix}.address.street`}
           label={STREET_LABEL}
           width={FIELD_WIDTH_MEDIUM}
         />
         <TextInputField
           validate={requiredValidator}
-          name="personalData.contactInformation.address.streetNumber"
+          name={`${fieldNamePrefix}.address.streetNumber`}
           label={STREET_NUMBER_LABEL}
           width={FIELD_WIDTH_MIN}
         />
       </ColumnsContainer>
       <TextInputField
-        name="personalData.contactInformation.address.country"
-        value="North Macedonia"
+        name={`${fieldNamePrefix}.address.country`}
+        value={DEFAULT_COUNTRY}
         label={COUNTRY_LABEL}
         width={FIELD_WIDTH_MAX}
         disabled
