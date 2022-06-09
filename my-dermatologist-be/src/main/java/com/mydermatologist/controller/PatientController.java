@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -76,9 +77,10 @@ public class PatientController {
   @RequestMapping(
     value = PATIENT_APPOINTMENTS_ENDPOINT,
     method = RequestMethod.GET)
+  @ResponseBody
   public List<AppointmentDtoForClientReview> getAppointments(@RequestParam Long patientId) {
 
-    List<AppointmentDtoForClientReview> appointments = patientService.getAppointments(patientId);
+  List<AppointmentDtoForClientReview> appointments = patientService.getAppointments(patientId);
 
     return appointments;
   }
