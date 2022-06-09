@@ -4,7 +4,6 @@ import * as React from 'react';
 // Components
 import { Form } from 'react-final-form';
 import { Button } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import { RespondModalContainer, RespondModalFieldsContainer, RespondModalHeaderContainer } from './styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import TextAreaField from '../../../components/final-form/field-components/text-area-field/TextAreaField';
@@ -20,17 +19,15 @@ import {
   MEDICAL_REPORT_LABEL,
 } from '../../labels';
 
-// Actions
-import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
-
 // Validators
 import { composeValidators, minLength, required } from '../../../components/validators';
+import { useCreateMedicalReport } from '../../../hooks/useCreateMedicalReport';
 
 const RespondAppointmentForm = (): React.Node => {
-  const dispatch = useDispatch();
-  // TODO: Implement this when the BE is implemented.
-  const handleSubmitClick = () => {
-    dispatch(setResponseModalOpenedForAppointmentId(null));
+  const createMedicalReport = useCreateMedicalReport();
+
+  const handleSubmitClick = (values: Object) => {
+    createMedicalReport(values);
   };
 
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
