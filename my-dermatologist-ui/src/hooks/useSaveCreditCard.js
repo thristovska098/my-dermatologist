@@ -9,11 +9,12 @@ import axios from 'axios';
 import { USER_TYPE } from '../ui/constants';
 import { BASE_URL, SAVE_DOCTOR_CREDIT_CARD_DATA_URL, SAVE_PATIENT_CREDIT_CARD_DATA_URL } from './endpoints';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
-import { getUserId } from '../redux/selectors';
+import { getUserId, getUserType } from '../redux/selectors';
 
-export const useSaveCreditCard = (userType: string): Function => {
+export const useSaveCreditCard = (): Function => {
   const history = useHistory();
   const userId = useSelector(getUserId);
+  const userType = useSelector(getUserType);
 
   const isPatient = userType === USER_TYPE.PATIENT;
 

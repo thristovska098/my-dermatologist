@@ -34,13 +34,13 @@ import {
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 // Hooks
-import { useFetchAppointmentsForPatient } from '../../../hooks/useFetchAppointmentsForPatient';
+import { useFetchAppointments } from '../../../hooks/useFetchAppointments';
 
 const VirtualVisitsResultsPage = (): React.Node => {
   const history = useHistory();
   const [accountIdOpened, setAccountAccordionOpened] = React.useState(undefined);
   const [appointments, setAppointments] = React.useState([]);
-  const fetchAppointments = useFetchAppointmentsForPatient();
+  const fetchAppointments = useFetchAppointments();
 
   React.useEffect(() => {
     fetchAppointments.then((response: Object) => {
@@ -63,7 +63,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
       const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED ? 'green' : 'auto';
       const address = appointment?.doctor?.officeInformation?.officeContact?.address;
       const addressInfo = `${address?.street} ${address?.streetNumber}, ${address?.zipCode} ${address?.city}`;
-      const isExpanded = appointment?.appointmentId === accountIdOpened;
+      const isExpanded = appointment?.id === accountIdOpened;
 
       const preparedCreatedOn = appointment?.createdOn.substr(0, 10);
 
@@ -71,7 +71,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
         <Accordion
           key={appointment?.id}
           expanded={isExpanded}
-          onClick={() => setAccountAccordionOpened(isExpanded ? undefined : appointment?.appointmentId)}
+          onClick={() => setAccountAccordionOpened(isExpanded ? undefined : appointment?.id)}
         >
           <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
             <AccordionSummaryContainer>

@@ -15,10 +15,9 @@ import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
 // Constants
 import { pages } from './constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-import { USER_TYPE } from '../../constants';
 
 const RegisterDoctorPaymentInformation = (): React.Node => {
-  const saveCreditCard = useSaveCreditCard(USER_TYPE.DOCTOR);
+  const saveCreditCard = useSaveCreditCard();
 
   const handlingSubmit = (values: Object) => {
     saveCreditCard(values);

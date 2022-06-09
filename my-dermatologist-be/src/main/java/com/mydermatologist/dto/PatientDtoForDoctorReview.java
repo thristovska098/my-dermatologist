@@ -17,6 +17,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class PatientDtoForDoctorReview {
 
+  private String ssn;
+
   private String name;
 
   private  String lastName;

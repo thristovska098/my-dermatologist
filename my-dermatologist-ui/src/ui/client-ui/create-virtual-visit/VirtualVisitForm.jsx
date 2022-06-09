@@ -36,7 +36,10 @@ import {
   SUBJECT_LABEL,
   SELECT_DOCTOR_LABEL,
   DISEASES_AND_ALLERGIES_TOOLTIP_LABEL,
+  MINIMUM_LENGTH_MESSAGE,
 } from '../../labels';
+
+// Custom hooks
 import { useFetchDoctors } from '../../../hooks/useFetchDoctors';
 
 const VirtualVisitForm = (): React.Node => {
@@ -70,7 +73,7 @@ const VirtualVisitForm = (): React.Node => {
   const width = MIN_WIDTH - 20;
 
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
-  const minLengthValidator = minLength(`The length must be minimum ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
+  const minLengthValidator = minLength(`${MINIMUM_LENGTH_MESSAGE} ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
   const descriptionValidators = composeValidators([requiredValidator, minLengthValidator]);
 
   const handlingSubmit = (values: Object) => {

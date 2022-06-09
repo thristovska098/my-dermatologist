@@ -9,7 +9,6 @@ export const useFetchDoctors = (): Promise => {
     axios
       .get(`${BASE_URL}${FETCH_DOCTORS_URL}`)
       .then((response: Object) => {
-        console.log(response);
         resolve(response);
       })
       .catch((error: Object) => {

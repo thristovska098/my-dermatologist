@@ -12,13 +12,12 @@ import { StyledFormContainer } from './styles';
 // Utils
 import { pages } from '../constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-import { USER_TYPE } from '../../constants';
 
 // Hooks
 import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
 
 const AddPaymentInfo = (): React.Node => {
-  const saveCreditCard = useSaveCreditCard(USER_TYPE.PATIENT);
+  const saveCreditCard = useSaveCreditCard();
 
   const handlingSubmit = (values: Object) => {
     saveCreditCard(values);

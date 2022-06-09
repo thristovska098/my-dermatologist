@@ -98,7 +98,6 @@ public class AppointmentMapper {
     appointmentDtoForDoctorReview.setAppointmentStatus(appointment.getAppointmentStatus());
     appointmentDtoForDoctorReview.setCreatedOn(appointment.getCreatedOn());
     appointmentDtoForDoctorReview.setPatient(patientDtoForDoctorReview);
-    appointmentDtoForDoctorReview.setImages(appointment.getImages());
 
     return appointmentDtoForDoctorReview;
   }

@@ -33,7 +33,6 @@ import { ImageContainer, ImageContainerForModal } from './styles';
 import { RowsContainer } from '../../common/styles';
 
 // Constants
-import { listOfAppointments } from './dummyData';
 import {
   APPOINTMENT_STATUSES,
   DATE_OF_BIRTH_LABEL,
@@ -49,10 +48,23 @@ import {
 // Actions
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
 
+// Custom hooks
+import { useFetchAppointments } from '../../../hooks/useFetchAppointments';
+
 const ReviewVirtualVisitsPage = (): React.Node => {
   const [openedModal, setOpenedModal] = React.useState(null);
   const [openedAccordionId, setOpenedAccordionId] = React.useState(null);
+  const [appointments, setAppointments] = React.useState(undefined);
+
   const dispatch = useDispatch();
+  const fetchAppointments = useFetchAppointments();
+
+  React.useEffect(() => {
+    fetchAppointments.then((response: Object) => {
+      setAppointments(response?.data);
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const handleShowPopover = (image: string) => {
     setOpenedModal(image);
@@ -72,28 +84,27 @@ const ReviewVirtualVisitsPage = (): React.Node => {
   const renderedImages = (appointment: Object): React.Node => (
     <ImageList sx={{ width: '100%', height: 300 }} cols={5} gap={20} rowHeight={164}>
       {appointment?.images?.map((image) => (
-        <ImageListItem key={appointment.appointmentId + uuid()}>
+        <ImageListItem key={appointment.id + uuid()}>
           <ImageContainer src={image} loading="lazy" onClick={() => handleShowPopover(image)} />
         </ImageListItem>
       ))}
     </ImageList>
   );
 
-  // TODO: replace the dummy data with real data when the BE is implemented.
-  const renderedAccordions = listOfAppointments
-    .sort((appointment1: Object, appointment2: Object): number => {
+  const renderedAccordions = appointments
+    ?.sort((appointment1: Object, appointment2: Object): number => {
       if (appointment1?.appointmentStatus === appointment2?.appointmentStatus) return 0;
       if (appointment1?.appointmentStatus === APPOINTMENT_STATUSES.WAITING_FOR_REVIEW) return -1;
       return 1;
     })
     .map((appointment: Object): React.Node => {
       const statusColor = appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED ? 'green' : 'auto';
-      const isExpanded = openedAccordionId === appointment?.appointmentId;
+      const isExpanded = openedAccordionId === appointment?.id;
 
       return (
         <Accordion
-          key={appointment?.appointmentId}
-          onClick={() => setOpenedAccordionId(isExpanded ? undefined : appointment?.appointmentId)}
+          key={appointment?.id}
+          onClick={() => setOpenedAccordionId(isExpanded ? undefined : appointment?.id)}
           expanded={isExpanded}
         >
           <AccordionSummary expandIcon={<ExpandMore />} aria-controls="panel1a-content" id="panel1a-header">
@@ -118,19 +129,19 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
               <Label>{GENDER_LABEL}:</Label>
-              {appointment?.patient?.gender}
+              {appointment?.patient?.gender?.toLowerCase()}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
               <Label>{DATE_OF_BIRTH_LABEL}:</Label>
-              {appointment?.patient?.dateOfBirth}
+              {appointment?.patient?.dateOfBirth?.substring(0, 10)}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
               <Label>{EMAIL_LABEL}:</Label>
-              {appointment?.patient?.contactInformation?.email}
+              {appointment?.patient?.email}
             </LabelAndInfoWrapper>
             <LabelAndInfoWrapper>
               <Label>{PHONE_LABEL}:</Label>
-              {appointment?.patient?.contactInformation?.phone}
+              {appointment?.patient?.phone}
             </LabelAndInfoWrapper>
             <br />
             <LabelAndInfoWrapper>
@@ -140,7 +151,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             <br />
             {renderedImages(appointment)}
             {appointment?.appointmentStatus === APPOINTMENT_STATUSES.WAITING_FOR_REVIEW && (
-              <Button onClick={() => dispatch(setResponseModalOpenedForAppointmentId(appointment?.appointmentId))}>
+              <Button onClick={() => dispatch(setResponseModalOpenedForAppointmentId(appointment?.id))}>
                 {RESPOND_LABEL}
               </Button>
             )}

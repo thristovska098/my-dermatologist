@@ -39,6 +39,7 @@ public class PatientMapper {
     PatientDtoForDoctorReview patientDtoForDoctorReview = new PatientDtoForDoctorReview();
     PersonalData personalData = patient.getPersonalData();
 
+    patientDtoForDoctorReview.setSsn(personalData.getSsn());
     patientDtoForDoctorReview.setName(personalData.getName());
     patientDtoForDoctorReview.setLastName(personalData.getLastName());
     patientDtoForDoctorReview.setGender(personalData.getGender());

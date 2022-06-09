@@ -13,7 +13,6 @@ import { FormContainer } from '../../common/styles';
 import { FIELD_WIDTH_MAX } from '../../common/constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
 import { pages } from './constants';
-import { USER_TYPE } from '../../constants';
 
 // Hooks
 import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
@@ -22,7 +21,7 @@ import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 import { preparePersonalData } from '../../common/utils';
 
 const RegisterDoctorPage = (): React.Node => {
-  const saveDoctor = useSavePersonalData(USER_TYPE.DOCTOR);
+  const saveDoctor = useSavePersonalData();
 
   const handlingSubmit = (values: Object) => {
     const preparedValues = preparePersonalData(values);
