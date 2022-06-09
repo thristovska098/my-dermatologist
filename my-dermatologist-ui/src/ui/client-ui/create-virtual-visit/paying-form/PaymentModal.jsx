@@ -3,6 +3,7 @@ import * as React from 'react';
 
 // Hooks
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 // Components
 import { Form } from 'react-final-form';
@@ -14,13 +15,15 @@ import PaymentOutcomeModal from './PaymentOutcomeModal';
 import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
-import { MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
+import { CANCEL_FIELD_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
+import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
 
 // Utils
 import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
 const PaymentModal = (): React.Node => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // eslint-disable-next-line no-unused-vars
   const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
@@ -53,6 +56,10 @@ const PaymentModal = (): React.Node => {
     dispatch(setIsPaymentOutcomeModalOpen(true));
   };
 
+  const handleCancel = () => {
+    history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
+  };
+
   return !isPaymentOutcomeModalOpen ? (
     <Modal open>
       <Box sx={style}>
@@ -66,6 +73,9 @@ const PaymentModal = (): React.Node => {
                 <ButtonContainer>
                   <Button variant="contained" onClick={handleSubmit}>
                     {MAKE_PAYMENT_LABEL}
+                  </Button>
+                  <Button onClick={handleCancel} variant="outlined">
+                    {CANCEL_FIELD_LABEL}
                   </Button>
                 </ButtonContainer>
               </FieldsContainer>

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 // Hooks
 import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // Components
 import { Form } from 'react-final-form';
@@ -22,8 +22,8 @@ import PaymentModal from './paying-form/PaymentModal';
 
 // Utils
 import { composeValidators, minLength, required } from '../../../components/validators';
-import { setIsPaymentModalOpen } from '../../../redux/actions';
 import { getIsPaymentModalOpen } from '../../../redux/selectors';
+import { useCreateAppointment } from '../../../hooks/useCreateAppointment';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
@@ -40,8 +40,8 @@ import {
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
-  const dispatch = useDispatch();
   const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
+  const createAppointment = useCreateAppointment();
 
   // TODO: Replace the dummy data for the doctors with data from the BE
   const doctorsOptions = dummyDoctorsList.map((doctor: Object): Object => {
@@ -66,8 +66,8 @@ const VirtualVisitForm = (): React.Node => {
 
   // TODO: Replace the dummy data with data from the BE
 
-  const handlingSubmit = () => {
-    dispatch(setIsPaymentModalOpen(true));
+  const handlingSubmit = (values: Object) => {
+    createAppointment(values);
   };
 
   const handleCancel = () => {
@@ -86,21 +86,16 @@ const VirtualVisitForm = (): React.Node => {
               <RowsContainer>
                 <DropdownField
                   width={width + 15}
-                  name="virtualVisit.doctor"
+                  name="doctorId"
                   options={doctorsOptions}
                   label={SELECT_DOCTOR_LABEL}
                   isRequired
                   validate={requiredValidator}
                 />
-                <TextInputField
-                  name="virtualVisit.subject"
-                  width={MIN_WIDTH}
-                  label={SUBJECT_LABEL}
-                  validate={requiredValidator}
-                />
+                <TextInputField name="title" width={MIN_WIDTH} label={SUBJECT_LABEL} validate={requiredValidator} />
                 <RowContainer>
                   <TextAreaField
-                    name="virtualVisit.description"
+                    name="description"
                     placeholder={DESCRIPTION_LABEL}
                     minRows={1}
                     fieldLabel="Description"

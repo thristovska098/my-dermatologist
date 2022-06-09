@@ -23,7 +23,7 @@ export const IconAndInputContainer: React.ComponentType<*> = styled.div`
 export const ButtonContainer: React.ComponentType<*> = styled.div`
   display: flex;
   justify-content: center;
-  width: 210px;
+  column-gap: 10px;
   margin-top: 30px;
 `;
 

@@ -57,7 +57,7 @@ const TextAreaField = ({
     render={({ input, meta, ...restProps }): React.Node => {
       const { value, onChange } = input;
       const { error, touched } = meta;
-      console.log(rest);
+
       const hasError = error && touched;
       const errorMessage = hasError ? error : null;
 

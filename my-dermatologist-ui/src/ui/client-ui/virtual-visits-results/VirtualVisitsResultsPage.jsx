@@ -53,7 +53,6 @@ const VirtualVisitsResultsPage = (): React.Node => {
     history.push(PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT_FORM);
   };
 
-  // TODO: replace the dummy data with real data when the BE is implemented.
   const renderedAccordions = appointments
     ?.sort((appointment1: Object, appointment2: Object): number => {
       if (appointment1?.appointmentStatus === appointment2?.appointmentStatus) return 0;
@@ -70,7 +69,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
 
       return (
         <Accordion
-          key={appointment?.appointmentId}
+          key={appointment?.id}
           expanded={isExpanded}
           onClick={() => setAccountAccordionOpened(isExpanded ? undefined : appointment?.appointmentId)}
         >
@@ -102,19 +101,23 @@ const VirtualVisitsResultsPage = (): React.Node => {
               <Label>{ADDRESS_LABEL}:</Label>
               {addressInfo}
             </LabelAndInfoWrapper>
-            <br />
-            <LabelAndInfoWrapper>
-              <Label>{MEDICAL_DIAGNOSIS_LABEL}:</Label>
-              {appointment?.medicalDiagnosis}
-            </LabelAndInfoWrapper>
-            <LabelAndInfoWrapper>
-              <Label>{PRESCRIPTION_LABEL}:</Label>
-              {appointment?.medicalPrescription}
-            </LabelAndInfoWrapper>
-            <LabelAndInfoWrapper>
-              <Label>{TREATMENT_LABEL}:</Label>
-              {appointment?.treatment}
-            </LabelAndInfoWrapper>
+            {appointment?.appointmentStatus === APPOINTMENT_STATUSES.COMPLETED && (
+              <>
+                <br />
+                <LabelAndInfoWrapper>
+                  <Label>{MEDICAL_DIAGNOSIS_LABEL}:</Label>
+                  {appointment?.medicalDiagnosis}
+                </LabelAndInfoWrapper>
+                <LabelAndInfoWrapper>
+                  <Label>{PRESCRIPTION_LABEL}:</Label>
+                  {appointment?.medicalPrescription}
+                </LabelAndInfoWrapper>
+                <LabelAndInfoWrapper>
+                  <Label>{TREATMENT_LABEL}:</Label>
+                  {appointment?.treatment}
+                </LabelAndInfoWrapper>
+              </>
+            )}
           </AccordionDetails>
         </Accordion>
       );

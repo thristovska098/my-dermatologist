@@ -12,34 +12,9 @@ export const pages = [
   },
 ];
 
-const dummyContact = {
-  address: {
-    city: 'Dummy city',
-    zipCode: 'dummy zip code',
-    street: 'street',
-    streetNumber: 'street number',
-    country: 'country',
-  },
-  phone: '231312',
-  email: 'sdkahsdhj@dsdsf.com',
-};
-
-const dummyDoctor = {
-  code: 'sjdhfs',
-  doctor: {
-    name: 'Doctor name',
-    lastName: 'Doctor Last name',
-    ssn: 'ssjsjhshs',
-    dateOfBirth: '10.10.1990',
-    gender: 'Male',
-    contactInformation: dummyContact,
-  },
-  officeInformation: dummyContact,
-};
-
 export const dummyDoctorsList = [
   {
-    code: 'ABCD1',
+    code: 4,
     doctor: {
       name: 'Petar',
       lastName: 'Petrovski',
@@ -104,5 +79,3 @@ export const dummyDoctorsList = [
     },
   },
 ];
-
-export const dummyData = [dummyDoctor, dummyDoctor, dummyDoctor, dummyDoctor];

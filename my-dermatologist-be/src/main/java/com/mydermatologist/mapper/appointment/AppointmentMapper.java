@@ -8,7 +8,6 @@ import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.DoctorDtoForClientReview;
-import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.dto.PatientDtoForDoctorReview;
 import com.mydermatologist.mapper.doctor.DoctorMapper;
@@ -50,7 +49,6 @@ public class AppointmentMapper {
     appointment.setCreatedOn(new Date());
     appointment.setDescription(createAppointmentDto.getDescription());
     appointment.setTitle(createAppointmentDto.getTitle());
-    appointment.setImages(createAppointmentDto.getImages());
     appointment.setDoctor(doctor);
     appointment.setPatient(patient);
 

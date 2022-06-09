@@ -51,9 +51,7 @@ const Navigation = ({ pages, initialPage, onChangeFunction = () => {}, hasValida
 
     setCurrentPage(newValue);
     onChangeFunction();
-    // TODO: Implement the changing of the navigation
     history.push(pages[newValue]?.path);
-    // dispatch(push(pages[newValue].path));
   };
 
   return (
