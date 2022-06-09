@@ -73,6 +73,4 @@ public final class RestControllerConstants {
    * Fetch cities.
    */
   public static final String FETCH_CITIES_ENDPOINT = API_REST_ENDPOINT + "/cities";
-
-
 }

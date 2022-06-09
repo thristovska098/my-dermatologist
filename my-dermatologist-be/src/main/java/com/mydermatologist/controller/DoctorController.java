@@ -133,6 +133,7 @@ public class DoctorController {
   @RequestMapping(
     value = FETCH_DOCTORS_ENDPOINT,
     method = RequestMethod.GET)
+  @ResponseBody
   public List<DoctorDtoForPatientSelection> getDoctors() {
 
     List<DoctorDtoForPatientSelection> doctors = doctorService.getDoctors();

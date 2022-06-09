@@ -27,7 +27,7 @@ import { useCreateAppointment } from '../../../hooks/useCreateAppointment';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
-import { dummyDoctorsList, MAX_CHARACTERS, MIN_CHARACTERS, MIN_WIDTH, pages } from './constants';
+import { MAX_CHARACTERS, MIN_CHARACTERS, MIN_WIDTH, pages } from './constants';
 import {
   DESCRIPTION_LABEL,
   MANDATORY_FIELD_MESSAGE,
@@ -37,18 +37,27 @@ import {
   SELECT_DOCTOR_LABEL,
   DISEASES_AND_ALLERGIES_TOOLTIP_LABEL,
 } from '../../labels';
+import { useFetchDoctors } from '../../../hooks/useFetchDoctors';
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
   const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
   const createAppointment = useCreateAppointment();
+  const [doctors, setDoctors] = React.useState(undefined);
+  const fetchDoctors = useFetchDoctors();
 
-  // TODO: Replace the dummy data for the doctors with data from the BE
-  const doctorsOptions = dummyDoctorsList.map((doctor: Object): Object => {
-    const code = doctor?.code;
-    const nameAndLastName = `${doctor?.doctor?.name} ${doctor?.doctor?.lastName}`;
-    const city = doctor?.officeInformation?.address?.city;
-    const country = doctor?.officeInformation?.address?.country;
+  React.useEffect(() => {
+    fetchDoctors.then((response: Object) => {
+      setDoctors(response.data);
+    });
+    // eslint-disable-next-line
+  }, []);
+
+  const doctorsOptions = doctors?.map((doctor: Object): Object => {
+    const code = doctor?.id;
+    const nameAndLastName = `${doctor?.name} ${doctor?.lastName}`;
+    const city = doctor?.city;
+    const country = doctor?.country;
     const cityAndCountry = `${city}, ${country}`;
     const nameAndAddress = `${nameAndLastName} (${cityAndCountry})`;
 
@@ -63,8 +72,6 @@ const VirtualVisitForm = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const minLengthValidator = minLength(`The length must be minimum ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
   const descriptionValidators = composeValidators([requiredValidator, minLengthValidator]);
-
-  // TODO: Replace the dummy data with data from the BE
 
   const handlingSubmit = (values: Object) => {
     createAppointment(values);
