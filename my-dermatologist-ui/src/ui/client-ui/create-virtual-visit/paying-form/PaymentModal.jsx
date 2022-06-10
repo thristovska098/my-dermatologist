@@ -12,7 +12,7 @@ import { FieldsContainer, ButtonContainer, TotalPaymentContainer, PageContentCon
 import PaymentOutcomeModal from './PaymentOutcomeModal';
 
 // Actions
-import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
+import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
 import { CANCEL_FIELD_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
@@ -57,6 +57,7 @@ const PaymentModal = (): React.Node => {
   };
 
   const handleCancel = () => {
+    dispatch(setIsPaymentModalOpen(false));
     history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
   };
 
