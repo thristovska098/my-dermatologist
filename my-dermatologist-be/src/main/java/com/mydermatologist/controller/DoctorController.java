@@ -1,6 +1,5 @@
 package com.mydermatologist.controller;
 
-
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
@@ -10,7 +9,6 @@ import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
 import com.mydermatologist.service.DoctorService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +29,6 @@ import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTO
  * Doctor REST controller.
  */
 @RestController
-@CrossOrigin
 @RequiredArgsConstructor
 public class DoctorController {
 
@@ -58,7 +55,7 @@ public class DoctorController {
    * Saves the credit card data of the doctor.
    *
    * @param doctorId the doctor id.
-   *  @param creditCard thecredit card data.
+   * @param creditCard thecredit card data.
    * @return the {@link Doctor}.
    */
   @RequestMapping(

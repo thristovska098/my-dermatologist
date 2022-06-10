@@ -1,6 +1,5 @@
 package com.mydermatologist.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,6 @@ import static com.mydermatologist.controller.RestControllerConstants.FETCH_CITIE
  * City REST controller.
  */
 @RestController
-@CrossOrigin
 public class CityController {
 
   private final List<String> cities = Arrays.asList(
