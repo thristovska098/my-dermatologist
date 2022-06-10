@@ -11,14 +11,19 @@ import { setIsPaymentModalOpen } from '../redux/actions';
 export const useSaveImagesToAppointment = (): Function => {
   const dispatch = useDispatch();
 
-  const saveImages = (files: Array<any>, appointmentId: number) => {
+  const prepareFormData = (files: Array<Object>): any => {
     const formData = new FormData();
 
-    formData.append('files', files[0]);
-    formData.append('files', files[1]);
+    files.forEach((file) => formData.append('files', file));
+
+    return formData;
+  };
+
+  const saveImages = (files: Array<any>, appointmentId: number) => {
+    const preparedFormData = prepareFormData(files);
 
     axios
-      .post(`${BASE_URL}${SAVE_IMAGES}`, formData, {
+      .post(`${BASE_URL}${SAVE_IMAGES}`, preparedFormData, {
         params: {
           appointmentId,
         },
