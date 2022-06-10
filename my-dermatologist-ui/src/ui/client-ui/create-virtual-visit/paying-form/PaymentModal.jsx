@@ -58,6 +58,7 @@ const PaymentModal = (): React.Node => {
 
   const handleCancel = () => {
     dispatch(setIsPaymentModalOpen(false));
+    // TODO: delete appointment with ID
     history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
   };
 

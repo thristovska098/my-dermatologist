@@ -4,7 +4,7 @@ import * as React from 'react';
 
 // Hooks
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import { Form } from 'react-final-form';
@@ -23,7 +23,7 @@ import PaymentModal from './paying-form/PaymentModal';
 // Utils
 import { composeValidators, minLength, required } from '../../../components/validators';
 import { getIsPaymentModalOpen } from '../../../redux/selectors';
-import { useCreateAppointment } from '../../../hooks/useCreateAppointment';
+import { setIsPaymentModalOpen } from '../../../redux/actions';
 
 // Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
@@ -41,13 +41,17 @@ import {
 
 // Custom hooks
 import { useFetchDoctors } from '../../../hooks/useFetchDoctors';
+import { useSaveImagesToAppointment } from '../../../hooks/useSaveImagesToAppointment';
+import { useCreateAppointment } from '../../../hooks/useCreateAppointment';
 
 const VirtualVisitForm = (): React.Node => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
   const createAppointment = useCreateAppointment();
   const [doctors, setDoctors] = React.useState(undefined);
   const fetchDoctors = useFetchDoctors();
+  const saveImages = useSaveImagesToAppointment();
 
   React.useEffect(() => {
     fetchDoctors.then((response: Object) => {
@@ -77,7 +81,14 @@ const VirtualVisitForm = (): React.Node => {
   const descriptionValidators = composeValidators([requiredValidator, minLengthValidator]);
 
   const handlingSubmit = (values: Object) => {
-    createAppointment(values);
+    const { images, ...formData } = values;
+
+    createAppointment(formData)?.then((response: Object) => {
+      saveImages(images, response?.data);
+    });
+
+    // TODO: CHANGE THE PLACE OF THIS
+    dispatch(setIsPaymentModalOpen(true));
   };
 
   const handleCancel = () => {

@@ -11,33 +11,19 @@ import { setIsPaymentModalOpen } from '../redux/actions';
 export const useSaveImagesToAppointment = (): Function => {
   const dispatch = useDispatch();
 
-  // eslint-disable-next-line no-unused-vars
-  const convertFileToFormDataObject = (files: Array): Object => {
+  const saveImages = (files: Array<any>, appointmentId: number) => {
     const formData = new FormData();
 
-    files?.forEach((image, index): Object => {
-      formData.append(`image[${index}]`, image, image?.name);
-    });
+    formData.append('files', files[0]);
+    formData.append('files', files[1]);
 
-    return formData;
-  };
-
-  const headers = {
-    'Access-Control-Allow-Origin': 'http://localhost:3000',
-  };
-  const saveImages = (values: Array<any>, appointmentId: number) => {
-    console.log('Values', values);
-    const formData = new FormData();
-    formData.append('files', values[0], values[0]?.name);
-    console.log('Images', formData);
     axios
       .post(`${BASE_URL}${SAVE_IMAGES}`, formData, {
         params: {
           appointmentId,
         },
-        headers,
       })
-      .then((response) => {
+      .then((response: Object) => {
         console.log(response);
         dispatch(setIsPaymentModalOpen(true));
       });

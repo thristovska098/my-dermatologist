@@ -7,7 +7,6 @@ import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.PatientRegisterDto;
 import com.mydermatologist.service.PatientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +27,6 @@ import static com.mydermatologist.controller.RestControllerConstants.SAVE_IMAGES
  * Patient REST controller.
  */
 @RestController
-@CrossOrigin
 @RequiredArgsConstructor
 public class PatientController {
 
@@ -82,7 +80,7 @@ public class PatientController {
   @ResponseBody
   public List<AppointmentDtoForClientReview> getAppointments(@RequestParam Long patientId) {
 
-  List<AppointmentDtoForClientReview> appointments = patientService.getAppointments(patientId);
+    List<AppointmentDtoForClientReview> appointments = patientService.getAppointments(patientId);
 
     return appointments;
   }
@@ -98,7 +96,7 @@ public class PatientController {
     value = CREATE_APPOINTMENT_ENDPOINT,
     method = RequestMethod.POST)
   public Long createAppointment(@RequestParam Long patientId,
-                                       @RequestBody CreateAppointmentDto createAppointmentDto) {
+                                @RequestBody CreateAppointmentDto createAppointmentDto) {
 
     Long appointmentId = patientService.createAppointment(patientId, createAppointmentDto);
 
