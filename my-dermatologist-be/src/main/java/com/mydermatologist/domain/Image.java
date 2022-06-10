@@ -3,25 +3,29 @@ package com.mydermatologist.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 /**
- * Client image model.
+ * Client file - image model.
  */
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Avatar implements  java.io.Serializable {
+public class Image implements  java.io.Serializable {
 
   @Id
   @GeneratedValue
-  private Integer avatarId;
+  private Long id;
 
-  @NonNull
-  private byte[] image;
+  private String name;
+
+  private String type;
+
+  @Lob
+  private byte [] data;
 }

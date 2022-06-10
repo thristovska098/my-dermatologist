@@ -37,3 +37,11 @@ export const TooltipContainer: React.ComponentType<*> = styled.div`
   margin-top: 18px;
   height: 20px;
 `;
+
+export const NoAppointmentsContainer: React.ComponentType<*> = styled.div`
+  color: #a19e9c;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 500;
+  margin-left: 65px;
+  font-size: 17px;
+`;

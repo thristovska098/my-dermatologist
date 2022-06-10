@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import static com.mydermatologist.controller.RestControllerConstants.CREATE_APPO
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_APPOINTMENTS_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT;
 
 /**
  * Patient REST controller.
@@ -90,16 +92,32 @@ public class PatientController {
    *
    * @param patientId the patient id.
    * @param createAppointmentDto the patient credit card data.
-   * @return the {@link Patient}.
+   * @return the {@link Long}.
    */
   @RequestMapping(
     value = CREATE_APPOINTMENT_ENDPOINT,
     method = RequestMethod.POST)
-  public Patient createAppointment(@RequestParam Long patientId,
+  public Long createAppointment(@RequestParam Long patientId,
                                        @RequestBody CreateAppointmentDto createAppointmentDto) {
 
-    Patient patient = patientService.createAppointment(patientId, createAppointmentDto);
+    Long appointmentId = patientService.createAppointment(patientId, createAppointmentDto);
 
-    return patient;
+    return appointmentId;
+  }
+
+  /**
+   * Save images for the appointment by the patient.
+   *
+   * @param appointmentId the appointment id.
+   * @param files the patient credit card data.
+   * @return the {@link Patient}.
+   */
+  @RequestMapping(
+    value = SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT,
+    method = RequestMethod.POST)
+  public Long saveImagesToAppointment(@RequestParam Long appointmentId, @RequestParam("files") List<MultipartFile> files) {
+
+
+    return Long.valueOf(files.size());
   }
 }

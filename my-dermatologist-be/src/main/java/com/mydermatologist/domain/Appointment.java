@@ -47,7 +47,7 @@ public class Appointment {
 
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn
-  private List<Avatar> images;
+  private List<Image> images;
 
   @JsonIgnore
   @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.PERSIST,CascadeType.MERGE}, fetch = FetchType.EAGER)

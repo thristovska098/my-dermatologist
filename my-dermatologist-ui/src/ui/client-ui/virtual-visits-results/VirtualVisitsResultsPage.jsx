@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 // Components
 import { Accordion, AccordionSummary, Button, AccordionDetails } from '@mui/material';
 import { ExpandMore } from '@material-ui/icons';
-import { RowsContainer } from '../../common/styles';
+import { RowsContainer, NoAppointmentsContainer } from '../../common/styles';
 import {
   AccordionAndButtonContainer,
   AccordionsContainer,
@@ -30,6 +30,7 @@ import {
   TREATMENT_LABEL,
   DOCTOR_NAME_LABEL,
   PRESCRIPTION_LABEL,
+  NO_APPOINTMENTS_MESSAGE,
 } from '../../labels';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 import { APPOINTMENT_STATUS } from '../../doctor-ui/home-page/constants';
@@ -128,6 +129,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
     <AccordionsContainer>
       <AccordionAndButtonContainer>
         <RowsContainer>{renderedAccordions}</RowsContainer>
+        {appointments?.length === 0 && <NoAppointmentsContainer>{NO_APPOINTMENTS_MESSAGE}</NoAppointmentsContainer>}
         <ButtonWrapper>
           <Button variant="contained" onClick={handleButtonClick}>
             {CREATE_VIRTUAL_VISIT_LABEL}

@@ -55,6 +55,8 @@ export const DISEASES_AND_ALLERGIES_TOOLTIP_LABEL = 'Please mention if you have 
 export const ADD_PHOTOS_LABEL = 'Please add photos of the skin problem. You can maximum add 5 photos.';
 export const CREATE_VIRTUAL_VISIT_LABEL = 'Create virtual dermatologist visit';
 
+export const NO_APPOINTMENTS_MESSAGE = "You don't have any appointments yet.";
+
 export const PATIENT_ENTRY_CONTENT = {
   firstLine: 'Are you planning dermatologist appointment?',
   content: 'Consult our online dermatologists anytime, anywhere in minutes.',

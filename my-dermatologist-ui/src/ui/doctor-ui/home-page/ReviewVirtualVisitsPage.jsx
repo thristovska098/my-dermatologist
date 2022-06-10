@@ -30,7 +30,7 @@ import {
   LabelAndInfoWrapper,
 } from '../../client-ui/virtual-visits-results/styles';
 import { ImageContainer, ImageContainerForModal } from './styles';
-import { RowsContainer } from '../../common/styles';
+import { RowsContainer, NoAppointmentsContainer } from '../../common/styles';
 
 // Constants
 import {
@@ -43,6 +43,7 @@ import {
   EMAIL_LABEL,
   RESPOND_LABEL,
   DESCRIPTION_OF_ISSUE_LABEL,
+  NO_APPOINTMENTS_MESSAGE,
 } from '../../labels';
 import { APPOINTMENT_STATUS } from './constants';
 
@@ -165,6 +166,7 @@ const ReviewVirtualVisitsPage = (): React.Node => {
     <AccordionsContainer>
       <AccordionAndButtonContainer>
         <RowsContainer>{renderedAccordions}</RowsContainer>
+        {appointments?.length === 0 && <NoAppointmentsContainer>{NO_APPOINTMENTS_MESSAGE}</NoAppointmentsContainer>}
       </AccordionAndButtonContainer>
       {/* eslint-disable-next-line no-unused-vars */}
       <Modal open={openedModal !== null} onClose={(event, reason = 'backdropClick') => setOpenedModal(null)}>

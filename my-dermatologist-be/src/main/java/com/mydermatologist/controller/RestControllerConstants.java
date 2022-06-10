@@ -73,4 +73,9 @@ public final class RestControllerConstants {
    * Fetch cities.
    */
   public static final String FETCH_CITIES_ENDPOINT = API_REST_ENDPOINT + "/cities";
+
+  /**
+   * Save images for appointment.
+   */
+  public static final String SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT = CREATE_APPOINTMENT_ENDPOINT + "/image";
 }

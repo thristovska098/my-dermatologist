@@ -100,9 +100,9 @@ public class PatientService {
    *
    * @param patientId the doctor data.
    * @param createAppointmentDto the appointment data.
-   * @return the {@link Patient}.
+   * @return the {@link Long}.
    */
-  public Patient createAppointment(@RequestParam Long patientId,
+  public Long createAppointment(@RequestParam Long patientId,
                                        @RequestBody CreateAppointmentDto createAppointmentDto) {
 
     Patient patient = patientRepository.findById(patientId)
@@ -118,6 +118,6 @@ public class PatientService {
 
     appointmentRepository.save(appointment);
 
-    return patient;
+    return appointment.getId();
   }
 }
