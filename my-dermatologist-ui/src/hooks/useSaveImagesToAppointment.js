@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 // Utils
 import axios from 'axios';
-import { BASE_URL, SAVE_IMAGES } from './endpoints';
+import { BASE_URL, SAVE_IMAGES_URL } from './endpoints';
 import { setIsPaymentModalOpen } from '../redux/actions';
 
 export const useSaveImagesToAppointment = (): Function => {
@@ -23,7 +23,7 @@ export const useSaveImagesToAppointment = (): Function => {
     const preparedFormData = prepareFormData(files);
 
     axios
-      .post(`${BASE_URL}${SAVE_IMAGES}`, preparedFormData, {
+      .post(`${BASE_URL}${SAVE_IMAGES_URL}`, preparedFormData, {
         params: {
           appointmentId,
         },
