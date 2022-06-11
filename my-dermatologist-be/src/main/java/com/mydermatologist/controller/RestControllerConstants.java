@@ -77,5 +77,6 @@ public final class RestControllerConstants {
   /**
    * Save images for appointment.
    */
-  public static final String SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT = CREATE_APPOINTMENT_ENDPOINT + "/image";
+  public static final String SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT = CREATE_APPOINTMENT_ENDPOINT + "/images";
+
 }
