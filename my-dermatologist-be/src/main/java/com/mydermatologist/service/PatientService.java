@@ -147,6 +147,8 @@ public class PatientService {
 
     appointment.setImages(image);
 
+    appointmentRepository.save(appointment);
+
     return appointment;
   }
 }
