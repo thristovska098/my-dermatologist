@@ -158,7 +158,12 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             <br />
             {renderedImages(appointment)}
             {appointment?.appointmentStatus === APPOINTMENT_STATUS.WAITING && (
-              <Button onClick={() => dispatch(setResponseModalOpenedForAppointmentId(appointment?.id))}>
+              <Button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  dispatch(setResponseModalOpenedForAppointmentId(appointment?.id));
+                }}
+              >
                 {RESPOND_LABEL}
               </Button>
             )}
