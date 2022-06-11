@@ -21,12 +21,20 @@ import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
 // Utils
 import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
-const PaymentModal = (): React.Node => {
+// Custom hooks
+import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
+
+type Props = {
+  appointmentId: number,
+};
+
+const PaymentModal = ({ appointmentId }: Props): React.Node => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const deleteAppointment = useDeleteAppointment();
 
   // eslint-disable-next-line no-unused-vars
-  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(false);
+  const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(true);
   const isPaymentOutcomeModalOpen = useSelector(getIsPaymentOutcomeModalOpen);
 
   // Stripe accepts the price in cents, price * 100;
@@ -57,8 +65,11 @@ const PaymentModal = (): React.Node => {
   };
 
   const handleCancel = () => {
+    if (appointmentId !== undefined) {
+      deleteAppointment(appointmentId);
+    }
+
     dispatch(setIsPaymentModalOpen(false));
-    // TODO: delete appointment with ID
     history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
   };
 

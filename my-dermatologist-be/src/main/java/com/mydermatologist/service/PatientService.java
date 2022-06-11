@@ -14,8 +14,6 @@ import com.mydermatologist.repository.DoctorRepository;
 import com.mydermatologist.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -102,8 +100,7 @@ public class PatientService {
    * @param createAppointmentDto the appointment data.
    * @return the {@link Long}.
    */
-  public Long createAppointment(@RequestParam Long patientId,
-                                       @RequestBody CreateAppointmentDto createAppointmentDto) {
+  public Long createAppointment(Long patientId, CreateAppointmentDto createAppointmentDto) {
 
     Patient patient = patientRepository.findById(patientId)
       .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
@@ -119,5 +116,16 @@ public class PatientService {
     appointmentRepository.save(appointment);
 
     return appointment.getId();
+  }
+
+
+  /**
+   * Delete appointment.
+   *
+   * @param appointmentId the id of appointment.
+   */
+  public void deleteAppointment(Long appointmentId) {
+
+    appointmentRepository.deleteById(appointmentId);
   }
 }

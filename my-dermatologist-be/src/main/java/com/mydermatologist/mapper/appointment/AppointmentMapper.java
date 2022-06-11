@@ -75,6 +75,7 @@ public class AppointmentMapper {
     appointmentForClientReviewDto.setMedicalPrescription(appointment.getMedicalPrescription());
     appointmentForClientReviewDto.setTreatment(appointment.getTreatment());
     appointmentForClientReviewDto.setDoctor(doctorDtoForClientReview);
+    appointmentForClientReviewDto.setDescription(appointment.getDescription());
 
     return appointmentForClientReviewDto;
   }

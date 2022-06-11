@@ -24,8 +24,11 @@ public class DoctorMapper {
   public DoctorDtoForClientReview mapDoctorDomainToDoctorDtoForClientReview(Doctor doctor) {
     DoctorDtoForClientReview doctorDtoForClientReview = new DoctorDtoForClientReview();
 
-    doctorDtoForClientReview.setName(doctor.getPersonalData().getName());
-    doctorDtoForClientReview.setLastName(doctor.getPersonalData().getLastName());
+    if(doctor.getPersonalData() != null) {
+      doctorDtoForClientReview.setName(doctor.getPersonalData().getName());
+      doctorDtoForClientReview.setLastName(doctor.getPersonalData().getLastName());
+    }
+
     doctorDtoForClientReview.setOfficeInformation(doctor.getOffice());
 
     return doctorDtoForClientReview;
@@ -52,7 +55,7 @@ public class DoctorMapper {
    * @param officeInformationDto the doctors office data.
    * @return the {@link Doctor}.
    */
-  public Doctor mapOfficeInformationToDoctorDomain(Doctor doctor,DoctorOfficeInformationDto officeInformationDto) {
+  public Doctor mapOfficeInformationToDoctorDomain(Doctor doctor, DoctorOfficeInformationDto officeInformationDto) {
     doctor.setCode(officeInformationDto.getCode());
     doctor.setOffice(officeInformationDto.getOffice());
 
@@ -69,10 +72,16 @@ public class DoctorMapper {
 
     DoctorDtoForPatientSelection doctorDtoForPatientSelection = new DoctorDtoForPatientSelection();
     doctorDtoForPatientSelection.setId(doctor.getId());
-    doctorDtoForPatientSelection.setName(doctor.getPersonalData().getName());
-    doctorDtoForPatientSelection.setLastName(doctor.getPersonalData().getLastName());
-    doctorDtoForPatientSelection.setCity(doctor.getOffice().getOfficeContact().getAddress().getCity());
-    doctorDtoForPatientSelection.setCountry(doctor.getOffice().getOfficeContact().getAddress().getCountry());
+
+    if(doctor.getPersonalData() != null) {
+      doctorDtoForPatientSelection.setName(doctor.getPersonalData().getName());
+      doctorDtoForPatientSelection.setLastName(doctor.getPersonalData().getLastName());
+    }
+
+    if(doctor.getOffice() != null) {
+      doctorDtoForPatientSelection.setCity(doctor.getOffice().getOfficeContact().getAddress().getCity());
+      doctorDtoForPatientSelection.setCountry(doctor.getOffice().getOfficeContact().getAddress().getCountry());
+    }
 
     return doctorDtoForPatientSelection;
   }

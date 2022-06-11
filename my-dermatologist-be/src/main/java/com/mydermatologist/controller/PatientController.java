@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+import static com.mydermatologist.controller.RestControllerConstants.APPOINTMENT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.CREATE_APPOINTMENT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_APPOINTMENTS_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_CREDIT_CARD_ENDPOINT;
@@ -117,5 +118,19 @@ public class PatientController {
 
 
     return Long.valueOf(files.size());
+  }
+
+  /**
+   * Delete appointment with id.
+   *
+   * @param appointmentId the appointment id.
+   */
+  @RequestMapping(
+    value = APPOINTMENT_ENDPOINT,
+    method = RequestMethod.DELETE)
+  public void deleteAppointment(@RequestParam Long appointmentId) {
+
+    patientService.deleteAppointment(appointmentId);
+
   }
 }

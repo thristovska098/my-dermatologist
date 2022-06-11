@@ -21,6 +21,8 @@ public class AppointmentDtoForClientReview {
 
   private String title;
 
+  private String description;
+
   private AppointmentStatus appointmentStatus;
 
   private Date createdOn;

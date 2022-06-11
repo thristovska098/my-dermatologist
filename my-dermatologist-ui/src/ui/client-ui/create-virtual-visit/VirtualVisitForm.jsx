@@ -48,6 +48,7 @@ const VirtualVisitForm = (): React.Node => {
   const isPaymentModalOpen = useSelector(getIsPaymentModalOpen);
   const createAppointment = useCreateAppointment();
   const [doctors, setDoctors] = React.useState(undefined);
+  const [appointmentId, setAppointmentId] = React.useState(undefined);
   const fetchDoctors = useFetchDoctors();
   const saveImages = useSaveImagesToAppointment();
 
@@ -82,6 +83,7 @@ const VirtualVisitForm = (): React.Node => {
     const { images, ...formData } = values;
 
     createAppointment(formData)?.then((response: Object) => {
+      setAppointmentId(response?.data);
       saveImages(images, response?.data);
     });
   };
@@ -145,7 +147,7 @@ const VirtualVisitForm = (): React.Node => {
           </>
         )}
       />
-      {isPaymentModalOpen && <PaymentModal />}
+      {isPaymentModalOpen && <PaymentModal appointmentId={appointmentId} />}
     </PageWrapper>
   );
 };

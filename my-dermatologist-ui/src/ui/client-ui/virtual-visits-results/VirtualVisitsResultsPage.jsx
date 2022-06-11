@@ -31,6 +31,7 @@ import {
   DOCTOR_NAME_LABEL,
   PRESCRIPTION_LABEL,
   NO_APPOINTMENTS_MESSAGE,
+  DESCRIPTION_OF_ISSUE_LABEL,
 } from '../../labels';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 import { APPOINTMENT_STATUS } from '../../doctor-ui/home-page/constants';
@@ -102,6 +103,11 @@ const VirtualVisitsResultsPage = (): React.Node => {
             <LabelAndInfoWrapper>
               <Label>{ADDRESS_LABEL}:</Label>
               {addressInfo}
+            </LabelAndInfoWrapper>
+            <br />
+            <LabelAndInfoWrapper>
+              <Label>{DESCRIPTION_OF_ISSUE_LABEL}:</Label>
+              {appointment?.description}
             </LabelAndInfoWrapper>
             {appointment?.appointmentStatus === APPOINTMENT_STATUS.COMPLETED && (
               <>

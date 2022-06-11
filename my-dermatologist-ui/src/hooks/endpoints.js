@@ -11,3 +11,4 @@ export const SAVE_OFFICE_INFORMATION_URL = '/my-dermatologist/doctor/office-info
 export const CREATE_MEDICAL_REPORT_URL = '/my-dermatologist/doctor/medical-report';
 export const FETCH_DOCTORS_URL = '/my-dermatologist/doctors';
 export const SAVE_IMAGES = '/my-dermatologist/appointment/create/image';
+export const APPOINTMENT_URL = '/my-dermatologist/appointment';

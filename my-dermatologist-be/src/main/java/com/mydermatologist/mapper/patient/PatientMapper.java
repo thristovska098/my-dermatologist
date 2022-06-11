@@ -44,8 +44,11 @@ public class PatientMapper {
     patientDtoForDoctorReview.setLastName(personalData.getLastName());
     patientDtoForDoctorReview.setGender(personalData.getGender());
     patientDtoForDoctorReview.setDateOfBirth(personalData.getDateOfBirth());
-    patientDtoForDoctorReview.setEmail(personalData.getContactInformation().getEmail());
-    patientDtoForDoctorReview.setPhone(personalData.getContactInformation().getPhone());
+
+    if(personalData.getContactInformation() != null) {
+      patientDtoForDoctorReview.setEmail(personalData.getContactInformation().getEmail());
+      patientDtoForDoctorReview.setPhone(personalData.getContactInformation().getPhone());
+    }
 
     return patientDtoForDoctorReview;
   }
