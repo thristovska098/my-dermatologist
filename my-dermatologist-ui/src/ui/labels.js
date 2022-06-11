@@ -88,3 +88,4 @@ export const INVALID_PASSWORD_MESSAGE =
   'The password should contain minimum 8 characters including digits, letters and special characters.';
 export const REQUIRED_IMAGES_MESSAGE = 'You must upload pictures of the skin problem.';
 export const MINIMUM_LENGTH_MESSAGE = 'The length must be minimum';
+export const MAXIMUM_LENGTH_MESSAGE = 'The length must be maximum';

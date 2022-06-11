@@ -3,6 +3,7 @@ package com.mydermatologist.mapper.appointment;
 import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.AppointmentStatus;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.domain.Image;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.AppointmentDtoForDoctorReview;
@@ -15,8 +16,12 @@ import com.mydermatologist.mapper.patient.PatientMapper;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Appointment mapper.
@@ -115,5 +120,30 @@ public class AppointmentMapper {
     appointment.setMedicalPrescription(medicalReportDto.getMedicalPrescription());
     appointment.setTreatment(medicalReportDto.getTreatment());
     appointment.setAppointmentStatus(AppointmentStatus.COMPLETED);
+  }
+
+  /**
+   * Maps multipart files to image domain model.
+   *
+   * @param files the files.
+   * @return the {@link List<Image>}.
+   */
+  public List<Image> mapMultipartFilesToImageDomain(List<MultipartFile> files) {
+
+    List<Image> images = files.stream().map(file -> {
+      Image image = new Image();
+      image.setName(file.getOriginalFilename());
+      image.setType(file.getContentType());
+
+      try {
+        image.setData(file.getBytes());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+
+      return image;
+    }).collect(Collectors.toList());
+
+    return images;
   }
 }

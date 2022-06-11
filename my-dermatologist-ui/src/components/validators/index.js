@@ -22,6 +22,13 @@ export const minLength =
     return currentLength >= minimumLength ? undefined : message;
   };
 
+export const maxLength =
+  (message: string, maxLengthValue: number): Function =>
+  (value: ?string): ?string => {
+    const currentLength = value ? value?.length : 0;
+    return currentLength <= maxLengthValue ? undefined : message;
+  };
+
 export const validateLength =
   (message: string, desiredLength: number): Function =>
   (value: ?string): ?string =>

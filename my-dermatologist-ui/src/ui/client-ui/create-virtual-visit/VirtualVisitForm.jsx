@@ -21,7 +21,7 @@ import DropdownField from '../../../components/final-form/field-components/Dropd
 import PaymentModal from './paying-form/PaymentModal';
 
 // Utils
-import { composeValidators, minLength, required } from '../../../components/validators';
+import { composeValidators, maxLength, minLength, required } from '../../../components/validators';
 import { getIsPaymentModalOpen } from '../../../redux/selectors';
 
 // Constants
@@ -36,6 +36,7 @@ import {
   SELECT_DOCTOR_LABEL,
   DISEASES_AND_ALLERGIES_TOOLTIP_LABEL,
   MINIMUM_LENGTH_MESSAGE,
+  MAXIMUM_LENGTH_MESSAGE,
 } from '../../labels';
 
 // Custom hooks
@@ -77,6 +78,8 @@ const VirtualVisitForm = (): React.Node => {
 
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const minLengthValidator = minLength(`${MINIMUM_LENGTH_MESSAGE} ${MIN_CHARACTERS}.`, MIN_CHARACTERS);
+  const maxLengthValidator = maxLength(`${MAXIMUM_LENGTH_MESSAGE} ${100}.`, 100);
+  const titleValidators = composeValidators([requiredValidator, maxLengthValidator]);
   const descriptionValidators = composeValidators([requiredValidator, minLengthValidator]);
 
   const handlingSubmit = (values: Object) => {
@@ -110,7 +113,7 @@ const VirtualVisitForm = (): React.Node => {
                   isRequired
                   validate={requiredValidator}
                 />
-                <TextInputField name="title" width={MIN_WIDTH} label={SUBJECT_LABEL} validate={requiredValidator} />
+                <TextInputField name="title" width={MIN_WIDTH} label={SUBJECT_LABEL} validate={titleValidators} />
                 <RowContainer>
                   <TextAreaField
                     name="description"

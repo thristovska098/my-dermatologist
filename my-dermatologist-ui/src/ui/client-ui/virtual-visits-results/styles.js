@@ -9,6 +9,7 @@ export const AccordionsContainer: React.ComponentType<*> = styled.div`
   padding-top: 20px;
   padding-right: 60px;
   background-color: #e3dfdc;
+  min-width: 800px;
 `;
 
 export const AccordionAndButtonContainer: React.ComponentType<*> = styled.div`
@@ -41,6 +42,8 @@ export const Label: React.ComponentType<*> = styled.div`
 export const LabelAndInfoWrapper: React.ComponentType<*> = styled.div`
   display: flex;
   column-gap: 10px;
+  width: 95%;
+  word-wrap: break-word;
 `;
 
 export const ButtonWrapper: React.ComponentType<*> = styled.div`

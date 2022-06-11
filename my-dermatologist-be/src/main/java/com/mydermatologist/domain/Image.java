@@ -16,7 +16,7 @@ import javax.persistence.Lob;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image implements  java.io.Serializable {
+public class Image{
 
   @Id
   @GeneratedValue
@@ -27,5 +27,5 @@ public class Image implements  java.io.Serializable {
   private String type;
 
   @Lob
-  private byte [] data;
+  private byte[] data;
 }

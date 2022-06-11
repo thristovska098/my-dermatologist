@@ -3,6 +3,7 @@ package com.mydermatologist.service;
 import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
+import com.mydermatologist.domain.Image;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
@@ -14,6 +15,7 @@ import com.mydermatologist.repository.DoctorRepository;
 import com.mydermatologist.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -127,5 +129,24 @@ public class PatientService {
   public void deleteAppointment(Long appointmentId) {
 
     appointmentRepository.deleteById(appointmentId);
+  }
+
+  /**
+   * Save images for appointment.
+   *
+   * @param appointmentId the id of appointment.
+   * @param files the images.
+   * @return the {@link Appointment}.
+   */
+  public Appointment saveImagesToAppointment(Long appointmentId, List<MultipartFile> files) {
+
+    Appointment appointment = appointmentRepository.findById(appointmentId)
+      .orElseThrow(() -> new RuntimeException("The appointment with id " + appointmentId + " doesn't exist."));
+
+    List<Image> image = appointmentMapper.mapMultipartFilesToImageDomain(files);
+
+    appointment.setImages(image);
+
+    return appointment;
   }
 }

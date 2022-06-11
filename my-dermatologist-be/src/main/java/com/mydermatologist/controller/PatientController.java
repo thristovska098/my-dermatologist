@@ -1,5 +1,6 @@
 package com.mydermatologist.controller;
 
+import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
@@ -109,15 +110,17 @@ public class PatientController {
    *
    * @param appointmentId the appointment id.
    * @param files the patient credit card data.
-   * @return the {@link Patient}.
+   * @return the {@link Appointment}.
    */
   @RequestMapping(
     value = SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT,
     method = RequestMethod.POST)
-  public Long saveImagesToAppointment(@RequestParam Long appointmentId, @RequestParam("files") List<MultipartFile> files) {
+  public Appointment saveImagesToAppointment(@RequestParam Long appointmentId,
+                                             @RequestParam("files") List<MultipartFile> files) {
 
+    Appointment appointment = patientService.saveImagesToAppointment(appointmentId, files);
 
-    return Long.valueOf(files.size());
+    return appointment;
   }
 
   /**
@@ -131,6 +134,5 @@ public class PatientController {
   public void deleteAppointment(@RequestParam Long appointmentId) {
 
     patientService.deleteAppointment(appointmentId);
-
   }
 }

@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class Appointment {
 
   private String title;
 
+  @Lob
   private String description;
 
   private Date createdOn;
