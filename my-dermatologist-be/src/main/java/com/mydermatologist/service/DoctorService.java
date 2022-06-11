@@ -14,7 +14,6 @@ import com.mydermatologist.repository.AppointmentRepository;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -139,21 +138,4 @@ public class DoctorService {
 
     return doctorDtoForPatientSelections;
   }
-
-  /**
-   * Fetch appointment images.
-   *
-   * @param appointmentId the appointment id.
-   * @return the {@link List<MultipartFile>}.
-   */
-  public List<MultipartFile> fetchImages(Long appointmentId) {
-
-    Appointment appointment = appointmentRepository.findById(appointmentId)
-      .orElseThrow(() -> new RuntimeException("The appointment with id " + appointmentId + " doesn't exist."));
-
-    List<MultipartFile> files = appointmentMapper.mapImageDomainModelToMultipartFile(appointment.getImages());
-
-    return files;
-  }
-
 }

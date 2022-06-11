@@ -15,7 +15,6 @@ import com.mydermatologist.mapper.doctor.DoctorMapper;
 import com.mydermatologist.mapper.patient.PatientMapper;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -105,6 +104,7 @@ public class AppointmentMapper {
     appointmentDtoForDoctorReview.setAppointmentStatus(appointment.getAppointmentStatus());
     appointmentDtoForDoctorReview.setCreatedOn(appointment.getCreatedOn());
     appointmentDtoForDoctorReview.setPatient(patientDtoForDoctorReview);
+    appointmentDtoForDoctorReview.setImages(appointment.getImages());
 
     return appointmentDtoForDoctorReview;
   }
@@ -146,26 +146,5 @@ public class AppointmentMapper {
     }).collect(Collectors.toList());
 
     return images;
-  }
-
-  /**
-   * Maps image domain model to multipart file.
-   *
-   * @param images the images.
-   * @return the {@link List<MultipartFile>}.
-   */
-  public List<MultipartFile> mapImageDomainModelToMultipartFile(List<Image> images) {
-
-    List<MultipartFile> files = images.stream().map(image -> {
-      MultipartFile multipartFile = new MockMultipartFile(
-        image.getName(),
-        image.getName(),
-        image.getType(),
-        image.getData());
-
-      return multipartFile;
-    }).collect(Collectors.toList());
-
-    return files;
   }
 }

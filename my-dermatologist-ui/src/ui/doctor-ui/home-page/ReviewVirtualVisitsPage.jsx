@@ -2,9 +2,6 @@
 
 import * as React from 'react';
 
-// Utils
-import { v4 as uuid } from 'uuid';
-
 // Hooks
 import { useDispatch } from 'react-redux';
 
@@ -68,7 +65,8 @@ const ReviewVirtualVisitsPage = (): React.Node => {
     // eslint-disable-next-line
   }, []);
 
-  const handleShowPopover = (image: string) => {
+  const handleShowPopover = (image: string, event: Object) => {
+    event.stopPropagation();
     setOpenedModal(image);
   };
 
@@ -84,12 +82,19 @@ const ReviewVirtualVisitsPage = (): React.Node => {
   };
 
   const renderedImages = (appointment: Object): React.Node => (
-    <ImageList sx={{ width: '100%', height: 300 }} cols={5} gap={20} rowHeight={164}>
-      {appointment?.images?.map((image) => (
-        <ImageListItem key={appointment.id + uuid()}>
-          <ImageContainer src={image} loading="lazy" onClick={() => handleShowPopover(image)} />
-        </ImageListItem>
-      ))}
+    <ImageList sx={{ width: '100%' }} cols={5} gap={20} rowHeight="auto">
+      {appointment?.images?.map((image: Object): React.Node => {
+        const preparedSource = `data:${image?.type};base64,${image?.data}`;
+        return (
+          <ImageListItem key={image?.id}>
+            <ImageContainer
+              src={preparedSource}
+              loading="lazy"
+              onClick={(event) => handleShowPopover(preparedSource, event)}
+            />
+          </ImageListItem>
+        );
+      })}
     </ImageList>
   );
 

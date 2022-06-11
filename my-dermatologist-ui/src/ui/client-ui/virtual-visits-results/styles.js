@@ -23,6 +23,7 @@ export const AccordionSummaryContainer: React.ComponentType<*> = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  height: auto;
 `;
 
 export const DateAndStatusContainer: React.ComponentType<*> = styled.div`

@@ -78,10 +78,4 @@ public final class RestControllerConstants {
    * Save images endpoint.
    */
   public static final String SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT = CREATE_APPOINTMENT_ENDPOINT + "/images";
-
-  /**
-   * Fetch images endpoint.
-   */
-  public static final String FETCH_IMAGES_FOR_APPOINTMENT_ENDPOINT = APPOINTMENT_ENDPOINT + "/images";
-
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_CRED
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_OFFICE_INFORMATION_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
-import static com.mydermatologist.controller.RestControllerConstants.FETCH_IMAGES_FOR_APPOINTMENT_ENDPOINT;
 
 /**
  * Doctor REST controller.
@@ -138,21 +136,5 @@ public class DoctorController {
     List<DoctorDtoForPatientSelection> doctors = doctorService.getDoctors();
 
     return doctors;
-  }
-
-  /**
-   * Fetch images for the appointment.
-   *
-   * @param appointmentId the appointment id.
-   * @return the {@link List<MultipartFile>}.
-   */
-  @RequestMapping(
-    value = FETCH_IMAGES_FOR_APPOINTMENT_ENDPOINT,
-    method = RequestMethod.GET)
-  public List<MultipartFile> fetchImages(@RequestParam Long appointmentId) {
-
-    List<MultipartFile> multipartFiles = doctorService.fetchImages(appointmentId);
-
-    return multipartFiles;
   }
 }
