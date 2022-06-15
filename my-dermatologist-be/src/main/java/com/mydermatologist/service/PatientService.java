@@ -1,7 +1,6 @@
 package com.mydermatologist.service;
 
 import com.mydermatologist.domain.Appointment;
-import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
 import com.mydermatologist.domain.Image;
 import com.mydermatologist.domain.Patient;
@@ -54,23 +53,6 @@ public class PatientService {
     Patient savedPatient = patientRepository.save(patient);
 
     return savedPatient;
-  }
-
-  /**
-   * Saves credit card for patient.
-   *
-   * @param creditCard the credit card data.
-   * @param patientId the patient id.
-   * @return the {@link Patient}.
-   */
-  public Patient saveCreditCard(CreditCard creditCard, Long patientId) {
-
-   Patient patient = patientRepository.findById(patientId)
-      .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
-
-      patient.setCreditCard(creditCard);
-      return patientRepository.save(patient);
-
   }
 
   /**

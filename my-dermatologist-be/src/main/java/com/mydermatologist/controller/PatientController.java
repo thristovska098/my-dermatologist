@@ -1,7 +1,6 @@
 package com.mydermatologist.controller;
 
 import com.mydermatologist.domain.Appointment;
-import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
@@ -21,7 +20,6 @@ import java.util.List;
 import static com.mydermatologist.controller.RestControllerConstants.APPOINTMENT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.CREATE_APPOINTMENT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_APPOINTMENTS_ENDPOINT;
-import static com.mydermatologist.controller.RestControllerConstants.PATIENT_CREDIT_CARD_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.PATIENT_ENDPOINT;
 import static com.mydermatologist.controller.RestControllerConstants.SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT;
 
@@ -53,24 +51,6 @@ public class PatientController {
   }
 
   /**
-   * Saves the credit card - payment data of the patient.
-   *
-   * @param patientId the patient id.
-   * @param creditCard the patient credit card data.
-   * @return the {@link Patient}.
-   */
-  @RequestMapping(
-    value = PATIENT_CREDIT_CARD_ENDPOINT,
-    method = RequestMethod.POST)
-  public Patient saveCreditCard(@RequestParam Long patientId,
-                                @RequestBody CreditCard creditCard) {
-
-    Patient patient = patientService.saveCreditCard(creditCard, patientId);
-
-    return patient;
-  }
-
-  /**
    * Returns the list of appointments for patient.
    *
    * @param patientId the patient id.
@@ -91,7 +71,7 @@ public class PatientController {
    * Create appointment by the patient.
    *
    * @param patientId the patient id.
-   * @param createAppointmentDto the patient credit card data.
+   * @param createAppointmentDto the patient appointment data.
    * @return the {@link Long}.
    */
   @RequestMapping(
@@ -109,7 +89,7 @@ public class PatientController {
    * Save images for the appointment by the patient.
    *
    * @param appointmentId the appointment id.
-   * @param files the patient credit card data.
+   * @param files the patient images for the appointment.
    * @return the {@link Appointment}.
    */
   @RequestMapping(

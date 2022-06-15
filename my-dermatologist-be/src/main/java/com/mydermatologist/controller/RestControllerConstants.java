@@ -30,11 +30,6 @@ public final class RestControllerConstants {
   public static final String APPOINTMENT_ENDPOINT = API_REST_ENDPOINT + "/appointment";
 
   /**
-   * Patient Credit card endpoint.
-   */
-  public static final String PATIENT_CREDIT_CARD_ENDPOINT = PATIENT_ENDPOINT + "/credit-card";
-
-  /**
    * Doctor Credit card endpoint.
    */
   public static final String DOCTOR_CREDIT_CARD_ENDPOINT = DOCTOR_ENDPOINT + "/credit-card";
