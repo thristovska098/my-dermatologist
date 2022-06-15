@@ -73,4 +73,14 @@ public final class RestControllerConstants {
    * Save images endpoint.
    */
   public static final String SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT = CREATE_APPOINTMENT_ENDPOINT + "/images";
+
+  /**
+   * Fetch public stripe key endpoint.
+   */
+  public static final String PUBLIC_STRIPE_KEY_ENDPOINT = API_REST_ENDPOINT + "/stripe-public-key";
+
+  /**
+   * Fetch secret stripe key endpoint.
+   */
+  public static final String SECRET_STRIPE_KEY_ENDPOINT = API_REST_ENDPOINT + "/stripe-secret-key";
 }
