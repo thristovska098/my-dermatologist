@@ -22,7 +22,6 @@ import PatientHomePage from './ui/client-ui/home-page/HomePage';
 import MainPage from './ui/basic-ui/entry-home-page/MainPage';
 import CreateVirtualVisitPage from './ui/client-ui/create-virtual-visit/CreateVirtualVisitPage';
 import ReviewVirtualVisitsPage from './ui/doctor-ui/home-page/ReviewVirtualVisitsPage';
-import AddPaymentInfo from './ui/client-ui/register-client/AddPaymentInfo';
 import RegisterDoctorPaymentInformation from './ui/doctor-ui/register-doctor/RegisterDoctorPaymentInformation';
 
 const App = () => {
@@ -47,7 +46,6 @@ const App = () => {
             </Route>
             <Route path={BASE_ROUTE} exact component={MainPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT} exact component={RegisterPatientPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD} component={AddPaymentInfo} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} exact component={RegisterDoctorPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
             <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD} component={RegisterDoctorPaymentInformation} />

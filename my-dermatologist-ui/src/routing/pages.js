@@ -2,7 +2,6 @@ export const BASE_ROUTE = '/my-dermatologist';
 
 export const PAGES_FULL_ROUTES = {
   REGISTER_PATIENT: `${BASE_ROUTE}/register-patient`,
-  REGISTER_PATIENT_CREDIT_CARD: `${BASE_ROUTE}/register-patient/credit-card`,
   REGISTER_DOCTOR_PERSONAL_DATA: `${BASE_ROUTE}/register-doctor/personal-data`,
   REGISTER_DOCTOR_PROFESSIONAL_DATA: `${BASE_ROUTE}/register-doctor/professional-data`,
   REGISTER_DOCTOR_CREDIT_CARD: `${BASE_ROUTE}/register-doctor/credit-card`,
