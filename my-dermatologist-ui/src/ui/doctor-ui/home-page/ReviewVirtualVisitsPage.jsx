@@ -23,6 +23,7 @@ import {
   AccordionSummaryContainer,
   AppointmentStatusWrapper,
   DateAndStatusContainer,
+  InfoWrapper,
   Label,
   LabelAndInfoWrapper,
 } from '../../client-ui/virtual-visits-results/styles';
@@ -153,13 +154,13 @@ const ReviewVirtualVisitsPage = (): React.Node => {
             <br />
             <LabelAndInfoWrapper>
               <Label>{DESCRIPTION_OF_ISSUE_LABEL}:</Label>
-              {appointment?.description}
+              <InfoWrapper>{appointment?.description}</InfoWrapper>
             </LabelAndInfoWrapper>
             <br />
             {renderedImages(appointment)}
             {appointment?.appointmentStatus === APPOINTMENT_STATUS.WAITING && (
               <Button
-                onClick={(event) => {
+                onClick={(event: Object) => {
                   event.stopPropagation();
                   dispatch(setResponseModalOpenedForAppointmentId(appointment?.id));
                 }}

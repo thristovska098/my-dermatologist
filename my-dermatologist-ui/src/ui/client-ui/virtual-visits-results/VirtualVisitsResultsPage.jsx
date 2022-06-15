@@ -17,6 +17,7 @@ import {
   DateAndStatusContainer,
   LabelAndInfoWrapper,
   Label,
+  InfoWrapper,
 } from './styles';
 
 // Constants
@@ -107,7 +108,7 @@ const VirtualVisitsResultsPage = (): React.Node => {
             <br />
             <LabelAndInfoWrapper>
               <Label>{DESCRIPTION_OF_ISSUE_LABEL}:</Label>
-              {appointment?.description}
+              <InfoWrapper>{appointment?.description}</InfoWrapper>
             </LabelAndInfoWrapper>
             {appointment?.appointmentStatus === APPOINTMENT_STATUS.COMPLETED && (
               <>

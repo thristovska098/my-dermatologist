@@ -44,7 +44,11 @@ export const LabelAndInfoWrapper: React.ComponentType<*> = styled.div`
   display: flex;
   column-gap: 10px;
   width: 95%;
-  word-wrap: break-word;
+`;
+
+export const InfoWrapper: React.ComponentType<*> = styled.div`
+  width: 95%;
+  word-break: break-word;
 `;
 
 export const ButtonWrapper: React.ComponentType<*> = styled.div`
