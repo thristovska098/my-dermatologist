@@ -45,7 +45,7 @@ export const PaymentOutcomeContainer: React.ComponentType<*> = styled(FieldsCont
 `;
 
 export const StyledIconWrapper: React.ComponentType<*> = styled.div`
-  margin-left: 115px;
+  margin-left: 160px;
   .MuiSvgIcon-root {
     font-size: 4.5rem !important;
   }
@@ -53,5 +53,5 @@ export const StyledIconWrapper: React.ComponentType<*> = styled.div`
 
 export const PaymentOutcomeTextContainer: React.ComponentType<*> = styled.div`
   font-size: 20px;
-  margin-left: 65px;
+  margin-left: 100px;
 `;

@@ -28,8 +28,7 @@ export const useSaveImagesToAppointment = (): Function => {
           appointmentId,
         },
       })
-      .then((response: Object) => {
-        console.log(response);
+      .then(() => {
         dispatch(setIsPaymentModalOpen(true));
       });
   };

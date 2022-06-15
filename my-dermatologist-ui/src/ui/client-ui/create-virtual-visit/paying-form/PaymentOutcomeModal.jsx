@@ -6,58 +6,42 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // Components
-import { Box, Button, Modal } from '@mui/material';
+import { Button } from '@mui/material';
 import DoneTwoToneIcon from '@mui/icons-material/DoneTwoTone';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { PaymentOutcomeContainer, PaymentOutcomeTextContainer, StyledIconWrapper } from './styles';
 
 // Actions
-import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
+import { setIsPaymentModalOpen } from '../../../../redux/actions';
 
 // Constants
-
-import {
-  CONTINUE_FIELD_LABEL,
-  TRY_AGAIN_BUTTON_LABEL,
-  UNSUCCESSFUL_PAYMENT_LABEL,
-  SUCCESSFUL_PAYMENT_LABEL,
-} from '../../../labels';
+import { CONTINUE_FIELD_LABEL, UNSUCCESSFUL_PAYMENT_LABEL, SUCCESSFUL_PAYMENT_LABEL } from '../../../labels';
 import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
+
+// Custom hooks
+import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
 
 type Props = {
   isPaymentSuccessful: boolean,
+  appointmentId: number,
 };
 
-const PaymentOutcomeModal = ({ isPaymentSuccessful }: Props): React.Node => {
+const PaymentOutcomeModal = ({ isPaymentSuccessful, appointmentId }: Props): React.Node => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 300,
-    backgroundColor: '#e3dfdc',
-    boxShadow: 24,
-    p: 4,
-    display: 'flex',
-    borderRadius: '25px',
-  };
+  const deleteAppointment = useDeleteAppointment();
 
   const handleButtonClick = () => {
     if (isPaymentSuccessful) {
-      dispatch(setIsPaymentOutcomeModalOpen(false));
       dispatch(setIsPaymentModalOpen(false));
       history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
     } else {
-      dispatch(setIsPaymentOutcomeModalOpen(false));
+      deleteAppointment(appointmentId);
+      dispatch(setIsPaymentModalOpen(false));
     }
   };
 
-  const button = (
-    <Button onClick={handleButtonClick}>{isPaymentSuccessful ? CONTINUE_FIELD_LABEL : TRY_AGAIN_BUTTON_LABEL}</Button>
-  );
+  const button = <Button onClick={handleButtonClick}>{CONTINUE_FIELD_LABEL}</Button>;
 
   const icon = (
     <StyledIconWrapper>
@@ -72,15 +56,11 @@ const PaymentOutcomeModal = ({ isPaymentSuccessful }: Props): React.Node => {
   );
 
   return (
-    <Modal open>
-      <Box sx={style}>
-        <PaymentOutcomeContainer>
-          {icon}
-          {label}
-          {button}
-        </PaymentOutcomeContainer>
-      </Box>
-    </Modal>
+    <PaymentOutcomeContainer>
+      {icon}
+      {label}
+      {button}
+    </PaymentOutcomeContainer>
   );
 };
 
