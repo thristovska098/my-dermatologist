@@ -4,13 +4,15 @@ import styled from 'styled-components';
 
 export const PageContentContainer: React.ComponentType<*> = styled.div`
   margin: 50px 0;
+  width: 100%;
 `;
 
 export const TotalPaymentContainer: React.ComponentType<*> = styled.div`
-  font-size: 20px;
-  color: #1976d2;
+  font-size: 30px;
+  color: #3f51b5;
   margin-bottom: 30px;
-  width: 210px;
+  margin-left: 50px;
+  width: 350px;
 `;
 
 export const IconAndInputContainer: React.ComponentType<*> = styled.div`
@@ -24,7 +26,7 @@ export const ButtonContainer: React.ComponentType<*> = styled.div`
   display: flex;
   justify-content: center;
   column-gap: 10px;
-  margin-top: 30px;
+  margin-top: 50px;
 `;
 
 export const FieldsContainer: React.ComponentType<*> = styled.div`

@@ -1,28 +1,25 @@
 // @flow
+/* eslint-disable */
 import * as React from 'react';
 
 // Hooks
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';;
 
 // Components
-import { Form } from 'react-final-form';
-import { Box, Button, Modal } from '@mui/material';
-import { FieldsContainer, ButtonContainer, TotalPaymentContainer, PageContentContainer } from './styles';
+import { Box, Modal } from '@mui/material';
 import PaymentOutcomeModal from './PaymentOutcomeModal';
 
 // Actions
-import { setIsPaymentModalOpen, setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
+import { setIsPaymentOutcomeModalOpen } from '../../../../redux/actions';
 
 // Constants
-import { CANCEL_FIELD_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
-import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
+import { TOTAL_COST_LABEL } from '../../../labels';
 
 // Utils
 import { getIsPaymentOutcomeModalOpen } from '../../../../redux/selectors';
 
 // Custom hooks
-import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
+import StripeContainer from './StripeContainer';
 
 type Props = {
   appointmentId: number,
@@ -30,8 +27,6 @@ type Props = {
 
 const PaymentModal = ({ appointmentId }: Props): React.Node => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const deleteAppointment = useDeleteAppointment();
 
   // eslint-disable-next-line no-unused-vars
   const [isPaymentSuccessful, setIsPaymentSuccessful] = React.useState(true);
@@ -48,11 +43,14 @@ const PaymentModal = ({ appointmentId }: Props): React.Node => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 200,
+    minWidth: '400px',
+    minHeight: '350px',
     backgroundColor: '#e3dfdc',
     boxShadow: 24,
     p: 4,
     display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     borderRadius: '25px',
   };
 
@@ -64,37 +62,10 @@ const PaymentModal = ({ appointmentId }: Props): React.Node => {
     dispatch(setIsPaymentOutcomeModalOpen(true));
   };
 
-  const handleCancel = () => {
-    if (appointmentId !== undefined) {
-      deleteAppointment(appointmentId);
-    }
-
-    dispatch(setIsPaymentModalOpen(false));
-    history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
-  };
-
   return !isPaymentOutcomeModalOpen ? (
     <Modal open>
       <Box sx={style}>
-        <Form
-          onSubmit={handlePaying}
-          subscription={{ values: true, form: true }}
-          render={({ handleSubmit }) => (
-            <PageContentContainer>
-              <FieldsContainer>
-                <TotalPaymentContainer>{totalLabel}</TotalPaymentContainer>
-                <ButtonContainer>
-                  <Button variant="contained" onClick={handleSubmit}>
-                    {MAKE_PAYMENT_LABEL}
-                  </Button>
-                  <Button onClick={handleCancel} variant="outlined">
-                    {CANCEL_FIELD_LABEL}
-                  </Button>
-                </ButtonContainer>
-              </FieldsContainer>
-            </PageContentContainer>
-          )}
-        />
+        <StripeContainer appointmentId={appointmentId}/>
       </Box>
     </Modal>
   ) : (
