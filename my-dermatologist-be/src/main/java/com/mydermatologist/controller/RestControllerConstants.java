@@ -83,4 +83,9 @@ public final class RestControllerConstants {
    * Fetch secret stripe key endpoint.
    */
   public static final String SECRET_STRIPE_KEY_ENDPOINT = API_REST_ENDPOINT + "/stripe-secret-key";
+
+  /**
+   * Create payment intent endpoint.
+   */
+  public static final String CREATE_PAYMENT_INTENT_ENDPOINT = API_REST_ENDPOINT + "/create-payment-intent";
 }
