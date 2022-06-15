@@ -1,10 +1,12 @@
 import * as React from 'react';
 
 // Utils
-import { applyMiddleware, createStore } from 'redux';
+import storage from 'redux-persist/lib/storage';
 import { Provider } from 'react-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
+import { persistReducer, persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './redux/reducers';
 import browserHistory from './redux/browserHistory';
 
@@ -25,38 +27,43 @@ import ReviewVirtualVisitsPage from './ui/doctor-ui/home-page/ReviewVirtualVisit
 import RegisterDoctorPaymentInformation from './ui/doctor-ui/register-doctor/RegisterDoctorPaymentInformation';
 
 const App = () => {
-  const store = createStore(rootReducer(browserHistory), composeWithDevTools(applyMiddleware()));
+  const reducer = rootReducer(browserHistory);
 
-  // TODO: replace the deprecated version
-  /*
-    import { Reducer } from '@reduxjs/toolkit'
+  const persistConfig = {
+    key: 'main-root',
+    storage,
+  };
 
-    const store = configureStore({
-      reducer: rootReducer(browserHistory),
-      devTools: true,
-    }); */
+  const persistedReducer = persistReducer(persistConfig, reducer);
+
+  const store = configureStore({ reducer: persistedReducer, devTools: true });
 
   return (
     <Provider store={store}>
-      <Bootstrapper>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/">
-              <Redirect to={BASE_ROUTE} />
-            </Route>
-            <Route path={BASE_ROUTE} exact component={MainPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT} exact component={RegisterPatientPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} exact component={RegisterDoctorPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
-            <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD} component={RegisterDoctorPaymentInformation} />
-            <Route path={PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE} component={DoctorHomePage} />
-            <Route path={PAGES_FULL_ROUTES.PATIENT_HOME_PAGE} component={PatientHomePage} />
-            <Route path={PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT} component={CreateVirtualVisitPage} />
-            <Route path={PAGES_FULL_ROUTES.DOCTOR_REVIEW_VIRTUAL_VISITS} component={ReviewVirtualVisitsPage} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </BrowserRouter>
-      </Bootstrapper>
+      <PersistGate loading={null} persistor={persistStore(store)}>
+        <Bootstrapper>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to={BASE_ROUTE} />
+              </Route>
+              <Route path={BASE_ROUTE} exact component={MainPage} />
+              <Route path={PAGES_FULL_ROUTES.REGISTER_PATIENT} exact component={RegisterPatientPage} />
+              <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA} exact component={RegisterDoctorPage} />
+              <Route path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA} component={OfficeInformationPage} />
+              <Route
+                path={PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD}
+                component={RegisterDoctorPaymentInformation}
+              />
+              <Route path={PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE} component={DoctorHomePage} />
+              <Route path={PAGES_FULL_ROUTES.PATIENT_HOME_PAGE} component={PatientHomePage} />
+              <Route path={PAGES_FULL_ROUTES.PATIENT_CREATE_VIRTUAL_VISIT} component={CreateVirtualVisitPage} />
+              <Route path={PAGES_FULL_ROUTES.DOCTOR_REVIEW_VIRTUAL_VISITS} component={ReviewVirtualVisitsPage} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </BrowserRouter>
+        </Bootstrapper>
+      </PersistGate>
     </Provider>
   );
 };
