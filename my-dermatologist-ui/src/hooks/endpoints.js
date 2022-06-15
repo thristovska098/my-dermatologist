@@ -2,7 +2,6 @@ export const BASE_URL = 'http://localhost:8080';
 export const FETCH_CITIES_URL = '/my-dermatologist/cities';
 export const SAVE_PATIENT_PERSONAL_DATA_URL = '/my-dermatologist/patient';
 export const SAVE_DOCTOR_PERSONAL_DATA_URL = '/my-dermatologist/doctor';
-export const SAVE_PATIENT_CREDIT_CARD_DATA_URL = '/my-dermatologist/patient/credit-card';
 export const SAVE_DOCTOR_CREDIT_CARD_DATA_URL = '/my-dermatologist/doctor/credit-card';
 export const CREATE_APPOINTMENT_URL = '/my-dermatologist/appointment/create';
 export const FETCH_APPOINTMENTS_FOR_PATIENT_URL = '/my-dermatologist/patient/appointments';

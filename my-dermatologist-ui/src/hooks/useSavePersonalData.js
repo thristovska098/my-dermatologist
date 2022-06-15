@@ -22,7 +22,7 @@ export const useSavePersonalData = (): Function => {
   const savePersonalDataUrl = isPatient ? SAVE_PATIENT_PERSONAL_DATA_URL : SAVE_DOCTOR_PERSONAL_DATA_URL;
 
   const redirectUrl = isPatient
-    ? PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD
+    ? PAGES_FULL_ROUTES.PATIENT_HOME_PAGE
     : PAGES_FULL_ROUTES.REGISTER_DOCTOR_PROFESSIONAL_DATA;
 
   const savePatient = (values: Object) => {
