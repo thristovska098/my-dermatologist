@@ -78,4 +78,14 @@ public final class RestControllerConstants {
    * Create payment intent endpoint.
    */
   public static final String CREATE_PAYMENT_INTENT_ENDPOINT = API_REST_ENDPOINT + "/create-payment-intent";
+
+  /**
+   * Sign up user endpoint.
+   */
+  public static final String SIGN_UP_USER_ENDPOINT = API_REST_ENDPOINT + "/sign-up";
+
+  /**
+   * Sign in user endpoint.
+   */
+  public static final String SIGN_IN_USER_ENDPOINT = API_REST_ENDPOINT + "/sign-in";
 }
