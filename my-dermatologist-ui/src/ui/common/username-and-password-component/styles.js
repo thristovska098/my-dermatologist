@@ -19,3 +19,7 @@ export const Container: React.ComponentType<*> = styled.div`
   width: 400px;
   margin-left: 25px;
 `;
+
+export const ButtonGroupContainer: React.ComponentType<*> = styled.div`
+  margin-left: 60px;
+`;

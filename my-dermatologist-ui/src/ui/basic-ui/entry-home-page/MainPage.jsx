@@ -13,12 +13,13 @@ import HomePageWrapper from '../../common/home-page/HomePageWrapper';
 import { LOG_IN_LABEL } from '../../labels';
 
 // Actions
-import { setIsSignInSignUpModalOpen } from '../../../redux/actions';
+import { setIsSignInSignUpModalOpen, setUserType } from '../../../redux/actions';
 
 const MainPage = (): React.Node => {
   const dispatch = useDispatch();
 
   const handleLogInClick = () => {
+    dispatch(setUserType(undefined));
     dispatch(setIsSignInSignUpModalOpen(true));
   };
 
