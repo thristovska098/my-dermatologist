@@ -9,7 +9,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import PaymentForm from './PaymentForm';
 
 type Props = {
-  appointmentId: number,
+  appointmentId?: number,
 };
 
 const STRIPE_PUBLIC_KEY =

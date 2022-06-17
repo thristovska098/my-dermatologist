@@ -6,7 +6,7 @@ import { Box, Modal } from '@mui/material';
 import StripeContainer from './StripeContainer';
 
 type Props = {
-  appointmentId: number,
+  appointmentId?: number,
 };
 
 const PaymentModal = ({ appointmentId }: Props): React.Node => {

@@ -23,7 +23,7 @@ import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
 
 type Props = {
   isPaymentSuccessful: boolean,
-  appointmentId: number,
+  appointmentId?: number,
 };
 
 const PaymentOutcomeModal = ({ isPaymentSuccessful, appointmentId }: Props): React.Node => {

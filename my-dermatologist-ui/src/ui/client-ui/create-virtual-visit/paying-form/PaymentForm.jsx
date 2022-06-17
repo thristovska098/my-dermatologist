@@ -39,7 +39,7 @@ const style = {
 };
 
 type Props = {
-  appointmentId: number,
+  appointmentId?: number,
 };
 
 const PaymentForm = ({ appointmentId }: Props): React.Node => {

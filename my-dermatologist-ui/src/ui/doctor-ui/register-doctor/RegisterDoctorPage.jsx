@@ -43,7 +43,7 @@ const RegisterDoctorPage = (): React.Node => {
               shouldLetLogOut={false}
             />
             <FormContainer>
-              <PersonalDataComponent fieldNamePrefix="doctor" />
+              <PersonalDataComponent />
               <SubmitAndCancelFooter
                 width={FIELD_WIDTH_MAX}
                 handleSubmit={handleSubmit}

@@ -15,7 +15,7 @@ export const useCreateAppointment = (): Function => {
     patientId: userId,
   };
 
-  const createAppointment = (values: Object): Promise => {
+  const createAppointment = (values: Object): Promise<Object> => {
     const promise = new Promise((resolve: Function, reject: Function) => {
       axios
         .post(`${BASE_URL}${CREATE_APPOINTMENT_URL}`, values, {

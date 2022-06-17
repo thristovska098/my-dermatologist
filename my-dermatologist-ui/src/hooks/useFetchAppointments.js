@@ -9,7 +9,7 @@ import { BASE_URL, FETCH_APPOINTMENTS_FOR_DOCTOR_URL, FETCH_APPOINTMENTS_FOR_PAT
 import { getUserId, getUserType } from '../redux/selectors';
 import { USER_TYPE } from '../ui/constants';
 
-export const useFetchAppointments = (): Promise => {
+export const useFetchAppointments = (): Promise<Object> => {
   const userId = useSelector(getUserId);
   const userType = useSelector(getUserType);
   const isPatient = userType.toLowerCase() === USER_TYPE.PATIENT;
