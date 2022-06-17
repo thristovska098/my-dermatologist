@@ -5,6 +5,7 @@ export const SET_IS_USER_LOGGED_IN = 'MY_DERMATOLOGIST@USER_INFORMATION.SET_IS_U
 export const SET_USER_ID = 'MY_DERMATOLOGIST@USER_INFORMATION.SET_USER_ID';
 export const SET_IS_PAYMENT_MODAL_OPEN = 'MY_DERMATOLOGIST@PATIENT.SET_IS_PAYMENT_MODAL_OPEN';
 export const SET_IS_RESPOND_APPOINTMENT_MODAL_OPEN = 'MY_DERMATOLOGIST@PATIENT.SET_IS_RESPOND_APPOINTMENT_MODAL_OPEN';
+export const SET_LOGIN_ERROR = 'MY_DERMATOLOGIST@PATIENT.SET_LOGIN_ERROR';
 
 export function setCities(cities) {
   return {
@@ -52,5 +53,12 @@ export function setUserId(userId) {
   return {
     type: SET_USER_ID,
     userId,
+  };
+}
+
+export function setLoginError(loginError) {
+  return {
+    type: SET_LOGIN_ERROR,
+    loginError,
   };
 }

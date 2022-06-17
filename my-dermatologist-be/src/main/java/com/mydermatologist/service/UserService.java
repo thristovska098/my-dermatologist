@@ -27,10 +27,9 @@ public class UserService {
 
     if (user != null && isSignUp) {
       throw new RuntimeException("User with username " + userApp.getUsername() + " already exists.");
-    } else if(user == null && !isSignUp){
+    } else if (user == null && !isSignUp) {
       throw new RuntimeException("User with username " + userApp.getUsername() + " doesn't exists.");
-    }
-      else if (user != null) {
+    } else if (user != null) {
       return user;
     }
 
@@ -53,12 +52,12 @@ public class UserService {
   public UserResponseDto checkPassword(UserLoginDto user, Long userId) {
     UserResponseDto userResponseDto = new UserResponseDto();
 
-    UserApp foundUserApp = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("Invalid user id."));
+    UserApp foundUserApp = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Invalid user id."));
 
     userResponseDto.setUserType(foundUserApp.getUserType());
     String password = foundUserApp.getPassword();
 
-    if(password == null){
+    if (password == null) {
       foundUserApp.setPassword(user.getPassword());
       userRepository.save(foundUserApp);
 
@@ -66,8 +65,8 @@ public class UserService {
       return userResponseDto;
     }
 
-    if(user.getPassword().equals(password)){
-       throw new RuntimeException("Invalid password.");
+    if (!user.getPassword().equals(password)) {
+      throw new RuntimeException("Invalid password.");
     }
 
     userResponseDto.setUserLoggedIn(user.getPassword().equals(password));

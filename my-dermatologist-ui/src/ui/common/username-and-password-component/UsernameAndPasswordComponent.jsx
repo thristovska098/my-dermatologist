@@ -9,14 +9,14 @@ import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Form } from 'react-final-form';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import PasswordField from '../../../components/final-form/field-components/password-field/PasswordField';
-import { StyledTitle, Container, ButtonGroupContainer } from './styles';
+import { StyledTitle, Container, ButtonGroupContainer, ErrorContainer } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
 
 // Actions
 import { composeValidators, required, validateMinimumLength } from '../../../components/validators';
 
 // Selectors
-import { getUserType } from '../../../redux/selectors';
+import { getLoginErrorMessage, getUserType } from '../../../redux/selectors';
 
 // Constants
 import {
@@ -37,6 +37,7 @@ import { useHandleSigning } from '../../../hooks/useHandleSigning';
 const UsernameAndPasswordComponent = (): React.Node => {
   const handleSigning = useHandleSigning();
   const selectedUserType = useSelector(getUserType);
+  const loginError = useSelector(getLoginErrorMessage);
 
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const usernameValidator = validateMinimumLength(INVALID_USERNAME_MESSAGE, 5);
@@ -84,6 +85,7 @@ const UsernameAndPasswordComponent = (): React.Node => {
           <div>
             <TextInputField validate={composedValidators} width={301} name="username" label={USERNAME_LABEL} />
             <PasswordField name="password" label={PASSWORD_LABEL} />
+            {loginError && <ErrorContainer>{loginError}</ErrorContainer>}
           </div>
           <SubmitAndCancelFooter
             handleSubmit={handleSubmit}

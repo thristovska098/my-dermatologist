@@ -23,3 +23,10 @@ export const Container: React.ComponentType<*> = styled.div`
 export const ButtonGroupContainer: React.ComponentType<*> = styled.div`
   margin-left: 60px;
 `;
+
+export const ErrorContainer: React.ComponentType<*> = styled.div`
+  color: #f44336;
+  font-size: 14px;
+  width: 301px;
+  margin-top: 5px;
+`;

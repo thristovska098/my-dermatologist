@@ -16,7 +16,7 @@ public class EntityNotFoundAdvice extends ResponseEntityExceptionHandler {
   @ExceptionHandler(value = Exception.class)
   public final ResponseEntity<String> handleAllException(Exception exception) {
 
-    return new ResponseEntity<>(String.format("Bad request - %s", exception.getMessage()), HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(value = NotFoundException.class)
