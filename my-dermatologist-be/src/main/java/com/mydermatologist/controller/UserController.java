@@ -1,7 +1,8 @@
 package com.mydermatologist.controller;
 
 import com.mydermatologist.domain.UserApp;
-import com.mydermatologist.dto.UserSignInDto;
+import com.mydermatologist.dto.UserLoginDto;
+import com.mydermatologist.dto.UserResponseDto;
 import com.mydermatologist.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,7 @@ public class UserController {
     value = CHECK_USERNAME_ENDPOINT,
     method = RequestMethod.POST)
   public Long checkUsername(
-    @RequestBody UserSignInDto userAppSignUpDto, @RequestParam boolean isSignUp) {
+    @RequestBody UserLoginDto userAppSignUpDto, @RequestParam boolean isSignUp) {
 
     UserApp userApp = userService.checkUsername(userAppSignUpDto, isSignUp);
 
@@ -46,16 +47,16 @@ public class UserController {
    *
    * @param userSignInDto the user information.
    * @param userId the users id.
-   * @return the {@link boolean}.
+   * @return the {@link UserResponseDto}.
    */
   @RequestMapping(
     value =  CHECK_PASSWORD_ENDPOINT,
     method = RequestMethod.POST)
-  public boolean checkPassword(@RequestParam Long userId,
-    @RequestBody UserSignInDto userSignInDto) {
+  public UserResponseDto checkPassword(@RequestParam Long userId,
+    @RequestBody UserLoginDto userSignInDto) {
 
-    boolean isUserLoggedIn = userService.checkPassword(userSignInDto, userId);
+    UserResponseDto userResponseDto = userService.checkPassword(userSignInDto, userId);
 
-    return isUserLoggedIn;
+    return userResponseDto;
   }
 }
