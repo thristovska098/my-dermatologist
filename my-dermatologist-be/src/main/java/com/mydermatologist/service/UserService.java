@@ -13,44 +13,51 @@ public class UserService {
   private UserRepository userRepository;
 
   /**
-   * Sign up user.
+   * Create user or verify that exists with username.
    *
    * @param userApp the user information.
+   * @param isSignUp flag for showing if it's sign in or sign up service.
    * @return the {@link UserApp}.
    */
-  public UserApp signUpUser(UserApp userApp) {
+  public UserApp checkUsername(UserSignInDto userApp, boolean isSignUp) {
 
-    UserApp foundUserApp = userRepository.findByUsername(userApp.getUsername())
+    UserApp user = userRepository.findByUsername(userApp.getUsername())
       .stream().findFirst().orElse(null);
 
-    if (foundUserApp != null) {
-      throw new RuntimeException("The user with username " + userApp.getUsername() + " already exists");
+    if (user != null && isSignUp) {
+      throw new RuntimeException("User with username " + userApp.getUsername() + " already exists.");
+    } else if (user != null) {
+      return user;
     }
 
-    userRepository.save(userApp);
+    user = new UserApp();
+    user.setUsername(userApp.getUsername());
 
-    return userApp;
+    userRepository.save(user);
+
+    return user;
   }
 
   /**
-   * Sign in user.
+   * Save users password or verify the existing password.
    *
    * @param user the user information.
-   * @return the {@link Long}.
+   * @param userId the user information.
+   * @return the {@link boolean}.
    */
-  public Long signInUser(UserSignInDto user) {
+  public boolean checkPassword(UserSignInDto user, Long userId) {
 
-    UserApp foundUserApp = userRepository.findByUsername(user.getUsername())
-      .stream().findFirst()
-      .orElseThrow(()-> new RuntimeException("The user with username "+ user.getUsername()+" doesn't exist"));
+    UserApp foundUserApp = userRepository.findById(userId).orElseThrow(()-> new RuntimeException("Invalid user id."));
 
     String password = foundUserApp.getPassword();
 
-    if(user.getPassword().equals(password)){
-      return foundUserApp.getId();
+    if(password == null){
+      foundUserApp.setPassword(user.getPassword());
+      userRepository.save(foundUserApp);
+
+      return true;
     }
-    else {
-      throw new RuntimeException("Incorrect password");
-    }
+
+    return user.getPassword().equals(password);
   }
 }

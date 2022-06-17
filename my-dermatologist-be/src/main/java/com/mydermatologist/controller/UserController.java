@@ -7,10 +7,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.mydermatologist.controller.RestControllerConstants.SIGN_IN_USER_ENDPOINT;
-import static com.mydermatologist.controller.RestControllerConstants.SIGN_UP_USER_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.CHECK_PASSWORD_ENDPOINT;
+import static com.mydermatologist.controller.RestControllerConstants.CHECK_USERNAME_ENDPOINT;
 
 /**
  * User REST controller.
@@ -23,36 +24,38 @@ public class UserController {
 
 
   /**
-   * Sign up user.
+   * Create user or verify that exists with username.
    *
    * @param userAppSignUpDto the user information.
+   * @param isSignUp flag for showing if it's sign in or sign up service.
    * @return the {@link Long}.
    */
   @RequestMapping(
-    value = SIGN_UP_USER_ENDPOINT,
+    value = CHECK_USERNAME_ENDPOINT,
     method = RequestMethod.POST)
-  public Long signUpUser(
-    @RequestBody UserApp userAppSignUpDto) {
+  public Long checkUsername(
+    @RequestBody UserSignInDto userAppSignUpDto, @RequestParam boolean isSignUp) {
 
-    UserApp userApp = userService.signUpUser(userAppSignUpDto);
+    UserApp userApp = userService.checkUsername(userAppSignUpDto, isSignUp);
 
     return userApp.getId();
   }
 
   /**
-   * Sign in user.
+   * Save users password or verify the existing password.
    *
    * @param userSignInDto the user information.
-   * @return the {@link Long}.
+   * @param userId the users id.
+   * @return the {@link boolean}.
    */
   @RequestMapping(
-    value = SIGN_IN_USER_ENDPOINT,
+    value =  CHECK_PASSWORD_ENDPOINT,
     method = RequestMethod.POST)
-  public Long signInUser(
+  public boolean checkPassword(@RequestParam Long userId,
     @RequestBody UserSignInDto userSignInDto) {
 
-    Long userId = userService.signInUser(userSignInDto);
+    boolean isUserLoggedIn = userService.checkPassword(userSignInDto, userId);
 
-    return userId;
+    return isUserLoggedIn;
   }
 }
