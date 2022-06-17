@@ -37,16 +37,17 @@ public class DoctorController {
   /**
    * Saves the personal data of the doctor.
    *
+   * @param userId doctor id.
    * @param doctorPersonalDataDto the doctor personal data.
    * @return the {@link Doctor}.
    */
   @RequestMapping(
     value = DOCTOR_ENDPOINT,
     method = RequestMethod.POST)
-  public Doctor saveDoctor(
-    @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
+  public Doctor saveDoctor(@RequestParam Long userId,
+                           @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
 
-    Doctor doctor = doctorService.saveDoctor(doctorPersonalDataDto);
+    Doctor doctor = doctorService.saveDoctor(userId, doctorPersonalDataDto);
 
     return doctor;
   }

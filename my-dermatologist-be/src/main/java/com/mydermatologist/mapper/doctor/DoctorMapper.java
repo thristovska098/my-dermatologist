@@ -37,12 +37,14 @@ public class DoctorMapper {
   /**
    * Maps the doctor form data to doctor domain data.
    *
+   * @param userId doctor id.
    * @param doctorPersonalDataDto the doctors personal data.
    * @return the {@link Doctor}.
    */
-  public Doctor mapDoctorFormDataToDomain(DoctorPersonalDataDto doctorPersonalDataDto) {
+  public Doctor mapDoctorFormDataToDomain(Long userId, DoctorPersonalDataDto doctorPersonalDataDto) {
     Doctor doctor = new Doctor();
 
+    doctor.setId(userId);
     doctor.setPersonalData(doctorPersonalDataDto.getPersonalData());
 
     return doctor;

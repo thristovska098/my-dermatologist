@@ -39,11 +39,12 @@ public class DoctorService {
   /**
    * Saves form data for doctor.
    *
+   * @param userId doctor id.
    * @param doctorPersonalDataDto the doctor data.
    * @return the {@link Doctor}.
    */
-  public Doctor saveDoctor(DoctorPersonalDataDto doctorPersonalDataDto){
-    Doctor doctor = doctorMapper.mapDoctorFormDataToDomain(doctorPersonalDataDto);
+  public Doctor saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto){
+    Doctor doctor = doctorMapper.mapDoctorFormDataToDomain(userId, doctorPersonalDataDto);
 
     doctorRepository.save(doctor);
 
