@@ -20,7 +20,7 @@ const SignInSignUpModal = (): React.Node => {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: 350,
-    height: 420,
+    height: 600,
     backgroundColor: '#e3dfdc',
     boxShadow: 24,
     p: 4,
