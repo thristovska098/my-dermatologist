@@ -27,6 +27,7 @@ const SignInSignUpModal = (): React.Node => {
     display: 'flex',
     borderRadius: '25px',
   };
+
   return (
     <Modal open onClose={() => dispatch(setIsSignInSignUpModalOpen(false))}>
       <Box sx={style}>
