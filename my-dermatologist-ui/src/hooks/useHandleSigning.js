@@ -21,7 +21,7 @@ export const useHandleSigning = (): Function => {
 
   const handleSigning = (isSignUp: boolean, values: Object) => {
     const getRedirectPath = (): string => {
-      if (values?.userType === USER_TYPE.PATIENT) {
+      if (values?.userType.toLowerCase() === USER_TYPE.PATIENT) {
         return isSignUp ? PAGES_FULL_ROUTES.REGISTER_PATIENT : PAGES_FULL_ROUTES.PATIENT_HOME_PAGE;
       }
       return isSignUp ? PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA : PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE;
@@ -34,7 +34,7 @@ export const useHandleSigning = (): Function => {
         },
       })
       ?.then((result: Object) => {
-        dispatch(setUserId(result?.userId));
+        dispatch(setUserId(result?.data));
         dispatch(setLoginError(null));
 
         axios

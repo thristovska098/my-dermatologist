@@ -45,11 +45,12 @@ public class PatientService {
    * Saves form data for patient.
    *
    * @param patientRegisterDto the patient data.
+   * @param userId the patient id.
    * @return the {@link Patient}.
    */
-  public Patient savePatient(PatientRegisterDto patientRegisterDto) {
+  public Patient savePatient(PatientRegisterDto patientRegisterDto, Long userId) {
 
-    Patient patient = patientMapper.mapPatientFormDataToPatientDomain(patientRegisterDto);
+    Patient patient = patientMapper.mapPatientFormDataToPatientDomain(patientRegisterDto, userId);
     Patient savedPatient = patientRepository.save(patient);
 
     return savedPatient;

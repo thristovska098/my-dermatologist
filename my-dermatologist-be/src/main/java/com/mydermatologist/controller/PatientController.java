@@ -37,15 +37,15 @@ public class PatientController {
    * Saves the personal data of the patient.
    *
    * @param patientRegisterDto the patient personal data.
+   * @param userId the patient id.
    * @return the {@link Patient}.
    */
   @RequestMapping(
     value = PATIENT_ENDPOINT,
     method = RequestMethod.POST)
-  public Patient savePatient(
-    @RequestBody PatientRegisterDto patientRegisterDto) {
+  public Patient savePatient(@RequestBody PatientRegisterDto patientRegisterDto, @RequestParam Long userId) {
 
-    Patient patient = patientService.savePatient(patientRegisterDto);
+    Patient patient = patientService.savePatient(patientRegisterDto, userId);
 
     return patient;
   }

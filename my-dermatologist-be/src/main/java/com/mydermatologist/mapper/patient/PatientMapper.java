@@ -18,10 +18,12 @@ public class PatientMapper {
    * Maps the patient form data to patient domain model.
    *
    * @param patientRegisterDto the patient data.
+   * @param userId the patient id.
    * @return the {@link Patient}.
    */
-  public Patient mapPatientFormDataToPatientDomain(PatientRegisterDto patientRegisterDto) {
+  public Patient mapPatientFormDataToPatientDomain(PatientRegisterDto patientRegisterDto, Long userId) {
     Patient patient = new Patient();
+    patient.setCode(userId);
 
     patient.setPersonalData(patientRegisterDto.getPersonalData());
 

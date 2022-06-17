@@ -12,7 +12,7 @@ import { USER_TYPE } from '../ui/constants';
 export const useFetchAppointments = (): Promise => {
   const userId = useSelector(getUserId);
   const userType = useSelector(getUserType);
-  const isPatient = userType === USER_TYPE.PATIENT;
+  const isPatient = userType.toLowerCase() === USER_TYPE.PATIENT;
 
   const params = isPatient
     ? {
