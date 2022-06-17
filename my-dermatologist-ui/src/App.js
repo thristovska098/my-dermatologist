@@ -36,7 +36,14 @@ const App = () => {
 
   const persistedReducer = persistReducer(persistConfig, reducer);
 
-  const store = configureStore({ reducer: persistedReducer, devTools: true });
+  const store = configureStore({
+    reducer: persistedReducer,
+    devTools: true,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  });
 
   return (
     <Provider store={store}>
