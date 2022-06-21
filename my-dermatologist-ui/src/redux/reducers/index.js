@@ -5,6 +5,7 @@ import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 
 // Reducers
+import { doctorDataReducer } from './doctorDataReducer';
 import { citiesReducer } from './citiesReducer';
 import { userInformationReducer } from './userInformationReducer';
 import { commonReducer } from './commonReducer';
@@ -22,4 +23,5 @@ export const rootReducer: Reducer<Object> = (history) =>
     citiesList: citiesReducer,
     userInformation: userInformationReducer,
     common: commonReducer,
+    doctor: doctorDataReducer,
   });

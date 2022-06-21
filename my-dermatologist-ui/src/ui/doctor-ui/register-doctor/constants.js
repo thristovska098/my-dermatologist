@@ -13,6 +13,6 @@ export const pages = [
   },
   {
     title: 'Payment information',
-    path: PAGES_FULL_ROUTES.REGISTER_PATIENT_CREDIT_CARD,
+    path: PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD,
   },
 ];

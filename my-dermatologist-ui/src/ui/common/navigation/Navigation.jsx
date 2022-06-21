@@ -49,8 +49,8 @@ const Navigation = ({ pages, initialPage, onChangeFunction = () => {}, hasValida
       return;
     }
 
-    setCurrentPage(newValue);
     onChangeFunction();
+    setCurrentPage(newValue);
     history.push(pages[newValue]?.path);
   };
 

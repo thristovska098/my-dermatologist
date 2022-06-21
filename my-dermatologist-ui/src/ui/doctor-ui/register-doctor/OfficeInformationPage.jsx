@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Hooks
+import { useSelector } from 'react-redux';
+
 // Components
 import { Form } from 'react-final-form';
 import { FormContainer, RowsContainer } from '../../common/styles';
@@ -10,8 +13,11 @@ import Header from '../../basic-ui/header/Header';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import ContactInformationComponent from '../../common/contact-information-component/ContactInformationComponent';
 
-// Utils
+// Custom hooks
 import { useSaveOfficeData } from '../../../hooks/useSaveOfficeData';
+
+// Utils
+import { getDoctorOfficeData } from '../../../redux/selectors';
 
 // Constants
 import { LENGTH_OF_DOCTOR_CODE, pages } from './constants';
@@ -25,17 +31,19 @@ const OfficeInformationPage = (): React.Node => {
   const requiredValidator = required(MANDATORY_FIELD_MESSAGE);
   const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
   const saveOfficeData = useSaveOfficeData();
+  const initialData = useSelector(getDoctorOfficeData);
 
   const combinedCodeValidator = React.useCallback(
     (fieldValue) => composeValidators([requiredValidator, codeValidator])(fieldValue),
     [codeValidator, requiredValidator],
   );
-  const handlingSubmit = (values: Object) => {
+
+  const prepareDataForSubmit = (values: Object): Object => {
     const { office, ...rest } = values;
     const { officeContact } = office;
     const { address, ...restOfContactInfo } = officeContact;
 
-    const preparedValues = {
+    return {
       office: {
         officeContact: {
           address: {
@@ -47,21 +55,32 @@ const OfficeInformationPage = (): React.Node => {
       },
       ...rest,
     };
+  };
 
-    saveOfficeData(preparedValues);
+  const handlingSubmit = (values: Object) => {
+    const preparedValues = prepareDataForSubmit(values);
+
+    saveOfficeData(preparedValues, true);
+  };
+
+  const handlingSubmitForNavigationBar = (values: Object) => {
+    const preparedValues = prepareDataForSubmit(values);
+
+    saveOfficeData(preparedValues, false);
   };
 
   return (
     <PageWrapper>
       <Form
         onSubmit={handlingSubmit}
-        subscription={{ hasValidationErrors: true }}
-        render={({ handleSubmit, hasValidationErrors }) => (
+        initialValues={initialData}
+        subscription={{ hasValidationErrors: true, values: true }}
+        render={({ handleSubmit, hasValidationErrors, values }) => (
           <>
             <Header
               pages={pages}
               initialPage={1}
-              onChangeFunction={handleSubmit}
+              onChangeFunction={() => handlingSubmitForNavigationBar(values)}
               hasValidationErrors={hasValidationErrors}
               shouldLetLogOut={false}
             />

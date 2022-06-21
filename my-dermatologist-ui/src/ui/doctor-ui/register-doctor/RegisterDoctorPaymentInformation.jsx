@@ -1,6 +1,9 @@
 // @flow
 import * as React from 'react';
 
+// Hooks
+import { useSelector } from 'react-redux';
+
 // Components
 import { Form } from 'react-final-form';
 import { PageWrapper } from '../../basic-ui/header/styles';
@@ -9,30 +12,39 @@ import { StyledFormContainer } from '../../client-ui/register-client/styles';
 import RegisterCreditCard from '../../common/register-credit-card/RegisterCreditCard';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 
-// Hooks
+// Custom hooks
 import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
 
 // Constants
 import { pages } from './constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
 
+// Utils
+import { getDoctorCreditCardData } from '../../../redux/selectors';
+
 const RegisterDoctorPaymentInformation = (): React.Node => {
   const saveCreditCard = useSaveCreditCard();
+  const initialData = useSelector(getDoctorCreditCardData);
 
   const handlingSubmit = (values: Object) => {
-    saveCreditCard(values);
+    saveCreditCard(values, true);
+  };
+
+  const handlingSubmitForNavigationBar = (values: Object) => {
+    saveCreditCard(values, false);
   };
 
   return (
     <PageWrapper>
       <Form
         onSubmit={handlingSubmit}
+        initialValues={initialData}
         subscription={{ values: true, hasValidationErrors: true }}
-        render={({ handleSubmit, hasValidationErrors }) => (
+        render={({ handleSubmit, hasValidationErrors, values }) => (
           <>
             <Header
               pages={pages}
-              onChangeFunction={handleSubmit}
+              onChangeFunction={() => handlingSubmitForNavigationBar(values)}
               shouldLetLogOut={false}
               initialPage={2}
               hasValidationErrors={hasValidationErrors}

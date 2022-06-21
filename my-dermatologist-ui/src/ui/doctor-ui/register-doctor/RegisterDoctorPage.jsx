@@ -1,8 +1,12 @@
 // @flow
 import * as React from 'react';
 
+import _isEqual from 'lodash/isEqual';
+import moment from 'moment';
+
 // Components
 import { Form } from 'react-final-form';
+import { useSelector } from 'react-redux';
 import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import Header from '../../basic-ui/header/Header';
@@ -19,26 +23,45 @@ import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
 
 // Utils
 import { preparePersonalData } from '../../common/utils';
+import { getDoctorPersonalData } from '../../../redux/selectors';
 
 const RegisterDoctorPage = (): React.Node => {
   const saveDoctor = useSavePersonalData();
+  const initialData = useSelector(getDoctorPersonalData);
+
+  const prepareInitialData = React.useCallback((): Object => {
+    const { personalData } = initialData;
+    const { dateOfBirth, ...rest } = personalData;
+
+    return {
+      personalData: { dateOfBirth: moment(dateOfBirth), ...rest },
+    };
+  }, [initialData]);
 
   const handlingSubmit = (values: Object) => {
     const preparedValues = preparePersonalData(values);
 
-    saveDoctor(preparedValues);
+    saveDoctor(preparedValues, true);
+  };
+
+  const handleNavigationSubmit = (values: Object) => {
+    const preparedValues = preparePersonalData(values);
+
+    saveDoctor(preparedValues, false);
   };
 
   return (
     <PageWrapper>
       <Form
         onSubmit={handlingSubmit}
+        initialValuesEqual={_isEqual}
+        initialValues={prepareInitialData()}
         subscription={{ values: true, hasValidationErrors: true }}
-        render={({ handleSubmit, hasValidationErrors }) => (
+        render={({ handleSubmit, hasValidationErrors, values }) => (
           <>
             <Header
               pages={pages}
-              onChangeFunction={handleSubmit}
+              onChangeFunction={() => handleNavigationSubmit(values)}
               hasValidationErrors={hasValidationErrors}
               shouldLetLogOut={false}
             />

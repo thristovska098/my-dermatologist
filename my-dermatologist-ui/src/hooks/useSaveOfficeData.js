@@ -1,11 +1,12 @@
 // @flow
 
 // Hooks
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 // Utils
 import axios from 'axios';
+import { setDoctorOfficeData } from '../redux/actions';
 import { getUserId } from '../redux/selectors';
 
 // Constants
@@ -14,17 +15,22 @@ import { PAGES_FULL_ROUTES } from '../routing/pages';
 
 export const useSaveOfficeData = (): Function => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const userId = useSelector(getUserId);
 
-  const saveOfficeData = (values: Object) => {
+  const saveOfficeData = (values: Object, shouldRedirectByDefault: boolean) => {
     axios
       .post(`${BASE_URL}${SAVE_OFFICE_INFORMATION_URL}`, values, {
         params: {
           doctorId: userId,
         },
       })
-      .then(() => {
-        history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD);
+      .then((response: Object) => {
+        dispatch(setDoctorOfficeData(response?.data));
+
+        if (shouldRedirectByDefault) {
+          history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD);
+        }
       });
   };
 
