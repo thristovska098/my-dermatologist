@@ -1,12 +1,13 @@
-package com.mydermatologist.controller;
+package com.mydermatologist.controller.patient;
 
 import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.Patient;
 import com.mydermatologist.dto.AppointmentDtoForClientReview;
 import com.mydermatologist.dto.CreateAppointmentDto;
 import com.mydermatologist.dto.PatientRegisterDto;
-import com.mydermatologist.service.PatientService;
-import lombok.RequiredArgsConstructor;
+import com.mydermatologist.service.patient.PatientService;
+import com.mydermatologist.service.patient.PatientServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,13 +25,17 @@ import static com.mydermatologist.controller.RestControllerConstants.PATIENT_END
 import static com.mydermatologist.controller.RestControllerConstants.SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT;
 
 /**
- * Patient REST controller.
+ * Patient REST controller implementation.
  */
 @RestController
-@RequiredArgsConstructor
-public class PatientController {
+public class PatientControllerImpl implements PatientController {
 
   private final PatientService patientService;
+
+  @Autowired
+  public PatientControllerImpl(PatientServiceImpl patientService) {
+    this.patientService = patientService;
+  }
 
 
   /**
@@ -40,9 +45,7 @@ public class PatientController {
    * @param userId the patient id.
    * @return the {@link Patient}.
    */
-  @RequestMapping(
-    value = PATIENT_ENDPOINT,
-    method = RequestMethod.POST)
+  @RequestMapping(value = PATIENT_ENDPOINT, method = RequestMethod.POST)
   public Patient savePatient(@RequestBody PatientRegisterDto patientRegisterDto, @RequestParam Long userId) {
 
     Patient patient = patientService.savePatient(patientRegisterDto, userId);
@@ -56,9 +59,7 @@ public class PatientController {
    * @param patientId the patient id.
    * @return the {@link List<AppointmentDtoForClientReview>}.
    */
-  @RequestMapping(
-    value = PATIENT_APPOINTMENTS_ENDPOINT,
-    method = RequestMethod.GET)
+  @RequestMapping(value = PATIENT_APPOINTMENTS_ENDPOINT, method = RequestMethod.GET)
   @ResponseBody
   public List<AppointmentDtoForClientReview> getAppointments(@RequestParam Long patientId) {
 
@@ -74,11 +75,8 @@ public class PatientController {
    * @param createAppointmentDto the patient appointment data.
    * @return the {@link Long}.
    */
-  @RequestMapping(
-    value = CREATE_APPOINTMENT_ENDPOINT,
-    method = RequestMethod.POST)
-  public Long createAppointment(@RequestParam Long patientId,
-                                @RequestBody CreateAppointmentDto createAppointmentDto) {
+  @RequestMapping(value = CREATE_APPOINTMENT_ENDPOINT, method = RequestMethod.POST)
+  public Long createAppointment(@RequestParam Long patientId, @RequestBody CreateAppointmentDto createAppointmentDto) {
 
     Long appointmentId = patientService.createAppointment(patientId, createAppointmentDto);
 
@@ -92,11 +90,8 @@ public class PatientController {
    * @param files the patient images for the appointment.
    * @return the {@link Appointment}.
    */
-  @RequestMapping(
-    value = SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT,
-    method = RequestMethod.POST)
-  public Appointment saveImagesToAppointment(@RequestParam Long appointmentId,
-                                             @RequestParam("files") List<MultipartFile> files) {
+  @RequestMapping(value = SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT, method = RequestMethod.POST)
+  public Appointment saveImagesToAppointment(@RequestParam Long appointmentId, @RequestParam("files") List<MultipartFile> files) {
 
     Appointment appointment = patientService.saveImagesToAppointment(appointmentId, files);
 
@@ -108,9 +103,7 @@ public class PatientController {
    *
    * @param appointmentId the appointment id.
    */
-  @RequestMapping(
-    value = APPOINTMENT_ENDPOINT,
-    method = RequestMethod.DELETE)
+  @RequestMapping(value = APPOINTMENT_ENDPOINT, method = RequestMethod.DELETE)
   public void deleteAppointment(@RequestParam Long appointmentId) {
 
     patientService.deleteAppointment(appointmentId);

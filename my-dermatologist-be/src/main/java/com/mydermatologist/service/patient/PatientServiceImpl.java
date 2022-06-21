@@ -1,4 +1,4 @@
-package com.mydermatologist.service;
+package com.mydermatologist.service.patient;
 
 import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.Doctor;
@@ -21,25 +21,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Patient service.
+ * Patient service implementation.
  */
 @Service
-public class PatientService {
+public class PatientServiceImpl implements PatientService{
+
+  private final PatientMapper patientMapper;
+
+  private final AppointmentMapper appointmentMapper;
+
+  private final PatientRepository patientRepository;
+
+  private final AppointmentRepository appointmentRepository;
+
+  private final DoctorRepository doctorRepository;
 
   @Autowired
-  private PatientMapper patientMapper;
-
-  @Autowired
-  private AppointmentMapper appointmentMapper;
-
-  @Autowired
-  private PatientRepository patientRepository;
-
-  @Autowired
-  private AppointmentRepository appointmentRepository;
-
-  @Autowired
-  private DoctorRepository doctorRepository;
+  public PatientServiceImpl(
+    PatientMapper patientMapper,
+    AppointmentMapper appointmentMapper,
+    PatientRepository patientRepository,
+    AppointmentRepository appointmentRepository,
+    DoctorRepository doctorRepository) {
+    this.patientMapper = patientMapper;
+    this.appointmentMapper = appointmentMapper;
+    this.patientRepository = patientRepository;
+    this.appointmentRepository = appointmentRepository;
+    this.doctorRepository = doctorRepository;
+  }
 
   /**
    * Saves form data for patient.
@@ -71,7 +80,7 @@ public class PatientService {
     }
 
     List<AppointmentDtoForClientReview> appointments = patient.getAppointments().stream()
-      .map(appointment -> appointmentMapper.mapAppointmentToAppointmentForClientReview(appointment))
+      .map(appointmentMapper::mapAppointmentToAppointmentForClientReview)
       .collect(Collectors.toList());
 
 

@@ -1,4 +1,4 @@
-package com.mydermatologist.service;
+package com.mydermatologist.service.user;
 
 import com.mydermatologist.domain.UserApp;
 import com.mydermatologist.dto.UserLoginDto;
@@ -7,11 +7,18 @@ import com.mydermatologist.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * User service implementation.
+ */
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
+
+  private final UserRepository userRepository;
 
   @Autowired
-  private UserRepository userRepository;
+  public UserServiceImpl(UserRepository userRepository) {
+    this.userRepository = userRepository;
+  }
 
   /**
    * Create user or verify that exists with username.
@@ -22,8 +29,7 @@ public class UserService {
    */
   public UserApp checkUsername(UserLoginDto userApp, boolean isSignUp) {
 
-    UserApp user = userRepository.findByUsername(userApp.getUsername())
-      .stream().findFirst().orElse(null);
+    UserApp user = userRepository.findByUsername(userApp.getUsername()).stream().findFirst().orElse(null);
 
     if (user != null && isSignUp) {
       throw new RuntimeException("User with username " + userApp.getUsername() + " already exists.");

@@ -1,10 +1,11 @@
-package com.mydermatologist.controller;
+package com.mydermatologist.controller.user;
 
 import com.mydermatologist.domain.UserApp;
 import com.mydermatologist.dto.UserLoginDto;
 import com.mydermatologist.dto.UserResponseDto;
-import com.mydermatologist.service.UserService;
-import lombok.RequiredArgsConstructor;
+import com.mydermatologist.service.user.UserService;
+import com.mydermatologist.service.user.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,13 +16,17 @@ import static com.mydermatologist.controller.RestControllerConstants.CHECK_PASSW
 import static com.mydermatologist.controller.RestControllerConstants.CHECK_USERNAME_ENDPOINT;
 
 /**
- * User REST controller.
+ * User REST controller implementation.
  */
 @RestController
-@RequiredArgsConstructor
-public class UserController {
+public class UserControllerImpl implements UserController {
 
   private final UserService userService;
+
+  @Autowired
+  public UserControllerImpl(UserServiceImpl userService) {
+    this.userService = userService;
+  }
 
 
   /**
@@ -31,11 +36,8 @@ public class UserController {
    * @param isSignUp flag for showing if it's sign in or sign up service.
    * @return the {@link Long}.
    */
-  @RequestMapping(
-    value = CHECK_USERNAME_ENDPOINT,
-    method = RequestMethod.POST)
-  public Long checkUsername(
-    @RequestBody UserLoginDto userAppSignUpDto, @RequestParam boolean isSignUp) {
+  @RequestMapping(value = CHECK_USERNAME_ENDPOINT, method = RequestMethod.POST)
+  public Long checkUsername(@RequestBody UserLoginDto userAppSignUpDto, @RequestParam boolean isSignUp) {
 
     UserApp userApp = userService.checkUsername(userAppSignUpDto, isSignUp);
 
@@ -46,14 +48,11 @@ public class UserController {
    * Save users password or verify the existing password.
    *
    * @param userSignInDto the user information.
-   * @param userId the users id.
+   * @param userId the user's id.
    * @return the {@link UserResponseDto}.
    */
-  @RequestMapping(
-    value =  CHECK_PASSWORD_ENDPOINT,
-    method = RequestMethod.POST)
-  public UserResponseDto checkPassword(@RequestParam Long userId,
-    @RequestBody UserLoginDto userSignInDto) {
+  @RequestMapping(value = CHECK_PASSWORD_ENDPOINT, method = RequestMethod.POST)
+  public UserResponseDto checkPassword(@RequestParam Long userId, @RequestBody UserLoginDto userSignInDto) {
 
     UserResponseDto userResponseDto = userService.checkPassword(userSignInDto, userId);
 

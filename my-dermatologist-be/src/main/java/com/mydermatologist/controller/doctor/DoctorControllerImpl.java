@@ -1,4 +1,4 @@
-package com.mydermatologist.controller;
+package com.mydermatologist.controller.doctor;
 
 import com.mydermatologist.domain.CreditCard;
 import com.mydermatologist.domain.Doctor;
@@ -7,8 +7,8 @@ import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
-import com.mydermatologist.service.DoctorService;
-import lombok.RequiredArgsConstructor;
+import com.mydermatologist.service.doctor.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,13 +26,17 @@ import static com.mydermatologist.controller.RestControllerConstants.DOCTOR_OFFI
 import static com.mydermatologist.controller.RestControllerConstants.FETCH_DOCTORS_ENDPOINT;
 
 /**
- * Doctor REST controller.
+ * Doctor REST controller implementation.
  */
 @RestController
-@RequiredArgsConstructor
-public class DoctorController {
+public class DoctorControllerImpl implements DoctorController {
 
   private final DoctorService doctorService;
+
+  @Autowired
+  public DoctorControllerImpl(DoctorService doctorService) {
+    this.doctorService = doctorService;
+  }
 
   /**
    * Saves the personal data of the doctor.
@@ -41,11 +45,8 @@ public class DoctorController {
    * @param doctorPersonalDataDto the doctor personal data.
    * @return the {@link Doctor}.
    */
-  @RequestMapping(
-    value = DOCTOR_ENDPOINT,
-    method = RequestMethod.POST)
-  public Doctor saveDoctor(@RequestParam Long userId,
-                           @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
+  @RequestMapping(value = DOCTOR_ENDPOINT, method = RequestMethod.POST)
+  public Doctor saveDoctor(@RequestParam Long userId, @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
 
     Doctor doctor = doctorService.saveDoctor(userId, doctorPersonalDataDto);
 
@@ -59,11 +60,8 @@ public class DoctorController {
    * @param creditCard thecredit card data.
    * @return the {@link Doctor}.
    */
-  @RequestMapping(
-    value = DOCTOR_CREDIT_CARD_ENDPOINT,
-    method = RequestMethod.POST)
-  public Doctor saveCreditCard(
-    @RequestParam Long doctorId, @RequestBody CreditCard creditCard) {
+  @RequestMapping(value = DOCTOR_CREDIT_CARD_ENDPOINT, method = RequestMethod.POST)
+  public Doctor saveCreditCard(@RequestParam Long doctorId, @RequestBody CreditCard creditCard) {
 
     Doctor doctor = doctorService.saveCreditCard(doctorId, creditCard);
 
@@ -77,11 +75,8 @@ public class DoctorController {
    * @param officeInformationDto the doctor office information.
    * @return the {@link Doctor}.
    */
-  @RequestMapping(
-    value = DOCTOR_OFFICE_INFORMATION_ENDPOINT,
-    method = RequestMethod.POST)
-  public Doctor saveOfficeInformation(
-    @RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
+  @RequestMapping(value = DOCTOR_OFFICE_INFORMATION_ENDPOINT, method = RequestMethod.POST)
+  public Doctor saveOfficeInformation(@RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
 
     Doctor doctor = doctorService.saveOfficeInformation(doctorId, officeInformationDto);
 
@@ -95,11 +90,8 @@ public class DoctorController {
    * @return the {@link List<AppointmentDtoForDoctorReview>}.
    */
   @ResponseBody
-  @RequestMapping(
-    value = DOCTOR_APPOINTMENTS_ENDPOINT,
-    method = RequestMethod.GET)
-  public List<AppointmentDtoForDoctorReview> getAppointments(
-    @RequestParam Long doctorId) {
+  @RequestMapping(value = DOCTOR_APPOINTMENTS_ENDPOINT, method = RequestMethod.GET)
+  public List<AppointmentDtoForDoctorReview> getAppointments(@RequestParam Long doctorId) {
 
     List<AppointmentDtoForDoctorReview> appointments = doctorService.getAppointments(doctorId);
 
@@ -112,11 +104,8 @@ public class DoctorController {
    * @param appointmentId the appointment id.
    * @return the {@link Doctor}.
    */
-  @RequestMapping(
-    value = CREATE_MEDICAL_REPORT_ENDPOINT,
-    method = RequestMethod.POST)
-  public Doctor createMedicalReport(
-    @RequestParam Long appointmentId, @RequestBody MedicalReportDto medicalReport) {
+  @RequestMapping(value = CREATE_MEDICAL_REPORT_ENDPOINT, method = RequestMethod.POST)
+  public Doctor createMedicalReport(@RequestParam Long appointmentId, @RequestBody MedicalReportDto medicalReport) {
 
     Doctor doctor = doctorService.createMedicalReport(appointmentId, medicalReport);
 
@@ -128,9 +117,7 @@ public class DoctorController {
    *
    * @return the {@link List<DoctorDtoForPatientSelection>}.
    */
-  @RequestMapping(
-    value = FETCH_DOCTORS_ENDPOINT,
-    method = RequestMethod.GET)
+  @RequestMapping(value = FETCH_DOCTORS_ENDPOINT, method = RequestMethod.GET)
   @ResponseBody
   public List<DoctorDtoForPatientSelection> getDoctors() {
 

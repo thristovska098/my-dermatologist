@@ -1,4 +1,4 @@
-package com.mydermatologist.controller;
+package com.mydermatologist.controller.city;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,10 +10,10 @@ import java.util.List;
 import static com.mydermatologist.controller.RestControllerConstants.FETCH_CITIES_ENDPOINT;
 
 /**
- * City REST controller.
+ * City REST controller implementation.
  */
 @RestController
-public class CityController {
+public class CityControllerImpl implements CityController {
 
   private final List<String> cities = Arrays.asList(
     "Berovo",

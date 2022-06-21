@@ -1,4 +1,4 @@
-package com.mydermatologist.controller;
+package com.mydermatologist.controller.payment;
 
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.mydermatologist.controller.RestControllerConstants.CREATE_PAYMENT_INTENT_ENDPOINT;
 
 /**
- * Payments REST controller.
+ * Payments REST controller implementation.
  */
 @RestController
-public class PaymentController {
+public class PaymentControllerImpl implements PaymentController {
 
   /**
    * Create payment intent and return the client secret.
@@ -23,16 +23,10 @@ public class PaymentController {
    * @return the {@link String}.
    */
   @ResponseBody
-  @RequestMapping(
-    value = CREATE_PAYMENT_INTENT_ENDPOINT,
-    method = RequestMethod.GET)
+  @RequestMapping(value = CREATE_PAYMENT_INTENT_ENDPOINT, method = RequestMethod.GET)
   public String createPaymentIntent(@RequestParam Long amount) throws StripeException {
 
-    PaymentIntentCreateParams createParams =PaymentIntentCreateParams.builder()
-      .setCurrency("mkd")
-      .putMetadata("dermatologistService", "regularAppointment")
-      .setAmount(amount * 100L)
-      .build();
+    PaymentIntentCreateParams createParams = PaymentIntentCreateParams.builder().setCurrency("mkd").putMetadata("dermatologistService", "regularAppointment").setAmount(amount * 100L).build();
 
     PaymentIntent intent = PaymentIntent.create(createParams);
 

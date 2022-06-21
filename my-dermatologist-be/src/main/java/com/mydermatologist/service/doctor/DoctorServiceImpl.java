@@ -1,4 +1,4 @@
-package com.mydermatologist.service;
+package com.mydermatologist.service.doctor;
 
 import com.mydermatologist.domain.Appointment;
 import com.mydermatologist.domain.CreditCard;
@@ -8,8 +8,8 @@ import com.mydermatologist.dto.DoctorDtoForPatientSelection;
 import com.mydermatologist.dto.DoctorOfficeInformationDto;
 import com.mydermatologist.dto.DoctorPersonalDataDto;
 import com.mydermatologist.dto.MedicalReportDto;
-import com.mydermatologist.mapper.appointment.AppointmentMapper;
-import com.mydermatologist.mapper.doctor.DoctorMapper;
+import com.mydermatologist.mapper.appointment.AppointmentMapperImpl;
+import com.mydermatologist.mapper.doctor.DoctorMapperImpl;
 import com.mydermatologist.repository.AppointmentRepository;
 import com.mydermatologist.repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +19,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Doctor service.
+ * Doctor service implementation.
  */
 @Service
-public class DoctorService {
+public class DoctorServiceImpl implements DoctorService{
+
+  private final DoctorMapperImpl doctorMapper;
+
+  private final AppointmentMapperImpl appointmentMapper;
+
+  private final DoctorRepository doctorRepository;
+
+  private final AppointmentRepository appointmentRepository;
 
   @Autowired
-  private DoctorMapper doctorMapper;
-
-  @Autowired
-  private AppointmentMapper appointmentMapper;
-
-  @Autowired
-  private DoctorRepository doctorRepository;
-
-  @Autowired
-  private AppointmentRepository appointmentRepository;
+  public DoctorServiceImpl(
+    DoctorMapperImpl doctorMapper,
+    AppointmentMapperImpl appointmentMapper,
+    DoctorRepository doctorRepository,
+    AppointmentRepository appointmentRepository) {
+    this.doctorMapper = doctorMapper;
+    this.appointmentMapper = appointmentMapper;
+    this.doctorRepository = doctorRepository;
+    this.appointmentRepository = appointmentRepository;
+  }
 
   /**
    * Saves form data for doctor.
@@ -101,7 +109,7 @@ public class DoctorService {
       .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
 
     List<AppointmentDtoForDoctorReview> appointmentsDtoForDoctorReview = doctor.getAppointments()
-      .stream().map(appointment -> appointmentMapper.mapAppointmentToAppointmentForDoctorReview(appointment))
+      .stream().map(appointmentMapper::mapAppointmentToAppointmentForDoctorReview)
       .collect(Collectors.toList());
 
     return appointmentsDtoForDoctorReview;
@@ -135,7 +143,7 @@ public class DoctorService {
 
     List<Doctor> doctors = doctorRepository.findAll();
     List<DoctorDtoForPatientSelection> doctorDtoForPatientSelections = doctors.stream()
-      .map(doctor -> doctorMapper.mapDoctorToModelForPatientSelection(doctor)).collect(Collectors.toList());
+      .map(doctorMapper::mapDoctorToModelForPatientSelection).collect(Collectors.toList());
 
     return doctorDtoForPatientSelections;
   }
