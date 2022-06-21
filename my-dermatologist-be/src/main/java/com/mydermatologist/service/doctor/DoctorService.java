@@ -20,27 +20,24 @@ public interface DoctorService {
    *
    * @param userId doctor id.
    * @param doctorPersonalDataDto the doctor data.
-   * @return the {@link Doctor}.
    */
-  Doctor saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto);
+  void saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto);
 
   /**
    * Saves credit card data for doctor.
    *
    * @param doctorId the doctor id.
    * @param creditCard the credit card data.
-   * @return the {@link Doctor}.
    */
-  Doctor saveCreditCard(Long doctorId, CreditCard creditCard);
+  void saveCreditCard(Long doctorId, CreditCard creditCard);
 
   /**
    * Saves office information data for doctor.
    *
    * @param doctorId the doctor id.
    * @param officeInformationDto the office data.
-   * @return the {@link Doctor}.
    */
-  Doctor saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto);
+  void saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto);
 
   /**
    * Returns appointments for the doctor.

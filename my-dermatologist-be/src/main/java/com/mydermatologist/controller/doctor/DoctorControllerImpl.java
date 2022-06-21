@@ -46,26 +46,26 @@ public class DoctorControllerImpl implements DoctorController {
    * @return the {@link Doctor}.
    */
   @RequestMapping(value = DOCTOR_ENDPOINT, method = RequestMethod.POST)
-  public Doctor saveDoctor(@RequestParam Long userId, @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
+  public DoctorPersonalDataDto saveDoctor(@RequestParam Long userId, @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
 
-    Doctor doctor = doctorService.saveDoctor(userId, doctorPersonalDataDto);
+    doctorService.saveDoctor(userId, doctorPersonalDataDto);
 
-    return doctor;
+    return doctorPersonalDataDto;
   }
 
   /**
    * Saves the credit card data of the doctor.
    *
    * @param doctorId the doctor id.
-   * @param creditCard thecredit card data.
-   * @return the {@link Doctor}.
+   * @param creditCard the credit card data.
+   * @return the {@link CreditCard}.
    */
   @RequestMapping(value = DOCTOR_CREDIT_CARD_ENDPOINT, method = RequestMethod.POST)
-  public Doctor saveCreditCard(@RequestParam Long doctorId, @RequestBody CreditCard creditCard) {
+  public CreditCard saveCreditCard(@RequestParam Long doctorId, @RequestBody CreditCard creditCard) {
 
-    Doctor doctor = doctorService.saveCreditCard(doctorId, creditCard);
+    doctorService.saveCreditCard(doctorId, creditCard);
 
-    return doctor;
+    return creditCard;
   }
 
   /**
@@ -73,14 +73,14 @@ public class DoctorControllerImpl implements DoctorController {
    *
    * @param doctorId the doctor id.
    * @param officeInformationDto the doctor office information.
-   * @return the {@link Doctor}.
+   * @return the {@link DoctorOfficeInformationDto}.
    */
   @RequestMapping(value = DOCTOR_OFFICE_INFORMATION_ENDPOINT, method = RequestMethod.POST)
-  public Doctor saveOfficeInformation(@RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
+  public DoctorOfficeInformationDto saveOfficeInformation(@RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
 
-    Doctor doctor = doctorService.saveOfficeInformation(doctorId, officeInformationDto);
+    doctorService.saveOfficeInformation(doctorId, officeInformationDto);
 
-    return doctor;
+    return officeInformationDto;
   }
 
   /**

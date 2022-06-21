@@ -49,14 +49,11 @@ public class DoctorServiceImpl implements DoctorService{
    *
    * @param userId doctor id.
    * @param doctorPersonalDataDto the doctor data.
-   * @return the {@link Doctor}.
    */
-  public Doctor saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto){
+  public void saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto){
     Doctor doctor = doctorMapper.mapDoctorFormDataToDomain(userId, doctorPersonalDataDto);
 
     doctorRepository.save(doctor);
-
-    return doctor;
   }
 
   /**
@@ -64,9 +61,8 @@ public class DoctorServiceImpl implements DoctorService{
    *
    * @param doctorId the doctor id.
    * @param creditCard the credit card data.
-   * @return the {@link Doctor}.
    */
-  public Doctor saveCreditCard(Long doctorId, CreditCard creditCard){
+  public void saveCreditCard(Long doctorId, CreditCard creditCard){
 
     Doctor doctor = doctorRepository.findById(doctorId)
         .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
@@ -74,8 +70,6 @@ public class DoctorServiceImpl implements DoctorService{
     doctor.setCreditCard(creditCard);
 
     doctorRepository.save(doctor);
-
-    return doctor;
   }
 
   /**
@@ -83,9 +77,8 @@ public class DoctorServiceImpl implements DoctorService{
    *
    * @param doctorId the doctor id.
    * @param officeInformationDto the office data.
-   * @return the {@link Doctor}.
    */
-  public Doctor saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto){
+  public void saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto){
 
     Doctor doctor = doctorRepository.findById(doctorId)
       .orElseThrow(()-> new RuntimeException("The doctor with id "+ doctorId+" doesn't exist"));
@@ -93,8 +86,6 @@ public class DoctorServiceImpl implements DoctorService{
     doctor = doctorMapper.mapOfficeInformationToDoctorDomain(doctor, officeInformationDto);
 
     doctorRepository.save(doctor);
-
-    return doctor;
   }
 
   /**

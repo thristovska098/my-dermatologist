@@ -21,9 +21,9 @@ public interface DoctorController {
    *
    * @param userId doctor id.
    * @param doctorPersonalDataDto the doctor personal data.
-   * @return the {@link Doctor}.
+   * @return the {@link DoctorPersonalDataDto}.
    */
-  Doctor saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto);
+  DoctorPersonalDataDto saveDoctor(Long userId, DoctorPersonalDataDto doctorPersonalDataDto);
 
 
   /**
@@ -31,18 +31,18 @@ public interface DoctorController {
    *
    * @param doctorId the doctor id.
    * @param creditCard thecredit card data.
-   * @return the {@link Doctor}.
+   * @return the {@link CreditCard}.
    */
-  Doctor saveCreditCard(Long doctorId, CreditCard creditCard);
+  CreditCard saveCreditCard(Long doctorId, CreditCard creditCard);
 
   /**
    * Saves the professional - office information for the doctor.
    *
    * @param doctorId the doctor id.
    * @param officeInformationDto the doctor office information.
-   * @return the {@link Doctor}.
+   * @return the {@link DoctorOfficeInformationDto}.
    */
-  Doctor saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto);
+  DoctorOfficeInformationDto saveOfficeInformation(Long doctorId, DoctorOfficeInformationDto officeInformationDto);
 
   /**
    * Returns appointments for the doctor.
