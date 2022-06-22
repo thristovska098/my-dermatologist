@@ -18,7 +18,12 @@ import { LOG_OUT_LABEL } from '../../labels';
 import { BASE_ROUTE } from '../../../routing/pages';
 
 // Action
-import { setIsUserLoggedIn } from '../../../redux/actions';
+import {
+  setDoctorCreditCardData,
+  setDoctorOfficeData,
+  setDoctorPersonalData,
+  setIsUserLoggedIn,
+} from '../../../redux/actions';
 
 type Props = {
   pages?: Array<PageType>,
@@ -39,9 +44,11 @@ const Header = ({
   const history = useHistory();
 
   const handleLogOutButtonClick = () => {
-    // TODO: when the BE is done make call to the service
     if (shouldLetLogOut) {
       dispatch(setIsUserLoggedIn(false));
+      dispatch(setDoctorPersonalData({}));
+      dispatch(setDoctorCreditCardData({}));
+      dispatch(setDoctorOfficeData({}));
       history.push(BASE_ROUTE);
     } else {
       onChangeFunction();

@@ -30,7 +30,7 @@ const App = () => {
   const reducer = rootReducer(browserHistory);
 
   const persistConfig = {
-    key: 'main-root',
+    key: 'root',
     storage,
   };
 

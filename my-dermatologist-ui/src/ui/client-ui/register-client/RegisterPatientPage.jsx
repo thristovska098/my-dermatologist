@@ -29,7 +29,7 @@ const RegisterPatientPage = (): React.Node => {
   const handlingSubmit = (values: Patient) => {
     const preparedValues = preparePersonalData(values);
 
-    savePatient(preparedValues);
+    savePatient(preparedValues, true);
   };
 
   return (

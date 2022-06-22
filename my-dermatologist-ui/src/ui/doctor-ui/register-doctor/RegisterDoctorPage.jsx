@@ -55,7 +55,7 @@ const RegisterDoctorPage = (): React.Node => {
       <Form
         onSubmit={handlingSubmit}
         initialValuesEqual={_isEqual}
-        initialValues={prepareInitialData()}
+        initialValues={Object.keys(initialData).length !== 0 && prepareInitialData()}
         subscription={{ values: true, hasValidationErrors: true }}
         render={({ handleSubmit, hasValidationErrors, values }) => (
           <>

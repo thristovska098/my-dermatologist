@@ -13,7 +13,16 @@ import { USER_TYPE } from '../ui/constants';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
 
 // Actions
-import { setIsSignInSignUpModalOpen, setIsUserLoggedIn, setLoginError, setUserId, setUserType } from '../redux/actions';
+import {
+  setDoctorCreditCardData,
+  setDoctorOfficeData,
+  setDoctorPersonalData,
+  setIsSignInSignUpModalOpen,
+  setIsUserLoggedIn,
+  setLoginError,
+  setUserId,
+  setUserType,
+} from '../redux/actions';
 
 export const useHandleSigning = (): Function => {
   const dispatch = useDispatch();
@@ -48,6 +57,9 @@ export const useHandleSigning = (): Function => {
             dispatch(setIsUserLoggedIn(true));
             dispatch(setUserType(response?.data?.userType));
             dispatch(setLoginError(null));
+            dispatch(setDoctorPersonalData({}));
+            dispatch(setDoctorOfficeData({}));
+            dispatch(setDoctorCreditCardData({}));
             history.push(getRedirectPath());
           })
           ?.catch((error: Object) => {
