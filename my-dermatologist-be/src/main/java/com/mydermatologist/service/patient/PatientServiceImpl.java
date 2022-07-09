@@ -96,11 +96,14 @@ public class PatientServiceImpl implements PatientService{
    */
   public Long createAppointment(Long patientId, CreateAppointmentDto createAppointmentDto) {
 
+    String patientNotFoundMessage = "The patient with id " + patientId + " doesn't exist.";
+    String doctorNotFoundMessage = "The doctor with id " + createAppointmentDto.getDoctorId() + " doesn't exist";
+
     Patient patient = patientRepository.findById(patientId)
-      .orElseThrow(() -> new RuntimeException("The patient with id " + patientId + " doesn't exist."));
+      .orElseThrow(() -> new RuntimeException(patientNotFoundMessage));
 
     Doctor doctor = doctorRepository.findById(createAppointmentDto.getDoctorId())
-      .orElseThrow(() -> new RuntimeException("The doctor with id " + createAppointmentDto.getDoctorId() + " doesn't exist"));
+      .orElseThrow(() -> new RuntimeException(doctorNotFoundMessage));
 
     Appointment appointment = appointmentMapper.mapCreateAppointmentDtoToAppointment(
       createAppointmentDto,

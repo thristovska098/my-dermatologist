@@ -91,7 +91,9 @@ public class PatientControllerImpl implements PatientController {
    * @return the {@link Appointment}.
    */
   @RequestMapping(value = SAVE_IMAGES_FOR_APPOINTMENT_ENDPOINT, method = RequestMethod.POST)
-  public Appointment saveImagesToAppointment(@RequestParam Long appointmentId, @RequestParam("files") List<MultipartFile> files) {
+  public Appointment saveImagesToAppointment(
+    @RequestParam Long appointmentId,
+    @RequestParam("files") List<MultipartFile> files) {
 
     Appointment appointment = patientService.saveImagesToAppointment(appointmentId, files);
 

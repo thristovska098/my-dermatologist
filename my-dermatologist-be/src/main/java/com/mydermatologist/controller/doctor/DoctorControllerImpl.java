@@ -46,7 +46,9 @@ public class DoctorControllerImpl implements DoctorController {
    * @return the {@link Doctor}.
    */
   @RequestMapping(value = DOCTOR_ENDPOINT, method = RequestMethod.POST)
-  public DoctorPersonalDataDto saveDoctor(@RequestParam Long userId, @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
+  public DoctorPersonalDataDto saveDoctor(
+    @RequestParam Long userId,
+    @RequestBody DoctorPersonalDataDto doctorPersonalDataDto) {
 
     doctorService.saveDoctor(userId, doctorPersonalDataDto);
 
@@ -76,7 +78,9 @@ public class DoctorControllerImpl implements DoctorController {
    * @return the {@link DoctorOfficeInformationDto}.
    */
   @RequestMapping(value = DOCTOR_OFFICE_INFORMATION_ENDPOINT, method = RequestMethod.POST)
-  public DoctorOfficeInformationDto saveOfficeInformation(@RequestParam Long doctorId, @RequestBody DoctorOfficeInformationDto officeInformationDto) {
+  public DoctorOfficeInformationDto saveOfficeInformation(
+    @RequestParam Long doctorId,
+    @RequestBody DoctorOfficeInformationDto officeInformationDto) {
 
     doctorService.saveOfficeInformation(doctorId, officeInformationDto);
 
