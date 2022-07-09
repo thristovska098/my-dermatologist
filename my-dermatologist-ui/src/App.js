@@ -1,6 +1,4 @@
 import * as React from 'react';
-
-// Utils
 import storage from 'redux-persist/lib/storage';
 import { Provider } from 'react-redux';
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
@@ -9,11 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './redux/reducers';
 import browserHistory from './redux/browserHistory';
-
-// Constants
 import { BASE_ROUTE, PAGES_FULL_ROUTES } from './routing/pages';
-
-// Components
 import Bootstrapper from './Bootstrapper';
 import RegisterPatientPage from './ui/client-ui/register-client/RegisterPatientPage';
 import RegisterDoctorPage from './ui/doctor-ui/register-doctor/RegisterDoctorPage';

@@ -1,25 +1,15 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useSelector } from 'react-redux';
-
-// Components
 import { Form } from 'react-final-form';
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
 import { StyledFormContainer } from '../../client-ui/register-client/styles';
 import RegisterCreditCard from '../../common/register-credit-card/RegisterCreditCard';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
-
-// Custom hooks
 import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
-
-// Constants
 import { pages } from './constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-
-// Utils
 import { getDoctorCreditCardData } from '../../../redux/selectors';
 
 const RegisterDoctorPaymentInformation = (): React.Node => {

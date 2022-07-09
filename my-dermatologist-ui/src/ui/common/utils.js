@@ -1,5 +1,4 @@
 // @flow
-
 import { DEFAULT_COUNTRY } from './constants';
 
 export const prepareDate = (dateOfBirth: Object): string => {

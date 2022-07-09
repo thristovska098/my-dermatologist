@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Form } from 'react-final-form';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -13,8 +11,6 @@ import {
 } from './styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import TextAreaField from '../../../components/final-form/field-components/text-area-field/TextAreaField';
-
-// Constants
 import { MAX_CHARACTERS, MIN_CHARACTERS, MODAL_FIELD_WIDTH } from '../../client-ui/create-virtual-visit/constants';
 import {
   MINIMUM_LENGTH_MESSAGE,
@@ -26,12 +22,8 @@ import {
   CANCEL_FIELD_LABEL,
   SUBMIT_FIELD_LABEL,
 } from '../../labels';
-
-// Validators
 import { composeValidators, minLength, required } from '../../../components/validators';
 import { useCreateMedicalReport } from '../../../hooks/useCreateMedicalReport';
-
-// Actions
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
 
 const RespondAppointmentForm = (): React.Node => {

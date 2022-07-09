@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Button } from '@mui/material';
 import { StyledFooter } from './styles';
 import { AlignedButton, ButtonsContainer, StyledButtonContainer } from '../../client-ui/styles';

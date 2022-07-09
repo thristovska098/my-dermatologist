@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Button, Card, CardActions, CardContent, CardMedia } from '@mui/material';
 import { CardContainer, CardItemsWrapperContainer } from '../../basic-ui/styles';
 

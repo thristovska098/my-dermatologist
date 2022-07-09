@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
 
 export const RowsContainer: React.ComponentType<*> = styled.div`

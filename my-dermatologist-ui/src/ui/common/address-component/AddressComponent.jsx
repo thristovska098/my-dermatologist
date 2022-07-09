@@ -1,16 +1,10 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useSelector } from 'react-redux';
-
-// Components
 import { ColumnsContainer } from './styles';
 import { RowsContainer } from '../styles';
 import DropdownField from '../../../components/final-form/field-components/DropdownField';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
-
-// Constants
 import {
   CITY_LABEL,
   COUNTRY_LABEL,
@@ -20,8 +14,6 @@ import {
   MANDATORY_FIELD_MESSAGE,
 } from '../../labels';
 import { DEFAULT_COUNTRY, FIELD_WIDTH_MAX, FIELD_WIDTH_MEDIUM, FIELD_WIDTH_MIN } from '../constants';
-
-// Utils
 import { required } from '../../../components/validators';
 import { getCitiesList } from '../../../redux/selectors';
 

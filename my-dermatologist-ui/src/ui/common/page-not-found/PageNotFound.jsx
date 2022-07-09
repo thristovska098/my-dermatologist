@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { SentimentDissatisfied } from '@material-ui/icons';
 import { LogoContainer, MainBodyPageWrapper } from '../../basic-ui/styles';
 import { PageNotFoundContainer } from '../styles';

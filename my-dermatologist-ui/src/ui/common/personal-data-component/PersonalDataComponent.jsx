@@ -1,17 +1,11 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { composeValidators, dateInThePast, required, validateLength } from '../../../components/validators';
-
-// Components
 import { RowsContainer } from '../styles';
 import DatePickerField from '../../../components/final-form/field-components/DatePickerField';
 import DropdownField from '../../../components/final-form/field-components/DropdownField';
 import ContactInformationComponent from '../contact-information-component/ContactInformationComponent';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
-
-// Constants
 import { FIELD_WIDTH_MAX } from '../constants';
 import {
   INVALID_DATE,

@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Button } from '@mui/material';
 import { ButtonContainer, LogoAndButtonContainer, LogoContainer, MainBodyPageWrapper } from '../../basic-ui/styles';
 

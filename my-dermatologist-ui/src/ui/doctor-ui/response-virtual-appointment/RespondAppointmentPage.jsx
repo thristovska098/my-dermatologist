@@ -1,14 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useDispatch, useSelector } from 'react-redux';
-
-// Components
 import { Box, Modal } from '@mui/material';
 import RespondAppointmentForm from './RespondAppointmentForm';
-
-// Utils
 import { getModalOpenedForAppointmentId } from '../../../redux/selectors';
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
 

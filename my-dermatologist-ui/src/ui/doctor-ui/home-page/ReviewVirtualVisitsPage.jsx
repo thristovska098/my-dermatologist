@@ -1,11 +1,6 @@
 // @flow
-
 import * as React from 'react';
-
-// Hooks
 import { useDispatch } from 'react-redux';
-
-// Components
 import {
   Box,
   ImageList,
@@ -29,8 +24,6 @@ import {
 } from '../../client-ui/virtual-visits-results/styles';
 import { ImageContainer, ImageContainerForModal } from './styles';
 import { RowsContainer, NoAppointmentsContainer } from '../../common/styles';
-
-// Constants
 import {
   APPOINTMENT_STATUSES,
   DATE_OF_BIRTH_LABEL,
@@ -44,11 +37,7 @@ import {
   NO_APPOINTMENTS_MESSAGE,
 } from '../../labels';
 import { APPOINTMENT_STATUS } from './constants';
-
-// Actions
 import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
-
-// Custom hooks
 import { useFetchAppointments } from '../../../hooks/useFetchAppointments';
 
 const ReviewVirtualVisitsPage = (): React.Node => {

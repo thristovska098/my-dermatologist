@@ -1,14 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-
-// Utils
 import styled from 'styled-components';
-
-// Components
 import { Box, Tab, Tabs } from '@mui/material';
 
 export type PageType = {

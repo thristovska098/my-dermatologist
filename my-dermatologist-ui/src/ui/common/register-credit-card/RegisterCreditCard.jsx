@@ -1,15 +1,11 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { IconAndInputContainer } from '../../client-ui/create-virtual-visit/paying-form/styles';
 import IntegerInputField from '../../../components/final-form/field-components/IntegerInputField';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
-
-// Utils
 import { formatCreditCardNumber, formatExpirationDate } from '../../../components/formatters';
 import { CARD_NUMBER_LABEL, CVC_LABEL, EXPIRING_DATE_LABEL, MANDATORY_FIELD_MESSAGE } from '../../labels';
 import { composeValidators, required, validateExpiringDate } from '../../../components/validators';

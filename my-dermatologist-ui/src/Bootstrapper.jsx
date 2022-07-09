@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useFetchCities } from './hooks/useFetchCities';
 
 type Props = {

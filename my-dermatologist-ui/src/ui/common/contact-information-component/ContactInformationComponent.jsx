@@ -1,12 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import AddressComponent from '../address-component/AddressComponent';
 import { RowsContainer } from '../styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
-
-// Constants
 import {
   EMAIL_LABEL,
   PHONE_LABEL,
@@ -15,8 +11,6 @@ import {
   MANDATORY_FIELD_MESSAGE,
 } from '../../labels';
 import { FIELD_WIDTH_MAX } from '../constants';
-
-// Utils
 import { composeValidators, isEmail, isPhoneNumber, required } from '../../../components/validators';
 
 type Props = {

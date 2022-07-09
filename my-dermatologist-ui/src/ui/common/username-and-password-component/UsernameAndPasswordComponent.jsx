@@ -1,24 +1,14 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { useSelector } from 'react-redux';
-
-// Components
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { Form } from 'react-final-form';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import PasswordField from '../../../components/final-form/field-components/password-field/PasswordField';
 import { StyledTitle, Container, ButtonGroupContainer, ErrorContainer } from './styles';
 import SubmitAndCancelFooter from '../submit-cancel-footer/SubmitAndCancelFooter';
-
-// Actions
 import { composeValidators, required, validateMinimumLength } from '../../../components/validators';
-
-// Selectors
 import { getLoginErrorMessage, getUserType } from '../../../redux/selectors';
-
-// Constants
 import {
   INVALID_USERNAME_MESSAGE,
   MANDATORY_FIELD_MESSAGE,
@@ -30,8 +20,6 @@ import {
   USERNAME_LABEL,
 } from '../../labels';
 import { USER_TYPE } from '../../constants';
-
-// Custom hooks
 import { useHandleSigning } from '../../../hooks/useHandleSigning';
 
 const UsernameAndPasswordComponent = (): React.Node => {
