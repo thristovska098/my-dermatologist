@@ -1,14 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Field } from 'react-final-form';
 import { ErrorMessage, StyledPasswordInput, StyledPasswordLabel } from './styles';
-
-// Validators
 import { composeValidators, required, validatePassword } from '../../../validators';
-
-// Constants
 import { INVALID_PASSWORD_MESSAGE, MANDATORY_FIELD_MESSAGE } from '../../../../ui/labels';
 
 type Props = {

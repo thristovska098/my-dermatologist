@@ -1,11 +1,7 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
 import { ifProp, prop } from 'styled-tools';
-
-// Components
 import { FormDateField } from 'mui-form-fields';
 import { useForm } from 'react-final-form';
 

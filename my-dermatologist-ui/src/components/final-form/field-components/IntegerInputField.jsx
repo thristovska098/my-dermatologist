@@ -1,15 +1,10 @@
 // @flow
 import * as React from 'react';
 
-// Components
 import { FormTextField } from 'mui-form-fields';
-
-// Utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
 import { parseIntegerInputWithMaxLength } from '../../parsers';
-
-// Constants
 import { MAX_CHARACTERS } from '../../../ui/client-ui/create-virtual-visit/constants';
 
 const InputWrapper: React.ComponentType<*> = styled.div`

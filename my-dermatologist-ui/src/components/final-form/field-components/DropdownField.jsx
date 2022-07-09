@@ -1,14 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
 import { ifProp, prop } from 'styled-tools';
-
-// Components
 import { FormSelectField } from 'mui-form-fields';
-
-// Hooks
 import { useField } from 'react-final-form';
 
 const InputWrapper: React.ComponentType<*> = styled.div`

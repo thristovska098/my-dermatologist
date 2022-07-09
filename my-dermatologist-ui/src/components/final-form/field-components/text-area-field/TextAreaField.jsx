@@ -1,16 +1,10 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
-
-// Components
 import { Field } from 'react-final-form';
 import { TextareaAutosize } from '@mui/material';
 import { ErrorMessage } from '../password-field/styles';
-
-// Parsers
 import { parseTextWithMaxLength } from '../../../parsers';
 
 type Props = {
