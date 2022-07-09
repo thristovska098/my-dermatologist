@@ -1,13 +1,16 @@
 // @flow
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@mui/material';
+import { useCallback } from 'react';
+import { getUserType } from '../../../redux/selectors';
+import { USER_TYPE } from '../../constants';
 import { ButtonContainer, LogoAndButtonsContainer, StyledLogo } from './styles';
 import Navigation from '../../common/navigation/Navigation';
 import type { PageType } from '../../common/navigation/Navigation';
-import { LOG_OUT_LABEL } from '../../labels';
-import { BASE_ROUTE } from '../../../routing/pages';
+import { EDIT_PERSONAL_DATA_LABEL, LOG_OUT_LABEL } from '../../labels';
+import { BASE_ROUTE, PAGES_FULL_ROUTES } from '../../../routing/pages';
 import {
   setDoctorCreditCardData,
   setDoctorOfficeData,
@@ -20,7 +23,7 @@ type Props = {
   initialPage?: number,
   onChangeFunction?: Function,
   hasValidationErrors?: boolean,
-  shouldLetLogOut?: boolean,
+  showEditPersonalData?: boolean,
 };
 
 const Header = ({
@@ -28,20 +31,33 @@ const Header = ({
   initialPage = 0,
   onChangeFunction = () => {},
   hasValidationErrors,
-  shouldLetLogOut = true,
+  showEditPersonalData = false,
 }: Props): React.Node => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const userType = useSelector(getUserType);
 
-  const handleLogOutButtonClick = () => {
-    if (shouldLetLogOut) {
+  const handleLogOutButtonClick = useCallback(() => {
+    onChangeFunction();
+
+    if (!hasValidationErrors) {
       dispatch(setIsUserLoggedIn(false));
       dispatch(setDoctorPersonalData({}));
       dispatch(setDoctorCreditCardData({}));
       dispatch(setDoctorOfficeData({}));
       history.push(BASE_ROUTE);
-    } else {
-      onChangeFunction();
+    }
+  }, [dispatch, history, onChangeFunction, hasValidationErrors]);
+
+  const handleEditPersonalData = () => {
+    onChangeFunction();
+
+    if (!hasValidationErrors) {
+      if (userType.toLowerCase() === USER_TYPE.DOCTOR) {
+        history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA);
+      } else {
+        history.push(PAGES_FULL_ROUTES.REGISTER_PATIENT);
+      }
     }
   };
 
@@ -50,7 +66,14 @@ const Header = ({
       <LogoAndButtonsContainer>
         <StyledLogo />
         <ButtonContainer>
-          <Button onClick={handleLogOutButtonClick}>{LOG_OUT_LABEL}</Button>
+          {showEditPersonalData && (
+            <Button onClick={handleEditPersonalData} variant="outlined">
+              {EDIT_PERSONAL_DATA_LABEL}
+            </Button>
+          )}
+          <Button onClick={handleLogOutButtonClick} variant="outlined">
+            {LOG_OUT_LABEL}
+          </Button>
         </ButtonContainer>
       </LogoAndButtonsContainer>
       {pages && (

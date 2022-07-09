@@ -21,8 +21,8 @@ export const useHandleSigning = (): Function => {
   const history = useHistory();
 
   const handleSigning = (isSignUp: boolean, values: Object) => {
-    const getRedirectPath = (): string => {
-      if (values?.userType.toLowerCase() === USER_TYPE.PATIENT) {
+    const getRedirectPath = (userType: string): string => {
+      if (userType.toLowerCase() === USER_TYPE.PATIENT) {
         return isSignUp ? PAGES_FULL_ROUTES.REGISTER_PATIENT : PAGES_FULL_ROUTES.PATIENT_HOME_PAGE;
       }
       return isSignUp ? PAGES_FULL_ROUTES.REGISTER_DOCTOR_PERSONAL_DATA : PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE;
@@ -52,7 +52,7 @@ export const useHandleSigning = (): Function => {
             dispatch(setDoctorPersonalData({}));
             dispatch(setDoctorOfficeData({}));
             dispatch(setDoctorCreditCardData({}));
-            history.push(getRedirectPath());
+            history.push(getRedirectPath(response?.data?.userType));
           })
           ?.catch((error: Object) => {
             dispatch(setLoginError(error?.response?.data));

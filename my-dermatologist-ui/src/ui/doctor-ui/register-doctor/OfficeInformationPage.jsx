@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { Form } from 'react-final-form';
+import { useHistory } from 'react-router-dom';
+import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 import { FormContainer, RowsContainer } from '../../common/styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import { PageWrapper } from '../../basic-ui/header/styles';
@@ -20,13 +22,14 @@ const OfficeInformationPage = (): React.Node => {
   const codeValidator = validateLength(INVALID_DOCTOR_CODE_MESSAGE, LENGTH_OF_DOCTOR_CODE);
   const saveOfficeData = useSaveOfficeData();
   const initialData = useSelector(getDoctorOfficeData);
+  const history = useHistory();
 
   const combinedCodeValidator = React.useCallback(
     (fieldValue) => composeValidators([requiredValidator, codeValidator])(fieldValue),
     [codeValidator, requiredValidator],
   );
 
-  const prepareDataForSubmit = (values: Object): Object => {
+  const prepareDataForSubmit = React.useCallback((values: Object): Object => {
     const { office, ...rest } = values;
     const { officeContact } = office;
     const { address, ...restOfContactInfo } = officeContact;
@@ -43,19 +46,27 @@ const OfficeInformationPage = (): React.Node => {
       },
       ...rest,
     };
-  };
+  }, []);
 
-  const handlingSubmit = (values: Object) => {
-    const preparedValues = prepareDataForSubmit(values);
+  const handlingSubmit = React.useCallback(
+    (values: Object) => {
+      const preparedValues = prepareDataForSubmit(values);
 
-    saveOfficeData(preparedValues, true);
-  };
+      saveOfficeData(preparedValues);
+    },
+    [prepareDataForSubmit, saveOfficeData],
+  );
 
-  const handlingSubmitForNavigationBar = (values: Object) => {
-    const preparedValues = prepareDataForSubmit(values);
+  const handlingSubmitForButton = React.useCallback(
+    (values: Object, handleFormSubmit: Function, hasValidationErrors: boolean) => {
+      handleFormSubmit(values);
 
-    saveOfficeData(preparedValues, false);
-  };
+      if (!hasValidationErrors) {
+        history.push(PAGES_FULL_ROUTES.REGISTER_DOCTOR_CREDIT_CARD);
+      }
+    },
+    [history],
+  );
 
   return (
     <PageWrapper>
@@ -68,9 +79,8 @@ const OfficeInformationPage = (): React.Node => {
             <Header
               pages={pages}
               initialPage={1}
-              onChangeFunction={() => handlingSubmitForNavigationBar(values)}
+              onChangeFunction={handleSubmit}
               hasValidationErrors={hasValidationErrors}
-              shouldLetLogOut={false}
             />
             <FormContainer>
               <RowsContainer>
@@ -84,7 +94,7 @@ const OfficeInformationPage = (): React.Node => {
               <ContactInformationComponent fieldNamePrefix="office.officeContact" />
               <SubmitAndCancelFooter
                 width={FIELD_WIDTH_MAX}
-                handleSubmit={handleSubmit}
+                handleSubmit={() => handlingSubmitForButton(values, handleSubmit, hasValidationErrors)}
                 submitLabel={SUBMIT_FIELD_LABEL}
                 hasMargin
               />

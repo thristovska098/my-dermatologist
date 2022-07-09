@@ -8,7 +8,7 @@ import { pages } from '../../client-ui/home-page/constants';
 
 const HomePage = (): React.Node => (
   <PageWrapper>
-    <Header pages={pages} />
+    <Header pages={pages} showEditPersonalData />
     <ReviewVirtualVisitsPage />
     <RespondAppointmentPage />
   </PageWrapper>

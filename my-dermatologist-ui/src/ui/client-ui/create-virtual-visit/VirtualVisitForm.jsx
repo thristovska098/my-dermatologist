@@ -49,19 +49,23 @@ const VirtualVisitForm = (): React.Node => {
     // eslint-disable-next-line
   }, []);
 
-  const doctorsOptions = doctors?.map((doctor: Object): Object => {
-    const code = doctor?.id;
-    const nameAndLastName = `${doctor?.name} ${doctor?.lastName}`;
-    const city = doctor?.city;
-    const country = doctor?.country;
-    const cityAndCountry = `${city}, ${country}`;
-    const nameAndAddress = `${nameAndLastName} (${cityAndCountry})`;
+  const doctorsOptions = React.useMemo(
+    () =>
+      doctors?.map((doctor: Object): Object => {
+        const code = doctor?.id;
+        const nameAndLastName = `${doctor?.name} ${doctor?.lastName}`;
+        const city = doctor?.city;
+        const country = doctor?.country;
+        const cityAndCountry = `${city}, ${country}`;
+        const nameAndAddress = `${nameAndLastName} (${cityAndCountry})`;
 
-    return {
-      label: nameAndAddress,
-      value: code,
-    };
-  });
+        return {
+          label: nameAndAddress,
+          value: code,
+        };
+      }),
+    [doctors],
+  );
 
   const width = MIN_WIDTH - 20;
 
@@ -71,18 +75,21 @@ const VirtualVisitForm = (): React.Node => {
   const titleValidators = composeValidators([requiredValidator, maxLengthValidator]);
   const descriptionValidators = composeValidators([requiredValidator, minLengthValidator]);
 
-  const handlingSubmit = (values: Object) => {
-    const { images, ...formData } = values;
+  const handlingSubmit = React.useCallback(
+    (values: Object) => {
+      const { images, ...formData } = values;
 
-    createAppointment(formData)?.then((response: Object) => {
-      setAppointmentId(response?.data);
-      saveImages(images, response?.data);
-    });
-  };
+      createAppointment(formData)?.then((response: Object) => {
+        setAppointmentId(response?.data);
+        saveImages(images, response?.data);
+      });
+    },
+    [createAppointment, saveImages],
+  );
 
-  const handleCancel = () => {
+  const handleCancel = React.useCallback(() => {
     history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
-  };
+  }, [history]);
 
   return (
     <PageWrapper>
@@ -91,7 +98,12 @@ const VirtualVisitForm = (): React.Node => {
         subscription={{ values: true, form: true, errors: true, hasValidationErrors: true }}
         render={({ handleSubmit, hasValidationErrors }) => (
           <>
-            <Header pages={pages} onChangeFunction={handleSubmit} hasValidationErrors={hasValidationErrors} />
+            <Header
+              pages={pages}
+              onChangeFunction={handleSubmit}
+              hasValidationErrors={hasValidationErrors}
+              showEditPersonalData
+            />
             <FormContainer>
               <RowsContainer>
                 <DropdownField

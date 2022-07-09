@@ -14,7 +14,9 @@ const HomePageWrapper = ({ children, handleNavigationButtonClick, navigationButt
     <LogoAndButtonContainer>
       <LogoContainer />
       <ButtonContainer>
-        <Button onClick={handleNavigationButtonClick}>{navigationButtonLabel}</Button>
+        <Button onClick={handleNavigationButtonClick} variant="outlined">
+          {navigationButtonLabel}
+        </Button>
       </ButtonContainer>
     </LogoAndButtonContainer>
     {children}

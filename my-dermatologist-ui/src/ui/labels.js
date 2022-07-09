@@ -7,6 +7,7 @@ export const SUBMIT_FIELD_LABEL = 'Submit';
 export const CANCEL_FIELD_LABEL = 'Cancel';
 export const TRY_AGAIN_BUTTON_LABEL = 'Try again';
 export const MAKE_PAYMENT_LABEL = 'Pay now';
+export const EDIT_PERSONAL_DATA_LABEL = 'Edit personal data';
 
 export const SIGN_IN_MESSAGE = 'Already have an account? Sign In...';
 export const SIGN_UP_MESSAGE = 'Create new account...';

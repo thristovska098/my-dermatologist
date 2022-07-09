@@ -7,7 +7,7 @@ import { pages } from './constants';
 
 const HomePage = (): React.Node => (
   <PageWrapper>
-    <Header pages={pages} />
+    <Header pages={pages} showEditPersonalData />
     <VirtualVisitsResultsPage />
   </PageWrapper>
 );

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { Form } from 'react-final-form';
+import { useHistory } from 'react-router-dom';
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
 import { StyledFormContainer } from '../../client-ui/register-client/styles';
@@ -11,31 +12,42 @@ import { useSaveCreditCard } from '../../../hooks/useSaveCreditCard';
 import { pages } from './constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
 import { getDoctorCreditCardData } from '../../../redux/selectors';
+import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 
 const RegisterDoctorPaymentInformation = (): React.Node => {
   const saveCreditCard = useSaveCreditCard();
   const initialData = useSelector(getDoctorCreditCardData);
+  const history = useHistory();
 
-  const handlingSubmit = (values: Object) => {
-    saveCreditCard(values, true);
-  };
+  const handlingSubmit = React.useCallback(
+    (values: Object) => {
+      saveCreditCard(values);
+    },
+    [saveCreditCard],
+  );
 
-  const handlingSubmitForNavigationBar = (values: Object) => {
-    saveCreditCard(values, false);
-  };
+  const handleSubmitForButton = React.useCallback(
+    (values: Object, handleSubmit: Function, hasValidationErrors: boolean) => {
+      handleSubmit(values);
+
+      if (!hasValidationErrors) {
+        history.push(PAGES_FULL_ROUTES.DOCTOR_HOME_PAGE);
+      }
+    },
+    [history],
+  );
 
   return (
     <PageWrapper>
       <Form
         onSubmit={handlingSubmit}
         initialValues={initialData}
-        subscription={{ values: true, hasValidationErrors: true }}
-        render={({ handleSubmit, hasValidationErrors, values }) => (
+        subscription={{ hasValidationErrors: true, values: true }}
+        render={({ values, handleSubmit, hasValidationErrors }) => (
           <>
             <Header
               pages={pages}
-              onChangeFunction={() => handlingSubmitForNavigationBar(values)}
-              shouldLetLogOut={false}
+              onChangeFunction={handleSubmit}
               initialPage={2}
               hasValidationErrors={hasValidationErrors}
             />
@@ -43,7 +55,7 @@ const RegisterDoctorPaymentInformation = (): React.Node => {
               <RegisterCreditCard />
               <SubmitAndCancelFooter
                 width={180}
-                handleSubmit={handleSubmit}
+                handleSubmit={() => handleSubmitForButton(values, handleSubmit, hasValidationErrors)}
                 submitLabel={SUBMIT_FIELD_LABEL}
                 hasMargin
               />

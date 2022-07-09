@@ -22,6 +22,9 @@ export const StyledLogo: React.ComponentType<*> = styled(LogoContainer)`
 `;
 
 export const ButtonContainer: React.ComponentType<*> = styled.div`
-  margin-top: 25px;
+  margin-top: 35px;
   margin-right: 80px;
+  display: flex;
+  column-gap: 20px;
+  height: 36.5px;
 `;

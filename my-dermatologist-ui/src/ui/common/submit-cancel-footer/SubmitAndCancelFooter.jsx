@@ -27,7 +27,7 @@ const SubmitAndCancelFooter = ({
 }: Props): React.Node => (
   <ButtonsContainer>
     <StyledFooter width={width} hasMargin={hasMargin}>
-      <Button onClick={handleSubmit} variant="contained" color="success">
+      <Button onClick={handleSubmit} variant="contained">
         {submitLabel}
       </Button>
       {cancelLabel && (
