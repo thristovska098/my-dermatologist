@@ -1,10 +1,6 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { loadStripe } from '@stripe/stripe-js';
-
-// Components
 import { Elements } from '@stripe/react-stripe-js';
 import PaymentForm from './PaymentForm';
 

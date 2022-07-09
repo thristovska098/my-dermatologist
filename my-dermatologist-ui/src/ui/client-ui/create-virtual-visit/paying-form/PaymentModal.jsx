@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Box, Modal } from '@mui/material';
 import StripeContainer from './StripeContainer';
 

@@ -1,20 +1,12 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Components
 import { Button } from '@mui/material';
 import DoneTwoToneIcon from '@mui/icons-material/DoneTwoTone';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { PaymentOutcomeContainer, PaymentOutcomeTextContainer, StyledIconWrapper } from './styles';
-
-// Actions
 import { setIsPaymentModalOpen } from '../../../../redux/actions';
-
-// Constants
 import {
   UNSUCCESSFUL_PAYMENT_LABEL,
   SUCCESSFUL_PAYMENT_LABEL,
@@ -22,8 +14,6 @@ import {
   CONTINUE_FIELD_LABEL,
 } from '../../../labels';
 import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
-
-// Custom hooks
 import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
 
 type Props = {

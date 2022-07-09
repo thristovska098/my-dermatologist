@@ -1,31 +1,17 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Stripe utils
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-
-// Axios
-import axios from 'axios';
-
-// Components
 import { Form } from 'react-final-form';
 import { Button, CircularProgress } from '@mui/material';
 import { ButtonContainer, PageContentContainer, TotalPaymentContainer } from './styles';
 import PaymentOutcomeModal from './PaymentOutcomeModal';
-
-// Constants
 import { CANCEL_FIELD_LABEL, MAKE_PAYMENT_LABEL, TOTAL_COST_LABEL } from '../../../labels';
 import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
 import { BASE_URL, FETCH_CLIENT_SECRET_STRIPE } from '../../../../hooks/endpoints';
-
-// Custom hooks
 import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
-
-// Utils
 import { setIsPaymentModalOpen } from '../../../../redux/actions';
 
 const style = {

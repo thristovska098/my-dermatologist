@@ -1,11 +1,7 @@
 // @flow
 import axios from 'axios';
-
-// Hooks
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Utils
 import { BASE_URL, SAVE_DOCTOR_PERSONAL_DATA_URL, SAVE_PATIENT_PERSONAL_DATA_URL } from './endpoints';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
 import { USER_TYPE } from '../ui/constants';

@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 import logo from '../../assets/icons/logo-3.png';

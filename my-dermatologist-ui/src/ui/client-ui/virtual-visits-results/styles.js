@@ -1,7 +1,5 @@
 // @flow
 import * as React from 'react';
-
-// Styled utils
 import styled from 'styled-components';
 import { prop } from 'styled-tools';
 

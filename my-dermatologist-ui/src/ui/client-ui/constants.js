@@ -1,4 +1,3 @@
-// Utils
 import { PAGES_FULL_ROUTES } from '../../routing/pages';
 
 export const pages = [

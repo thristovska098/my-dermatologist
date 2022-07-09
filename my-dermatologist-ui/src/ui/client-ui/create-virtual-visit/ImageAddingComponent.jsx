@@ -1,13 +1,7 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { FormFileUploadField } from 'mui-form-fields';
-
-// Hooks
 import { useField } from 'react-final-form';
-
-// Utils
 import styled from 'styled-components';
 import { ifProp } from 'styled-tools';
 import { required } from '../../../components/validators';

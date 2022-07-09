@@ -1,10 +1,6 @@
 // @flow
-
-// Hooks
-import { useDispatch } from 'react-redux';
-
-// Utils
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import { BASE_URL, FETCH_CITIES_URL } from './endpoints';
 import { setCities } from '../redux/actions';
 

@@ -1,6 +1,4 @@
 // @flow
-
-// Utils
 import axios from 'axios';
 import { BASE_URL, FETCH_DOCTORS_URL } from './endpoints';
 

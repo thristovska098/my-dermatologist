@@ -1,6 +1,4 @@
 // @flow
-
-// Utils
 import axios from 'axios';
 import { APPOINTMENT_URL, BASE_URL } from './endpoints';
 

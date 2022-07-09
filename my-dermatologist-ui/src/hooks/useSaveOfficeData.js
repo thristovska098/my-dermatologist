@@ -1,15 +1,9 @@
 // @flow
-
-// Hooks
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Utils
-import axios from 'axios';
 import { setDoctorOfficeData } from '../redux/actions';
 import { getUserId } from '../redux/selectors';
-
-// Constants
 import { BASE_URL, SAVE_OFFICE_INFORMATION_URL } from './endpoints';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
 

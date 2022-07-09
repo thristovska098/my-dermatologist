@@ -1,13 +1,7 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { Route, Switch } from 'react-router-dom';
-
-// Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
-
-// Components
 import VirtualVisitForm from './VirtualVisitForm';
 import VirtualVisitsResultsPage from '../virtual-visits-results/VirtualVisitsResultsPage';
 

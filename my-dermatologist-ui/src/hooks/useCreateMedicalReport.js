@@ -1,10 +1,6 @@
 // @flow
-
-// Hooks
-import { useDispatch, useSelector } from 'react-redux';
-
-// Utils
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 import { BASE_URL, CREATE_MEDICAL_REPORT_URL } from './endpoints';
 import { setResponseModalOpenedForAppointmentId } from '../redux/actions';
 import { getModalOpenedForAppointmentId } from '../redux/selectors';

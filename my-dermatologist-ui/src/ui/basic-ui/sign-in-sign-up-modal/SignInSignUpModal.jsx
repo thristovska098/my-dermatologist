@@ -1,14 +1,8 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { useDispatch } from 'react-redux';
-
-// Components
 import { Box, Modal } from '@mui/material';
 import UsernameAndPasswordComponent from '../../common/username-and-password-component/UsernameAndPasswordComponent';
-
-// Actions
 import { setIsSignInSignUpModalOpen, setLoginError } from '../../../redux/actions';
 
 const SignInSignUpModal = (): React.Node => {

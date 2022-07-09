@@ -1,18 +1,10 @@
 // @flow
 import * as React from 'react';
-
-// Hooks
 import { useDispatch } from 'react-redux';
-
-// Components
 import { CardsContainer } from '../styles';
 import CardComponent from './CardComponent';
 import HomePageWrapper from '../../common/home-page/HomePageWrapper';
-
-// Constants
 import { LOG_IN_LABEL } from '../../labels';
-
-// Actions
 import { setIsSignInSignUpModalOpen, setUserType } from '../../../redux/actions';
 
 const MainPage = (): React.Node => {

@@ -1,18 +1,10 @@
 // @flow
-
-// Hooks
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Utils
-import axios from 'axios';
-
-// Constants
 import { BASE_URL, CHECK_PASSWORD_ENDPOINT, CHECK_USERNAME_ENDPOINT } from './endpoints';
 import { USER_TYPE } from '../ui/constants';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
-
-// Actions
 import {
   setDoctorCreditCardData,
   setDoctorOfficeData,

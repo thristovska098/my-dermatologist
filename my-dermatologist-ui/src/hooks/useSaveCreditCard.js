@@ -1,11 +1,7 @@
 // @flow
-
-// Hooks
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Utils
-import axios from 'axios';
 import { BASE_URL, SAVE_DOCTOR_CREDIT_CARD_DATA_URL } from './endpoints';
 import { PAGES_FULL_ROUTES } from '../routing/pages';
 import { getUserId } from '../redux/selectors';

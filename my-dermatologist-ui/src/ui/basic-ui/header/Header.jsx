@@ -1,23 +1,13 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-// Components
 import { Button } from '@mui/material';
 import { ButtonContainer, StyledLogo } from './styles';
 import Navigation from '../../common/navigation/Navigation';
-
-// Types
 import type { PageType } from '../../common/navigation/Navigation';
-
-// Constants
 import { LOG_OUT_LABEL } from '../../labels';
 import { BASE_ROUTE } from '../../../routing/pages';
-
-// Action
 import {
   setDoctorCreditCardData,
   setDoctorOfficeData,

@@ -1,10 +1,6 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import styled from 'styled-components';
-
-// Components
 import { LogoContainer, MainBodyPageWrapper } from '../styles';
 
 export const PageWrapper: React.ComponentType<*> = styled(MainBodyPageWrapper)`

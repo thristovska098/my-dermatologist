@@ -1,10 +1,6 @@
 // @flow
-
-// Hooks
-import { useSelector } from 'react-redux';
-
-// Utils
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { BASE_URL, FETCH_APPOINTMENTS_FOR_DOCTOR_URL, FETCH_APPOINTMENTS_FOR_PATIENT_URL } from './endpoints';
 import { getUserId, getUserType } from '../redux/selectors';
 import { USER_TYPE } from '../ui/constants';

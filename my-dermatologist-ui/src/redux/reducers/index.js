@@ -1,16 +1,10 @@
 // @flow
-
-// Utils
 import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
-
-// Reducers
 import { doctorDataReducer } from './doctorDataReducer';
 import { citiesReducer } from './citiesReducer';
 import { userInformationReducer } from './userInformationReducer';
 import { commonReducer } from './commonReducer';
-
-// Types
 import type { Reducer } from '../../types/types.flow';
 
 /**

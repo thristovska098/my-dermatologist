@@ -1,27 +1,17 @@
 // @flow
 import * as React from 'react';
-
-// Components
 import { Form } from 'react-final-form';
 import PersonalDataComponent from '../../common/personal-data-component/PersonalDataComponent';
 import SubmitAndCancelFooter from '../../common/submit-cancel-footer/SubmitAndCancelFooter';
 import { PageWrapper } from '../../basic-ui/header/styles';
 import Header from '../../basic-ui/header/Header';
 import { FormContainer } from '../../common/styles';
-
-// Constants
 import { FIELD_WIDTH_MAX } from '../../common/constants';
 import { pages } from '../constants';
 import { SUBMIT_FIELD_LABEL } from '../../labels';
-
-// Types
-import type { Patient } from '../../../types/types.flow';
-
-// Hooks
 import { useSavePersonalData } from '../../../hooks/useSavePersonalData';
-
-// Utils
 import { preparePersonalData } from '../../common/utils';
+import type { Patient } from '../../../types/types.flow';
 
 const RegisterPatientPage = (): React.Node => {
   const savePatient = useSavePersonalData();

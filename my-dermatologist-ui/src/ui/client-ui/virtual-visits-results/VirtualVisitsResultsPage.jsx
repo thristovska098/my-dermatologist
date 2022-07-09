@@ -1,10 +1,6 @@
 // @flow
 import * as React from 'react';
-
-// Routing
 import { useHistory } from 'react-router-dom';
-
-// Components
 import { Accordion, AccordionSummary, Button, AccordionDetails } from '@mui/material';
 import { ExpandMore } from '@material-ui/icons';
 import { RowsContainer, NoAppointmentsContainer } from '../../common/styles';
@@ -19,8 +15,6 @@ import {
   Label,
   InfoWrapper,
 } from './styles';
-
-// Constants
 import {
   APPOINTMENT_STATUSES,
   CREATE_VIRTUAL_VISIT_LABEL,
@@ -36,8 +30,6 @@ import {
 } from '../../labels';
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 import { APPOINTMENT_STATUS } from '../../doctor-ui/home-page/constants';
-
-// Hooks
 import { useFetchAppointments } from '../../../hooks/useFetchAppointments';
 
 const VirtualVisitsResultsPage = (): React.Node => {

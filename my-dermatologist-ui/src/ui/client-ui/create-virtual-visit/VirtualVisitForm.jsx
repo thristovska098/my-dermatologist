@@ -1,12 +1,7 @@
 // @flow
-
 import * as React from 'react';
-
-// Hooks
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-// Components
 import { Form } from 'react-final-form';
 import { Tooltip } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
@@ -19,12 +14,8 @@ import TextAreaField from '../../../components/final-form/field-components/text-
 import ImageAddingComponent from './ImageAddingComponent';
 import DropdownField from '../../../components/final-form/field-components/DropdownField';
 import PaymentModal from './paying-form/PaymentModal';
-
-// Utils
 import { composeValidators, maxLength, minLength, required } from '../../../components/validators';
 import { getIsPaymentModalOpen } from '../../../redux/selectors';
-
-// Constants
 import { PAGES_FULL_ROUTES } from '../../../routing/pages';
 import { MAX_CHARACTERS, MIN_CHARACTERS, MIN_WIDTH, pages } from './constants';
 import {
@@ -38,8 +29,6 @@ import {
   MINIMUM_LENGTH_MESSAGE,
   MAXIMUM_LENGTH_MESSAGE,
 } from '../../labels';
-
-// Custom hooks
 import { useFetchDoctors } from '../../../hooks/useFetchDoctors';
 import { useSaveImagesToAppointment } from '../../../hooks/useSaveImagesToAppointment';
 import { useCreateAppointment } from '../../../hooks/useCreateAppointment';

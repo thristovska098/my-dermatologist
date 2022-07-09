@@ -1,9 +1,5 @@
 // @flow
-
-// Hooks
 import { useSelector } from 'react-redux';
-
-// Utils
 import axios from 'axios';
 import { BASE_URL, CREATE_APPOINTMENT_URL } from './endpoints';
 import { getUserId } from '../redux/selectors';

@@ -1,9 +1,5 @@
 // @flow
-
-// Hooks
 import { useDispatch } from 'react-redux';
-
-// Utils
 import axios from 'axios';
 import { BASE_URL, SAVE_IMAGES_URL } from './endpoints';
 import { setIsPaymentModalOpen } from '../redux/actions';

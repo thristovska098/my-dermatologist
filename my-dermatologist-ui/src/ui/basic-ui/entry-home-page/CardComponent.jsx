@@ -1,25 +1,13 @@
 // @flow
 import * as React from 'react';
-
-// Utils
 import { useDispatch, useSelector } from 'react-redux';
-
-// Components
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import { CardContainer, CardItemsContainer } from '../styles';
 import SignInSignUpModal from '../sign-in-sign-up-modal/SignInSignUpModal';
-
-// Images
-/* $FlowIgnore */
 import patient from '../../../assets/icons/patient-photo.jpeg';
-/* $FlowIgnore */
 import doctor from '../../../assets/icons/doctor.png';
-
-// Constants
 import { USER_TYPE } from '../../constants';
 import { DOCTOR_ENTRY_CONTENT, PATIENT_ENTRY_CONTENT } from '../../labels';
-
-// Actions
 import { setIsSignInSignUpModalOpen, setUserType } from '../../../redux/actions';
 import { getIsSignInSignUpModalOpen } from '../../../redux/selectors';
 
