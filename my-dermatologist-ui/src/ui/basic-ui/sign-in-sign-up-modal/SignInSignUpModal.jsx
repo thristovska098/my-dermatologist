@@ -9,7 +9,7 @@ import { Box, Modal } from '@mui/material';
 import UsernameAndPasswordComponent from '../../common/username-and-password-component/UsernameAndPasswordComponent';
 
 // Actions
-import { setIsSignInSignUpModalOpen } from '../../../redux/actions';
+import { setIsSignInSignUpModalOpen, setLoginError } from '../../../redux/actions';
 
 const SignInSignUpModal = (): React.Node => {
   const dispatch = useDispatch();
@@ -28,8 +28,13 @@ const SignInSignUpModal = (): React.Node => {
     borderRadius: '25px',
   };
 
+  const handleModalClose = () => {
+    dispatch(setIsSignInSignUpModalOpen(false));
+    dispatch(setLoginError(undefined));
+  };
+
   return (
-    <Modal open onClose={() => dispatch(setIsSignInSignUpModalOpen(false))}>
+    <Modal open onClose={handleModalClose}>
       <Box sx={style}>
         <UsernameAndPasswordComponent />
       </Box>

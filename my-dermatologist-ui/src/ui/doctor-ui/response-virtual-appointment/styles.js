@@ -29,3 +29,9 @@ export const RespondModalFieldsContainer: React.ComponentType<*> = styled.div`
   margin-left: 20px;
   margin-bottom: 40px;
 `;
+
+export const ButtonsContainer: React.ComponentType<*> = styled.div`
+  display: flex;
+  column-gap: 5px;
+  align-content: center;
+`;

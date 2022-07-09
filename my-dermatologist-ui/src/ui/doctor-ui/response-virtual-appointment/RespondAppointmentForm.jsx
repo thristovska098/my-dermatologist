@@ -4,7 +4,13 @@ import * as React from 'react';
 // Components
 import { Form } from 'react-final-form';
 import { Button } from '@mui/material';
-import { RespondModalContainer, RespondModalFieldsContainer, RespondModalHeaderContainer } from './styles';
+import { useDispatch } from 'react-redux';
+import {
+  ButtonsContainer,
+  RespondModalContainer,
+  RespondModalFieldsContainer,
+  RespondModalHeaderContainer,
+} from './styles';
 import TextInputField from '../../../components/final-form/field-components/TextInputField';
 import TextAreaField from '../../../components/final-form/field-components/text-area-field/TextAreaField';
 
@@ -17,14 +23,20 @@ import {
   TREATMENT_LABEL,
   MEDICAL_PRESCRIPTION_LABEL,
   MEDICAL_REPORT_LABEL,
+  CANCEL_FIELD_LABEL,
+  SUBMIT_FIELD_LABEL,
 } from '../../labels';
 
 // Validators
 import { composeValidators, minLength, required } from '../../../components/validators';
 import { useCreateMedicalReport } from '../../../hooks/useCreateMedicalReport';
 
+// Actions
+import { setResponseModalOpenedForAppointmentId } from '../../../redux/actions';
+
 const RespondAppointmentForm = (): React.Node => {
   const createMedicalReport = useCreateMedicalReport();
+  const dispatch = useDispatch();
 
   const handleSubmitClick = (values: Object) => {
     createMedicalReport(values);
@@ -79,9 +91,14 @@ const RespondAppointmentForm = (): React.Node => {
               }}
             />
           </RespondModalFieldsContainer>
-          <Button onClick={handleSubmit} variant="contained">
-            Submit
-          </Button>
+          <ButtonsContainer>
+            <Button onClick={handleSubmit} variant="contained">
+              {SUBMIT_FIELD_LABEL}
+            </Button>
+            <Button variant="outlined" onClick={() => dispatch(setResponseModalOpenedForAppointmentId(null))}>
+              {CANCEL_FIELD_LABEL}
+            </Button>
+          </ButtonsContainer>
         </RespondModalContainer>
       )}
     />

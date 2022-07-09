@@ -26,7 +26,10 @@ public class PaymentControllerImpl implements PaymentController {
   @RequestMapping(value = CREATE_PAYMENT_INTENT_ENDPOINT, method = RequestMethod.GET)
   public String createPaymentIntent(@RequestParam Long amount) throws StripeException {
 
-    PaymentIntentCreateParams createParams = PaymentIntentCreateParams.builder().setCurrency("mkd").putMetadata("dermatologistService", "regularAppointment").setAmount(amount * 100L).build();
+    PaymentIntentCreateParams createParams = PaymentIntentCreateParams.builder()
+      .setCurrency("mkd")
+      .putMetadata("dermatologistService", "regularAppointment")
+      .setAmount(amount * 100L).build();
 
     PaymentIntent intent = PaymentIntent.create(createParams);
 

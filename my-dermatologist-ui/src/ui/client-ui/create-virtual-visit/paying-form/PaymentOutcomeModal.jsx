@@ -15,7 +15,12 @@ import { PaymentOutcomeContainer, PaymentOutcomeTextContainer, StyledIconWrapper
 import { setIsPaymentModalOpen } from '../../../../redux/actions';
 
 // Constants
-import { CONTINUE_FIELD_LABEL, UNSUCCESSFUL_PAYMENT_LABEL, SUCCESSFUL_PAYMENT_LABEL } from '../../../labels';
+import {
+  UNSUCCESSFUL_PAYMENT_LABEL,
+  SUCCESSFUL_PAYMENT_LABEL,
+  TRY_AGAIN_BUTTON_LABEL,
+  CONTINUE_FIELD_LABEL,
+} from '../../../labels';
 import { PAGES_FULL_ROUTES } from '../../../../routing/pages';
 
 // Custom hooks
@@ -24,9 +29,10 @@ import { useDeleteAppointment } from '../../../../hooks/useDeleteAppointment';
 type Props = {
   isPaymentSuccessful: boolean,
   appointmentId?: number,
+  setSuccess?: Function,
 };
 
-const PaymentOutcomeModal = ({ isPaymentSuccessful, appointmentId }: Props): React.Node => {
+const PaymentOutcomeModal = ({ isPaymentSuccessful, appointmentId, setSuccess }: Props): React.Node => {
   const dispatch = useDispatch();
   const history = useHistory();
   const deleteAppointment = useDeleteAppointment();
@@ -37,11 +43,13 @@ const PaymentOutcomeModal = ({ isPaymentSuccessful, appointmentId }: Props): Rea
       history.push(PAGES_FULL_ROUTES.PATIENT_HOME_PAGE);
     } else {
       deleteAppointment(appointmentId);
-      dispatch(setIsPaymentModalOpen(false));
+      setSuccess(undefined);
     }
   };
 
-  const button = <Button onClick={handleButtonClick}>{CONTINUE_FIELD_LABEL}</Button>;
+  const button = (
+    <Button onClick={handleButtonClick}>{isPaymentSuccessful ? CONTINUE_FIELD_LABEL : TRY_AGAIN_BUTTON_LABEL}</Button>
+  );
 
   const icon = (
     <StyledIconWrapper>
