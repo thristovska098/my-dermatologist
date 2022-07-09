@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { ButtonContainer, StyledLogo } from './styles';
+import { ButtonContainer, LogoAndButtonsContainer, StyledLogo } from './styles';
 import Navigation from '../../common/navigation/Navigation';
 import type { PageType } from '../../common/navigation/Navigation';
 import { LOG_OUT_LABEL } from '../../labels';
@@ -47,11 +47,12 @@ const Header = ({
 
   return (
     <>
-      <StyledLogo>
+      <LogoAndButtonsContainer>
+        <StyledLogo />
         <ButtonContainer>
           <Button onClick={handleLogOutButtonClick}>{LOG_OUT_LABEL}</Button>
         </ButtonContainer>
-      </StyledLogo>
+      </LogoAndButtonsContainer>
       {pages && (
         <Navigation
           pages={pages}

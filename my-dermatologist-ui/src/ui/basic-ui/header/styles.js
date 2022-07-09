@@ -10,12 +10,18 @@ export const PageWrapper: React.ComponentType<*> = styled(MainBodyPageWrapper)`
   width: 100vw;
 `;
 
+export const LogoAndButtonsContainer: React.ComponentType<*> = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
 export const StyledLogo: React.ComponentType<*> = styled(LogoContainer)`
-  width: 95%;
   margin-bottom: 30px;
   height: 80px;
 `;
 
 export const ButtonContainer: React.ComponentType<*> = styled.div`
   margin-top: 25px;
+  margin-right: 80px;
 `;
