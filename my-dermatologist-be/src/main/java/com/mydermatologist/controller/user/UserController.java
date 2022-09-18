@@ -9,20 +9,18 @@ import com.mydermatologist.dto.UserResponseDto;
 public interface UserController {
 
   /**
-   * Create user or verify that exists with username.
+   * Register user with valid username and password.
    *
    * @param userAppSignUpDto the user information.
-   * @param isSignUp flag for showing if it's sign in or sign up service.
    * @return the {@link Long}.
    */
-  Long checkUsername(UserLoginDto userAppSignUpDto, boolean isSignUp);
+  UserResponseDto registerUser(UserLoginDto userAppSignUpDto);
 
   /**
-   * Save users password or verify the existing password.
+   * Logs in user with valid username and password.
    *
    * @param userSignInDto the user information.
-   * @param userId the user's id.
    * @return the {@link UserResponseDto}.
    */
-  UserResponseDto checkPassword(Long userId, UserLoginDto userSignInDto);
+  UserResponseDto logInUser(UserLoginDto userSignInDto);
 }

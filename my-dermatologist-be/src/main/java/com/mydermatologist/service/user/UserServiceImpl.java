@@ -4,21 +4,51 @@ import com.mydermatologist.domain.UserApp;
 import com.mydermatologist.dto.UserLoginDto;
 import com.mydermatologist.dto.UserResponseDto;
 import com.mydermatologist.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
  * User service implementation.
  */
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserRepository userRepository;
+  /**
+   * Register user with valid username and password.
+   *
+   * @param userAppSignUpDto the user information.
+   * @return the {@link Long}.
+   */
+  @Override
+  public UserResponseDto registerUser(UserLoginDto userAppSignUpDto) {
 
-  @Autowired
-  public UserServiceImpl(UserRepository userRepository) {
-    this.userRepository = userRepository;
+
+    UserApp user = checkUsername(userAppSignUpDto, true);
+    long userId = user.getId();
+
+    UserResponseDto userResponseDto = checkPassword(userAppSignUpDto, userId);
+
+    return userResponseDto;
   }
+
+  /**
+   * Logs in user with valid username and password.
+   *
+   * @param userSignInDto the user information.
+   * @return the {@link UserResponseDto}.
+   */
+  @Override
+  public UserResponseDto logInUser(UserLoginDto userSignInDto) {
+    UserApp user = checkUsername(userSignInDto, false);
+    long userId = user.getId();
+
+    UserResponseDto userResponseDto = checkPassword(userSignInDto, userId);
+
+    return userResponseDto;
+  }
+
+  private final UserRepository userRepository;
 
   /**
    * Create user or verify that exists with username.
@@ -27,7 +57,7 @@ public class UserServiceImpl implements UserService {
    * @param isSignUp flag for showing if it's sign in or sign up service.
    * @return the {@link UserApp}.
    */
-  public UserApp checkUsername(UserLoginDto userApp, boolean isSignUp) {
+  private UserApp checkUsername(UserLoginDto userApp, boolean isSignUp) {
 
     UserApp user = userRepository.findByUsername(userApp.getUsername()).stream().findFirst().orElse(null);
 
@@ -55,7 +85,7 @@ public class UserServiceImpl implements UserService {
    * @param userId the user information.
    * @return the {@link UserResponseDto}.
    */
-  public UserResponseDto checkPassword(UserLoginDto user, Long userId) {
+  private UserResponseDto checkPassword(UserLoginDto user, Long userId) {
     UserResponseDto userResponseDto = new UserResponseDto();
 
     UserApp foundUserApp = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Invalid user id."));

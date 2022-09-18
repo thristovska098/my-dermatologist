@@ -80,12 +80,12 @@ public final class RestControllerConstants {
   public static final String CREATE_PAYMENT_INTENT_ENDPOINT = API_REST_ENDPOINT + "/create-payment-intent";
 
   /**
-   * Username save or verify endpoint.
+   * Register user endpoint.
    */
-  public static final String CHECK_USERNAME_ENDPOINT = API_REST_ENDPOINT + "/check-username";
+  public static final String REGISTER_USER_ENDPOINT = API_REST_ENDPOINT + "/register-user";
 
   /**
-   * Password save or verify endpoint.
+   * Login user endpoint.
    */
-  public static final String CHECK_PASSWORD_ENDPOINT = API_REST_ENDPOINT + "/check-password";
+  public static final String LOGIN_USER_ENDPOINT = API_REST_ENDPOINT + "/login-user";
 }
