@@ -5,6 +5,7 @@ import com.mydermatologist.dto.UserResponseDto;
 import com.mydermatologist.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.mydermatologist.controller.RestControllerConstants.LOGIN_USER_ENDPOINT;
@@ -27,7 +28,7 @@ public class UserControllerImpl implements UserController {
    */
   @Override
   @PostMapping(value = REGISTER_USER_ENDPOINT)
-  public UserResponseDto registerUser(UserLoginDto userAppSignUpDto) {
+  public UserResponseDto registerUser(@RequestBody UserLoginDto userAppSignUpDto) {
 
     return userService.registerUser(userAppSignUpDto);
   }
@@ -40,7 +41,7 @@ public class UserControllerImpl implements UserController {
    */
   @Override
   @PostMapping(value = LOGIN_USER_ENDPOINT)
-  public UserResponseDto logInUser(UserLoginDto userSignInDto) {
+  public UserResponseDto logInUser(@RequestBody UserLoginDto userSignInDto) {
 
     return userService.logInUser(userSignInDto);
   }
