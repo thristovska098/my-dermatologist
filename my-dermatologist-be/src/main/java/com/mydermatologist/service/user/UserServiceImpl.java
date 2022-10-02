@@ -23,11 +23,9 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserResponseDto registerUser(UserLoginDto userAppSignUpDto) {
 
-
     UserApp user = checkUsername(userAppSignUpDto, true);
-    long userId = user.getId();
 
-    UserResponseDto userResponseDto = checkPassword(userAppSignUpDto, userId);
+    UserResponseDto userResponseDto = checkPassword(userAppSignUpDto, user);
 
     return userResponseDto;
   }
@@ -40,10 +38,10 @@ public class UserServiceImpl implements UserService {
    */
   @Override
   public UserResponseDto logInUser(UserLoginDto userSignInDto) {
-    UserApp user = checkUsername(userSignInDto, false);
-    long userId = user.getId();
 
-    UserResponseDto userResponseDto = checkPassword(userSignInDto, userId);
+    UserApp user = checkUsername(userSignInDto, false);
+
+    UserResponseDto userResponseDto = checkPassword(userSignInDto, user);
 
     return userResponseDto;
   }
@@ -81,31 +79,30 @@ public class UserServiceImpl implements UserService {
   /**
    * Save users password or verify the existing password.
    *
-   * @param user the user information.
-   * @param userId the user information.
+   * @param userDto the user information.
+   * @param userApp the user information.
    * @return the {@link UserResponseDto}.
    */
-  private UserResponseDto checkPassword(UserLoginDto user, Long userId) {
+  private UserResponseDto checkPassword(UserLoginDto userDto, UserApp userApp) {
+
     UserResponseDto userResponseDto = new UserResponseDto();
 
-    UserApp foundUserApp = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Invalid user id."));
-
-    userResponseDto.setUserType(foundUserApp.getUserType());
-    String password = foundUserApp.getPassword();
+    userResponseDto.setUserType(userApp.getUserType());
+    String password = userApp.getPassword();
 
     if (password == null) {
-      foundUserApp.setPassword(user.getPassword());
-      userRepository.save(foundUserApp);
+      userApp.setPassword(userDto.getPassword());
+      userRepository.save(userApp);
 
       userResponseDto.setUserLoggedIn(true);
       return userResponseDto;
     }
 
-    if (!user.getPassword().equals(password)) {
+    if (!userDto.getPassword().equals(password)) {
       throw new RuntimeException("Invalid password.");
     }
 
-    userResponseDto.setUserLoggedIn(user.getPassword().equals(password));
+    userResponseDto.setUserLoggedIn(userDto.getPassword().equals(password));
 
     return userResponseDto;
   }
